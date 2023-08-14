@@ -1,7 +1,7 @@
 <?php
 
 $navlayout = "";
-if (isset($_SESSION["admin"])) {
+if (isset($_SESSION["Adm"])) {
     $navlayout .= <<<HTML
     
         <li class="nav-item">
@@ -23,7 +23,7 @@ if (isset($_SESSION["admin"])) {
             <a class='nav-link' href='../user/logout.php?logout'>Logout ({$_SESSION["UserEmail"]})</a>
         </li>
     HTML;
-} elseif (isset($_SESSION["user"])) {
+} elseif (isset($_SESSION["User"])) {
     $navlayout .= <<<HTML
         <a class="navbar-brand" href="#">
             <img src="../pictures/{$_SESSION['Userimage']}" alt="user pic" style ="border-radius: 8px 8px 0 0; width: 80%; height: 50px;">
@@ -40,6 +40,12 @@ if (isset($_SESSION["admin"])) {
         <li class='nav-item'>
             <a class='nav-link' href='../user/logout.php?logout'>Logout ({$_SESSION["UserEmail"]})</a>
         </li>
+    HTML;
+} elseif (isset($_SESSION["Agency"])) {
+    $navlayout .= <<<HTML
+
+    /** Add navbar menu for agency */
+    
     HTML;
 } else {
     $navlayout .= <<<HTML

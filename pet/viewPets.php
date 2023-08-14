@@ -1,5 +1,5 @@
 <?php
-function generateAnimalCards($result)
+function viewPets($result)
 {
     $layout = "";
 
