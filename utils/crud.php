@@ -42,12 +42,25 @@ class CRUD
     {
         return $this->select("user", "*", $condition);
     }
+    public function createPet(array $values)
+    {
+        $result = $this->insert("pet", "`name`, `image`, `location`, `species`, `breed`, `age`, `size`, `description`, `available`, `vaccinated`, `experienceNeeded`, `minSpace`, `behavior`", $values);
+
+        $this->alert($result, "A new pet has been created");
+    }
 
     public function createUser(array $values)
     {
-        $result = $this->insert("user", "`first_name`, `last_name`, `email`, `phone_number`, `address`, `image`, `password`", $values);
+        $result = $this->insert("user", "`role`, `firstName`, `lastName`, `email`, `phone`, `address`, `image`, `birthdate`, `space`, `experienced`, `password`", $values);
 
         $this->alert($result, "A new user account has been created");
+    }
+
+    public function createAgency(array $values)
+    {
+        $result = $this->insert("user", "`role`, `agency`, `address`, `email`, `phone`, `password`", $values);
+
+        $this->alert($result, "A new agency account has been created");
     }
 
     public function alert($result, string $message)

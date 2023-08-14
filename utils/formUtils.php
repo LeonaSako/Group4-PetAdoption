@@ -10,14 +10,20 @@ function cleanInputs($input)
 }
 function preventAdmin()
 {
-    if (isset($_SESSION["admin"])) {
-        header("Location: ../dashboard.php");
+    if (isset($_SESSION["Adm"])) {
+        header("Location: ../admin/dashboard.php");
     }
 }
 function preventUser()
 {
-    if (!isset($_SESSION["admin"])) {
-        header("Location: ../home.php");
+    if (!isset($_SESSION["User"])) {
+        header("Location: ../user/dahsboard.php");
+    }
+}
+function preventAgency()
+{
+    if (!isset($_SESSION["Agency"])) {
+        header("Location: ../agency/dahsboard.php");
     }
 }
 function removeOldImage($oldImage)

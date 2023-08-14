@@ -17,44 +17,16 @@ if (isset($_SESSION["Adm"])) {
 $crud = new CRUD();
 $error = false;
 
-$fname = $lname = $email = $date_of_birth = $email = "";
-$fnameError = $lnameError = $dateError = $emailError = $passError = "";
+$email = "";
+$emailError = $passError = "";
 
 if (isset($_POST["sign-up"])) {
-    $fname = cleanInputs($_POST["fname"]);
-    $lname = cleanInputs($_POST["lname"]);
+
+    $agency = cleanInputs($_POST["agency"]);
+    $address = cleanInputs($_POST["address"]);
     $email = cleanInputs($_POST["email"]);
     $phone = cleanInputs($_POST["phone"]);
     $password = $_POST["password"];
-    $date_of_birth = cleanInputs($_POST["date_of_birth"]);
-    $picture = fileUpload($_FILES["picture"], 'user');
-
-    if (empty($fname)) {
-        $error = true;
-        $fnameError = "Please, enter your first name";
-    } elseif (strlen($fname) < 3) {
-        $error = true;
-        $fnameError = "Name must have at least 3 characters.";
-    } elseif (!validateName($fname)) {
-        $error = true;
-        $fnameError = "Name must contain only letters and spaces.";
-    }
-
-    if (empty($lname)) {
-        $error = true;
-        $lnameError = "Please, enter your last name";
-    } elseif (strlen($lname) < 3) {
-        $error = true;
-        $lnameError = "Name must have at least 3 characters.";
-    } elseif (!validateName($lname)) {
-        $error = true;
-        $lnameError = "Last name must contain only letters and spaces.";
-    }
-
-    if (empty($date_of_birth)) {
-        $error = true;
-        $dateError = "date of birth can't be empty!";
-    }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = true;
@@ -78,9 +50,10 @@ if (isset($_POST["sign-up"])) {
     if (!$error) {
         $password = hash("sha256", $password);
 
-        $values = ['User', $fname, $lname, $email, $phone, $address, $picture[0], $birthdate, $space, $experienced, $password];
+        // `role`, `agency`, `address`, `email`, `phone`, `password`
+        $values = ['Agency', $agency, $address, $email, $phone, $password];
 
-        $crud->createUser($values);
+        $crud->createAgency($values);
     }
 }
 ?>

@@ -1,11 +1,12 @@
 <?php
 session_start();
 
-if (isset($_SESSION["user"])) {
-    header("Location: home.php");
-}
-if (isset($_SESSION["adm"])) {
-    header("Location: dashboard.php");
+if (isset($_SESSION["Adm"])) {
+    header("Location: ../admin/dashboard.php");
+} else if (isset($_SESSION["User"])) {
+    header("Location: ../user/dashboard.php");
+} else if (isset($_SESSION["Agency"])) {
+    header("Location: ../agency/dashboard.php");
 }
 
 require_once "../utils/crud.php";
@@ -42,12 +43,17 @@ if (isset($_POST["login"])) {
 
         if (!empty($result)) {
 
-            if ($row["status"] == "adm") {
-                $_SESSION["adm"] = $row["id"];
-                header("Location: ../dashboard.php");
-            } else {
-                $_SESSION["user"] = $row["id"];
-                header("Location: ../home.php");
+            $user = $result[0];
+
+            if ($user["role"] == "Adm") {
+                $_SESSION["Adm"] = $user["id"];
+                header("Location: ../admin/dashboard.php");
+            } else if ($user["role"] == "User") {
+                $_SESSION["User"] = $user["id"];
+                header("Location: ../user/dashboard.php");
+            } else if ($user["role"] == "Agency") {
+                $_SESSION["Agency"] = $user["id"];
+                header("Location: ../agency/dashboard.php");
             }
         } else {
             echo "<div class='alert alert-danger'>
@@ -63,7 +69,7 @@ if (isset($_POST["login"])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../css/main.css">
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
