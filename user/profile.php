@@ -1,31 +1,43 @@
 <?php
+
 session_start();
 
 require_once "../utils/crud.php";
-require_once "../pet/viewAll.php";
 
-$crud = new CRUD();
+$id = $_GET["id"];
 
-$result = $crud->selectPets("");
+# This is a script that handles the viewing of a user's details.
+#
+# Use the following crud commands:
+#
+# $crud = new CRUD();
+#
+# $result = $crud->selectUsers("id = $id"); 
+#
+# if (!empty($result)) {
+#
+#   $user = $result[0];
+#   $imageSrc = "../images/users/{$user['image']}";
+#   etc.
 
-$layout = viewPets($result);
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
-    <link rel="stylesheet" href="../css/main.css">
-    <title>Title</title>
+    <link rel="stylesheet" href="../style/main.css">
+    <title>User details</title>
 </head>
 
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container">
-        <div id="layout" class="row">
+        <div class="row justify-content-center">
             <?= $layout ?>
         </div>
     </div>

@@ -16,20 +16,20 @@ function preventAdmin()
 }
 function preventUser()
 {
-    if (!isset($_SESSION["User"])) {
+    if (isset($_SESSION["User"])) {
         header("Location: ../user/dahsboard.php");
     }
 }
 function preventAgency()
 {
-    if (!isset($_SESSION["Agency"])) {
+    if (isset($_SESSION["Agency"])) {
         header("Location: ../agency/dahsboard.php");
     }
 }
 function removeOldImage($oldImage)
 {
     if ($oldImage != "placeholder.jpg") {
-        unlink("../pictures/$oldImage");
+        unlink("../images/$oldImage");
     }
 }
 
