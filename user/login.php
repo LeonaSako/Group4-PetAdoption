@@ -90,7 +90,7 @@ if (isset($_POST["login"])) {
             </div>
             <button name="login" type="submit" class="btn btn-primary">Login</button>
 
-            <span>you don't have an account? <a href="register.php">register here </a></span>
+            <span>you don't have an account? <a href="registration.php">register here </a></span>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
