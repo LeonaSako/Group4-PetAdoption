@@ -15,7 +15,7 @@ if (isset($_SESSION["Adm"])) {
     $userID = $_SESSION["Agency"];
 }
 
-# This is a script that handles the creation of a new pet.
+# This is a script that handles the creation of a new pet. Only admins and agencies are allowed here.
 #
 # Use the following crud commands:
 #
@@ -37,19 +37,12 @@ if (isset($_SESSION["Adm"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
-    <link rel="stylesheet" href="../style/main.css">
-    <title>Create</title>
+    <title>Document</title>
 </head>
 
 <body>
     <?php include '../components/navbar.php'; ?>
-    <div class="container">
-        <div class="row justify-content-center">
-            <?= $layout ?>
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <!-- Add layout -->
 </body>
 
 </html>
