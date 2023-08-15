@@ -1,0 +1,54 @@
+Static:
+    - navbar                    (Christina)
+
+Admin:
+    - Login
+    - Dashboard
+    - User CRUD                 (Christina)
+        - Create
+        - Show / Details        (Leona)
+        - Update
+        - Delete
+    - Pet CRUD                  (Christina)
+        - Create (?)
+        - Show / Details
+        - Update
+        - Delete
+        
+User: 
+    - (Registration)            (Eleni)
+    - Login                     (Maryam)
+    - Logout                    (Maryam)
+    - Homepage                  (Leona)
+    - View pets (list)
+    - Make adoption 
+    - Show / Details profile    (Leona)          
+    - See adoption status ?!
+    - Contact us                (Leona)
+    - Search function various criteria (input&dropdowns??)
+
+Agency: 
+    - (Registration)           (Eleni)
+    - Login                    (Maryam)
+    - Logout                   (Maryam)
+    - Dashboard (incl. list of pets)    (Lisa)
+    - Pet CRUD                  (Christina)
+        - Create
+        - Show / Details        (Leona)
+        - Update
+        - Delete
+    - Adoption status each pet & as list    (Lisa)
+    - Approve / decline adoption            (Lisa)
+
+
+Resource library:   (Users & Admin?!)
+    - Detailed Information -> Care, training, behavior 
+
+
+Additional:
+    - Messaging System
+    - Pet Matchmaker
+    - Adoption Stories
+    - Foster-to-adopt program
+    - Pet of the day/week
+    - Volunteer opportunities with calendars
