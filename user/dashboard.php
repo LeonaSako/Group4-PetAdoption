@@ -2,7 +2,7 @@
 session_start();
 
 require_once "../utils/crud.php";
-require_once "../pet/viewPets.php";
+require_once "../pet/viewAllPets.php";
 
 $crud = new CRUD();
 
