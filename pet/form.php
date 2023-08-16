@@ -158,12 +158,6 @@ function buildForm($crud, $usage, $userID = null, $pet = null)
                                 <textarea class="form-control" id="behavior" name="behavior" rows="4" cols="50" placeholder="Give a pet behavior">{$fields['behavior']}</textarea>
                             </div>
                         </div>
-                        <div class="container">
-                            <div class="d-grid gap-2 d-md-flex justify-content-start">
-                                <button name=$usage type="submit" class="btn btn-primary">$buttonName</button>
-                                <a href="../dashboard.php" class="btn btn-warning">Back to dashboard</a>
-                            </div>
-                        </div>
         HTML;
     return $layout;
 }

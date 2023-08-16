@@ -45,6 +45,12 @@ if (!empty($result)) {
         <h1 class="text-center">Update animal record</h1>
         <form method="post" autocomplete="off" enctype="multipart/form-data">
             <?= $layout ?><br>
+            <div class="container">
+                <div class="d-grid gap-2 d-md-flex justify-content-start">
+                    <button name='update' type="submit" class="btn btn-primary">Update pet</button>
+                    <a href="../admin/dashboard.php" class="btn btn-warning">Back to dashboard</a>
+                </div>
+            </div>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
