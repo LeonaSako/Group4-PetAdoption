@@ -3,57 +3,61 @@
 $navlayout = "";
 if (isset($_SESSION["Adm"])) {
     $navlayout .= <<<HTML
-    
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="../dashboard.php">Home</a>
-        </li>
-        <li class='nav-item'>
-            <a class='nav-link' href='../home.php'>Animals</a>
-        </li>
-        <li class='nav-item'>
-            <a class='nav-link' href='../animal/senior.php'>Seniors</a>
-        </li>
-        <li class='nav-item'>
-            <a class='nav-link' href='../animal/create.php'>New animal</a>
-        </li>
-        <li class='nav-item'>
-            <a class='nav-link' href='../animal/adoptions.php'>Adoptions</a>
-        </li>
-        <li class='nav-item'>
-            <a class='nav-link' href='../user/logout.php?logout'>Logout ({$_SESSION["UserEmail"]})</a>
-        </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="../admin/dashboard.php">Home</a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='../pet/viewAll.php'>Pet listings</a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='../pet/create.php'>New pet</a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='../adoptions/viewAll.php'>Adoptions</a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='../user/logout.php?logout'>Logout ({$_SESSION["UserEmail"]})</a>
+            </li>
+
     HTML;
 } elseif (isset($_SESSION["User"])) {
     $navlayout .= <<<HTML
-        <a class="navbar-brand" href="#">
-            <img src="../pictures/{$_SESSION['Userimage']}" alt="user pic" style ="border-radius: 8px 8px 0 0; width: 80%; height: 50px;">
-        </a>
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="../home.php">Home</a>
-        </li>
-        <li class='nav-item'>
-            <a class='nav-link' href='../user/myadoptions.php'>My adoptions</a>
-        </li>
-        <li class='nav-item'>
-            <a class='nav-link' href='../animal/senior.php'>Seniors</a>
-        </li>
-        <li class='nav-item'>
-            <a class='nav-link' href='../user/logout.php?logout'>Logout ({$_SESSION["UserEmail"]})</a>
-        </li>
+    
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="../user/dashboard.php">Home</a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='../pet/viewAll.php'>Pet listings</a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='../user/logout.php?logout'>Logout ({$_SESSION["UserEmail"]})</a>
+            </li>
+
     HTML;
 } elseif (isset($_SESSION["Agency"])) {
     $navlayout .= <<<HTML
 
-    /** Add navbar menu for agency */
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="../agency/dashboard.php">Home</a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='../pet/viewAll.php'>Pet listings</a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='../pet/create.php'>New pet</a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='../adoptions/viewAll.php'>Adoptions</a>
+            </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='../user/logout.php?logout'>Logout ({$_SESSION["UserEmail"]})</a>
+            </li>
     
     HTML;
 } else {
     $navlayout .= <<<HTML
         <li class='nav-item'>
             <a class='nav-link' href='../user/login.php'>Login</a>
-        </li>
-        <li class='nav-item'>
-            <a class='nav-link' href='../animal/senior.php'>Seniors</a>
         </li>
     HTML;
 }

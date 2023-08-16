@@ -7,5 +7,5 @@ if (isset($_GET['logout'])) {
    unset($_SESSION['Agency']);
    session_unset();
    session_destroy();
-   header("Location: login.php");
+   header("refresh: 2; url = ../user/login.php");
 }
