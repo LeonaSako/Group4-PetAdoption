@@ -59,3 +59,8 @@ body {
     opacity: 6px;
     opacity: 0.5;
 }
+.form-label {
+    margin-bottom: 0.5rem;
+    color: blue;
+    font-style: italic;
+}
