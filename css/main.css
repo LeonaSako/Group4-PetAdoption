@@ -52,3 +52,10 @@ body {
         height: 150px;
     }
 }
+.lo-img {
+    width: 500px;
+    margin-left: 222px;
+    border-radius: 9px;
+    opacity: 6px;
+    opacity: 0.5;
+}

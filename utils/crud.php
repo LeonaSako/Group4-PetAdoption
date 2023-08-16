@@ -84,9 +84,11 @@ class CRUD
 
     public function createUser(array $values)
     {
-        $result = $this->insert("users", "`role`, `firstName`, `lastName`, `email`, `phone`, `address`, `image`, `birthdate`, `space`, `experienced`, `password`", $values);
+        $result = $this->insert("users", "`role`, `firstName`, `lastName`, `email`, `phone`, `address`, `image`, `birthdate`, `password`", $values);
 
         $this->alert($result, "A new user account has been created");
+
+        header("refresh: 2; url = ../user/dashboard.php");
     }
 
     public function updateUser($id, $fname, $lname, $address, $birthdate, $phone, $email, $space, $exp, $image)
@@ -121,6 +123,8 @@ class CRUD
         $result = $this->insert("user", "`role`, `agency`, `address`, `email`, `phone`, `password`", $values);
 
         $this->alert($result, "A new agency account has been created");
+
+        header("refresh: 2; url = ../agency/dashboard.php");
     }
 
     public function updateAgency($id, $agency, $address, $phone, $email)
