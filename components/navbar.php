@@ -7,7 +7,7 @@ if (isset($_SESSION["Adm"])) {
                 <a class="nav-link active" aria-current="page" href="../admin/dashboard.php">Home</a>
             </li>
             <li class='nav-item'>
-                <a class='nav-link' href='../pet/viewAll.php'>Pet listings</a>
+                <a class='nav-link' href='../pet/listings.php'>Pet listings</a>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='../pet/create.php'>New pet</a>
@@ -27,7 +27,7 @@ if (isset($_SESSION["Adm"])) {
                 <a class="nav-link active" aria-current="page" href="../user/dashboard.php">Home</a>
             </li>
             <li class='nav-item'>
-                <a class='nav-link' href='../pet/viewAll.php'>Pet listings</a>
+                <a class='nav-link' href='../pet/listings.php'>Pet listings</a>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='../agency/contact.php'>Contact us</a>

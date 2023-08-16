@@ -31,13 +31,15 @@ if (isset($_POST["create"])) {
     $size = $_POST["size"];
     $desc = $_POST["description"];
     $vaccine = $_POST["vaccinated"];
-    $size = isset($_POST['size']) ? $_POST['size'] : NULL;
+    $experience = $_POST["experienceNeeded"];
+    $space = $_POST["minSpace"];
+    $behavior = $_POST["behavior"];
     $age = $_POST["age"];
     
     $vaccine = isset($_POST['vaccine']) ? $_POST['vaccine'] : NULL;
     
 
-    $values = [$name, $image[0], $location, $species, $breed, $age,$size, $desc, $vaccine, $experience, $minSpace, $behavior, $userid];
+    $values = [$name, $image[0], $location, $species, $breed, $age,$size, $desc, $vaccine, $experience, $space, $behavior, $userid];
 
     $create = $crud->createPet($values);
 
@@ -55,6 +57,8 @@ if (isset($_POST["create"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/main.css">
     <title>Document</title>
 </head>
 
@@ -66,6 +70,16 @@ if (isset($_POST["create"])) {
             <div class="mb-3 mt-3">
                 <label for="name" class="form-label">Name </label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="<?= $name ?>" required>
+            </div>
+            <div class="mb-3">
+                <label for="species" class="form-label">Species</label>
+                <select class="form-control" id="species" name="species">
+                    <option value="" disabled selected>Select</option>
+                    <option value="Cat">Cat</option>
+                    <option value="Dog">Dog</option>
+                    <option value="Bird">Bird</option>
+                    <option value="Bird">Fish</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="breed" class="form-label">Breed </label>
@@ -89,6 +103,13 @@ if (isset($_POST["create"])) {
                 <input type="number" class="form-control" id="age" name="age" placeholder="Age" min="0" value="<?= $age ?>">
             </div>
             <div class="mb-3">
+                <select name="experienced" id="experienced">
+                    <label for="experienced">Is experience with pets needed?</label>
+                <option name="experienced" value="Yes">Yes</option>
+                <option name="experienced" value="No">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
                 <label for="image" class="form-label">Image </label>
                 <input type="file" class="form-control" id="image" name="image">
             </div>
@@ -108,6 +129,7 @@ if (isset($_POST["create"])) {
             <a href="../dashboard.php" class="btn btn-warning">Back to dashboard</a>
         </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 
 </html>
