@@ -17,8 +17,8 @@ if (isset($_SESSION["Adm"])) {
 $crud = new CRUD();
 $error = false;
 
-$email = "";
-$emailError = $passError = "";
+$agency=$address =$email=$phone=$password= "";
+$agencyError=$emailError = $passError = "";
 
 if (isset($_POST["sign-up"])) {
 
@@ -28,6 +28,46 @@ if (isset($_POST["sign-up"])) {
     $phone = cleanInputs($_POST["phone"]);
     $password = $_POST["password"];
 
+    if (empty($agency)) {
+        $error = true;
+        $agencyError = "Agency name ";
+    } elseif (strlen($agency) < 3) {
+        $error = true;
+        $agencyError = "Name must have at least 3 characters.";
+    } elseif (!validateName($agency)) {
+        $error = true;
+        $agencyError = "Name must contain only letters and spaces.";
+    }
+    if (empty($address)) {
+        $error = true;
+        $addressError = "Agency name ";
+    } elseif (strlen($address) < 3) {
+        $error = true;
+        $addressError = "Name must have at least 3 characters.";
+    } elseif (!validateName($address)) {
+        $error = true;
+        $addressError = "Name must contain only letters and spaces.";
+    }
+    if (empty($email)) {
+        $error = true;
+        $emailError = "Agency name ";
+    } elseif (strlen($email) < 3) {
+        $error = true;
+        $emailError = "Name must have at least 3 characters.";
+    } elseif (!validateName($email)) {
+        $error = true;
+        $addressError = "Name must contain only letters and spaces.";
+    }
+    if (empty($email)) {
+        $error = true;
+        $emailError = "Agency name ";
+    } elseif (strlen($email) < 3) {
+        $error = true;
+        $emailError = "Name must have at least 3 characters.";
+    } elseif (!validateName($email)) {
+        $error = true;
+        $addressError = "Name must contain only letters and spaces.";
+    }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = true;
         $emailError = "Please enter a valid email address";
@@ -74,9 +114,9 @@ if (isset($_POST["sign-up"])) {
         <h1 class="text-center">Sign Up </h1>
         <form method="post" autocomplete="off" enctype="multipart/form-data">
             <div class="mb-3 mt-3">
-                <label for="fname" class="form-label">First name </label>
-                <input type="text" class="form-control" id="fname" name="fname" placeholder="First name" value="<?= $fname ?>">
-                <span class="text-danger"><?= $fnameError ?></span>
+                <label for="agency" class="form-label">Agency </label>
+                <input type="text" class="form-control" id="fname" name="agency" placeholder="Agency name" value="<?= $agency ?>">
+                <span class="text-danger"><?= $agencyError ?></span>
             </div>
             <div class="mb-3">
                 <label for="lname" class="form-label">Last name </label>
