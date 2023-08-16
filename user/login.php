@@ -45,6 +45,8 @@ if (isset($_POST["login"])) {
 
             $user = $result[0];
 
+            $_SESSION["UserEmail"] = $user["email"];
+
             if ($user["role"] == "Adm") {
                 $_SESSION["Adm"] = $user["id"];
                 header("Location: ../admin/dashboard.php");
@@ -70,7 +72,7 @@ if (isset($_POST["login"])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/main.css">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
@@ -94,8 +96,8 @@ if (isset($_POST["login"])) {
                     <span class="text-danger"><?= $passError ?></span>
                 </div>
                 <button name="login" type="submit" class="btn btn-primary">Login</button><br><br>
-                <i class='fas fa-hand-point-down' style='font-size:24px'></i>
-                <span>You don't have an account? <a href="registration.php">Register here </a></span>
+                <i class="fa fa-hand-o-down" style="font-size:24px"></i><br>
+                <span> <a href="registration.php">Register here </a> If you don't have an account, click here!</span>
             </form>
         </div>
        <div class="col-4">
