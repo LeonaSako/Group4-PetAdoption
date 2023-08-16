@@ -117,19 +117,18 @@ class CRUD
 
         $this->alert($result, "The user has been deleted");
     }
-
     public function createAgency(array $values)
-    {
-        $result = $this->insert("user", "`role`, `agency`, `address`, `email`, `phone`, `password`", $values);
+{
+    $result = $this->insert("users", "`role`, `address`, `image`, `email`, `phone`, `password`", $values);
 
-        $this->alert($result, "A new agency account has been created");
+    $this->alert($result, "A new agency account has been created");
 
-        header("refresh: 2; url = ../agency/dashboard.php");
-    }
+    header("refresh: 2; url = ../agency/dashboard.php");
+}
 
     public function updateAgency($id, $agency, $address, $phone, $email)
     {
-        $sql = "UPDATE `users` SET `agency`='$agency',`address`='$address', `phone`='$phone',`email`='$email' WHERE id = $id";
+        $sql = "UPDATE `users` SET `agency`='$agency',`address`='$address', `email`='$email'`phone`='$phone', WHERE id = $id";
 
         $result = mysqli_query($this->connection, $sql);
 

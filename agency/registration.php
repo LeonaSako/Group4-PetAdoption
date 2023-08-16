@@ -17,8 +17,9 @@ if (isset($_SESSION["Adm"])) {
 $crud = new CRUD();
 $error = false;
 
+
 $agency=$address =$email=$phone=$password= "";
-$agencyError=$emailError = $passError = "";
+$agencyError=$emailError = $passError =$addressError=$phoneError = "";
 
 if (isset($_POST["sign-up"])) {
 
@@ -48,26 +49,7 @@ if (isset($_POST["sign-up"])) {
         $error = true;
         $addressError = "Name must contain only letters and spaces.";
     }
-    if (empty($email)) {
-        $error = true;
-        $emailError = "Agency name ";
-    } elseif (strlen($email) < 3) {
-        $error = true;
-        $emailError = "Name must have at least 3 characters.";
-    } elseif (!validateName($email)) {
-        $error = true;
-        $addressError = "Name must contain only letters and spaces.";
-    }
-    if (empty($email)) {
-        $error = true;
-        $emailError = "Agency name ";
-    } elseif (strlen($email) < 3) {
-        $error = true;
-        $emailError = "Name must have at least 3 characters.";
-    } elseif (!validateName($email)) {
-        $error = true;
-        $addressError = "Name must contain only letters and spaces.";
-    }
+    
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = true;
         $emailError = "Please enter a valid email address";
@@ -78,7 +60,16 @@ if (isset($_POST["sign-up"])) {
             $emailError = "Provided Email is already in use";
         }
     }
-
+    if (empty($phone)) {
+        $error = true;
+        $phoneError = "Please, enter your Phone Number";
+    } elseif (strlen($phone) < 3) {
+        $error = true;
+        $phoneError = "Please give a valid phone number";
+    } elseif (!preg_match("/^[0-9]+$/",$phone)) {
+        $error = true;
+        $phoneError = "Phone number most contain only numbers";
+    }
     if (empty($password)) {
         $error = true;
         $passError = "Password can't be empty!";
@@ -119,15 +110,11 @@ if (isset($_POST["sign-up"])) {
                 <span class="text-danger"><?= $agencyError ?></span>
             </div>
             <div class="mb-3">
-                <label for="lname" class="form-label">Last name </label>
-                <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name" value="<?= $lname ?>">
-                <span class="text-danger"><?= $lnameError ?></span>
+                <label for="address" class="form-label">Address </label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="<?= $address?>">
+                <span class="text-danger"><?= $addressError ?></span>
             </div>
-            <div class="mb-3">
-                <label for="date" class="form-label">Date of birth</label>
-                <input type="date" class="form-control" id="date" name="date_of_birth" value="<?= $date_of_birth ?>">
-                <span class="text-danger"><?= $dateError ?></span>
-            </div>
+        
             <div class="mb-3">
                 <label for="picture" class="form-label">Profile picture </label>
                 <input type="file" class="form-control" id="picture" name="picture">
@@ -137,6 +124,11 @@ if (isset($_POST["sign-up"])) {
                 <input type="email" class="form-control" id="email" name="email" placeholder="Email address" value="<?= $email ?>">
                 <span class="text-danger"><?= $emailError ?></span>
             </div>
+            <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone Number" value="<?=$phone?>">
+                    <span class="text-danger"><?=$phoneError?></span>
+                </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password">
