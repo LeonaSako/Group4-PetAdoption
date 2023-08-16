@@ -23,13 +23,21 @@ $layout = viewPets($result);
 </head>
 
 <body>
-    <?php include '../components/navbar.php'; ?>
-    <div class="container">
-        <div id="layout" class="row">
-            <?= $layout ?>
-        </div>
-    </div>
+    <?php include '../components/navbar.php'; 
+   
+    ?>
+<div class="container mt-4">
+<h1 class="text-center">Animal Adoption</h1>
+<div class=" row row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-xs-1 ">
+
+        
+   
+<?= $layout ?>
+</div>
+</div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+   
 </body>
 
 </html>
