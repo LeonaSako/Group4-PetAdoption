@@ -75,10 +75,7 @@ if (isset($_POST["sign-up"])) {
     } elseif (strlen($address) < 3) {
         $error = true;
         $addressError = "Address must have at least 3 characters.";
-    } elseif (!preg_match("/^[a-zA-Z\s 0-9]+$/", $address)) {
-        $error = true;
-        $addressError = "Address must contain only letters and spaces.";
-    }
+    } 
     
     if (empty($phone)) {
         $error = true;

@@ -52,6 +52,7 @@ body {
         height: 150px;
     }
 }
+
 .lo-img {
     width: 500px;
     margin-left: 222px;
@@ -59,8 +60,36 @@ body {
     opacity: 6px;
     opacity: 0.5;
 }
+
 .form-label {
     margin-bottom: 0.5rem;
     color: blue;
     font-style: italic;
+}
+
+.required {
+    color: red;
+}
+
+.required-fields {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.optional-fields {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#pet-details-h6 {
+    text-align: center;
+    margin-bottom: 0.5rem;
 }

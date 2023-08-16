@@ -23,8 +23,8 @@ function viewPets($result)
             <p class="card-text">Size: $size</p>
             <p class="card-text">Vaccinated: $vaccinated</p>
             <a href="../pet/details.php?id=$id" class="btn btn-primary">Show Details</a>
-            <a href="delete.php?id=$id" class="btn btn-danger">Delete</a>
-            <a href="update.php?id=$id" class="btn btn-secondary">Update</a>
+            <a href="../adoptions/new.php?id=$id" class="btn btn-warning">Take me home</a>
+    
         </div>
     </div>
 </div>
