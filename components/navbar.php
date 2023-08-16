@@ -30,6 +30,9 @@ if (isset($_SESSION["Adm"])) {
                 <a class='nav-link' href='../pet/viewAll.php'>Pet listings</a>
             </li>
             <li class='nav-item'>
+                <a class='nav-link' href='../agency/contact.php'>Contact us</a>
+            </li>
+            <li class='nav-item'>
                 <a class='nav-link' href='../user/logout.php?logout'>Logout ({$_SESSION["UserEmail"]})</a>
             </li>
 
