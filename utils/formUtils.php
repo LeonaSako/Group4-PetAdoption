@@ -8,6 +8,12 @@ function cleanInputs($input)
 
     return  $data;
 }
+function redirectToLogin()
+{
+    if (!isset($_SESSION["Adm"])) {
+        header("Location: ../user/login.php");
+    }
+}
 function preventAdmin()
 {
     if (isset($_SESSION["Adm"])) {
