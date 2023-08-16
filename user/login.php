@@ -45,6 +45,8 @@ if (isset($_POST["login"])) {
 
             $user = $result[0];
 
+            $_SESSION["UserEmail"] = $user["email"];
+
             if ($user["role"] == "Adm") {
                 $_SESSION["Adm"] = $user["id"];
                 header("Location: ../admin/dashboard.php");
@@ -70,7 +72,7 @@ if (isset($_POST["login"])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/main.css">
-    <title>Bootstrap demo</title>
+    <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 

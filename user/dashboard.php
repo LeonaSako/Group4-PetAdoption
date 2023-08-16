@@ -2,7 +2,15 @@
 session_start();
 
 require_once "../utils/crud.php";
+require_once "../utils/formUtils.php";
 require_once "../pet/viewAll.php";
+
+preventAdmin();
+preventAgency();
+
+if (!isset($_SESSION["User"])) {
+    header("Location: login.php");
+}
 
 $crud = new CRUD();
 

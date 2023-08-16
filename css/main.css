@@ -47,6 +47,10 @@ body {
     margin-top: 10px;
 }
 
+.required {
+    color: red;
+}
+
 @media (max-width: 576px) {
     .book-card img {
         height: 150px;
