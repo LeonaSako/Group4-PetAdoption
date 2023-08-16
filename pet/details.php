@@ -21,19 +21,33 @@ if (!empty($result)) {
     $vaccinated = ($pet['vaccinated'] == 1) ? 'Yes' : 'No';
     $location = $pet['location'];
     $description = $pet['description'];
+    $status = ($pet['available'] == 1) ? 'Available' : 'Adopted';
 
     $layout = <<<HTML
-    <div class="col-md-6">
+    <div class="d-flex justify-content-md-evenly">
         <div class="card">
-            <img src="<?php echo $imageSrc; ?>" class="card-img-top" style="max-width: 100%; max-height: 400px; min-height: 400px;" alt="Animal Photo">
+            <img src="{$imageSrc}" id="details-img" class='img-fluid shadow mb-5' alt="Pet image">
             <div class="card-body">
-                <h5 class="card-title"><?php echo $name; ?></h5>
-                <p class="card-text">Breed: <?php echo $breed; ?></p>
-                <p class="card-text">Age: <?php echo $age; ?> years</p>
-                <p class="card-text">Size: <?php echo $size; ?></p>
-                <p class="card-text">Vaccinated: <?php echo $vaccinated; ?></p>
-                <p class="card-text">Location: <?php echo $location; ?></p>
-                <p class="card-text">Description: <?php echo $description; ?></p>
+                <figure class="text-center">
+                    <blockquote class="blockquote">
+                        <h5>{$name}</h5>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                    {$description}
+                    </figcaption>
+                </figure>
+                <dl class="row">
+                    <dt class="col-sm-4">Breed: </dt>
+                    <dd class="col-sm-8">$breed</dd>
+                    <dt class="col-sm-4">Age: </dt>
+                    <dd class="col-sm-8">$age years old</dd>
+                    <dt class="col-sm-4">Size: </dt>
+                    <dd class="col-sm-8">$size</dd>
+                    <dt class="col-sm-4">Vaccinated: </dt>
+                    <dd class="col-sm-8">$vaccinated</dd>
+                    <dt class="col-sm-4">Status: </dt>
+                    <dd class="col-sm-8">$status</dd>
+                </dl>
             </div>
         </div>
     </div>
@@ -65,12 +79,13 @@ HTML;
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container mt-4">
-        <a href="javascript:history.back()">GO BACK</a>
+        <a href="listings.php">GO BACK</a>
         <h1 class="text-center">Animal Details</h1>
         <div class="row justify-content-center">
             <?= $layout ?>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 
 </html>
