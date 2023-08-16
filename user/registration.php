@@ -17,43 +17,46 @@ if (isset($_SESSION["Adm"])) {
 $crud = new CRUD();
 $error = false;
 
-$fname = $lname = $email = $date_of_birth = $email = "";
-$fnameError = $lnameError = $dateError = $emailError = $passError = "";
+$firstname = $lastname = $email=$address=$phone=$space=$experienced=$password = $birthdate= "";
+$fnameError = $lnameError = $dateError= $addressError=$phoneError = $emailError = $passError =$spaceError= "";
 
 if (isset($_POST["sign-up"])) {
-    $fname = cleanInputs($_POST["fname"]);
-    $lname = cleanInputs($_POST["lname"]);
+    $firstname = cleanInputs($_POST["firstname"]);
+    $lastname = cleanInputs($_POST["lastname"]);
     $email = cleanInputs($_POST["email"]);
+    $address = cleanInputs($_POST["address"]);
     $phone = cleanInputs($_POST["phone"]);
+    $space = cleanInputs($_POST["space"]);
+    $experienced = cleanInputs($_POST["experienced"]);
     $password = $_POST["password"];
-    $date_of_birth = cleanInputs($_POST["date_of_birth"]);
+    $birthdate = cleanInputs($_POST["birthdate"]);
     $picture = fileUpload($_FILES["picture"], 'user');
 
-    if (empty($fname)) {
+    if (empty($firstname)) {
         $error = true;
         $fnameError = "Please, enter your first name";
-    } elseif (strlen($fname) < 3) {
+    } elseif (strlen($firstname) < 3) {
         $error = true;
         $fnameError = "Name must have at least 3 characters.";
-    } elseif (!validateName($fname)) {
+    } elseif (!validateName($firstname)) {
         $error = true;
         $fnameError = "Name must contain only letters and spaces.";
     }
 
-    if (empty($lname)) {
+    if (empty($lastname)) {
         $error = true;
         $lnameError = "Please, enter your last name";
-    } elseif (strlen($lname) < 3) {
+    } elseif (strlen($lastname) < 3) {
         $error = true;
         $lnameError = "Name must have at least 3 characters.";
-    } elseif (!validateName($lname)) {
+    } elseif (!validateName($lastname)) {
         $error = true;
         $lnameError = "Last name must contain only letters and spaces.";
     }
 
-    if (empty($date_of_birth)) {
+    if (empty($birthdate)) {
         $error = true;
-        $dateError = "date of birth can't be empty!";
+        $dateError = "Date of birth can't be empty!";
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -65,6 +68,37 @@ if (isset($_POST["sign-up"])) {
             $error = true;
             $emailError = "Provided Email is already in use";
         }
+    }
+    if (empty($address)) {
+        $error = true;
+        $$addressError = "Please enter your Address";
+    } elseif (strlen($address) < 3) {
+        $error = true;
+        $addressError = "Address must have at least 3 characters.";
+    } elseif (!preg_match("/^[a-zA-Z\s]+$/", $address)) {
+        $error = true;
+        $addressError = "Address must contain only letters and spaces.";
+    }
+    
+    if (empty($phone)) {
+        $error = true;
+        $phoneError = "Please, enter your Phone Number";
+    } elseif (strlen($phone) < 3) {
+        $error = true;
+        $phoneError = "Please give a valid phone number";
+    } elseif (!preg_match("/^[0-9]+$/",$phone)) {
+        $error = true;
+        $phoneError = "Phone number most contain only numbers";
+    }
+    if (empty($space)) {
+        $error = true;
+        $spaceError = "Please, enter your Space";
+    } elseif (strlen($space) < 2) {
+        $error = true;
+        $spaceError = "Space must have at least 2 characters.";
+    } elseif (!preg_match("/^[0-9]+$/",$space)) {
+        $error = true;
+        $spaceError = "Space";
     }
 
     if (empty($password)) {
@@ -78,7 +112,7 @@ if (isset($_POST["sign-up"])) {
     if (!$error) {
         $password = hash("sha256", $password);
 
-        $values = ['User', $fname, $lname, $email, $phone, $address, $picture[0], $birthdate, $space, $experienced, $password];
+        $values = ['User', $firstname, $lastname, $email , $phone, $address, $picture[0], $birthdate, $space, $experienced, $password];
 
         $crud->createUser($values);
     }
@@ -101,18 +135,18 @@ if (isset($_POST["sign-up"])) {
         <h1 class="text-center">Sign Up </h1>
         <form method="post" autocomplete="off" enctype="multipart/form-data">
             <div class="mb-3 mt-3">
-                <label for="fname" class="form-label">First name </label>
-                <input type="text" class="form-control" id="fname" name="fname" placeholder="First name" value="<?= $fname ?>">
+                <label for="firstname" class="form-label">First name </label>
+                <input type="text" class="form-control" id="fname" name="firstname" placeholder="First name" value="<?= $firstname ?>">
                 <span class="text-danger"><?= $fnameError ?></span>
             </div>
             <div class="mb-3">
                 <label for="lname" class="form-label">Last name </label>
-                <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name" value="<?= $lname ?>">
+                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last name" value="<?= $lastname ?>">
                 <span class="text-danger"><?= $lnameError ?></span>
             </div>
             <div class="mb-3">
                 <label for="date" class="form-label">Date of birth</label>
-                <input type="date" class="form-control" id="date" name="date_of_birth" value="<?= $date_of_birth ?>">
+                <input type="date" class="form-control" id="date" name="birthdate" value="<?= $birthdate ?>">
                 <span class="text-danger"><?= $dateError ?></span>
             </div>
             <div class="mb-3">
@@ -125,10 +159,30 @@ if (isset($_POST["sign-up"])) {
                 <span class="text-danger"><?= $emailError ?></span>
             </div>
             <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="<?=$address?>">
+                    <span class="text-danger"><?=$addressError?></span>
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone Number" value="<?=$phone?>">
+                    <span class="text-danger"><?=$phoneError?></span>
+                </div>
+                <div class="mb-3">
+                    <label for="space" class="form-label">Space</label>
+                    <input type="number" class="form-control" id="space" name="space" placeholder="Space m3" value="<?=$space?>">
+                    <span class="text-danger"><?=$spaceError?></span>
+                </div>
+                <label for="experienced">Do you have experience with the Pets?</label>
+                <select name="experienced" id="experienced">
+               <option name="experienced" value="Yes">Yes</option>
+               <option name="experienced" value="No">No</option>
+             
+            </select>
+            <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                 <span class="text-danger"><?= $passError ?></span>
-
             </div>
             <button name="sign-up" type="submit" class="btn btn-primary">Create account </button>
 

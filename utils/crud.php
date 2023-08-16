@@ -84,16 +84,16 @@ class CRUD
 
     public function createUser(array $values)
     {
-        $result = $this->insert("users", "`role`, `firstName`, `lastName`, `email`, `phone`, `address`, `image`, `birthdate`, `password`", $values);
+        $result = $this->insert("users", "`role`, `firstName`, `lastName`, `email`, `phone`, `address`, `image`, `birthdate`, `space`, `experienced`, `password`", $values);
 
         $this->alert($result, "A new user account has been created");
 
         header("refresh: 2; url = ../user/dashboard.php");
     }
 
-    public function updateUser($id, $fname, $lname, $address, $birthdate, $phone, $email, $space, $exp, $image)
+    public function updateUser($id, $firstname, $lastname, $address, $birthdate, $phone, $email, $space, $exp, $image)
     {
-        $sql = "UPDATE `users` SET `firstName`='$fname',`lastName`='$lname',`address`='$address',`birthdate`='$birthdate',
+        $sql = "UPDATE `users` SET `firstName`='$firstname',`lastName`='$lastname',`address`='$address',`birthdate`='$birthdate',
                                     `phone`='$phone',`email`='$email',`space`='$space',`experienced`='$exp'";
 
         if (!empty($image)) {
