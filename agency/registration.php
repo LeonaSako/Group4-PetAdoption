@@ -17,8 +17,9 @@ if (isset($_SESSION["Adm"])) {
 $crud = new CRUD();
 $error = false;
 
-$email = "";
-$emailError = $passError = "";
+
+$agency=$address =$email=$phone=$password= "";
+$agencyError=$emailError = $passError =$addressError=$phoneError = "";
 
 if (isset($_POST["sign-up"])) {
 
@@ -28,6 +29,27 @@ if (isset($_POST["sign-up"])) {
     $phone = cleanInputs($_POST["phone"]);
     $password = $_POST["password"];
 
+    if (empty($agency)) {
+        $error = true;
+        $agencyError = "Agency name ";
+    } elseif (strlen($agency) < 3) {
+        $error = true;
+        $agencyError = "Name must have at least 3 characters.";
+    } elseif (!validateName($agency)) {
+        $error = true;
+        $agencyError = "Name must contain only letters and spaces.";
+    }
+    if (empty($address)) {
+        $error = true;
+        $addressError = "Agency name ";
+    } elseif (strlen($address) < 3) {
+        $error = true;
+        $addressError = "Name must have at least 3 characters.";
+    } elseif (!validateName($address)) {
+        $error = true;
+        $addressError = "Name must contain only letters and spaces.";
+    }
+    
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = true;
         $emailError = "Please enter a valid email address";
@@ -38,7 +60,16 @@ if (isset($_POST["sign-up"])) {
             $emailError = "Provided Email is already in use";
         }
     }
-
+    if (empty($phone)) {
+        $error = true;
+        $phoneError = "Please, enter your Phone Number";
+    } elseif (strlen($phone) < 3) {
+        $error = true;
+        $phoneError = "Please give a valid phone number";
+    } elseif (!preg_match("/^[0-9]+$/",$phone)) {
+        $error = true;
+        $phoneError = "Phone number most contain only numbers";
+    }
     if (empty($password)) {
         $error = true;
         $passError = "Password can't be empty!";
@@ -74,20 +105,16 @@ if (isset($_POST["sign-up"])) {
         <h1 class="text-center">Sign Up </h1>
         <form method="post" autocomplete="off" enctype="multipart/form-data">
             <div class="mb-3 mt-3">
-                <label for="fname" class="form-label">First name </label>
-                <input type="text" class="form-control" id="fname" name="fname" placeholder="First name" value="<?= $fname ?>">
-                <span class="text-danger"><?= $fnameError ?></span>
+                <label for="agency" class="form-label">Agency </label>
+                <input type="text" class="form-control" id="fname" name="agency" placeholder="Agency name" value="<?= $agency ?>">
+                <span class="text-danger"><?= $agencyError ?></span>
             </div>
             <div class="mb-3">
-                <label for="lname" class="form-label">Last name </label>
-                <input type="text" class="form-control" id="lname" name="lname" placeholder="Last name" value="<?= $lname ?>">
-                <span class="text-danger"><?= $lnameError ?></span>
+                <label for="address" class="form-label">Address </label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="<?= $address?>">
+                <span class="text-danger"><?= $addressError ?></span>
             </div>
-            <div class="mb-3">
-                <label for="date" class="form-label">Date of birth</label>
-                <input type="date" class="form-control" id="date" name="date_of_birth" value="<?= $date_of_birth ?>">
-                <span class="text-danger"><?= $dateError ?></span>
-            </div>
+        
             <div class="mb-3">
                 <label for="picture" class="form-label">Profile picture </label>
                 <input type="file" class="form-control" id="picture" name="picture">
@@ -97,6 +124,11 @@ if (isset($_POST["sign-up"])) {
                 <input type="email" class="form-control" id="email" name="email" placeholder="Email address" value="<?= $email ?>">
                 <span class="text-danger"><?= $emailError ?></span>
             </div>
+            <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone Number" value="<?=$phone?>">
+                    <span class="text-danger"><?=$phoneError?></span>
+                </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password">

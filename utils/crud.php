@@ -51,8 +51,10 @@ class CRUD
     public function createPet(array $values)
     {
         $result = $this->insert("pet", "`name`, `image`, `location`, `species`, `breed`, `age`, `size`, `description`, `vaccinated`, `experienceNeeded`, `minSpace`, `behavior`, `fk_users_id`", $values);
-
+        
         $this->alert($result, "A new pet has been created");
+
+        header("refresh: 3; url = ../pet/listings.php");
     }
 
     public function updatePet($id, $name, $location, $species, $breed, $age, $size, $desc, $status, $vaccinated, $exp, $space, $behavior, $image)
@@ -117,19 +119,18 @@ class CRUD
 
         $this->alert($result, "The user has been deleted");
     }
-
     public function createAgency(array $values)
-    {
-        $result = $this->insert("user", "`role`, `agency`, `address`, `email`, `phone`, `password`", $values);
+{
+    $result = $this->insert("users", "`role`, `address`, `image`, `email`, `phone`, `password`", $values);
 
-        $this->alert($result, "A new agency account has been created");
+    $this->alert($result, "A new agency account has been created");
 
-        header("refresh: 2; url = ../agency/dashboard.php");
-    }
+    header("refresh: 2; url = ../agency/dashboard.php");
+}
 
     public function updateAgency($id, $agency, $address, $phone, $email)
     {
-        $sql = "UPDATE `users` SET `agency`='$agency',`address`='$address', `phone`='$phone',`email`='$email' WHERE id = $id";
+        $sql = "UPDATE `users` SET `agency`='$agency',`address`='$address', `email`='$email'`phone`='$phone', WHERE id = $id";
 
         $result = mysqli_query($this->connection, $sql);
 
