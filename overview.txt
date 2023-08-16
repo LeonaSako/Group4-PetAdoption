@@ -1,52 +1,52 @@
 Static:
-    - navbar                    (Christina)
+X    - navbar                    (Christina)
 
 Admin:
-    - Login
-    - Dashboard
+X    - Login
+X   - Logout
+    - Dashboard                 (Christina)
     - User CRUD                 (Christina)
-        - Create
-        - Show / Details        (Leona)
-        - Update
-        - Delete
+X        - Show / Details       (Christina)
+        - Update                (Eleni)
+        - Delete                (Eleni)
     - Pet CRUD                  (Christina)
-        - Create (?)
-        - Show / Details
-        - Update
-        - Delete
+        - Create                (Christina)
+        - Show / Details        (Leona)
+        - Update                (Christina)
+        - Delete                (Christina)
         
 User: 
-    - (Registration)            (Eleni)
-    - Login                     (Maryam)
-    - Logout                    (Maryam)
-    - Homepage                  (Leona)
-    - View pets (list)
-    - Make adoption 
-    - Show / Details profile    (Leona)          
-    - See adoption status ?!
+X    - (Registration)            (Eleni)
+X    - Login                     (Maryam)
+X    - Logout                    (Maryam)
+X    - Homepage (List)                 (Leona)
+X    - View pets (list)
+    - Make adoption (Form)
+X    - Show / Details profile    (Leona)          
+    - My Adoptions (list with status of user adoption)
     - Contact us                (Leona)
     - Search function various criteria (input&dropdowns??)
 
 Agency: 
-    - (Registration)           (Eleni)
-    - Login                    (Maryam)
-    - Logout                   (Maryam)
-    - Dashboard (incl. list of pets)    (Lisa)
+X    - (Registration)           (Eleni)
+X    - Login                    (Maryam)
+X    - Logout                   (Maryam)
+    - Dashboard (incl. list of pets)    (Lisa) 
     - Pet CRUD                  (Christina)
-        - Create
+        - Create                (Christina)
         - Show / Details        (Leona)
-        - Update
-        - Delete
+        - Update                (Christina)
+        - Delete                (Christina)
     - Adoption status each pet & as list    (Lisa)
     - Approve / decline adoption            (Lisa)
 
 
-Resource library:   (Users & Admin?!)
+Resource library:   (Users & Admin?!)    (Maryam)
     - Detailed Information -> Care, training, behavior 
 
 
 Additional:
-    - Messaging System
+    - Messaging System --> Contact us (Leona)
     - Pet Matchmaker
     - Adoption Stories
     - Foster-to-adopt program
