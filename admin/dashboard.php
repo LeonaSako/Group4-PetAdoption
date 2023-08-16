@@ -23,6 +23,11 @@ preventAgency();
 
 <body>
     <?php include '../components/navbar.php'; ?>
+    <ul>
+            <li class="nav-item">
+                    <a class="nav-link" href="logout.php?logout">Logout</a >
+                </li>
+            </ul>
     <!-- Add layout -->
 </body>
 

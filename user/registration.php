@@ -112,7 +112,7 @@ if (isset($_POST["sign-up"])) {
     if (!$error) {
         $password = hash("sha256", $password);
 
-        $values = ['User', $firstname, $lastname,$email, $address, $phone, $picture[0], $birthdate, $space, $experienced, $password];
+        $values = ['User', $firstname, $lastname, $email , $phone, $address, $picture[0], $birthdate, $space, $experienced, $password];
 
         $crud->createUser($values);
     }
