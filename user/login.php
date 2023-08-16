@@ -45,6 +45,8 @@ if (isset($_POST["login"])) {
 
             $user = $result[0];
 
+            $_SESSION["UserEmail"] = $user["email"];
+
             if ($user["role"] == "Adm") {
                 $_SESSION["Adm"] = $user["id"];
                 header("Location: ../admin/dashboard.php");
