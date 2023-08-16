@@ -3,7 +3,7 @@ class CRUD
 {
     private $connection;
 
-    public function __construct(string $database = "be19_cr5_animal_adoption_christinaxeni", string $host = "localhost", string $user = "root", string $password = "")
+    public function __construct(string $database = "pet_adoption", string $host = "localhost", string $user = "root", string $password = "")
     {
         $this->connection = mysqli_connect($host, $user, $password, $database);
     }
@@ -33,40 +33,32 @@ class CRUD
         return $result;
     }
 
-    public function selectAnimals(string $condition)
+    public function selectPets(string $condition)
     {
-        return $this->select("animal", "*", $condition);
-    }
-
-    public function countAll(string $table, string $condition = "")
-    {
-        $sql = "SELECT COUNT(*) AS 'count' FROM $table";
-
-        if (!empty($condition)) {
-            $sql .= " WHERE $condition";
-        }
-        $result = mysqli_query($this->connection, $sql);
-        $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        return $rows;
-    }
-    public function countAllPets(string $condition = "")
-    {
-        return $this->countAll("animal", $condition);
+        return $this->select("pet", "*", $condition);
     }
 
     public function selectUsers(string $condition)
     {
-        return $this->select("user", "*", $condition);
+        return $this->select("users", "*", $condition);
     }
 
     public function selectAdoptions(string $condition)
     {
-        return $this->select("pet_adoption", "*", $condition);
+        return $this->select("adoption", "*", $condition);
     }
 
-    public function updateAnimal($id, $name, $breed, $desc, $size, $age, $location, $vaccination, $status, $image)
+    public function createPet(array $values)
     {
-        $sql = "UPDATE `animal` SET `name`='$name', `breed`='$breed', `description`='$desc',`size`='$size',`age`='$age',`location`='$location',`vaccination`='$vaccination',`status`='$status'";
+        $result = $this->insert("pet", "`name`, `image`, `location`, `species`, `breed`, `age`, `size`, `description`, `vaccinated`, `experienceNeeded`, `minSpace`, `behavior`, `fk_users_id`", $values);
+
+        $this->alert($result, "A new pet has been created");
+    }
+
+    public function updatePet($id, $name, $location, $species, $breed, $age, $size, $desc, $status, $vaccinated, $exp, $space, $behavior, $image)
+    {
+        $sql = "UPDATE `pet` SET `name`='$name',`location`='$location',`species`='$species',`breed`='$breed', `age`='$age', `size`='$size', `description`='$desc',
+                                `available`='$status',`vaccinated`='$vaccinated',`experienceNeeded`='$exp',`minSpace`='$space',`behavior`='$behavior'";
 
         if (!empty($image)) {
             $sql .= ", `image`= '$image' WHERE id = $id";
@@ -76,30 +68,31 @@ class CRUD
 
         $result = mysqli_query($this->connection, $sql);
 
-        $this->alert($result, "The animal has been updated successfully");
+        $this->alert($result, "The pet has been updated successfully");
 
         return $result;
     }
 
-    public function updateAnimalStatus($id, $status)
+    public function deletePet($id)
     {
-        $sql = "UPDATE `animal` SET `status`='$status' WHERE id = $id";
-
-        mysqli_query($this->connection, $sql);
-    }
-
-    public function deleteAnimal($id)
-    {
-        $sql = "DELETE FROM `animal` WHERE id = $id";
+        $sql = "DELETE FROM `pet` WHERE id = $id";
 
         $result = mysqli_query($this->connection, $sql);
 
-        $this->alert($result, "The animal has been deleted");
+        $this->alert($result, "The pet has been deleted");
     }
 
-    public function updateUser($id, $fname, $lname, $email, $phone, $address, $image)
+    public function createUser(array $values)
     {
-        $sql = "UPDATE `user` SET `first_name`='$fname', `last_name`='$lname', `email` = '$email',`phone_number`='$phone',`address`='$address'";
+        $result = $this->insert("users", "`role`, `firstName`, `lastName`, `email`, `phone`, `address`, `image`, `birthdate`, `space`, `experienced`, `password`", $values);
+
+        $this->alert($result, "A new user account has been created");
+    }
+
+    public function updateUser($id, $fname, $lname, $address, $birthdate, $phone, $email, $space, $exp, $image)
+    {
+        $sql = "UPDATE `users` SET `firstName`='$fname',`lastName`='$lname',`address`='$address',`birthdate`='$birthdate',
+                                    `phone`='$phone',`email`='$email',`space`='$space',`experienced`='$exp'";
 
         if (!empty($image)) {
             $sql .= ", `image`= '$image' WHERE id = $id";
@@ -114,26 +107,60 @@ class CRUD
         return $result;
     }
 
-    public function createAnimal(array $values)
+    public function deleteUser($id)
     {
-        $result = $this->insert("animal", "`name`, `breed`, `description`, `size`, `age`, `location`, `image`, `vaccination`", $values);
+        $sql = "DELETE FROM `users` WHERE id = $id";
 
-        $this->alert($result, "A new animal has been created");
+        $result = mysqli_query($this->connection, $sql);
+
+        $this->alert($result, "The user has been deleted");
     }
 
-    public function createUser(array $values)
+    public function createAgency(array $values)
     {
-        $result = $this->insert("user", "`first_name`, `last_name`, `email`, `phone_number`, `address`, `image`, `password`", $values);
+        $result = $this->insert("user", "`role`, `agency`, `address`, `email`, `phone`, `password`", $values);
 
-        $this->alert($result, "A new user account has been created");
+        $this->alert($result, "A new agency account has been created");
     }
 
-    public function makeAdoption(array $values)
+    public function updateAgency($id, $agency, $address, $phone, $email)
     {
-        $result = $this->insert("pet_adoption", "`user_id`, `pet_id`, `adoption_date`, `adoption_fee`, `adoption_location`, `adoption_notes`", $values);
+        $sql = "UPDATE `users` SET `agency`='$agency',`address`='$address', `phone`='$phone',`email`='$email' WHERE id = $id";
+
+        $result = mysqli_query($this->connection, $sql);
+
+        $this->alert($result, "The agency information has been updated");
+
+        return $result;
+    }
+
+    public function deleteAgency($id)
+    {
+        $sql = "DELETE FROM `users` WHERE id = $id";
+
+        $result = mysqli_query($this->connection, $sql);
+
+        $this->alert($result, "The agency has been deleted");
+    }
+
+    public function createAdoption(array $values)
+    {
+        $result = $this->insert("adoption", "`fk_pet_id`, `fk_users_id`, `submitionDate`, `donation`, `reason`", $values);
 
         $this->alertUser($result, "A new adoption has been submitted");
     }
+
+    public function updateAdoptionStatus($id, $status, $date)
+    {
+        $sql = "UPDATE `adoption` SET `adopStatus`='$status',`adoptionDate`='$date' WHERE id = $id";
+
+        $result = mysqli_query($this->connection, $sql);
+
+        $this->alert($result, "The adoption status has been updated");
+
+        return $result;
+    }
+
     public function alertUser($result, string $message)
     {
         if ($result) {
