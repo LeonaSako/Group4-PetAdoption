@@ -36,6 +36,10 @@ if (isset($_SESSION["Adm"])) {
                 <a class='nav-link' href='../user/logout.php?logout'>Logout ({$_SESSION["UserEmail"]})</a>
             </li>
 
+            <li class='nav-item'>
+                <a class='nav-link' href='../user/compatibility_quiz.php'>Go to the Quiz</a>
+            </li>
+
     HTML;
 } elseif (isset($_SESSION["Agency"])) {
     $navlayout .= <<<HTML
