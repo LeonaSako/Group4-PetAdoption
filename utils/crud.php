@@ -152,7 +152,7 @@ class CRUD
 
     public function createAdoption(array $values)
     {
-        $result = $this->insert("adoption", "`fk_pet_id`, `fk_users_id`, `submitionDate`, `donation`, `reason`", $values);
+        $result = $this->insert("adoption", "`fk_pet_id`, `fk_users_id`, `submitionDate`, `donation`, `reason`,`adoptionDate`", $values);
 
         $this->alertUser($result, "A new adoption has been submitted");
     }
