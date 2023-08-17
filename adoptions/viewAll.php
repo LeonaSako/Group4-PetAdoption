@@ -24,24 +24,37 @@ $crud = new CRUD();
 
 
     $list = "";
-    if (isset($result[0])) {
+    if (!empty($result)) {
         foreach ($result[0] as $row) {
         // if (isset($result)) {
         //     foreach ($result as $row) {
                 $list .= "
-                <tr>
-                <td> {$row['adopId']} </td>
+                <tr>";
+                if (isset($_SESSION["Agency"])) {
+                    $list .= "
+                <td> {$row['adopId']} </td>";
+                }
                 <td> {$row['petId']} </td>
-
+                <td> {$row['pname']} </td>
+                <td> {$row['species']} </td>
+                <td> {$row['adopStatus']} </td>
+                <td> {$row['adoptionDate']} </td>
+                <td> {$row['submitionDate']} </td>
+                <td> {$row['userId']} </td>
+                <td> {$row['firstname']} {$row['lastname']} </td>
+                <td> {$row['reason']} </td>
+                <td> {$row['donation']} </td>
+                <td>
+                    <a href='view.php?id={$id}' class='btn btn-primary'>Show</a>
+                    <a href='edit.php?id={$id}' class='btn btn-primary'>Edit</a>
+                </td>
                 </tr>";
         }
     } else {
         $list .= "<tr><td colspan='8'>No records found</td></tr>";
     }
-    echo $list;
+    //echo $list;
 
-
-    // $layout .= "No results";
 
             
                 // if (isset($_SESSION["Adm"])) {
@@ -81,8 +94,9 @@ $crud = new CRUD();
                     <th>Submission Date</th>
                     <th>User ID</th>
                     <th>User Name</th>
-                    <th>Notes</th>
+                    <th>Reason</th>
                     <th>Donation</th>
+                    <th>Details</th>
                 </tr> 
             </thead>
 
