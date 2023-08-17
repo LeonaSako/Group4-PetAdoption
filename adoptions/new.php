@@ -18,7 +18,7 @@ function calculateAge($birthdate)
 {
     $birthDate = new DateTime($birthdate);
     $currentDate = new DateTime();
-    $ageInterval = $currentDate->diff($birthDate);
+    $ageInterval = $currentDate->diff($birthDate);  
     return $ageInterval->y;
 }
 
