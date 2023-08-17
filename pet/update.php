@@ -26,14 +26,13 @@ if (!empty($result)) {
     $vaccine = ($pet["vaccinated"] == 1) ? 'checked' : '';
 
     if (isset($_POST["update"])) {
-
         $name = $_POST['name'];
         $species = $_POST['species'];
         $location = $_POST['location'];
-        $status = ($available == 'checked') ? 1 : 0;
-        $experienceNeeded = ($experience == 'checked') ? 1 : 0;
+        $status = isset($_POST["available"]) ? 1 : 0;
+        $experience = isset($_POST["experience"]) ? 1 : 0;
         $minSpace = $_POST['space'];
-        $vaccinated = ($vaccine == 'checked') ? 1 : 0;
+        $vaccinated = isset($_POST["vaccine"]) ? 1 : 0;
         $breed = $_POST['breed'];
         $age = $_POST['age'];
         $size = $_POST['size'];
@@ -43,9 +42,9 @@ if (!empty($result)) {
 
         if ($_FILES["image"]["error"] == 0) {
             removeOldImage($pet["image"]);
-            $update = $crud->updatePet($id, $name, $location, $species, $breed, $age, $size, $description, $status, $vaccinated, $experienceNeeded, $minSpace, $behavior, $image[0]);
+            $update = $crud->updatePet($id, $name, $location, $species, $breed, $age, $size, $description, $status, $vaccinated, $experience, $minSpace, $behavior, $image[0]);
         } else {
-            $update = $crud->updatePet($id, $name, $location, $species, $breed, $age, $size, $description, $status, $vaccinated, $experienceNeeded, $minSpace, $behavior, Null);
+            $update = $crud->updatePet($id, $name, $location, $species, $breed, $age, $size, $description, $status, $vaccinated, $experience, $minSpace, $behavior, Null);
         }
         if ($update) {
             header("refresh: 2; url = ../pet/details.php?id=" . $pet["id"]);
@@ -93,19 +92,19 @@ if (!empty($result)) {
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" name="experience" <?= $experience ?>>
+                        <input class="form-check-input" type="checkbox" name="experience" <?= $experience ?>>
                         <label class="form-label form-check-label" for="experience">Experience with pets needed? <span class='required'>*</span></label>
                     </div>
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" name="available" <?= $available ?>>
+                        <input class="form-check-input" type="checkbox" name="available" <?= $available ?>>
                         <label class="form-label form-check-label" for="available">Is the pet available for adoption? <span class='required'>*</span></label>
                     </div>
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" name="vaccine" <?= $vaccine ?>>
+                        <input class="form-check-input" type="checkbox" name="vaccine" <?= $vaccine ?>>
                         <label class="form-label form-check-label" for="vaccine">Is the pet vaccinated? <span class='required'>*</span></label>
                     </div>
                 </div>
