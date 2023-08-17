@@ -51,14 +51,23 @@ if (!empty($result)) {
             </div>
         </div>
     </div>
-    <div class="container">
+    <br>
         <div class="d-grid gap-2 d-md-flex justify-content-center">
-            <a href="update.php?id={$id}" class="btn btn-primary">Update</a>
-            <a href="delete.php?id={$id}" class="btn btn-danger">Delete</a>
-            <a href="../admin/dashboard.php" class="btn btn-warning">Back to dashboard</a>
+    HTML;
+    if (isset($_SESSION["User"])) {
+        $layout .= <<<HTML
+                        <a href="../adoptions/new.php?id=$id" class="btn btn-warning">Adopt</a>
+                        HTML;
+    }
+    if (isset($_SESSION["Adm"]) || isset($_SESSION["Agency"])) {
+        $layout .= <<<HTML
+                    <a href="update.php?id={$id}" class="btn btn-warning">Update</a>
+                    <a href="delete.php?id={$id}" class="btn btn-danger">Delete</a>
+                    HTML;
+    }
+    $layout .= "
         </div>
-    </div>
-HTML;
+    ";
 } else {
     $layout = "<p class='text-center'>Something went wrong. Record with id = $id is not found.</p>";
 }
@@ -73,7 +82,7 @@ HTML;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
     <link rel="stylesheet" href="../css/main.css">
-    <title>Animal Details</title>
+    <title>Pet Details</title>
     <style>
         /* Additional styles for girly and pink look */
         body {
@@ -97,14 +106,6 @@ HTML;
             height: auto;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        blockquote {
-            color: #ff69b4;
-        }
-
-        .btn {
-            margin: 10px;
         }
 
         a {

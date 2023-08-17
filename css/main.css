@@ -1,5 +1,5 @@
 body {
-    background-color: #f8f9fa;
+    background-color: #fce4ec;
 }
 
 .container {
@@ -30,6 +30,17 @@ body {
     object-fit: cover;
 }
 
+blockquote {
+    color: #ff69b4;
+}
+
+.card-header {
+    background-color: #ff80ab;
+    border-bottom: none;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
 .card .card-body {
     padding: 20px;
 }
@@ -47,6 +58,40 @@ body {
     margin-top: 10px;
 }
 
+.btn-primary {
+    background-color: #ff80ab;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #ff6090;
+}
+
+.btn-warning {
+    background-color: #ffb74d;
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: #ffab40;
+}
+
+.img-fluid {
+    border-radius: 20px 20px 0 0;
+}
+
+.card-text {
+    color: #333;
+}
+
+.blockquote-footer {
+    color: #666;
+}
+
+.form-select {
+    background-color: #fff;
+}
+
 @media (max-width: 576px) {
     .book-card img {
         height: 150px;
@@ -61,11 +106,6 @@ body {
     opacity: 0.5;
 }
 
-.form-label {
-    margin-bottom: 0.5rem;
-    color: blue;
-    font-style: italic;
-}
 
 .required {
     color: red;
