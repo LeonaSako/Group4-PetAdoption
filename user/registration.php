@@ -55,7 +55,7 @@ if (isset($_POST["sign-up"])) {
         $emailError = "Please enter a valid email address";
     } else {
         $result = $crud->selectUsers("email='$email'");
-        if (!empty($result)) {
+        if ($result[1] > 0) {
             $error = true;
             $emailError = "Provided Email is already in use";
         }
