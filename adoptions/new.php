@@ -42,7 +42,6 @@ function calculateAge($birthdate) {
 </head>
 <body>
     <?php include '../components/navbar.php'; ?>    
-<<<<<<< HEAD
     <?php
     foreach ($users as $user) {
         $image= "../images/user/{$users['image']}";         
@@ -151,10 +150,5 @@ function calculateAge($birthdate) {
     
     ?>
     
-=======
-
-    <!-- Add layout -->
-
->>>>>>> f849a7957dfdf23eac01626be3617ff6856474ce
 </body>
 </html>
