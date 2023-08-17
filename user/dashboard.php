@@ -25,6 +25,7 @@ $layout = viewPets($result);
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container">
+        
         <div id="layout" class="row">
             <?= $layout ?>
         </div>

@@ -13,11 +13,11 @@ $userID = $_SESSION["User"];
 #
 # $crud = new CRUD();
 #
-# $result1 = $crud->selectPets("id = $petID");
-# $result2 = $crud->selectUsers("id = $userID");
-#
-# $pet = $result1[0];
-# $user = $result2[0];
+ $result1 = $crud->selectPets("id = $petID");
+ $result2 = $crud->selectUsers("id = $userID");
+ 
+$pet = $result1[0];
+$user = $result2[0];
 # 
 # $values = [$petID, $userID, $submitionDate, $donation, $reason];
 #

@@ -1,19 +1,21 @@
+CASCADE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 Static:
 X    - navbar                    (Christina)
 
 Admin:
 X    - Login
 X   - Logout
-    - Dashboard                 (Christina)
-    - User CRUD                 (Christina)
+x    - Dashboard                 (Christina)
+ x   - User CRUD                 (Christina)
 X        - Show / Details       (Christina)
-        - Update                (Eleni)
-        - Delete                (Eleni)
-    - Pet CRUD                  (Christina)
-        - Create                (Christina)
-        - Show / Details        (Leona)
-        - Update                (Christina)
-        - Delete                (Christina)
+x        - Update                (Eleni)
+X        - Delete                (Eleni)
+x    - Pet CRUD                  (Christina)
+x        - Create                (Christina)
+X        - Show / Details        (Leona)
+x        - Update                (Christina)
+x        - Delete                (Christina)
         
 User: 
 X    - (Registration)            (Eleni)
@@ -21,34 +23,49 @@ X    - Login                     (Maryam)
 X    - Logout                    (Maryam)
 X    - Homepage (List)                 (Leona)
 X    - View pets (list)
-    - Make adoption (Form)
+x    - Make adoption (Form)       (Maryam)
 X    - Show / Details profile    (Leona)          
-    - My Adoptions (list with status of user adoption)
-    - Contact us                (Leona)
-    - Search function various criteria (input&dropdowns??)
+    - My Adoptions (list with status of user adoption) (Lisa)
+X    - Contact us                (Leona)
+    - Search function various criteria (input&dropdowns??) (Christina)
 
 Agency: 
 X    - (Registration)           (Eleni)
 X    - Login                    (Maryam)
 X    - Logout                   (Maryam)
     - Dashboard (incl. list of pets)    (Lisa) 
-    - Pet CRUD                  (Christina)
-        - Create                (Christina)
-        - Show / Details        (Leona)
-        - Update                (Christina)
-        - Delete                (Christina)
+X    - Pet CRUD                  (Christina)
+x        - Create                (Christina)
+X        - Show / Details        (Leona)
+x        - Update                (Christina)
+x        - Delete                (Christina)
     - Adoption status each pet & as list    (Lisa)
     - Approve / decline adoption            (Lisa)
 
 
 Resource library:   (Users & Admin?!)    (Maryam)
-    - Detailed Information -> Care, training, behavior 
+X    - Detailed Information -> Care, training, behavior 
 
 
 Additional:
-    - Messaging System --> Contact us (Leona)
-    - Pet Matchmaker
-    - Adoption Stories
-    - Foster-to-adopt program
-    - Pet of the day/week
+X    - Messaging System --> Contact us (Leona)
+X    - Pet Matchmaker                   (Leona)
+    - Adoption Stories                  (Maryam)
+    - Foster-to-adopt program                 
+    - Pet of the day/week               (Eleni)
     - Volunteer opportunities with calendars
+
+Stories: USER
+    CRUD
+        - Create                (Christina)
+        - Show / Details        (Leona)
+        - Update                (Christina)
+        - Delete                (Christina)
+
+
+Messages:
+    CRUD (UID, AgencyID, Message, Date )
+        - Create                (Christina)
+        - Show / Details        (Leona)
+        - Update                (Christina)
+        - Delete                (Christina)

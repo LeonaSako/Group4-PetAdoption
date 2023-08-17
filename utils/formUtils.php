@@ -35,11 +35,7 @@ function preventAgency()
 function removeOldImage($oldImage)
 {
     if ($oldImage != "placeholder.jpg") {
-<<<<<<< HEAD
-        unlink("../picture/$oldImage");
-=======
         unlink("../images/pets/$oldImage");
->>>>>>> f4d9254831bab8ce88242928856609c4772e19df
     }
 }
 
