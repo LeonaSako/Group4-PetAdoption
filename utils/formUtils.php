@@ -17,19 +17,19 @@ function preventAdmin()
 function preventUser()
 {
     if (isset($_SESSION["User"])) {
-        header("Location: ../user/dahsboard.php");
+        header("Location: ../user/dashboard.php");
     }
 }
 function preventAgency()
 {
     if (isset($_SESSION["Agency"])) {
-        header("Location: ../agency/dahsboard.php");
+        header("Location: ../agency/dashboard.php");
     }
 }
 function removeOldImage($oldImage)
 {
     if ($oldImage != "placeholder.jpg") {
-        unlink("../images/$oldImage");
+        unlink("../picture/$oldImage");
     }
 }
 

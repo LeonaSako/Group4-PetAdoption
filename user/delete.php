@@ -12,10 +12,7 @@ $crud = new CRUD();
 
 $getUser = $crud->selectUsers("id = $id");
 
-removeOldImage("users/" + $getUser[0]["image"]);
+removeOldImage($getUser[0]["image"]);
+ $crud->deleteUser($id);
 
-$delete = $crud->deleteUser($id);
 
-if ($delete) {
-    header("refresh: 3; url = ../admin/dashboard.php");
-}
