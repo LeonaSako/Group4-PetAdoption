@@ -2,7 +2,6 @@
 function viewPets($result)
 {
     $layout = "";
-
     if (!empty($result)) {
         foreach ($result as $row) {
             $id = $row['id'];
@@ -13,7 +12,6 @@ function viewPets($result)
             $size = $row['size'];
             $description = $row['description'];
             $vaccinated = ($row['vaccinated'] == 1) ? 'Yes' : 'No';
-
             $layout .= <<<HTML
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <div class="card">
@@ -44,6 +42,5 @@ HTML;
     } else {
         $layout .= "No results";
     }
-
     return $layout;
 }
