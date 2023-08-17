@@ -16,8 +16,6 @@ function buildForm($crud, $usage, $userID = null, $pet = null)
     $sizeOptions = ['Small', 'Medium', 'Large'];
     $selectedSize = $fields['size'];
 
-    $buttonName = $usage === 'create' ? 'Submit' : 'Update pet';
-
     if ($usage === 'create') {
 
         if (isset($_POST["create"])) {
