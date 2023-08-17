@@ -19,7 +19,8 @@ if (!empty($results)) {
 
     foreach ($results as $user) {
 
-        $imageSrc = "images/users/{$user["image"]}";    
+        $imageSrc = "../images/pets/{$user["image"]}"; 
+           
         $firstName = $user["firstName"];
         $lastName = $user["lastName"];
         $email = $user["email"];
