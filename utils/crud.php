@@ -16,15 +16,28 @@ class CRUD
             $sql .= " WHERE $condition";
         }
         $result = mysqli_query($this->connection, $sql);
+        if (mysqli_num_rows($result) == 0 ) {
+            $rows = "No result";
+        } elseif (mysqli_num_rows($result) == 1 ) {
+            $rows = mysqli_fetch_assoc($result);
+        } else {
         $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        return $rows;
+        }
+
+        return [$rows, $result->num_rows];
+
     }
+
 
     public function insert(string $table, string $columns, array $values)
     {
         $valuesOut = [];
         foreach ($values as $val) {
-            $valuesOut[] = "'$val'";
+            if(is_numeric($val)){
+                $valuesOut[] = "$val";
+            }else {
+                $valuesOut[] = "'$val'";
+            }
         }
         $valuesOut = implode(",", $valuesOut);
 
@@ -43,8 +56,46 @@ class CRUD
         return $this->select("users", "*", $condition);
     }
 
-    public function selectAdoptions(string $condition)
+    public function selectAdoptions(string $condition="" )
     {
+        {
+            $sql = "SELECT 
+            p.id as petId, 
+            p.name as pname, 
+            p.species as species, 
+            u.id as userId, 
+            u.firstName as firstname, 
+            u.lastName as lastname, 
+            a.id as adopId, 
+            a.adopStatus as adopStatus, 
+            a.adoptionDate as adoptionDate , 
+            a.submitionDate as submissionDate, 
+            a.reason as reason, 
+            a.donation as donation ,
+            p.fk_users_id as agency
+            FROM `adoption` a 
+            RIGHT JOIN `pet` p ON a.fk_pet_id = p.id 
+            LEFT JOIN `users` u ON a.fk_users_id = u.id ";
+    
+            if (!empty($condition)) {
+                $sql .= " $condition";
+            }
+            echo $sql;
+
+            $result = mysqli_query($this->connection, $sql);
+            if (mysqli_num_rows($result) == 0 ) {
+                $rows = "No result";
+            } elseif (mysqli_num_rows($result) == 1 ) {
+                $rows = mysqli_fetch_assoc($result);
+            } else {
+            $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            }
+    
+            return [$rows, $result->num_rows];
+    
+        }
+
+
         return $this->select("adoption", "*", $condition);
     }
     public function selectStories(string $condition)
