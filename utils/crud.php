@@ -157,6 +157,13 @@ class CRUD
         $this->alertUser($result, "A new adoption has been submitted");
     }
 
+    public function createStory(array $values)
+    {
+        $result = $this->insert("story", "`fk_pet_id`, `image`, `desc`, `fk_users_id`", $values);
+
+        $this->alertUser($result, "A new adoption story has been submitted");
+    }
+
     public function updateAdoptionStatus($id, $status, $date)
     {
         $sql = "UPDATE `adoption` SET `adopStatus`='$status',`adoptionDate`='$date' WHERE id = $id";
