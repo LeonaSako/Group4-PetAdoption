@@ -79,7 +79,7 @@ class CRUD
             a.id as adopId, 
             a.adopStatus as adopStatus, 
             a.adoptionDate as adoptionDate , 
-            a.submitionDate as submissionDate, 
+            a.submitionDate as submitionDate, 
             a.reason as reason, 
             a.donation as donation ,
             p.fk_users_id as agency
@@ -90,7 +90,7 @@ class CRUD
             if (!empty($condition)) {
                 $sql .= " $condition";
             }
-            echo $sql;
+            #echo $sql;
 
             $result = mysqli_query($this->connection, $sql);
             if (mysqli_num_rows($result) == 0) {
