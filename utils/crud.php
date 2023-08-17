@@ -104,7 +104,7 @@ class CRUD
             return [$rows, $result->num_rows];
         }
 
-        return $this->select("adoption", "*", $condition);
+        return $this->selectAltered("adoption", "*", $condition);
     }
     public function selectStories(string $condition)
     {

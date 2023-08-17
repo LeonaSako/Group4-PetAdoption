@@ -101,6 +101,7 @@ if (isset($_POST["sign-up"])) {
 </head>
 
 <body>
+<?php include '../components/navbar.php'; ?>
     <div class="container">
         <h1 class="text-center">Sign Up </h1>
         <form method="post" autocomplete="off" enctype="multipart/form-data">

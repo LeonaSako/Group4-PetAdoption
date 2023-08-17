@@ -24,44 +24,75 @@ $crud = new CRUD();
 
 
     $list = "";
-    if (!empty($result)) {
+  
+
+    if (!empty($result) && is_array($result[0])) {
         foreach ($result[0] as $row) {
-        // if (isset($result)) {
-        //     foreach ($result as $row) {
+
                 $list .= "
                 <tr>";
-                if (isset($_SESSION["Agency"])) {
-                    $list .= "
-                <td> {$row['adopId']} </td>";
-                }
-                <td> {$row['petId']} </td>
-                <td> {$row['pname']} </td>
-                <td> {$row['species']} </td>
-                <td> {$row['adopStatus']} </td>
-                <td> {$row['adoptionDate']} </td>
-                <td> {$row['submitionDate']} </td>
-                <td> {$row['userId']} </td>
-                <td> {$row['firstname']} {$row['lastname']} </td>
-                <td> {$row['reason']} </td>
-                <td> {$row['donation']} </td>
+
+            if (isset($_SESSION["Agency"]) ) {
+                $list .= "
+            <td> {$row['adopId']} </td>";
+            }; 
+
+            if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"])) {
+                $list .= "
+            <td> {$row['petId']} </td>";
+            }; 
+
+            if (isset($_SESSION["Agency"])|| isset($_SESSION["Adm"]) || isset($_SESSION["User"])) {
+                $list .= "
+                <td> {$row['pname']} </td>";
+            }; 
+            if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"]) || isset($_SESSION["User"])) {
+                $list .= "
+                <td> {$row['species']} </td>";
+            }; 
+            if (isset($_SESSION["Agency"])|| isset($_SESSION["Adm"]) || isset($_SESSION["User"])) {
+                $list .= "
+                <td> {$row['adopStatus']} </td>";
+            }; 
+            if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"]) || isset($_SESSION["User"])) {
+                $list .= "
+                <td> {$row['adoptionDate']} </td>";
+            }; 
+            if (isset($_SESSION["Agency"])|| isset($_SESSION["Adm"])|| isset($_SESSION["User"])) {
+                $list .= "
+                <td> {$row['submitionDate']} </td>";
+            }; 
+            if (isset($_SESSION["Adm"])) {
+                $list .= "
+                <td> {$row['userId']} </td>";
+            }; 
+            if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"])) {
+                $list .= "
+                <td> {$row['firstname']} {$row['lastname']} </td>";
+            }; 
+            if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"]) || isset($_SESSION["User"])) {
+                $list .= "
+                <td> {$row['reason']} </td>";
+            }; 
+            if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"]) || isset($_SESSION["User"])) {
+                $list .= "
+                <td> {$row['donation']} </td>";
+            }; 
+            if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"])) {
+                $list .= "
                 <td>
                     <a href='view.php?id={$id}' class='btn btn-primary'>Show</a>
                     <a href='edit.php?id={$id}' class='btn btn-primary'>Edit</a>
                 </td>
                 </tr>";
-        }
-    } else {
-        $list .= "<tr><td colspan='8'>No records found</td></tr>";
-    }
-    //echo $list;
-
-
+            }
+        }    
             
-                // if (isset($_SESSION["Adm"])) {
-                //     echo "<td>" . $row['adoption.adoptionDate'] . "</td>";
-                //     echo "<td>" . $row['adoption.submissionDate'] . "</td>";
-                //     echo "<td><strong>" . $row['adoption.status'] . "</strong></td>";
-                // }
+    } else {
+        // echo $list;
+        $list .= "<tr><td colspan='7'>No records found</td></tr>";
+    }
+
            
 ?>
 
@@ -85,18 +116,42 @@ $crud = new CRUD();
         <table class="table table-striped table-hover table-sm">
             <thead>
                 <tr>
-                    <th>Adoption Nr</th>
-                    <th>Pet ID</th>
-                    <th>Pet Name</th>
-                    <th>Species</th>
-                    <th>Status</th>
-                    <th>Adoption Date</th>
-                    <th>Submission Date</th>
-                    <th>User ID</th>
-                    <th>User Name</th>
-                    <th>Reason</th>
-                    <th>Donation</th>
-                    <th>Details</th>
+                    <?php if (isset($_SESSION["Agency"])) { ?>
+                        <th>Adoption ID</th>
+                    <?php } ?>    
+                    <?php if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"])) { ?>
+                        <th>Pet ID</th>
+                    <?php } ?>
+                    <?php if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"]) || isset($_SESSION["User"])) { ?>
+                        <th>Pet Name</th>
+                    <?php } ?>
+                    <?php if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"]) || isset($_SESSION["User"])) { ?>
+                        <th>Species</th>
+                    <?php } ?>
+                    <?php if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"]) || isset($_SESSION["User"])) { ?>
+                        <th>Status</th>
+                    <?php } ?>
+                    <?php if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"]) || isset($_SESSION["User"])) { ?>
+                        <th>Adoption Date</th>
+                    <?php } ?>
+                    <?php if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"]) || isset($_SESSION["User"])) { ?>
+                        <th>Submission Date</th>
+                    <?php } ?>
+                    <?php if (isset($_SESSION["Adm"])) { ?>
+                        <th>User ID</th>
+                    <?php } ?>
+                    <?php if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"])) { ?>
+                        <th>User Name</th>
+                    <?php } ?>
+                    <?php if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"]) || isset($_SESSION["User"])) { ?>
+                        <th>Reason</th>
+                    <?php } ?>
+                    <?php if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"]) || isset($_SESSION["User"])) { ?>
+                        <th>Donation</th>
+                    <?php } ?>
+                    <?php if (isset($_SESSION["Agency"]) || isset($_SESSION["Adm"])) { ?>
+                        <th>Details</th>
+                    <?php } ?>
                 </tr> 
             </thead>
 

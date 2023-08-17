@@ -33,13 +33,16 @@ if (isset($_SESSION["Adm"])) {
                 <a class='nav-link' href='../agency/contact.php'>Contact us</a>
             </li>
             <li class='nav-item'>
-                <a class='nav-link' href='../user/logout.php?logout'>Logout ({$_SESSION["UserEmail"]})</a>
+                <a class='nav-link' href='../adoptions/viewAll.php'>My Adoptions</a>
             </li>
-
+            
             <li class='nav-item'>
                 <a class='nav-link' href='../user/compatibility_quiz.php'>Go to the Quiz</a>
             </li>
-
+            <li class='nav-item'>
+                <a class='nav-link' href='../user/logout.php?logout'>Logout ({$_SESSION["UserEmail"]})</a>
+            </li>
+            
     HTML;
 } elseif (isset($_SESSION["Agency"])) {
     $navlayout .= <<<HTML
@@ -63,6 +66,12 @@ if (isset($_SESSION["Adm"])) {
     HTML;
 } else {
     $navlayout .= <<<HTML
+        <li class='nav-item'>
+            <a class='nav-link' href='../user/registration.php'>Register as User</a>
+        </li>
+        <li class='nav-item'>
+            <a class='nav-link' href='../agency/registration.php'>Register as Agency</a>
+        </li>
         <li class='nav-item'>
             <a class='nav-link' href='../user/login.php'>Login</a>
         </li>
