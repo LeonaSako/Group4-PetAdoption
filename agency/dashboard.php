@@ -1,16 +1,20 @@
 <?php
-require_once "../utils/crud.php";
-require_once "../utils/formUtils.php";
-
 session_start();
-preventUser();
-preventAdmin();
 
-# This is a script that handles the agency's dashboard. Only the agency is allowed here.
+require_once "../utils/crud.php";
+require_once "../pet/viewAll.php";
 
-# To bring all pets listed by the agency, use $results = $crud->selectPets("fk_users_id = {$_SESSION["Agency"]}");
+$crud = new CRUD();
+$agencyId = $_SESSION["Agency"];
+
+
+
+$result = $crud->selectPets("`fk_users_id` = $agencyId"); 
+
+$layout = viewPets($result);
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

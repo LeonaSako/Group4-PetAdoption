@@ -8,6 +8,12 @@ function cleanInputs($input)
 
     return  $data;
 }
+function redirectToLogin()
+{
+    if (!isset($_SESSION["Adm"])) {
+        header("Location: ../user/login.php");
+    }
+}
 function preventAdmin()
 {
     if (isset($_SESSION["Adm"])) {
@@ -17,19 +23,23 @@ function preventAdmin()
 function preventUser()
 {
     if (isset($_SESSION["User"])) {
-        header("Location: ../user/dahsboard.php");
+        header("Location: ../user/dashboard.php");
     }
 }
 function preventAgency()
 {
     if (isset($_SESSION["Agency"])) {
-        header("Location: ../agency/dahsboard.php");
+        header("Location: ../agency/dashboard.php");
     }
 }
 function removeOldImage($oldImage)
 {
     if ($oldImage != "placeholder.jpg") {
-        unlink("../images/$oldImage");
+<<<<<<< HEAD
+        unlink("../picture/$oldImage");
+=======
+        unlink("../images/pets/$oldImage");
+>>>>>>> f4d9254831bab8ce88242928856609c4772e19df
     }
 }
 

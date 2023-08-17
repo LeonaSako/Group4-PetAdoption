@@ -1,7 +1,6 @@
 <?php
 require_once "../utils/crud.php";
 require_once "../utils/formUtils.php";
-
 session_start();
 preventUser();
 preventAgency();
@@ -28,12 +27,13 @@ if (!empty($results)) {
 
         $layout .= <<<HTML
             <div class='col-lg-3 col-md-4 col-sm-6'>
-                <div class='book-card'>
+                <div class='card'>
                     <img src='{$imageSrc}' class='img-fluid'>
                     <div class='card-body'>
                         <h5 class='card-title'>{$firstName} {$lastName}</h5>
                         <p class='card-text'>{$email}</p>
-                        <a href='user/update.php?id={$userid}' class='btn btn-warning'>Update</a>
+                        <a href='../user/update.php?id={$userid}' class='btn btn-warning'>Update</a>
+                        <a href='../user/delete.php?id={$userid}' class='btn btn-danger'>Delete</a>
                     </div>
                 </div>
             </div>
@@ -42,10 +42,6 @@ if (!empty($results)) {
 } else {
     $layout .= "No results found!";
 }
-
-# This is a script that handles the admin's dashboard. Only the admin is allowed here.
-
-# To bring all users (including agencies), use $results = $crud->selectUsers("role != 'Adm'");
 
 ?>
 

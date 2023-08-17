@@ -2,34 +2,29 @@
 require_once "../utils/crud.php";
 require_once "../utils/file_upload.php";
 require_once "../utils/formUtils.php";
+require_once "form.php";
 
 session_start();
 preventUser();
 
+if (isset($_SESSION["Adm"])) {
+    $userID = $_SESSION["Adm"];
+} else {
+    $userID = $_SESSION["Agency"];
+}
+
 $id = $_GET["id"];
 
-# This is a script that handles the update of a pet's details.
-#
-# Use the following crud commands:
-#
-# $crud = new CRUD();
-#
-# $result = $crud->selectPets("id = $id"); 
-#
-# for image upload use: $image = fileUpload($_FILES["image"], 'pet');
-#   
-# Check if a new image has been uploaded to set the value of the column `image`:
-#
-# if ($_FILES["image"]["error"] == 0) {
-#   $pic = $image[0]; 
-# } else {
-#    $pic = null;
-# }
-#
-# Then use the crud:
-#
-# $update = $crud->updatePet($id, $name, $location, $species, $breed, $age, $size, $desc, $status, $vaccinated, $exp, $space, $behavior, $pic)
+$crud = new CRUD();
 
+$result = $crud->selectPets("id = $id");
+
+if (!empty($result)) {
+
+    $pet = $result[0];
+
+    $layout = buildForm($crud, 'update', $userID, $pet);
+}
 
 ?>
 
@@ -39,12 +34,26 @@ $id = $_GET["id"];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/main.css">
     <title>Document</title>
 </head>
 
 <body>
     <?php include '../components/navbar.php'; ?>
-    <!-- Add layout -->
+    <div class="container">
+        <h1 class="text-center">Update animal record</h1>
+        <form method="post" autocomplete="off" enctype="multipart/form-data">
+            <?= $layout ?><br>
+            <div class="container">
+                <div class="d-grid gap-2 d-md-flex justify-content-start">
+                    <button name='update' type="submit" class="btn btn-primary">Update pet</button>
+                    <a href="../admin/dashboard.php" class="btn btn-warning">Back to dashboard</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 
 </html>
