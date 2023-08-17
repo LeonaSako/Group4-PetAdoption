@@ -11,13 +11,13 @@ $userID = $_SESSION["User"];
 #
 # Use the following crud commands:
 #
-# $crud = new CRUD();
+ $crud = new CRUD();
 #
-# $result1 = $crud->selectPets("id = $petID");
-# $result2 = $crud->selectUsers("id = $userID");
+$result1 = $crud->selectPets("id = $petID");
+$result2 = $crud->selectUsers("id = $userID");
 #
-# $pet = $result1[0];
-# $user = $result2[0];
+$pets = $result1[0];
+$users = $result2[0];
 # 
 # $values = [$petID, $userID, $submitionDate, $donation, $reason];
 #
@@ -33,13 +33,14 @@ $userID = $_SESSION["User"];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
 </head>
 
 <body>
-    <?php include '../components/navbar.php'; ?>
+    <?php include '../components/navbar.php'; ?>    
 
     <!-- Add layout -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 </body>
 
