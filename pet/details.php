@@ -55,7 +55,7 @@ if (!empty($result)) {
         <div class="d-grid gap-2 d-md-flex justify-content-center">
             <a href="update.php?id={$id}" class="btn btn-primary">Update</a>
             <a href="delete.php?id={$id}" class="btn btn-danger">Delete</a>
-            <a href="../dashboard.php" class="btn btn-warning">Back to dashboard</a>
+            <a href="../admin/dashboard.php" class="btn btn-warning">Back to dashboard</a>
         </div>
     </div>
 HTML;
@@ -74,9 +74,53 @@ HTML;
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
     <link rel="stylesheet" href="../css/main.css">
     <title>Animal Details</title>
+    <style>
+        /* Additional styles for girly and pink look */
+        body {
+            background-color: #f9e1e1;
+        }
+
+        h1 {
+            color: #ff69b4;
+        }
+
+        .card {
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 400px;
+            padding: 20px;
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        blockquote {
+            color: #ff69b4;
+        }
+
+        .btn {
+            margin: 10px;
+        }
+
+        a {
+            color: #ff69b4;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #ff4181;
+        }
+    </style>
 </head>
 
 <body>
+
     <?php include '../components/navbar.php'; ?>
     <div class="container mt-4">
         <a href="listings.php">GO BACK</a>

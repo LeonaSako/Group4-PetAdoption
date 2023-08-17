@@ -52,11 +52,11 @@ class CRUD
 
     public function createPet(array $values)
     {
-        $result = $this->insert("pet", "`name`, `image`, `location`, `species`, `breed`, `age`, `size`, `description`, `vaccinated`, `experienceNeeded`, `minSpace`, `behavior`, `fk_users_id`", $values);
-        
+        $result = $this->insert("pet", "`name`, `image`, `location`, `species`, `breed`, `age`, `size`, `available`, `description`, `vaccinated`, `experienceNeeded`, `minSpace`, `behavior`, `fk_users_id`", $values);
+
         $this->alert($result, "A new pet has been created");
 
-        header("refresh: 3; url = ../pet/listings.php");
+        header("refresh: 2; url = ../pet/listings.php");
     }
 
     public function updatePet($id, $name, $location, $species, $breed, $age, $size, $desc, $status, $vaccinated, $exp, $space, $behavior, $image)
@@ -92,7 +92,7 @@ class CRUD
 
         $this->alert($result, "A new user account has been created");
 
-        header("refresh: 2; url = ../user/dashboard.php");
+        header("refresh: 2; url = ../user/login.php");
     }
 
     public function updateUser($id, $firstname, $lastname, $address, $birthdate, $phone, $email, $space, $exp, $image)
@@ -122,13 +122,13 @@ class CRUD
         $this->alert($result, "The user has been deleted");
     }
     public function createAgency(array $values)
-{
-    $result = $this->insert("users", "`role`, `address`, `image`, `email`, `phone`, `password`", $values);
+    {
+        $result = $this->insert("users", "`role`, `address`, `image`, `email`, `phone`, `password`", $values);
 
-    $this->alert($result, "A new agency account has been created");
+        $this->alert($result, "A new agency account has been created");
 
-    header("refresh: 2; url = ../agency/dashboard.php");
-}
+        header("refresh: 2; url = ../agency/dashboard.php");
+    }
 
     public function updateAgency($id, $agency, $address, $phone, $email)
     {

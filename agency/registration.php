@@ -137,7 +137,7 @@ if (isset($_POST["sign-up"])) {
             </div>
             <button name="sign-up" type="submit" class="btn btn-primary">Create account </button>
 
-            <span>You have an account already? <a href="login.php">Sign in here </a></span>
+            <span>You have an account already? <a href="../user/login.php">Sign in here </a></span>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
