@@ -18,23 +18,25 @@ if (isset($_SESSION["Adm"])) {
 
 $crud = new CRUD();
 
+$name = $breed = $description = $location = $behavior = "";
+
 if (isset($_POST["create"])) {
 
     $name = cleanInputs($_POST['name']);
     $species = cleanInputs($_POST['species']);
     $location = cleanInputs($_POST['location']);
-    $available = $_POST['available'];
-    $experienceNeeded = $_POST['experienceNeeded'];
+    $available = isset($_POST["status"]) ? 1 : 0;
+    $exp = isset($_POST["experience"]) ? 1 : 0;
     $minSpace = $_POST['minSpace'];
-    $vaccinated = $_POST['vaccinated'];
+    $vaccinated = isset($_POST["vaccine"]) ? 1 : 0;
     $breed = $_POST['breed'];
     $age = $_POST['age'];
     $size = $_POST['size'];
-    $description = cleanInputs($_POST['description']);
+    $description = $_POST['desc'];
     $behavior = cleanInputs($_POST['behavior']);
     $image = fileUpload($_FILES["image"], 'pet');
 
-    $values = [$name, $image[0], $location, $species, $breed, $age, $size, $description, $vaccinated, $experienceNeeded, $minSpace, $behavior, $userID];
+    $values = [$name, $image[0], $location, $species, $breed, $age, $size, $available, $description, $vaccinated, $exp, $minSpace, $behavior, $userID];
 
     $crud->createPet($values);
 }
@@ -76,24 +78,24 @@ if (isset($_POST["create"])) {
                 </div>
                 <div class="mb-3">
                     <label for="space" class="form-label">Space needed <span class='required'>*</span></label>
-                    <input type="number" class="form-control" id="space" name="space" placeholder="Space" min="0" value="<?= $minSpace ?>" required="" oninvalid="this.setCustomValidity('Please, add the amount of space needed')" oninput="setCustomValidity('')">
+                    <input type="number" class="form-control" id="space" name="minSpace" placeholder="Space" min="0" value="<?= $minSpace ?>" required="" oninvalid="this.setCustomValidity('Please, add the amount of space needed')" oninput="setCustomValidity('')">
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                        <label class="form-label form-check-label" for="flexCheckChecked">Experience with pets needed? <span class='required'>*</span></label>
+                        <input class="form-check-input" type="checkbox" name="experience">
+                        <label class="form-label form-check-label" for="experience">Experience with pets needed? <span class='required'>*</span></label>
                     </div>
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                        <label class="form-label form-check-label" for="flexCheckChecked">Is the pet available for adoption? <span class='required'>*</span></label>
+                        <input class="form-check-input" type="checkbox" name="status">
+                        <label class="form-label form-check-label" for="status">Is the pet available for adoption? <span class='required'>*</span></label>
                     </div>
                 </div>
                 <div class="mb-3">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
-                        <label class="form-label form-check-label" for="flexCheckChecked">Is the pet vaccinated? <span class='required'>*</span></label>
+                        <input class="form-check-input" type="checkbox" name="vaccine">
+                        <label class="form-label form-check-label" for="vaccine">Is the pet vaccinated? <span class='required'>*</span></label>
                     </div>
                 </div>
                 <p>(<span class='required'>*</span>) Required fields</p>
