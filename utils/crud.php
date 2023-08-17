@@ -38,6 +38,8 @@ class CRUD
         return $this->select("pet", "*", $condition);
     }
 
+
+
     public function selectUsers(string $condition)
     {
         return $this->select("users", "*", $condition);
