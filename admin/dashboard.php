@@ -1,7 +1,9 @@
 <?php
-require_once "../utils/crud.php";
-require_once "../utils/formUtils.php";
 session_start();
+
+require_once "../utils/formUtils.php";
+require_once "../utils/crud.php";
+
 preventUser();
 preventAgency();
 redirectToLogin();

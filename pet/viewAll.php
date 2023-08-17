@@ -13,31 +13,41 @@ function viewPets($result)
             $description = $row['description'];
             $vaccinated = ($row['vaccinated'] == 1) ? 'Yes' : 'No';
             $layout .= <<<HTML
-            <div class="col-lg-3 col-md-4 col-sm-6">
-                <div class="card">
-                    <img src="{$image}" id="details-img" class='img-fluid shadow mb-5' alt="Pet image">
-                    <div class="card-body">
-                    <figure class="text-center">
-                    <blockquote class="blockquote">
-                        <h5>{$name}</h5>
-                        </blockquote>
-                        <figcaption class="blockquote-footer">
-                            {$description}
-                            </figcaption>
-                        </figure>
-                        <p class='card-text'>Breed: $breed</p>
-                        <p class="card-text">Age: $age years</p>
-                        <p class="card-text">Size: $size</p>
-                        <p class="card-text">Vaccinated: $vaccinated</p>
-                        <div class="gap-2 d-md-flex justify-content-center">
-                        <a href="../pet/details.php?id=$id" class="btn btn-primary">Details</a>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="card">
+                                <img src="{$image}" id="details-img" class='img-fluid shadow mb-5' alt="Pet image">
+                                <div class="card-body">
+                                <figure class="text-center">
+                                <blockquote class="blockquote">
+                                    <h5>{$name}</h5>
+                                    </blockquote>
+                                    <figcaption class="blockquote-footer">
+                                        {$description}
+                                        </figcaption>
+                                    </figure>
+                                    <p class='card-text'>Breed: $breed</p>
+                                    <p class="card-text">Age: $age years</p>
+                                    <p class="card-text">Size: $size</p>
+                                    <p class="card-text">Vaccinated: $vaccinated</p>
+                                    <div class="gap-2 d-md-flex justify-content-center">
+                                    <a href="../pet/details.php?id=$id" class="btn btn-primary">Details</a>
+                        HTML;
+            if (isset($_SESSION["User"])) {
+                $layout .= <<<HTML
                         <a href="../adoptions/new.php?id=$id" class="btn btn-warning">Take me home</a>
-                        <a href="update.php?id={$id}" class="btn btn-success">Update</a>
+                        HTML;
+            }
+            if (isset($_SESSION["Adm"])) {
+                $layout .= <<<HTML
+                        <a href="update.php?id={$id}" class="btn btn-warning">Update</a>
+                        <a href="delete.php?id={$id}" class="btn btn-danger">Delete</a>
+                        HTML;
+            }
+            $layout .= " 
                         </div>
                     </div>
                 </div>
-            </div>
-HTML;
+            </div>";
         }
     } else {
         $layout .= "No results";
