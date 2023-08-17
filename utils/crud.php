@@ -47,7 +47,14 @@ class CRUD
     {
         return $this->select("adoption", "*", $condition);
     }
-
+    public function selectStories(string $condition)
+    {
+        return $this->select("story", "*", $condition);
+    }
+    public function selectMessages(string $condition)
+    {
+        return $this->select("message", "*", $condition);
+    }
     public function createPet(array $values)
     {
         $result = $this->insert("pet", "`name`, `image`, `location`, `species`, `breed`, `age`, `size`, `available`, `description`, `vaccinated`, `experienceNeeded`, `minSpace`, `behavior`, `fk_users_id`", $values);
@@ -153,6 +160,19 @@ class CRUD
         $result = $this->insert("adoption", "`fk_pet_id`, `fk_users_id`, `submitionDate`, `donation`, `reason`,`adoptionDate`", $values);
 
         $this->alertUser($result, "A new adoption has been submitted");
+    }
+
+    public function createStory(array $values)
+    {
+        $result = $this->insert("story", "`fk_pet_id`, `image`, `desc`, `fk_user_id`", $values);
+
+        $this->alertUser($result, "A new adoption story has been submitted");
+    }
+    public function createMessage(array $values)
+    {
+        $result = $this->insert("message", "`subject`, `message`, `fk_user_id`, `fk_agency_id`", $values);
+
+        $this->alertUser($result, "A new message has been submitted");
     }
 
     public function updateAdoptionStatus($id, $status, $date)

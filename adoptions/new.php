@@ -14,25 +14,27 @@ $result2 = $crud->selectUsers("id = $userID");
 $pets = $result1[0];
 $users = $result2[0];
 //convert Birthday
-function calculateAge($birthdate) {
+function calculateAge($birthdate)
+{
     $birthDate = new DateTime($birthdate);
     $currentDate = new DateTime();
     $ageInterval = $currentDate->diff($birthDate);
     return $ageInterval->y;
 }
 
- // Adoption Part
- if(isset($_POST['adoption-submit'])) {
-    $submitionDate=date("Y/m/d");
-    $adoptionDate=$_POST['adoptionDate'];
-    $donation=$_POST['donation'];
-    $reason=$_POST['reason'];
-    $values=[$petID,$userID,$submitionDate,$donation,$reason,$adoptionDate];
+// Adoption Part
+if (isset($_POST['adoption-submit'])) {
+    $submitionDate = date("Y/m/d");
+    $adoptionDate = $_POST['adoptionDate'];
+    $donation = $_POST['donation'];
+    $reason = $_POST['reason'];
+    $values = [$petID, $userID, $submitionDate, $donation, $reason, $adoptionDate];
     $crud->createAdoption($values);
- }    
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,84 +42,81 @@ function calculateAge($birthdate) {
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
+
 <body>
-    <?php include '../components/navbar.php'; ?>    
-<<<<<<< HEAD
+    <?php include '../components/navbar.php'; ?>
     <?php
     foreach ($users as $user) {
-        $image= "../images/user/{$users['image']}";         
+        $image = "../images/user/{$users['image']}";
         $firstName = $users["firstName"];
-        $lastName = $users["lastName"];  
+        $lastName = $users["lastName"];
     }
     ?>
     <div class="container">
         <div class="row">
             <div class="col-1"></div>
             <div class="col-4">
-            <div class="card" style="width: 18rem;">
-                <img src="<?php  echo $image?>"class="card-img-top" alt="User Image">
-                <div class="card-body">
-                <h3 class='card-title'><?php  echo ($firstName); ?></h3>
-                <br>
-                    <p class="card-text"><?php  echo ($lastName); ?></p>
-                </div>
+                <div class="card" style="width: 18rem;">
+                    <img src="<?php echo $image ?>" class="card-img-top" alt="User Image">
+                    <div class="card-body">
+                        <h3 class='card-title'><?php echo ($firstName); ?></h3>
+                        <br>
+                        <p class="card-text"><?php echo ($lastName); ?></p>
+                    </div>
                 </div>
             </div>
             <div class="col-2"></div>
             <?php
-                foreach ($pets as $pet) { 
-                    $image = "../images/pets/{$pets['image']}"; 
-                    $name = $pets["name"];
-                    $location = $pets["location"];
-                    $age = $pets["age"];  
-                }
+            foreach ($pets as $pet) {
+                $image = "../images/pets/{$pets['image']}";
+                $name = $pets["name"];
+                $location = $pets["location"];
+                $age = $pets["age"];
+            }
             ?>
             <div class="col-4">
                 <div class="card" style="width: 18rem;">
-                <img src="<?php  echo $image?>" id="details-img" class='img-fluid shadow mb-5' alt="Pet image" width="400px">
+                    <img src="<?php echo $image ?>" id="details-img" class='img-fluid shadow mb-5' alt="Pet image" width="400px">
                     <div class="card-body">
-                        <p class='card-title'>Name:<?php  echo ($name); ?></p>
-                            <br>
-                            <p class="card-text">Location:<?php  echo ($location); ?></p>
-                            <br>
-                            <p class="card-text">Age:<?php  echo ($age); ?> years old</p>
+                        <p class='card-title'>Name:<?php echo ($name); ?></p>
+                        <br>
+                        <p class="card-text">Location:<?php echo ($location); ?></p>
+                        <br>
+                        <p class="card-text">Age:<?php echo ($age); ?> years old</p>
                     </div>
                 </div>
             </div>
-            </div>
-            <div class="col-1"></div>
         </div>
+        <div class="col-1"></div>
+    </div>
     </div>
     <form method="post" autocomplete="off" enctype="multipart/form-data">
-            <div class="container">
-                <div class="d-grid gap-2 d-md-flex justify-content-start">
-                    <button  type="submit" name='submit'  class="btn btn-primary">chek condition</button>
-                    <a href="../admin/dashboard.php" class="btn btn-warning">Back to dashboard</a>
-                </div>
+        <div class="container">
+            <div class="d-grid gap-2 d-md-flex justify-content-start">
+                <button type="submit" name='submit' class="btn btn-primary">chek condition</button>
+                <a href="../admin/dashboard.php" class="btn btn-warning">Back to dashboard</a>
             </div>
+        </div>
     </form>
     <br><br>
     <?php
-       
-        if(isset($_POST['submit'])){
-            $birthdate=$users['birthdate'];
-            $age = calculateAge($birthdate);
-            $spacepet=$pets['minSpace'];
-            $spaceuser=$users['space'];
-            $petexperience=$pets['experienceNeeded'];
-            $userexperience=$users['experienced'];
-        
-                    if($age<18){
-                        echo"You are younger than 18";
-                    }
-                    elseif(!$userexperience==$petexperience && $userexperience ==0){
-                        echo"You need more exprerince";
-                    }
-                    elseif ($spaceuser<$spacepet){
-                            echo"Unfortunetly you need more space";
-                    }
-                    else{
-                        echo "You can apply for the Adoption
+
+    if (isset($_POST['submit'])) {
+        $birthdate = $users['birthdate'];
+        $age = calculateAge($birthdate);
+        $spacepet = $pets['minSpace'];
+        $spaceuser = $users['space'];
+        $petexperience = $pets['experienceNeeded'];
+        $userexperience = $users['experienced'];
+
+        if ($age < 18) {
+            echo "You are younger than 18";
+        } elseif (!$userexperience == $petexperience && $userexperience == 0) {
+            echo "You need more exprerince";
+        } elseif ($spaceuser < $spacepet) {
+            echo "Unfortunetly you need more space";
+        } else {
+            echo "You can apply for the Adoption
                         <div class='container'>
                             <div class='row'>
                                 <h1>Please fill in the blanks</h1>
@@ -143,18 +142,14 @@ function calculateAge($birthdate) {
                             </div>
                         </div> 
                         ";
-                    }
         }
-    
-    
-    
-    
+    }
+
+
+
+
     ?>
-    
-=======
 
-    <!-- Add layout -->
-
->>>>>>> f849a7957dfdf23eac01626be3617ff6856474ce
 </body>
+
 </html>
