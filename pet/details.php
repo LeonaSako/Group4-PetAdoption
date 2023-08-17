@@ -55,7 +55,7 @@ if (!empty($result)) {
         <div class="d-grid gap-2 d-md-flex justify-content-center">
             <a href="update.php?id={$id}" class="btn btn-primary">Update</a>
             <a href="delete.php?id={$id}" class="btn btn-danger">Delete</a>
-            <a href="../dashboard.php" class="btn btn-warning">Back to dashboard</a>
+            <a href="../admin/dashboard.php" class="btn btn-warning">Back to dashboard</a>
         </div>
     </div>
 HTML;

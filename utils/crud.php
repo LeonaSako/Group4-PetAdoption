@@ -92,7 +92,7 @@ class CRUD
 
         $this->alert($result, "A new user account has been created");
 
-        header("refresh: 2; url = ../user/dashboard.php");
+        header("refresh: 2; url = ../user/login.php");
     }
 
     public function updateUser($id, $firstname, $lastname, $address, $birthdate, $phone, $email, $space, $exp, $image)

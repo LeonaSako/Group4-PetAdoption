@@ -4,15 +4,6 @@ require_once "../utils/crud.php";
 require_once "../utils/formUtils.php";
 require_once "../utils/file_upload.php";
 
-session_start();
-
-if (isset($_SESSION["Adm"])) {
-    header("Location: ../admin/dashboard.php");
-} else if (isset($_SESSION["User"])) {
-    header("Location: ../user/dashboard.php");
-} else if (isset($_SESSION["Agency"])) {
-    header("Location: ../agency/dashboard.php");
-}
 
 $crud = new CRUD();
 $error = false;
@@ -171,7 +162,7 @@ if (isset($_POST["sign-up"])) {
                     <span class="text-danger"><?=$spaceError?></span>
                 </div>
                 <label for="experienced">Do you have experience with the Pets?</label>
-                <select name="experienced" id="experienced">
+                <select class="form-select" name="experienced" id="experienced">
                <option name="experienced" value="Yes">Yes</option>
                <option name="experienced" value="No">No</option>
              
