@@ -37,7 +37,7 @@ function viewPets($result)
                         <a href="../adoptions/new.php?id=$id" class="btn btn-warning">Take me home</a>
                         HTML;
             }
-            if (isset($_SESSION["Adm"])) {
+            if (isset($_SESSION["Adm"]) || isset($_SESSION["Agency"])) {
                 $layout .= <<<HTML
                         <a href="update.php?id={$id}" class="btn btn-warning">Update</a>
                         <a href="delete.php?id={$id}" class="btn btn-danger">Delete</a>
