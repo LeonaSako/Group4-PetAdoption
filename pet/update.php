@@ -41,7 +41,7 @@ if (!empty($result)) {
         $image = fileUpload($_FILES["image"], 'pet');
 
         if ($_FILES["image"]["error"] == 0) {
-            removeOldImage($pet["image"]);
+            removeOldPetImage($pet["image"]);
             $update = $crud->updatePet($id, $name, $location, $species, $breed, $age, $size, $description, $status, $vaccinated, $experience, $minSpace, $behavior, $image[0]);
         } else {
             $update = $crud->updatePet($id, $name, $location, $species, $breed, $age, $size, $description, $status, $vaccinated, $experience, $minSpace, $behavior, Null);

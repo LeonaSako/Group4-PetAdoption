@@ -10,9 +10,9 @@ X        - Show / Details       (Christina)
         - Update                (Eleni)
         - Delete                (Eleni)
     - Pet CRUD                  (Christina)
-        - Create                (Christina)
+X        - Create                (Christina)
         - Show / Details        (Leona)
-        - Update                (Christina)
+X        - Update                (Christina)
         - Delete                (Christina)
         
 User: 
