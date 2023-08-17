@@ -11,14 +11,14 @@ $crud = new CRUD();
 
 $getAnimal = $crud->selectPets("id = $id");
 
-removeOldImage("pets/" + $getAnimal[0]["image"]);
+removeOldPetImage($getAnimal[0]["image"]);
 
 $delete = $crud->deletePet($id);
 
 if ($delete) {
     if (isset($_SESSION["Adm"])) {
-        header("refresh: 3; url = ../admin/dashboard.php");
+        header("Location: ../admin/dashboard.php");
     } else {
-        header("refresh: 3; url = ../agency/dashboard.php");
+        header("Location: ../agency/dashboard.php");
     }
 }

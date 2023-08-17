@@ -32,10 +32,10 @@ function preventAgency()
         header("Location: ../agency/dashboard.php");
     }
 }
-function removeOldImage($oldImage)
+function removeOldPetImage($oldImage)
 {
     if ($oldImage != "placeholder.jpg") {
-        unlink("../picture/$oldImage");
+        unlink("../images/pets/$oldImage");
     }
 }
 

@@ -39,7 +39,7 @@ if (!empty($results)) {
                 </div>
             </div>
         HTML;
-    }
+    }   
 } else {
     $layout .= "No results found!";
 }

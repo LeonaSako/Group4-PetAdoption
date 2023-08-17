@@ -16,15 +16,28 @@ class CRUD
             $sql .= " WHERE $condition";
         }
         $result = mysqli_query($this->connection, $sql);
+        if (mysqli_num_rows($result) == 0 ) {
+            $rows = "No result";
+        } elseif (mysqli_num_rows($result) == 1 ) {
+            $rows = mysqli_fetch_assoc($result);
+        } else {
         $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        return $rows;
+        }
+
+        return [$rows, $result->num_rows];
+
     }
+
 
     public function insert(string $table, string $columns, array $values)
     {
         $valuesOut = [];
         foreach ($values as $val) {
-            $valuesOut[] = "'$val'";
+            if(is_numeric($val)){
+                $valuesOut[] = "$val";
+            }else {
+                $valuesOut[] = "'$val'";
+            }
         }
         $valuesOut = implode(",", $valuesOut);
 
@@ -38,18 +51,61 @@ class CRUD
         return $this->select("pet", "*", $condition);
     }
 
-
-
     public function selectUsers(string $condition)
     {
         return $this->select("users", "*", $condition);
     }
 
-    public function selectAdoptions(string $condition)
+    public function selectAdoptions(string $condition="" )
     {
+        {
+            $sql = "SELECT 
+            p.id as petId, 
+            p.name as pname, 
+            p.species as species, 
+            u.id as userId, 
+            u.firstName as firstname, 
+            u.lastName as lastname, 
+            a.id as adopId, 
+            a.adopStatus as adopStatus, 
+            a.adoptionDate as adoptionDate , 
+            a.submitionDate as submissionDate, 
+            a.reason as reason, 
+            a.donation as donation ,
+            p.fk_users_id as agency
+            FROM `adoption` a 
+            RIGHT JOIN `pet` p ON a.fk_pet_id = p.id 
+            LEFT JOIN `users` u ON a.fk_users_id = u.id ";
+    
+            if (!empty($condition)) {
+                $sql .= " $condition";
+            }
+            echo $sql;
+
+            $result = mysqli_query($this->connection, $sql);
+            if (mysqli_num_rows($result) == 0 ) {
+                $rows = "No result";
+            } elseif (mysqli_num_rows($result) == 1 ) {
+                $rows = mysqli_fetch_assoc($result);
+            } else {
+            $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
+            }
+    
+            return [$rows, $result->num_rows];
+    
+        }
+
+
         return $this->select("adoption", "*", $condition);
     }
-
+    public function selectStories(string $condition)
+    {
+        return $this->select("story", "*", $condition);
+    }
+    public function selectMessages(string $condition)
+    {
+        return $this->select("message", "*", $condition);
+    }
     public function createPet(array $values)
     {
         $result = $this->insert("pet", "`name`, `image`, `location`, `species`, `breed`, `age`, `size`, `available`, `description`, `vaccinated`, `experienceNeeded`, `minSpace`, `behavior`, `fk_users_id`", $values);
@@ -62,7 +118,7 @@ class CRUD
     public function updatePet($id, $name, $location, $species, $breed, $age, $size, $desc, $status, $vaccinated, $exp, $space, $behavior, $image)
     {
         $sql = "UPDATE `pet` SET `name`='$name',`location`='$location',`species`='$species',`breed`='$breed', `age`='$age', `size`='$size', `description`='$desc',
-                                `available`='$status',`vaccinated`='$vaccinated',`experienceNeeded`='$exp',`minSpace`='$space',`behavior`='$behavior'";
+        `available`='$status',`vaccinated`='$vaccinated',`experienceNeeded`='$exp',`minSpace`='$space',`behavior`='$behavior'";
 
         if (!empty($image)) {
             $sql .= ", `image`= '$image' WHERE id = $id";
@@ -152,9 +208,22 @@ class CRUD
 
     public function createAdoption(array $values)
     {
-        $result = $this->insert("adoption", "`fk_pet_id`, `fk_users_id`, `submitionDate`, `donation`, `reason`", $values);
+        $result = $this->insert("adoption", "`fk_pet_id`, `fk_users_id`, `submitionDate`, `donation`, `reason`,`adoptionDate`", $values);
 
         $this->alertUser($result, "A new adoption has been submitted");
+    }
+
+    public function createStory(array $values)
+    {
+        $result = $this->insert("story", "`fk_pet_id`, `image`, `desc`, `fk_user_id`", $values);
+
+        $this->alertUser($result, "A new adoption story has been submitted");
+    }
+    public function createMessage(array $values)
+    {
+        $result = $this->insert("message", "`subject`, `message`, `fk_user_id`, `fk_agency_id`", $values);
+
+        $this->alertUser($result, "A new message has been submitted");
     }
 
     public function updateAdoptionStatus($id, $status, $date)
