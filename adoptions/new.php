@@ -1,15 +1,19 @@
 <?php
 session_start();
 
-require_once "../utils/crud.php";
+require_once "../utils/crudPet.php";
+require_once "../utils/crudUser.php";
+require_once "../utils/crudAdoption.php";
 require_once "../utils/formUtils.php";
 
 $petID = $_GET["id"];
 $userID = $_SESSION["User"];
-$crud = new CRUD();
+$crud = new CRUD_PET();
+$crudUser = new CRUD_USER();
+$crudAdoption = new CRUD_ADOPTION();
 
 $result1 = $crud->selectPets("id = $petID");
-$result2 = $crud->selectUsers("id = $userID");
+$result2 = $crudUser->selectUsers("id = $userID");
 
 $pets = $result1[0];
 $users = $result2[0];
@@ -18,7 +22,7 @@ function calculateAge($birthdate)
 {
     $birthDate = new DateTime($birthdate);
     $currentDate = new DateTime();
-    $ageInterval = $currentDate->diff($birthDate);  
+    $ageInterval = $currentDate->diff($birthDate);
     return $ageInterval->y;
 }
 
@@ -29,7 +33,7 @@ if (isset($_POST['adoption-submit'])) {
     $donation = $_POST['donation'];
     $reason = $_POST['reason'];
     $values = [$petID, $userID, $submitionDate, $donation, $reason, $adoptionDate];
-    $crud->createAdoption($values);
+    $crudAdoption->createAdoption($values);
 }
 ?>
 <!DOCTYPE html>
@@ -39,8 +43,8 @@ if (isset($_POST['adoption-submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/main.css">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
 
 <body>

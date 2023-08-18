@@ -1,5 +1,5 @@
 <?php
-require_once "../utils/crud.php";
+require_once "../utils/crudPet.php";
 require_once "../utils/file_upload.php";
 require_once "../utils/formUtils.php";
 
@@ -14,7 +14,7 @@ if (isset($_SESSION["Adm"])) {
 
 $id = $_GET["id"];
 
-$crud = new CRUD();
+$crud = new CRUD_PET();
 
 $result = $crud->selectPets("id = $id");
 

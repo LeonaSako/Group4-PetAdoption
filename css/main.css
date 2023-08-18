@@ -7,6 +7,17 @@ body {
     padding-bottom: 40px;
 }
 
+.accordion {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #ff80ab;
+    border: none;
+}
+
+
 .card {
     margin-bottom: 20px;
     background-color: #fff;
@@ -63,6 +74,11 @@ blockquote {
     border: none;
 }
 
+.btn-primary.disabled {
+    background-color: #ff80ab;
+    border: none;
+}
+
 .btn-primary:hover {
     background-color: #ff6090;
 }
@@ -90,6 +106,10 @@ blockquote {
 
 .form-select {
     background-color: #fff;
+}
+
+.form-group label {
+    color: #ff80ab;
 }
 
 @media (max-width: 576px) {
@@ -141,4 +161,12 @@ blockquote {
     border-radius: 8px 8px 0 0;
     height: 400px;
     object-fit: cover;
+}
+
+#contact-form {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
 }

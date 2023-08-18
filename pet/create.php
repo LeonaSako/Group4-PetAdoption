@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once "../utils/crud.php";
+require_once "../utils/crudPet.php";
 require_once "../utils/file_upload.php";
 require_once "../utils/formUtils.php";
 
@@ -16,7 +16,7 @@ if (isset($_SESSION["Adm"])) {
     $userID = $_SESSION["Agency"];
 }
 
-$crud = new CRUD();
+$crud = new CRUD_PET();
 
 $name = $breed = $description = $location = $behavior = "";
 

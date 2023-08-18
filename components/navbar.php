@@ -13,7 +13,7 @@ if (isset($_SESSION["Adm"])) {
                 <a class='nav-link' href='../pet/create.php'>New pet</a>
             </li>
             <li class='nav-item'>
-                <a class='nav-link' href='../adoptions/viewAll.php'>Adoptions</a>
+                <a class='nav-link' href='../admin/adoptions.php'>Adoptions</a>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='../user/logout.php?logout'>Logout ({$_SESSION["UserEmail"]})</a>
@@ -33,7 +33,7 @@ if (isset($_SESSION["Adm"])) {
                 <a class='nav-link' href='../agency/contact.php'>Contact us</a>
             </li>
             <li class='nav-item'>
-                <a class='nav-link' href='../adoptions/viewAll.php'>My Adoptions</a>
+                <a class='nav-link' href='../adoptions/myadoptions.php'>My Adoptions</a>
             </li>
             
             <li class='nav-item'>
@@ -57,7 +57,7 @@ if (isset($_SESSION["Adm"])) {
                 <a class='nav-link' href='../pet/create.php'>New pet</a>
             </li>
             <li class='nav-item'>
-                <a class='nav-link' href='../adoptions/viewAll.php'>Adoptions</a>
+                <a class='nav-link' href='../agency/adoptions.php'>Adoptions</a>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='../user/logout.php?logout'>Logout ({$_SESSION["UserEmail"]})</a>
