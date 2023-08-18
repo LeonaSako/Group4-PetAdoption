@@ -54,7 +54,10 @@ Main Components
 
 }
 
-
+.buttons {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 
 .lo-img {
     width: 500px;
@@ -129,7 +132,6 @@ Card
     margin-bottom: 20px;
     background-color: #fff;
     border-radius: 8px;
-    height: 745px;
     box-shadow: 4px 8px 10px;
 }
 
@@ -228,6 +230,11 @@ Form
 
 .form-select {
     background-color: #fff;
+}
+
+.form-group {
+    padding: 5px;
+
 }
 
 .form-group label {

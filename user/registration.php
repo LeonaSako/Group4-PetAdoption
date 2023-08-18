@@ -123,29 +123,17 @@ if (isset($_POST["sign-up"])) {
     <div class="container">
         <h1 class="text-center">Sign Up </h1>
         <form method="post" autocomplete="off" enctype="multipart/form-data">
-            <div class="mb-3 mt-3">
-                <label for="firstname" class="form-label">First name </label>
-                <input type="text" class="form-control" id="fname" name="firstname" placeholder="First name" value="<?= $firstname ?>">
-                <span class="text-danger"><?= $fnameError ?></span>
-            </div>
-            <div class="mb-3">
-                <label for="lname" class="form-label">Last name </label>
-                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last name" value="<?= $lastname ?>">
-                <span class="text-danger"><?= $lnameError ?></span>
-            </div>
-            <div class="mb-3">
-                <label for="date" class="form-label">Date of birth</label>
-                <input type="date" class="form-control" id="date" name="birthdate" value="<?= $birthdate ?>">
-                <span class="text-danger"><?= $dateError ?></span>
-            </div>
-            <div class="mb-3">
-                <label for="picture" class="form-label">Profile picture </label>
-                <input type="file" class="form-control" id="picture" name="picture">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email address </label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email address" value="<?= $email ?>">
-                <span class="text-danger"><?= $emailError ?></span>
+            <div class="row g-2">
+                <div class="col-md-6">
+                    <label for="firstname" class="form-label">First name </label>
+                    <input type="text" class="form-control" id="fname" name="firstname" placeholder="First name" value="<?= $firstname ?>">
+                    <span class="text-danger"><?= $fnameError ?></span>
+                </div>
+                <div class="col-md-6">
+                    <label for="lname" class="form-label">Last name </label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last name" value="<?= $lastname ?>">
+                    <span class="text-danger"><?= $lnameError ?></span>
+                </div>
             </div>
             <div class="mb-3">
                 <label for="address" class="form-label">Address</label>
@@ -158,6 +146,11 @@ if (isset($_POST["sign-up"])) {
                 <span class="text-danger"><?= $phoneError ?></span>
             </div>
             <div class="mb-3">
+                <label for="date" class="form-label">Date of birth</label>
+                <input type="date" class="form-control" id="date" name="birthdate" value="<?= $birthdate ?>">
+                <span class="text-danger"><?= $dateError ?></span>
+            </div>
+            <div class="mb-3">
                 <label for="space" class="form-label">Space</label>
                 <input type="number" class="form-control" id="space" name="space" placeholder="Space m3" value="<?= $space ?>">
                 <span class="text-danger"><?= $spaceError ?></span>
@@ -166,8 +159,16 @@ if (isset($_POST["sign-up"])) {
             <select class="form-select" name="experienced" id="experienced">
                 <option name="experienced" value="Yes">Yes</option>
                 <option name="experienced" value="No">No</option>
-
             </select>
+            <div class="mb-3">
+                <label for="picture" class="form-label">Profile picture </label>
+                <input type="file" class="form-control" id="picture" name="picture">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address </label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Email address" value="<?= $email ?>">
+                <span class="text-danger"><?= $emailError ?></span>
+            </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Password">

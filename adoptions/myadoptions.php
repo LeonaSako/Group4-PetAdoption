@@ -36,8 +36,11 @@ $rejected = viewAdoptions($declined);
 
 <body>
     <?php include '../components/navbar.php'; ?>
-    <div class="container">
+    <header class="header">
         <h2>My adoption applications</h2>
+    </header>
+    <div class="container">
+
         <?php include '../components/adoptionsAccordeon.php'; ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>

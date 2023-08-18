@@ -32,6 +32,9 @@ if (isset($_POST["finish"])) {
 <body>
 
     <?php include '../components/navbar.php'; ?>
+    <header class="header">
+        <h2>Compatibility quiz</h2>
+    </header>
     <a class="m-3 btn btn-primary" href="javascript:history.back()">GO BACK</a>
     <div class="container">
 

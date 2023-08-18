@@ -20,12 +20,15 @@ if (isset($_POST["submit"])) {
 
 <head>
     <title>Contact Form</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
     <link rel="stylesheet" href="../css/main.css">
 </head>
 
 <body>
     <?php include '../components/navbar.php'; ?>
+    <header class="header">
+        <h2>Contact</h2>
+    </header>
     <a class="m-3 btn btn-primary" href="javascript:history.back()">GO BACK</a>
     <div class="container mt-5" id='contact-form'>
         <h2>Contact Us</h2>
@@ -42,7 +45,11 @@ if (isset($_POST["submit"])) {
                 <label for="message">Message:</label>
                 <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" name="submit">Send</button>
+
+            <div class="buttons">
+                <button type="submit" class="btn btn-primary" name="submit">Send</button>
+            </div>
+
         </form>
     </div>
 
