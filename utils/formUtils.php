@@ -14,6 +14,12 @@ function redirectToLogin()
         header("Location: ../user/login.php");
     }
 }
+function redirectAgencyToLogin()
+{
+    if (!isset($_SESSION["Agency"])) {
+        header("Location: ../user/login.php");
+    }
+}
 function preventAdmin()
 {
     if (isset($_SESSION["Adm"])) {
@@ -38,7 +44,12 @@ function removeOldPetImage($oldImage)
         unlink("../images/pets/$oldImage");
     }
 }
-
+function removeOldUserImage($oldImage)
+{
+    if ($oldImage != "placeholder.jpg") {
+        unlink("../images/users/$oldImage");
+    }
+}
 function validateName($name)
 {
     return preg_match('/^[a-zA-ZäöüÄÖÜß\s]+$/', $name);

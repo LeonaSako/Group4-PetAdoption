@@ -1,5 +1,5 @@
 <?php
-require_once "../utils/crud.php";
+require_once "../utils/crudPet.php";
 require_once "../utils/formUtils.php";
 
 session_start();
@@ -7,7 +7,7 @@ preventUser();
 
 $id = $_GET["id"];
 
-$crud = new CRUD();
+$crud = new CRUD_PET();
 
 $getAnimal = $crud->selectPets("id = $id");
 

@@ -9,7 +9,7 @@ if (isset($_SESSION["Adm"])) {
     header("Location: ../agency/dashboard.php");
 }
 
-require_once "../utils/crud.php";
+require_once "../utils/crudUser.php";
 require_once "../utils/formUtils.php";
 
 $email = "";
@@ -35,7 +35,7 @@ if (isset($_POST["login"])) {
 
         $password = hash("sha256", $password);
 
-        $crud = new CRUD();
+        $crud = new CRUD_USER();
 
         $condition = "email = '$email' AND password = '$password'";
 
@@ -79,7 +79,7 @@ if (isset($_POST["login"])) {
 </head>
 
 <body>
-<?php include '../components/navbar.php'; ?>
+    <?php include '../components/navbar.php'; ?>
     <div class="container">
         <h1 class="text-center">Login page </h1>
         <div class="row">

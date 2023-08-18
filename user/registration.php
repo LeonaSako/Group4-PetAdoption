@@ -1,15 +1,15 @@
 <?php
 
-require_once "../utils/crud.php";
+require_once "../utils/crudUser.php";
 require_once "../utils/formUtils.php";
 require_once "../utils/file_upload.php";
 
 
-$crud = new CRUD();
+$crud = new CRUD_USER();
 $error = false;
 
-$firstname = $lastname = $email=$address=$phone=$space=$experienced=$password = $birthdate= "";
-$fnameError = $lnameError = $dateError= $addressError=$phoneError = $emailError = $passError =$spaceError= "";
+$firstname = $lastname = $email = $address = $phone = $space = $experienced = $password = $birthdate = "";
+$fnameError = $lnameError = $dateError = $addressError = $phoneError = $emailError = $passError = $spaceError = "";
 
 if (isset($_POST["sign-up"])) {
     $firstname = cleanInputs($_POST["firstname"]);
@@ -66,15 +66,15 @@ if (isset($_POST["sign-up"])) {
     } elseif (strlen($address) < 3) {
         $error = true;
         $addressError = "Address must have at least 3 characters.";
-    } 
-    
+    }
+
     if (empty($phone)) {
         $error = true;
         $phoneError = "Please, enter your Phone Number";
     } elseif (strlen($phone) < 3) {
         $error = true;
         $phoneError = "Please give a valid phone number";
-    } elseif (!preg_match("/^[0-9]+$/",$phone)) {
+    } elseif (!preg_match("/^[0-9]+$/", $phone)) {
         $error = true;
         $phoneError = "Phone number most contain only numbers";
     }
@@ -84,7 +84,7 @@ if (isset($_POST["sign-up"])) {
     } elseif (strlen($space) < 2) {
         $error = true;
         $spaceError = "Space must have at least 2 characters.";
-    } elseif (!preg_match("/^[0-9]+$/",$space)) {
+    } elseif (!preg_match("/^[0-9]+$/", $space)) {
         $error = true;
         $spaceError = "Space";
     }
@@ -100,7 +100,7 @@ if (isset($_POST["sign-up"])) {
     if (!$error) {
         $password = hash("sha256", $password);
 
-        $values = ['User', $firstname, $lastname, $email , $phone, $address, $picture[0], $birthdate, $space, $experienced, $password];
+        $values = ['User', $firstname, $lastname, $email, $phone, $address, $picture[0], $birthdate, $space, $experienced, $password];
 
         $crud->createUser($values);
     }
@@ -117,6 +117,7 @@ if (isset($_POST["sign-up"])) {
     <link rel="stylesheet" href="../css/main.css">
     <title>Document</title>
 </head>
+
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container">
@@ -147,25 +148,25 @@ if (isset($_POST["sign-up"])) {
                 <span class="text-danger"><?= $emailError ?></span>
             </div>
             <div class="mb-3">
-                    <label for="address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="<?=$address?>">
-                    <span class="text-danger"><?=$addressError?></span>
-                </div>
-                <div class="mb-3">
-                    <label for="phone" class="form-label">Phone Number</label>
-                    <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone Number" value="<?=$phone?>">
-                    <span class="text-danger"><?=$phoneError?></span>
-                </div>
-                <div class="mb-3">
-                    <label for="space" class="form-label">Space</label>
-                    <input type="number" class="form-control" id="space" name="space" placeholder="Space m3" value="<?=$space?>">
-                    <span class="text-danger"><?=$spaceError?></span>
-                </div>
-                <label for="experienced">Do you have experience with the Pets?</label>
-                <select class="form-select" name="experienced" id="experienced">
-               <option name="experienced" value="Yes">Yes</option>
-               <option name="experienced" value="No">No</option>
-             
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="<?= $address ?>">
+                <span class="text-danger"><?= $addressError ?></span>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone Number" value="<?= $phone ?>">
+                <span class="text-danger"><?= $phoneError ?></span>
+            </div>
+            <div class="mb-3">
+                <label for="space" class="form-label">Space</label>
+                <input type="number" class="form-control" id="space" name="space" placeholder="Space m3" value="<?= $space ?>">
+                <span class="text-danger"><?= $spaceError ?></span>
+            </div>
+            <label for="experienced">Do you have experience with the Pets?</label>
+            <select class="form-select" name="experienced" id="experienced">
+                <option name="experienced" value="Yes">Yes</option>
+                <option name="experienced" value="No">No</option>
+
             </select>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>

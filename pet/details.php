@@ -2,11 +2,11 @@
 
 session_start();
 
-require_once "../utils/crud.php";
+require_once "../utils/crudPet.php";
 
 $id = $_GET["id"];
 
-$crud = new CRUD();
+$crud = new CRUD_PET();
 
 $result = $crud->selectPets("id = $id");
 

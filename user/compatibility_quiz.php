@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-require_once "../utils/crud.php";
+require_once "../utils/crudPet.php";
 require_once "../pet/viewAll.php";
 
-$crud = new Crud();
+$crud = new CRUD_PET();
 $layout = "";
 
 if (isset($_POST["finish"])) {

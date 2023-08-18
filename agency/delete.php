@@ -1,5 +1,5 @@
 <?php
-require_once "../utils/crud.php";
+require_once "../utils/crudUser.php";
 require_once "../utils/formUtils.php";
 
 session_start();
@@ -8,7 +8,7 @@ preventAgency();
 
 $id = $_GET["id"];
 
-$crud = new CRUD();
+$crud = new CRUD_USER();
 
 $getAgency = $crud->selectUsers("id = $id");
 

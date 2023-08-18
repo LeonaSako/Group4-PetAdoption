@@ -2,13 +2,13 @@
 session_start();
 
 require_once "../utils/formUtils.php";
-require_once "../utils/crud.php";
+require_once "../utils/crudUser.php";
 
 preventUser();
 preventAgency();
 redirectToLogin();
 
-$crud = new CRUD();
+$crud = new CRUD_USER();
 
 $results = $crud->selectUsers("role != 'Adm'");
 
