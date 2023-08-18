@@ -9,4 +9,9 @@ $result2 = $crud->selectUsers("id = $userID");
 $users = $result2[0];
 #$values = [$petID, $userID, $submitionDate, $donation, $reason, $adoptionDate];
 #$crud->createStory($values);
+public function selectUsers(string $condition)
+{
+    return $this->select("users", "*", $condition);
+}
+
 ?>
