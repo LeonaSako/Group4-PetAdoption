@@ -15,6 +15,7 @@ class CRUD_PET
         if (!empty($condition)) {
             $sql .= " WHERE $condition";
         }
+
         $result = mysqli_query($this->connection, $sql);
         $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
         return $rows;
