@@ -55,7 +55,7 @@ if (isset($_POST["sign-up"])) {
         $emailError = "Please enter a valid email address";
     } else {
         $result = $crud->selectUsers("email='$email'");
-        if (!empty($result)) {
+        if ($result[1] > 0) {
             $error = true;
             $emailError = "Provided Email is already in use";
         }
@@ -117,8 +117,8 @@ if (isset($_POST["sign-up"])) {
     <link rel="stylesheet" href="../css/main.css">
     <title>Document</title>
 </head>
-
 <body>
+    <?php include '../components/navbar.php'; ?>
     <div class="container">
         <h1 class="text-center">Sign Up </h1>
         <form method="post" autocomplete="off" enctype="multipart/form-data">

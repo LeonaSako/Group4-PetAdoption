@@ -1,9 +1,12 @@
 <?php
-require_once "../utils/crud.php";
-require_once "../utils/formUtils.php";
 session_start();
+
+require_once "../utils/formUtils.php";
+require_once "../utils/crud.php";
+
 preventUser();
 preventAgency();
+redirectToLogin();
 
 $crud = new CRUD();
 
@@ -19,27 +22,32 @@ if (!empty($results)) {
 
     foreach ($results as $user) {
 
-        $imageSrc = "../images/pets/{$user["image"]}"; 
-           
-        $firstName = $user["firstName"];
-        $lastName = $user["lastName"];
-        $email = $user["email"];
-        $userid = $user["id"];
+        if (is_array(($user))) {
 
-        $layout .= <<<HTML
-            <div class='col-lg-3 col-md-4 col-sm-6'>
-                <div class='card'>
-                    <img src='{$imageSrc}' class='img-fluid'>
-                    <div class='card-body'>
-                        <h5 class='card-title'>{$firstName} {$lastName}</h5>
-                        <p class='card-text'>{$email}</p>
-                        <a href='../user/update.php?id={$userid}' class='btn btn-warning'>Update</a>
-                        <a href='../user/delete.php?id={$userid}' class='btn btn-danger'>Delete</a>
+            $imageSrc = "../images/users/{$user["image"]}";
+
+            $firstName = $user["firstName"];
+            $lastName = $user["lastName"];
+            $email = $user["email"];
+            $userid = $user["id"];
+
+            $layout .= <<<HTML
+                <div class='col-lg-3 col-md-4 col-sm-6'>
+                    <div class='card'>
+                        <img src='{$imageSrc}' class='img-fluid'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>{$firstName} {$lastName}</h5>
+                            <p class='card-text'>{$email}</p>
+                            <a href='../user/update.php?id={$userid}' class='btn btn-warning'>Update</a>
+                            <a href='../user/delete.php?id={$userid}' class='btn btn-danger'>Delete</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        HTML;
-    }   
+            HTML;
+        } else {
+            echo "Invalid user data: " . print_r($user, true);
+        }
+    }
 } else {
     $layout .= "No results found!";
 }

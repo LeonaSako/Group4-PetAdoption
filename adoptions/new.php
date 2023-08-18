@@ -93,7 +93,7 @@ if (isset($_POST['adoption-submit'])) {
     <form method="post" autocomplete="off" enctype="multipart/form-data">
         <div class="container">
             <div class="d-grid gap-2 d-md-flex justify-content-start">
-                <button type="submit" name='submit' class="btn btn-primary">chek condition</button>
+                <button type="submit" name='submit' class="btn btn-primary">Check condition</button>
                 <a href="../admin/dashboard.php" class="btn btn-warning">Back to dashboard</a>
             </div>
         </div>
