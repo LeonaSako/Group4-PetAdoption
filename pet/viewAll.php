@@ -34,7 +34,7 @@ function viewPets($result)
                                     <p class="card-text">Size: $size</p>
                                     <p class="card-text">Vaccinated: $vaccinated</p>
                                     <div class="gap-2 d-md-flex justify-content-center">
-                                    <a href="../pet/details.php?id=$id" class="btn btn-primary">Details</a>
+                                    <a href="../pet/details.php?id=$id" class="btn btn-success">Details</a>
                         HTML;
             if (isset($_SESSION["User"])) {
                 $layout .= <<<HTML

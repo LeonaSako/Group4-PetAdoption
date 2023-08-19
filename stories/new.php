@@ -1,23 +1,28 @@
 <?php
 session_start();
 
-require_once "../utils/crudPet.php";
+require_once "../utils/crudStories.php";
 require_once "../utils/formUtils.php";
-require_once "../utils/file_upload.php";   
-$crud = new CRUD_PET();
+require_once "../utils/file_upload.php";
+
+$petId = $_GET["id"];
+$userId = $_SESSION["User"];
+
+$crud = new CRUD_STORY();
 
 if (isset($_POST["create"])) {
     $date = date('Y-m-d');
     $description = $_POST['desc'];
-    $image = fileUpload($_FILES["image"],'stories');
+    $image = fileUpload($_FILES["image"], 'stories');
 
-    $values = [$image[0], $date, $description];
+    $values = [$petId, $image[0], $date, $description, $userId];
 
     $crud->createStory($values);
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,4 +58,5 @@ if (isset($_POST["create"])) {
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
+
 </html>

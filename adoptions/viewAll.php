@@ -35,10 +35,10 @@ function viewAdoptions($result)
                                 <td> {$row['donation']} </td>
                                 <td>
                                 <p class="d-inline-flex gap-1">
-                                    <a href='view.php?id={$petId}' class='btn btn-primary'>Details</a>
+                                    <a href='view.php?id={$petId}' class='btn btn-warning'>Details</a>
                             HTML;
             if (isset($_SESSION['Adm'])) {
-                $list .= "<a href='edit.php?id={$petId}' class='btn btn-primary disabled' aria-disabled='true'>Approve</a>
+                $list .= "<a href='edit.php?id={$petId}' class='btn btn-success disabled' aria-disabled='true'>Approve</a>
                                 <a href='edit.php?id={$petId}' class='btn btn-primary disabled' aria-disabled='true'>Reject</a>";
             } else if (isset($_SESSION['Agency'])) {
                 $list .= "<a href='edit.php?id={$petId}' class='btn btn-primary'>Approve</a>

@@ -213,8 +213,23 @@ Buttons
     background-color: #ff6090;
 }
 
+.btn-success {
+    background-color: #97c5f7;
+    border: none;
+}
+
+.btn-success.disabled {
+    background-color: #8ae0ed;
+    border: none;
+}
+
 .btn-warning {
-    background-color: #ffb74d;
+    background-color: #f8e681;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #ff6961;
     border: none;
 }
 
