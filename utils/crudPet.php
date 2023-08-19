@@ -87,7 +87,7 @@ class CRUD_PET
         $this->alert($result, "The pet has been deleted");
     }
 
-    public function createStory(array $values)
+    public function createStory(array $values)  
     {
         $result = $this->insert("story", "`fk_pet_id`, `image`, `desc`, `fk_user_id`", $values);
 

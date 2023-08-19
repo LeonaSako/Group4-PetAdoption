@@ -2,7 +2,7 @@
 session_start();
 
 require_once "../utils/crudPet.php";
-require_once "../utils/file_upload.php";
+require_once "../utils/file_upload.php";    
 require_once "../utils/formUtils.php";
 
 preventUser();
