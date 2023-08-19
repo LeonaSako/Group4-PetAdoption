@@ -376,3 +376,18 @@ Filter
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
+
+/* -------------------------------- 
+
+Navbar
+
+-------------------------------- */
+
+.navbar-nav {
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    left: 10%;
+}

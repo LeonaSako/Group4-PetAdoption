@@ -84,7 +84,7 @@ if (isset($_SESSION["Adm"])) {
 <html lang="en">
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-fixed-top">
         <div class="container-fluid">
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">

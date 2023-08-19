@@ -35,7 +35,7 @@ function viewAdoptions($result)
                                 <td> {$row['donation']} </td>
                                 <td>
                                 <p class="d-inline-flex gap-1">
-                                    <a href='view.php?id={$petId}' class='btn btn-warning'>Details</a>
+                                    <a href='view.php?id={$row["id"]}' class='btn btn-warning'>Details</a>
                             HTML;
             if (isset($_SESSION['Adm'])) {
                 $list .= "<a href='edit.php?id={$petId}' class='btn btn-success disabled' aria-disabled='true'>Approve</a>
