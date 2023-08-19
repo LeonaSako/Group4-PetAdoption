@@ -305,6 +305,7 @@ Filter
     margin-bottom: 1.6em;
     padding-left: 4%;
 
+
 }
 
 .filter-header h4 {
@@ -346,21 +347,17 @@ Filter
     padding-left: unset;
 }
 
-.filter-block::after {
-    /* switcher arrow for select element */
-    content: '';
-    position: absolute;
-    z-index: 1;
-    right: 14px;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -moz-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    transform: translateY(-50%);
-    display: block;
-    width: 16px;
-    height: 16px;
-    background: url("../images/cd-icon-arrow.svg") no-repeat center center;
-    pointer-events: none;
+
+
+
+.filter-block input[type='search'] {
+    border-color: transparent;
+    background-color: #e6e6e6;
+    padding-left: 4%;
+    padding: .8em;
+    margin-left: 1em;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
