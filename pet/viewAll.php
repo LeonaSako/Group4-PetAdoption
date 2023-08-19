@@ -12,10 +12,14 @@ function viewPets($result)
             $size = $row['size'];
             $description = $row['description'];
             $vaccinated = ($row['vaccinated'] == 1) ? 'Yes' : 'No';
+            $isAdopted = ($row['available'] == 0) ? true : false;
+
+            $buttonClass = $isAdopted ? 'btn btn-primary disabled' : 'btn btn-primary';
+
             $layout .= <<<HTML
-                        <div class="col-lg-3 col-md-4 col-sm-6">
+                        <li style="display: inline-block;">
                             <div class="card">
-                                <img src="{$image}" id="details-img" class='img-fluid shadow mb-5' alt="Pet image">
+                                <img src="{$image}" id="details-img" class='img-fluid shadow' alt="Pet image">
                                 <div class="card-body">
                                 <figure class="text-center">
                                 <blockquote class="blockquote">
@@ -34,7 +38,7 @@ function viewPets($result)
                         HTML;
             if (isset($_SESSION["User"])) {
                 $layout .= <<<HTML
-                        <a href="../adoptions/new.php?id=$id" class="btn btn-warning">Take me home</a>
+                        <a href="../adoptions/new.php?id=$id" class="$buttonClass">Take me home</a>
                         HTML;
             }
             if (isset($_SESSION["Adm"]) || isset($_SESSION["Agency"])) {
@@ -47,7 +51,8 @@ function viewPets($result)
                         </div>
                     </div>
                 </div>
-            </div>";
+            
+            </li>";
         }
     } else {
         $layout .= "No results";

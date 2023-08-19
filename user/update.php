@@ -110,68 +110,76 @@ if (isset($_POST["update"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <link rel="stylesheet" href="../css/main.css">
     <title>Document</title>
 </head>
 
 <body>
     <?php include '../components/navbar.php'; ?>
 
-
     <div class="container">
         <h1 class="text-center">Update user</h1>
         <form method="post" autocomplete="off" enctype="multipart/form-data">
+            <div class="row g-2">
+                <div class="col-md-6">
+                    <label for="firstname" class="form-label">First name </label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First name" value="<?= $user['firstName'] ?>">
+                    <span class="text-danger"><?= $fnameError ?></span>
+                </div>
+                <div class="col-md-6">
+                    <label for="lastname" class="form-label">Last name </label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last name" value="<?= $user['lastName']  ?>">
+                    <span class="text-danger"><?= $lnameError ?></span>
+                </div>
+            </div>
 
-            <div class="mb-3 mt-3">
-                <label for="firstname" class="form-label">First name </label>
-                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First name" value="<?= $user['firstName'] ?>">
-                <span class="text-danger"><?= $fnameError ?></span>
-            </div>
-            <div class="mb-3">
-                <label for="lastname" class="form-label">Last name </label>
-                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last name" value="<?= $user['lastName']  ?>">
-                <span class="text-danger"><?= $lnameError ?></span>
-            </div>
             <div class="mb-3">
                 <label for="date" class="form-label">Date of birth</label>
                 <input type="date" class="form-control" id="date" name="birthdate" value="<?= $user['birthdate'] ?>">
                 <span class="text-danger"><?= $dateError ?></span>
             </div>
-            <div class="mb-3">
-                <label for="picture" class="form-label">Profile picture </label>
-                <input type="file" class="form-control" id="picture" name="picture">
+
+            <div class="row g-2">
+                <div class="col-md-8">
+                    <label for="email" class="form-label">Email address </label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email address" value="<?= $user['email'] ?>">
+                    <span class="text-danger"><?= $emailError ?></span>
+                </div>
+                <div class="col-md-4">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone Number" value="<?= $user['phone'] ?>">
+                    <span class="text-danger"><?= $phoneError ?></span>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email address </label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email address" value="<?= $user['email'] ?>">
-                <span class="text-danger"><?= $emailError ?></span>
-            </div>
+
             <div class="mb-3">
                 <label for="address" class="form-label">Address</label>
                 <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="<?= $user['address'] ?>">
                 <span class="text-danger"><?= $addressError ?></span>
             </div>
             <div class="mb-3">
-                <label for="phone" class="form-label">Phone Number</label>
-                <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone Number" value="<?= $user['phone'] ?>">
-                <span class="text-danger"><?= $phoneError ?></span>
+
             </div>
             <div class="mb-3">
                 <label for="space" class="form-label">Space</label>
                 <input type="number" class="form-control" id="space" name="space" placeholder="Space m3" value="<?= $user['space'] ?>">
                 <span class="text-danger"><?= $spaceError ?></span>
             </div>
-            <label for="experienced">Do you have experience with the Pets?</label>
-            <select name="experienced" id="experienced">
-                <option name="experienced" value="Yes">Yes</option>
-                <option name="experienced" value="No">No</option>
+            <div class="mb-3">
+                <label for="experienced" class="form-label">Do you have experience with the Pets?</label>
+                <select name="experienced" id="experienced" class="form-control">
+                    <option name="experienced" value="Yes">Yes</option>
+                    <option name="experienced" value="No">No</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="picture" class="form-label">Profile picture </label>
+                <input type="file" class="form-control" id="picture" name="picture">
+            </div>
 
-            </select>
 
-
-
-            <div class="d-grid gap-2 d-md-flex justify-content-start">
+            <div class="buttons">
                 <button name='update' type="submit" class="btn btn-primary">Update user</button>
                 <a href="../admin/dashboard.php" class="btn btn-warning">Back to dashboard</a>
             </div>

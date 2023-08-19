@@ -57,8 +57,10 @@ if (isset($_POST["create"])) {
 
 <body>
     <?php include '../components/navbar.php'; ?>
+    <header class="header">
+        <h2>Add a new pet</h2>
+    </header>
     <div class="container">
-        <h1 class="text-center">Create a new animal record</h1>
         <form method="post" autocomplete="off" enctype="multipart/form-data">
             <div class="required-fields">
                 <h6 id=pet-details-h6>Required pet details</h6>

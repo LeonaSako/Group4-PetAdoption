@@ -67,7 +67,9 @@ if (!empty($results)) {
 
 <body>
     <?php include '../components/navbar.php'; ?>
-    <h2 class="text-center"> Welcome <?= $admin["firstName"] . " " . $admin["lastName"] ?></h2>
+    <header class="header">
+        <h2>Welcome <?= $admin["firstName"] . " " . $admin["lastName"] ?></h2>
+    </header>
 
     <div class="container">
         <input class="form-control w-50 m-auto" id="search" placeholder="Search user"> <br>
