@@ -4,6 +4,9 @@ session_start();
 
 require_once "../utils/crudAdoption.php";
 require_once "../utils/crudPet.php";
+require_once "../components/breadcrumb.php";
+$pageTitle = "Adoptions";
+
 $id = $_GET["id"];
 
 $crud = new CRUD_ADOPTION();
@@ -28,7 +31,20 @@ if (!empty($result)) {
 
     $status = $adoption["adopStatus"];
 
-    $application = ($status == 'Apply') ? 'pending' : (($status == 'Approved') ? 'approved' : 'rejected');
+    $url = "#";
+
+    $btnattr = "hidden";
+
+    if ($status == 'Apply') {
+        $application = 'pending';
+        $url = "cancel.php?id=" . $adoption["id"];
+        $btnattr = "";
+    } elseif ($status == 'Approved') {
+        $application = 'approved';
+    } else {
+        $application = 'rejected';
+    }
+
     $submitted = $adoption["submitionDate"];
     $today = date("Y-m-d");
     $diff = strtotime($today) - strtotime($submitted);
@@ -36,8 +52,6 @@ if (!empty($result)) {
     $daytext = ($daysAgo == 1) ? 'day' : 'days';
 
     $reason = $adoption["reason"];
-
-
 
     $layout .= <<<HTML
             <div class="card text-center">
@@ -48,7 +62,7 @@ if (!empty($result)) {
                     <h5 class="card-title"></h5>
                     <p class="card-text">Congratulations on choosing to adopt $name ! </p>
                     <p>Your application is <b>$application</b>.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <a href="{$url}" class="btn btn-primary" $btnattr >Cancel</a>
                 </div>
                 <div class="card-footer text-body-secondary">
                 Submitted $daysAgo $daytext ago
@@ -59,19 +73,19 @@ if (!empty($result)) {
     $layout .= "No results";
 }
 
-
-
+addBreadcrumb('Home', '../user/dashboard.php');
+addBreadcrumb('User', '../user/profile.php?id=' . $_SESSION["User"]);
+addBreadcrumb('Adoptions', '../adoptions/myadoptions.php');
+addBreadcrumb('Details');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <?php include '../components/head.php'; ?>
     <link rel="stylesheet" href="../css/main.css">
-    <title>Document</title>
+    <title><?= $pageTitle ?></title>
 </head>
 
 <body>

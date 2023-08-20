@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+$pageTitle = "Contact";
+
 if (isset($_POST["submit"])) {
     $name = $_POST["name"];
     $email = $_POST["email"];
@@ -19,16 +21,13 @@ if (isset($_POST["submit"])) {
 <html>
 
 <head>
-    <title>Contact Form</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <?php include '../components/head.php'; ?>
     <link rel="stylesheet" href="../css/main.css">
+    <title><?= $pageTitle ?></title>
 </head>
 
 <body>
     <?php include '../components/navbar.php'; ?>
-    <header class="header">
-        <h2>Contact</h2>
-    </header>
     <a class="m-3 btn btn-primary" href="javascript:history.back()">GO BACK</a>
     <div class="container mt-5" id='contact-form'>
         <h2>Contact Us</h2>

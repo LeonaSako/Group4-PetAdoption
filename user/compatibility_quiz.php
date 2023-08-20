@@ -4,6 +4,8 @@ session_start();
 require_once "../utils/crudPet.php";
 require_once "../pet/viewAll.php";
 
+$pageTitle = "Quiz";
+
 $crud = new CRUD_PET();
 $layout = "";
 
@@ -20,24 +22,17 @@ if (isset($_POST["finish"])) {
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pet Compatibility Quiz</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <?php include '../components/head.php'; ?>
     <link rel="stylesheet" href="../css/main.css">
-
+    <title><?= $pageTitle ?></title>
 </head>
 
 <body>
 
     <?php include '../components/navbar.php'; ?>
-    <header class="header">
-        <h2>Compatibility quiz</h2>
-    </header>
-    <a class="m-3 btn btn-primary" href="javascript:history.back()">GO BACK</a>
-    <div class="container">
 
+    <div class="container">
+        <a class="btn btn-primary back" href="javascript:history.back()">GO BACK</a>
         <div class="card ">
             <div class="card-header">
                 Compatibility Quiz
