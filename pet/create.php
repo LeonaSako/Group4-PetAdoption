@@ -4,13 +4,14 @@ session_start();
 require_once "../utils/crudPet.php";
 require_once "../utils/file_upload.php";
 require_once "../utils/formUtils.php";
+require_once "../components/breadcrumb.php";
 
 $pageTitle = "Add pet";
 
+addBreadcrumb('Dashboard', '../agency/dashboard.php');
+addBreadcrumb('Pets', '../agency/repository.php');
+addBreadcrumb('New');
 preventUser();
-if (!isset($_SESSION["Adm"])) {
-    header("Location: ../user/login.php");
-}
 
 if (isset($_SESSION["Adm"])) {
     $userID = $_SESSION["Adm"];

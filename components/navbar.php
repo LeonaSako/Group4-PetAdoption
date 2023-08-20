@@ -45,7 +45,7 @@ if (isset($_SESSION["Adm"])) {
                 <a class="nav-link active" aria-current="page" href="../agency/dashboard.php">Home</a>
             </li>
             <li class='nav-item'>
-                <a class='nav-link' href='../pet/viewAll.php'>Pet listings</a>
+                <a class='nav-link' href='../agency/repository.php'>Pet repository</a>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='../pet/create.php'>New pet</a>

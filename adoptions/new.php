@@ -5,6 +5,12 @@ require_once "../utils/crudPet.php";
 require_once "../utils/crudUser.php";
 require_once "../utils/crudAdoption.php";
 require_once "../utils/formUtils.php";
+require_once "../components/breadcrumb.php";
+
+addBreadcrumb('Home', '../user/dashboard.php');
+addBreadcrumb('User', '../user/profile.php?id=' . $_SESSION["User"]);
+addBreadcrumb('Adoptions', '../adoptions/myadoptions.php');
+addBreadcrumb('Apply');
 
 $pageTitle = "New adoption";
 

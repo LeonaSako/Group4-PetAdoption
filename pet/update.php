@@ -2,6 +2,13 @@
 require_once "../utils/crudPet.php";
 require_once "../utils/file_upload.php";
 require_once "../utils/formUtils.php";
+require_once "../components/breadcrumb.php";
+
+
+
+addBreadcrumb('Dashboard', '../agency/dashboard.php');
+addBreadcrumb('Pets', '../agency/repository.php');
+addBreadcrumb('Update');
 
 $pageTitle = "Update details";
 

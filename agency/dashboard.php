@@ -4,6 +4,9 @@ session_start();
 require_once "../utils/crudPet.php";
 require_once "../pet/viewAll.php";
 require_once "../utils/formUtils.php";
+require_once "../components/breadcrumb.php";
+
+addBreadcrumb('Dashboard', '../agency/dashboard.php');
 
 $pageTitle = "Dashboard";
 
