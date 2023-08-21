@@ -57,7 +57,7 @@ if (isset($_POST['adoption-submit'])) {
     <?php include '../components/navbar.php'; ?>
     <?php
     foreach ($users as $user) {
-        $image = "../images/user/{$users['image']}";
+        $image = "../images/users/{$users['image']}";
         $firstName = $users["firstName"];
         $lastName = $users["lastName"];
     }
