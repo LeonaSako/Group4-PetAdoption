@@ -40,7 +40,7 @@ function viewPets($result)
             }
             if (isset($_SESSION["Adm"]) || isset($_SESSION["Agency"])) {
                 $layout .= <<<HTML
-                        <a href="update.php?id={$id}" class="btn btn-primary">Update</a>
+                        <a href="../pet/update.php?id={$id}" class="btn btn-primary">Update</a>
                         
                         HTML;
             }
