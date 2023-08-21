@@ -1,5 +1,5 @@
 <?php
-require_once "../utils/crud.php";
+require_once "../utils/crudAdoption.php";
 require_once "../utils/file_upload.php";
 require_once "../utils/formUtils.php";
 
@@ -9,6 +9,8 @@ session_start();
 preventUser();
 
 $id = $_GET["id"];
+
+$crud = new CRUD_ADOPTION();
 
 # This is a script that handles the update of an adoption form. 
 #
@@ -47,6 +49,7 @@ $id = $_GET["id"];
 <body>
     <?php include '../components/navbar.php'; ?>
     <!-- Add layout -->
+    <h1> Test {{$id }} </h1> 
 </body>
 
 </html>

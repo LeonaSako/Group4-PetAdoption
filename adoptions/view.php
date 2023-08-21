@@ -56,19 +56,39 @@ if (!empty($result)) {
     $layout .= <<<HTML
             <div class="card text-center">
                 <div class="card-header">
-                My adoption application
+                    My adoption application
                 </div>
+
                 <div class="card-body">
                     <h5 class="card-title"></h5>
-                    <p class="card-text">Congratulations on choosing to adopt $name ! </p>
                     <p>Your application is <b>$application</b>.</p>
-                    <a href="{$url}" class="btn btn-primary" $btnattr >Cancel</a>
+            HTML;
+          
+                if ($status == 'Apply') {
+                $layout .= <<<HTML
+                        <p class="card-text">No information available.</p>
+                HTML;
+                } elseif ($status == 'Approved') {
+                    $layout .= <<<HTML
+                            <p class="card-text"> Congratulations on choosing to adopt $name!</p>
+                HTML;
+                } elseif ($status == 'Declined') {
+                    $layout .= <<<HTML
+                            <p class="card-text"> Sorry, your application is declined.</p>
+                HTML;
+                }
+                    
+                $layout .= <<<HTML
+               
+               <a href="{$url}" class="btn btn-primary" $btnattr >Cancel</a>
                 </div>
+
                 <div class="card-footer text-body-secondary">
                 Submitted $daysAgo $daytext ago
-                </div>
             </div>
-   HTML;
+        </div>
+    HTML;
+   
 } else {
     $layout .= "No results";
 }
@@ -77,7 +97,7 @@ addBreadcrumb('Home', '../user/dashboard.php');
 addBreadcrumb('User', '../user/profile.php?id=' . $_SESSION["User"]);
 addBreadcrumb('Adoptions', '../adoptions/myadoptions.php');
 addBreadcrumb('Details');
-?>
+?>  
 
 <!DOCTYPE html>
 <html lang="en">
@@ -97,3 +117,4 @@ addBreadcrumb('Details');
 </body>
 
 </html>
+
