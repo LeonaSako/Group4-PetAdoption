@@ -24,54 +24,54 @@ if (!empty($result)) {
     $location = $pet['location'];
     $description = $pet['description'];
     $status = ($pet['available'] == 1) ? 'Available' : 'Adopted';
+    $POD = $pet['pet_day'];
 
-    $layout = <<<HTML
-    <div class="d-flex justify-content-md-evenly">
-        <div class="card">
-            <img src="{$imageSrc}" id="details-img" class='img-fluid shadow mb-5' alt="Pet image">
-            <div class="card-body">
-                <figure class="text-center">
-                    <blockquote class="blockquote">
-                        <h5>{$name}</h5>
-                    </blockquote>
-                    <figcaption class="blockquote-footer">
-                    {$description}
-                    </figcaption>
-                </figure>
-                <dl class="row">
-                    <dt class="col-sm-4">Breed: </dt>
-                    <dd class="col-sm-8">$breed</dd>
-                    <dt class="col-sm-4">Age: </dt>
-                    <dd class="col-sm-8">$age years old</dd>
-                    <dt class="col-sm-4">Size: </dt>
-                    <dd class="col-sm-8">$size</dd>
-                    <dt class="col-sm-4">Vaccinated: </dt>
-                    <dd class="col-sm-8">$vaccinated</dd>
-                    <dt class="col-sm-4">Status: </dt>
-                    <dd class="col-sm-8">$status</dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-    <br>
-        <div class="d-grid gap-2 d-md-flex justify-content-center">
-    HTML;
+    if ($POD == 1) {
+        $btntxt = "Remove pet of the day";
+        $btnname = "remove-POD";
+    } else {
+        $btntxt = "Make pet of the day";
+        $btnname = "make-POD";
+    }
+
+    $layout = "";
     if (isset($_SESSION["User"])) {
-        $layout .= <<<HTML
-                        <a href="../adoptions/new.php?id=$id" class="btn btn-warning">Adopt</a>
-                        HTML;
+        $layout .= "<a href='../adoptions/new.php?id=$id' class='btn btn-warning'>Adopt</a>";
     }
     if (isset($_SESSION["Adm"]) || isset($_SESSION["Agency"])) {
         $layout .= <<<HTML
                     <a href="update.php?id={$id}" class="btn btn-warning">Update</a>
                     <a href="delete.php?id={$id}" class="btn btn-danger">Delete</a>
-                    HTML;
+                </div>
+                HTML;
     }
-    $layout .= "
-        </div>
-    ";
+    if (isset($_SESSION["Adm"])) {
+        $layout .= <<<HTML
+                        <form method="post" autocomplete="off" enctype="multipart/form-data">
+                            <div class="gap-2 d-md-flex justify-content-center" id="pet-of-day-btn">
+                                <button name='{$btnname}' type="submit" class="btn btn-primary">$btntxt</button>
+                            </div>
+                        </form>
+                        HTML;
+    }
 } else {
     $layout = "<p class='text-center'>Something went wrong. Record with id = $id is not found.</p>";
+}
+if (isset($_POST["make-POD"])) {
+
+    $result = $crud->makePetOfDay($id);
+
+    if ($result) {
+        header("Location: $_SERVER[REQUEST_URI]");
+        exit;
+    }
+} else if (isset($_POST["remove-POD"])) {
+    $result = $crud->removePetOfDay($id);
+
+    if ($result) {
+        header("Location: $_SERVER[REQUEST_URI]");
+        exit;
+    }
 }
 addBreadcrumb('Home', '../user/dashboard.php');
 addBreadcrumb('Pets', '../pet/listings.php');
@@ -108,12 +108,38 @@ addBreadcrumb('Details');
     <?php include '../components/navbar.php'; ?>
     <div class="container mt-4">
         <a href="listings.php">GO BACK</a>
-
         <div class="row justify-content-center">
-            <?= $layout ?>
+            <div class="d-flex justify-content-md-evenly">
+                <div class="card">
+                    <img src="<?= $imageSrc ?>" id="details-img" class='img-fluid shadow mb-5' alt="Pet image">
+                    <div class="card-body">
+                        <figure class="text-center">
+                            <blockquote class="blockquote">
+                                <h5><?= $name ?></h5>
+                            </blockquote>
+                            <figcaption class="blockquote-footer"> <?= $description ?></figcaption>
+                        </figure>
+                        <dl class="row">
+                            <dt class="col-sm-4">Breed: </dt>
+                            <dd class="col-sm-8"><?= $breed ?></dd>
+                            <dt class="col-sm-4">Age: </dt>
+                            <dd class="col-sm-8"><?= $age ?> years old</dd>
+                            <dt class="col-sm-4">Size: </dt>
+                            <dd class="col-sm-8"><?= $size ?></dd>
+                            <dt class="col-sm-4">Vaccinated: </dt>
+                            <dd class="col-sm-8"><?= $vaccinated ?></dd>
+                            <dt class="col-sm-4">Status: </dt>
+                            <dd class="col-sm-8"><?= $status ?></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="d-grid gap-2 d-md-flex justify-content-center">
+                <?= $layout ?>
+            </div>
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 
 </html>
