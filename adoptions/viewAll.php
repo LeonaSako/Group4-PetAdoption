@@ -20,8 +20,10 @@ function viewAdoptions($result)
 
             $getPet = $crudPet->selectPets("id = $petId");
 
-            $petName = $getPet[0]["name"];
-            $petSpecies = $getPet[0]["species"];
+            $pet = $getPet[0];
+            
+            $petName = $pet["name"];
+            $petSpecies = $pet["species"];
             $status = $row['adopStatus'];
 
             $btnattr = "hidden";
