@@ -41,7 +41,6 @@ function viewPets($result)
                                         <p class="card-text">Vaccinated: $vaccinated</p>
                                         <div class="gap-2 d-md-flex justify-content-center">
                                             <a href="../pet/details.php?id=$id" class="btn btn-warning">Details</a>
-                                           
                         HTML;
             if (isset($_SESSION["User"])) {
                 $layout .= <<<HTML
@@ -52,13 +51,7 @@ function viewPets($result)
             }
             if (isset($_SESSION["Adm"]) || isset($_SESSION["Agency"])) {
                 $layout .= <<<HTML
-<<<<<<< HEAD
-                        <a href="update.php?id={$id}" class="btn btn-primary">Update</a>
-                      
-                        
-=======
                         <a href="../pet/update.php?id={$id}" class="btn btn-primary">Update</a>
->>>>>>> e8f601e13282f45eadebb75a3bc9a2201a572077
                         HTML;
             }
             $layout .= "    </div>";
