@@ -4,15 +4,17 @@ session_start();
 require_once "../utils/crudPet.php";
 require_once "../utils/formUtils.php";
 require_once "../utils/file_upload.php";   
+
 $crud = new CRUD_PET();
 
+
+
 if (isset($_POST["create"])) {
-    $date = date('Y-m-d');
-    $description = $_POST['desc'];
-    $image = fileUpload($_FILES["image"],'stories');
-
+     echo $date = date('Y-m-d');
+     echo$description = $_POST['desc'];
+      $image = fileUpload($_FILES["image"],'stories');
     $values = [$image[0], $date, $description];
-
+    var_dump($values);
     $crud->createStory($values);
 }
 ?>
