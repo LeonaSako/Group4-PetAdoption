@@ -16,23 +16,6 @@ addBreadcrumb('Home', '../user/dashboard.php');
 addBreadcrumb('Pets', '../pet/listings.php');
 addBreadcrumb('');
 
-if (isset($_POST["make-POD"])) {
-
-    $POD = $crud->makePetOfDay($id);
-
-    if ($POD) {
-        header("Location: $_SERVER[REQUEST_URI]");
-        exit;
-    }
-} else if (isset($_POST["remove-POD"])) {
-    $POD = $crud->removePetOfDay($id);
-
-    if ($POD) {
-        header("Location: $_SERVER[REQUEST_URI]");
-        exit;
-    }
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -139,7 +122,6 @@ if (isset($_POST["make-POD"])) {
     <script src="../js/jquery-3.7.0.min.js"></script>
     <script type="text/javascript" src="../js/filter.js"></script>
     <script type="text/javascript" src="../js/searchPet.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 </body>
 
