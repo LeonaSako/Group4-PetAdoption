@@ -16,23 +16,6 @@ addBreadcrumb('Home', '../user/dashboard.php');
 addBreadcrumb('Pets', '../pet/listings.php');
 addBreadcrumb('');
 
-if (isset($_POST["make-POD"])) {
-
-    $POD = $crud->makePetOfDay($id);
-
-    if ($POD) {
-        header("Location: $_SERVER[REQUEST_URI]");
-        exit;
-    }
-} else if (isset($_POST["remove-POD"])) {
-    $POD = $crud->removePetOfDay($id);
-
-    if ($POD) {
-        header("Location: $_SERVER[REQUEST_URI]");
-        exit;
-    }
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -41,7 +41,6 @@ function viewPets($result)
                                         <p class="card-text">Vaccinated: $vaccinated</p>
                                         <div class="gap-2 d-md-flex justify-content-center">
                                             <a href="../pet/details.php?id=$id" class="btn btn-warning">Details</a>
-                                           
                         HTML;
             if (isset($_SESSION["User"])) {
                 $layout .= <<<HTML
@@ -55,18 +54,8 @@ function viewPets($result)
                         <a href="../pet/update.php?id={$id}" class="btn btn-primary">Update</a>
                         HTML;
             }
-            $layout .= "    </div>";
-            if (isset($_SESSION["Adm"])) {
-                $layout .= <<<HTML
-                            <form method="post" autocomplete="off" enctype="multipart/form-data">
-                                <div class="gap-2 d-md-flex justify-content-center" id="pet-of-day-btn">
-                                    <button name='{$btnname}' type="submit" class="btn btn-primary">$btntxt</button>
-                                </div>
-                            </form>
-                        HTML;
-            }
-
-            $layout .= "  </div>
+            $layout .= "    </div>
+                        </div>
                     </div>
                 </div>";
         }
