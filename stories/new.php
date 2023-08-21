@@ -1,11 +1,17 @@
 <?php
 session_start();
 
-require_once "../utils/crudPet.php";
+require_once "../utils/crudStories.php";
 require_once "../utils/formUtils.php";
-require_once "../utils/file_upload.php";   
-$id = $_GET["id"];
-$crud = new CRUD_PET();
+require_once "../utils/file_upload.php";
+
+$pageTitle = "Pet story";
+
+$petId = $_GET["id"];
+$userId = $_SESSION["User"];
+
+$crud = new CRUD_STORY();
+
 if (isset($_POST["create"])) {
     $date = date('Y-m-d');
     $description = $_POST['desc'];
@@ -18,12 +24,11 @@ if (isset($_POST["create"])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <?php include '../components/head.php'; ?>
     <link rel="stylesheet" href="../css/main.css">
-    <title>Story</title>
+    <title><?= $pageTitle ?></title>
 </head>
 
 <body>
@@ -53,4 +58,5 @@ if (isset($_POST["create"])) {
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
+
 </html>

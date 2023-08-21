@@ -5,6 +5,14 @@ require_once "../utils/crudPet.php";
 require_once "../utils/crudUser.php";
 require_once "../utils/crudAdoption.php";
 require_once "../utils/formUtils.php";
+require_once "../components/breadcrumb.php";
+
+addBreadcrumb('Home', '../user/dashboard.php');
+addBreadcrumb('User', '../user/profile.php?id=' . $_SESSION["User"]);
+addBreadcrumb('Adoptions', '../adoptions/myadoptions.php');
+addBreadcrumb('Apply');
+
+$pageTitle = "New adoption";
 
 $petID = $_GET["id"];
 $userID = $_SESSION["User"];
@@ -38,13 +46,13 @@ if (isset($_POST['adoption-submit'])) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <?php include '../components/head.php'; ?>
     <link rel="stylesheet" href="../css/main.css">
-    <title>Document</title>
+    <title><?= $pageTitle ?></title>
 </head>
+
 <body>
     <?php include '../components/navbar.php'; ?>
     <?php

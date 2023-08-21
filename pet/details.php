@@ -3,6 +3,8 @@
 session_start();
 
 require_once "../utils/crudPet.php";
+require_once "../components/breadcrumb.php";
+$pageTitle = "Pet details";
 
 $id = $_GET["id"];
 
@@ -71,28 +73,18 @@ if (!empty($result)) {
 } else {
     $layout = "<p class='text-center'>Something went wrong. Record with id = $id is not found.</p>";
 }
-
+addBreadcrumb('Home', '../user/dashboard.php');
+addBreadcrumb('Pets', '../pet/listings.php');
+addBreadcrumb('Details');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <?php include '../components/head.php'; ?>
     <link rel="stylesheet" href="../css/main.css">
-    <title>Pet Details</title>
     <style>
-        /* Additional styles for girly and pink look */
-        body {
-            background-color: #f9e1e1;
-        }
-
-        h1 {
-            color: #ff69b4;
-        }
-
         .card {
             background-color: #fff;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -107,17 +99,8 @@ if (!empty($result)) {
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
-        a {
-            color: #ff69b4;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        a:hover {
-            color: #ff4181;
-        }
     </style>
+    <title><?= $pageTitle ?></title>
 </head>
 
 <body>
@@ -125,7 +108,7 @@ if (!empty($result)) {
     <?php include '../components/navbar.php'; ?>
     <div class="container mt-4">
         <a href="listings.php">GO BACK</a>
-        <h1 class="text-center">Animal Details</h1>
+
         <div class="row justify-content-center">
             <?= $layout ?>
         </div>

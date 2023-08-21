@@ -8,13 +8,15 @@ $pageTitle = "Pet listings";
 
 $crud = new CRUD_PET();
 
-$result = $crud->selectPets("");
+$id = $_SESSION["Agency"];
+
+$result = $crud->selectPets("fk_users_id = $id");
 
 $layout = viewPets($result);
 
-addBreadcrumb('Home', '../user/dashboard.php');
-addBreadcrumb('Pets', '../pet/listings.php');
-addBreadcrumb('');
+addBreadcrumb('Dashboard', '../agency/dashboard.php');
+addBreadcrumb('Pets', '../agency/repository.php');
+addBreadcrumb('Repository');
 
 ?>
 <!DOCTYPE html>
