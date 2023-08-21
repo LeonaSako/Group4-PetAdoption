@@ -45,6 +45,8 @@ function viewPets($result)
             if (isset($_SESSION["User"])) {
                 $layout .= <<<HTML
                         <a href="../adoptions/new.php?id=$id" class="$buttonClass">Take me home</a>
+                        <a href='../agency/contact.php' class="$buttonClass">Contact Agency</a>
+                        
                         HTML;
             }
             if (isset($_SESSION["Adm"]) || isset($_SESSION["Agency"])) {
