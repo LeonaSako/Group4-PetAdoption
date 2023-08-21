@@ -26,6 +26,7 @@ if (isset($_POST["sign-up"])) {
 
     $agency = cleanInputs($_POST["agency"]);
     $address = cleanInputs($_POST["address"]);
+    $picture = fileUpload($_FILES["picture"], 'agency');
     $email = cleanInputs($_POST["email"]);
     $phone = cleanInputs($_POST["phone"]);
     $password = $_POST["password"];
