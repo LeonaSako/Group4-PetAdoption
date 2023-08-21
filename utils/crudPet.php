@@ -79,6 +79,34 @@ class CRUD_PET
         return $result;
     }
 
+    public function makePetOfDay($id)
+    {
+        $getPOD = $this->selectPets("`pet_day` = 1");
+
+        if ($getPOD != NULL) {
+            $POD = $getPOD[0]["id"];
+            $this->removePetOfDay($POD);
+        }
+
+        $sql = "UPDATE `pet` SET `pet_day`= 1 WHERE id = $id";
+
+        $result = mysqli_query($this->connection, $sql);
+
+        $this->alert($result, "The pet has been made pet of the day");
+
+        return $result;
+    }
+
+    public function removePetOfDay($id)
+    {
+
+        $sql = "UPDATE `pet` SET `pet_day`= 0 WHERE id = $id";
+
+        $result = mysqli_query($this->connection, $sql);
+
+        return $result;
+    }
+
     public function deletePet($id)
     {
         $sql = "DELETE FROM `pet` WHERE id = $id";

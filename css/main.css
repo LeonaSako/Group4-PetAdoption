@@ -84,6 +84,10 @@ Main Components
     opacity: 0.9;
 }
 
+#pet-of-day-btn {
+    padding-top: 7px;
+}
+
 #login-form {
     margin-left: 155px;
 }

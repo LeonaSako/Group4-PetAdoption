@@ -14,10 +14,19 @@ function viewPets($result)
             $vaccinated = ($row['vaccinated'] == 1) ? 'Yes' : 'No';
             $isAdopted = ($row['available'] == 0) ? true : false;
 
+            $POD = $row['pet_day'];
+
+            if ($POD == 1) {
+                $btntxt = "Remove pet of the day";
+                $btnname = "remove-POD";
+            } else {
+                $btntxt = "Make pet of the day";
+                $btnname = "make-POD";
+            }
+
             $buttonClass = $isAdopted ? 'btn btn-primary disabled' : 'btn btn-primary';
 
             $layout .= <<<HTML
-                            
                             <div class="col" style="display: inline-block;">
                                 <div class="pet-card">
                                     <img src="{$image}" id="details-img" class='img-fluid shadow' alt="Pet image">
@@ -37,22 +46,35 @@ function viewPets($result)
             if (isset($_SESSION["User"])) {
                 $layout .= <<<HTML
                         <a href="../adoptions/new.php?id=$id" class="$buttonClass">Take me home</a>
+                        <a href='../agency/contact.php' class="$buttonClass">Contact Agency</a>
+                        
                         HTML;
             }
             if (isset($_SESSION["Adm"]) || isset($_SESSION["Agency"])) {
                 $layout .= <<<HTML
+<<<<<<< HEAD
                         <a href="update.php?id={$id}" class="btn btn-primary">Update</a>
                       
                         
+=======
+                        <a href="../pet/update.php?id={$id}" class="btn btn-primary">Update</a>
+>>>>>>> e8f601e13282f45eadebb75a3bc9a2201a572077
                         HTML;
             }
-            $layout .= "    </div>
-                        </div>
+            $layout .= "    </div>";
+            if (isset($_SESSION["Adm"])) {
+                $layout .= <<<HTML
+                            <form method="post" autocomplete="off" enctype="multipart/form-data">
+                                <div class="gap-2 d-md-flex justify-content-center" id="pet-of-day-btn">
+                                    <button name='{$btnname}' type="submit" class="btn btn-primary">$btntxt</button>
+                                </div>
+                            </form>
+                        HTML;
+            }
+
+            $layout .= "  </div>
                     </div>
-                
-                </div>
-                
-            ";
+                </div>";
         }
     } else {
         $layout .= "No results";
