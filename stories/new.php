@@ -6,20 +6,18 @@ require_once "../utils/formUtils.php";
 require_once "../utils/file_upload.php";
 
 $pageTitle = "Pet story";
-
 $petId = $_GET["id"];
 $userId = $_SESSION["User"];
 
 $crud = new CRUD_STORY();
 
 if (isset($_POST["create"])) {
-    $date = date('Y-m-d');
+    // $date = date('Y-m-d');
+    $date = date("Y-m-d H:i:s");
     $description = $_POST['desc'];
     $image = fileUpload($_FILES["image"],'stories');
-    // `fk_pet_id`, `image`, `desc`,`date`, `fk_user_id`
-    $values = [,$image[0], $description,$date];
-    var_dump($values);
-    $crud->createStory($values);
+    $values = [$petId,$image[0],$date,$description,$userId];
+    $crud->createStory($values);    
 }
 ?>
 <!DOCTYPE html>

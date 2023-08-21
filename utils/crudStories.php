@@ -33,19 +33,19 @@ class CRUD_STORY
         }
         $valuesOut = implode(",", $valuesOut);
 
-        $sql = "INSERT INTO `$table`($columns) VALUES ($valuesOut)";
+        $sql = "INSERT INTO `$table`($columns) VALUES ($valuesOut)";    
         $result = mysqli_query($this->connection, $sql);
         return $result;
     }
 
     public function selectStories(string $condition)
     {
-        return $this->select("story", "*", $condition);
+        return $this->select("stories", "*", $condition);
     }
 
     public function selectMessages(string $condition)
     {
-        return $this->select("message", "*", $condition);
+        return $this->select("message", "*", $condition);   
     }
 
     public function createStory(array $values)
