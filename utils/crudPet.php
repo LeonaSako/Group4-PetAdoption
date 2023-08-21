@@ -34,6 +34,7 @@ class CRUD_PET
         $valuesOut = implode(",", $valuesOut);
 
         $sql = "INSERT INTO `$table`($columns) VALUES ($valuesOut)";
+        echo $sql;
         $result = mysqli_query($this->connection, $sql);
         return $result;
     }
