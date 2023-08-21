@@ -42,6 +42,8 @@ if (!empty($results)) {
                             <p class='card-text'>{$email}</p>
                             <a href='../user/update.php?id={$userid}' class='btn btn-warning'>Update</a>
                             <a href='../user/delete.php?id={$userid}' class='btn btn-danger'>Delete</a>
+                           
+
                         </div>
                     </div>
                 </div>
