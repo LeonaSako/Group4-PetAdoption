@@ -8,8 +8,6 @@ require_once "../components/usertable.php";
 require_once "../utils/crudPet.php";
 require_once "../components/breadcrumb.php";
 
-
-
 $pageTitle = "Profile";
 
 $id = $_GET["id"];
@@ -34,8 +32,9 @@ if (!empty($result)) {
     $applic = viewAdoptions($applications);
 }
 
+
 addBreadcrumb('Home', '../user/dashboard.php');
-addBreadcrumb('User', '../user/profile.php?id=' . $_SESSION["User"]);
+addBreadcrumb('User', '../user/profile.php?id=' . $id);
 addBreadcrumb('Profile');
 
 ?>

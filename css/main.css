@@ -78,10 +78,18 @@ Main Components
 
 .lo-img {
     width: 500px;
-    margin-left: 222px;
+
     border-radius: 9px;
     opacity: 6px;
-    opacity: 0.5;
+    opacity: 0.9;
+}
+
+#login-form {
+    margin-left: 155px;
+}
+
+.fa {
+    margin-left: 250px;
 }
 
 .back {

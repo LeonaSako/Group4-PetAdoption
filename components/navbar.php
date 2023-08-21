@@ -7,17 +7,37 @@ if (isset($_SESSION["Adm"])) {
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="../admin/dashboard.php">Home</a>
             </li>
-            <li class='nav-item'>
-                <a class='nav-link' href='../pet/listings.php'>Pet listings</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false" >
+                    Pets
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" href='../pet/listings.php'>View all pets</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href='../pet/create.php'>Create new</a>
+                    </li>
+                </ul>
             </li>
-            <li class='nav-item'>
-                <a class='nav-link' href='../pet/create.php'>New pet</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false" >
+                    Users
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class="dropdown-item" href='../pet/listings.php'>View all users</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href='../pet/create.php'>View all agencies</a>
+                    </li>
+                </ul>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='../admin/adoptions.php'>Adoptions</a>
             </li>
     HTML;
-    $profile .= "<a class='dropdown-item' href='../admin/profile.php?id={$_SESSION["Adm"]}'>My profile</a>";
+    $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["Adm"]}'>My profile</a>";
 } elseif (isset($_SESSION["User"])) {
     $navlayout .= <<<HTML
             <li class="nav-item">
@@ -44,17 +64,24 @@ if (isset($_SESSION["Adm"])) {
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="../agency/dashboard.php">Home</a>
             </li>
-            <li class='nav-item'>
-                <a class='nav-link' href='../agency/repository.php'>Pet repository</a>
-            </li>
-            <li class='nav-item'>
-                <a class='nav-link' href='../pet/create.php'>New pet</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false" >
+                    Pets
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li>
+                        <a class='nav-link' href='../agency/repository.php'>Pet repository</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href='../pet/create.php'>Create new</a>
+                    </li>
+                </ul>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='../agency/adoptions.php'>Adoptions</a>
             </li>
     HTML;
-    $profile .= "<a class='dropdown-item' href='../agency/profile.php?id={$_SESSION["Agency"]}'>My profile</a>";
+    $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["Agency"]}'>My profile</a>";
 } else {
     $navlayout .= <<<HTML
         <li class='nav-item'>
@@ -82,7 +109,7 @@ $breadcrumbs = displayBreadcrumbs();
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                    <img src="../images/layout/pet_logo.jpg" class="logo" alt="MDB Logo" loading="lazy" />
+                    <img src="../images/layout/pet_logo_2.png" class="logo" alt="MDB Logo" loading="lazy" />
                 </a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?= $navlayout ?>
@@ -94,7 +121,6 @@ $breadcrumbs = displayBreadcrumbs();
                         <i class="fas fa-bell"></i>
                         <span class="badge rounded-pill badge-notification bg-danger">1</span>
                     </a>
-
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                         <li>
                             <a class="dropdown-item" href="#">Some news</a>

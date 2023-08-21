@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+require_once "../utils/crudUser.php";
+require_once "../utils/formUtils.php";
+
+$pageTitle = "Login";
+
 if (isset($_SESSION["Adm"])) {
     header("Location: ../admin/dashboard.php");
 } else if (isset($_SESSION["User"])) {
@@ -8,9 +13,6 @@ if (isset($_SESSION["Adm"])) {
 } else if (isset($_SESSION["Agency"])) {
     header("Location: ../agency/dashboard.php");
 }
-
-require_once "../utils/crudUser.php";
-require_once "../utils/formUtils.php";
 
 $email = "";
 $emailError = $passError = "";
@@ -77,10 +79,13 @@ if (isset($_POST["login"])) {
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container">
-        <h1 class="text-center">Login page </h1>
+        <h1 class="text-center">Login page</h1>
+        <br>
         <div class="row">
-            <div class="col-4">
-                <br> <br>
+            <div class="col-lg-4">
+                <img src="../images/layout/pet_logo_2.png" class="lo-img">
+            </div>
+            <div class="col-lg-6" id="login-form">
                 <form method="post">
                     <div class="mb-3">
                         <br>
@@ -95,14 +100,9 @@ if (isset($_POST["login"])) {
                     </div>
                     <button name="login" type="submit" class="btn btn-primary">Login</button><br><br>
                     <i class="fa fa-hand-o-down" style="font-size:24px"></i><br>
-                    <span> <a href="registration.php">Register here </a> If you don't have an account, click here!</span>
+                    <span> If you don't have an account, <a href="registration.php">Register here </a> </span>
                 </form>
             </div>
-            <div class="col-4">
-                <br><br>
-                <img src="../images/login/login.jpg" class="lo-img">
-            </div>
-            <div class="col-4"></div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
