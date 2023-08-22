@@ -28,8 +28,14 @@ class CRUD_ADOPTION
 
     public function selectAgencyAdoptions(string $condition)
     {
-        return $this->select("adoption INNER JOIN pet ON adoption.fk_pet_id = pet.id", "*", $condition);
-   
+        $columns = "adoption.id as adoptId,
+        fk_adoptee_id,
+        pet.id as petId,
+        adopStatus,
+        submitionDate,
+        donation,
+        reason";
+        return $this->select("adoption INNER JOIN pet ON adoption.fk_pet_id = pet.id", $columns, $condition);
     }
 
     public function selectAdoptionsAndAgencyPets(string $condition)

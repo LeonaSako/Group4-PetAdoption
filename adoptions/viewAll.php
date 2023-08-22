@@ -19,19 +19,22 @@ function viewAdoptions($result)
 
             $adopId = $row["id"];
 
-            $petId = $row["fk_pet_id"];
+            $petId = $row["petId"];
 
             $getPet = $crudPet->selectPets("id = $petId");
 
-            $petName = $getPet[0]["name"];
-            $petSpecies = $getPet[0]["species"];
+            $pet = $getPet[0];
+            
+            $petName = $pet["name"];
+            $petSpecies = $pet["species"];
             $status = $row['adopStatus'];
+            $adopId = $row["adoptId"];
 
             $btnattr = "hidden";
 
             if ($status == 'Apply') {
                 $application = 'Pending';
-                $url = "cancel.php?id=" . $row["id"];
+                $url = "cancel.php?id=" . $adopId;
                 $btnattr = "";
             } elseif ($status == 'Approved') {
                 $application = 'Approved';
@@ -39,9 +42,11 @@ function viewAdoptions($result)
                 $application = 'Rejected';
             }
 
+            
+
             $list .= <<<HTML
                             <tr>
-                                <td> {$row['id']} </td>
+                                <td> $adopId </td>
                                 <td> $petId </td>
                                 <td> {$petName} </td>
                                 <td> {$petSpecies} </td>
@@ -52,13 +57,16 @@ function viewAdoptions($result)
                                 <td>
                                 <p class="d-inline-flex gap-1">
                                     <a href='../adoptions/view.php?id={$row["id"]}' class='btn btn-warning'>Details</a>
+                                    <a href='view.php?id={$adopId}' class='btn btn-warning'>Details</a>
                             HTML;
-            if (isset($_SESSION['Agency'])) {
-                $list .= "
-                        <a href='edit.php?id={$petId}' class='btn btn-success' aria-disabled='true'>Approve</a>
-                        <a href='edit.php?id={$petId}' class='btn btn-primary' aria-disabled='true'>Reject</a>";
-            }  else {
-                $list .= "<a href='cancel.php?id={$petId}' class='btn btn-primary' $btnattr>Cancel</a>";
+            if (isset($_SESSION['Adm'])) {
+                $list .= "<a href='edit.php?id={$adopId}' class='btn btn-success disabled' aria-disabled='true'>Approve</a>
+                                <a href='edit.php?id={$adopId}' class='btn btn-primary disabled' aria-disabled='true'>Reject</a>";
+            } else if (isset($_SESSION['Agency'])) {
+                $list .= "<a href='edit.php?id={$adopId}' class='btn btn-primary'>Approve</a>
+                                <a href='edit.php?id={$adopId}' class='btn btn-primary'>Reject</a>";
+            } else {
+                $list .= "<a href='cancel.php?id={$adopId}' class='btn btn-primary' $btnattr>Cancel</a>";
             }
             $list .= "</p>
                     </td>
