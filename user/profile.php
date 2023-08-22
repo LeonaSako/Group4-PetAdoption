@@ -16,6 +16,8 @@ $crud = new CRUD_USER();
 
 $result = $crud->selectUsers("id = $id");
 
+$url = "../user/update.php?id=$id";
+
 if (!empty($result)) {
 
     $user = $result[0];
@@ -59,7 +61,7 @@ addBreadcrumb('Profile');
                             <img src="<?php echo $imageSrc; ?>" alt="avatar" class="rounded-circle img-fluid" id="profile-picture">
                             <h5 class="my-3"><?php echo $name; ?></h5>
                             <div class="d-flex justify-content-center mb-2">
-                                <button type="button" class="btn btn-primary">Follow</button>
+                                <a href="<?php echo $url; ?>" class="btn btn-primary">Update</a>
                                 <button type="button" class="btn btn-outline-primary ms-1">Message</button>
                             </div>
                         </div>
