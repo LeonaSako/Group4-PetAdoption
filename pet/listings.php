@@ -35,7 +35,7 @@ addBreadcrumb('');
         <p class="d-inline-flex gap-1">
         <div class="gap-2 d-md-flex justify-content-center">
             <a id="collapseButton" class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                See of the day
+                See pet of the day
             </a>
         </div>
         </p>
