@@ -26,6 +26,7 @@ if (isset($_POST["sign-up"])) {
 
     $agency = cleanInputs($_POST["agency"]);
     $address = cleanInputs($_POST["address"]);
+    $picture = fileUpload($_FILES["picture"], 'agency');
     $email = cleanInputs($_POST["email"]);
     $phone = cleanInputs($_POST["phone"]);
     $password = $_POST["password"];
@@ -140,7 +141,6 @@ if (isset($_POST["sign-up"])) {
             <span>You have an account already? <a href="../user/login.php">Sign in here </a></span>
         </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 
 </html>

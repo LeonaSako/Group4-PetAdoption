@@ -8,7 +8,7 @@ $pageTitle = "User dashboard";
 
 $crud = new CRUD_PET();
 
-$result = $crud->selectPets("");
+$result = $crud->selectPets("`pet_day`=1");
 
 $layout = viewPets($result);
 

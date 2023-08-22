@@ -33,7 +33,13 @@ class CRUD_STORY
         }
         $valuesOut = implode(",", $valuesOut);
 
-        $sql = "INSERT INTO `$table`($columns) VALUES ($valuesOut)";    
+
+        $columns .= ", `date`";
+
+ 
+        $valuesOut .= ", NOW()";
+
+        $sql = "INSERT INTO `$table`($columns) VALUES ($valuesOut)";
         $result = mysqli_query($this->connection, $sql);
         return $result;
     }

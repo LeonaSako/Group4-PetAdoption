@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+require_once "../utils/crudStories.php";
+
+
+$crud = new CRUD_STORY();
+
 $pageTitle = "Contact";
 
 if (isset($_POST["submit"])) {
@@ -8,12 +13,20 @@ if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $message = $_POST["message"];
 
-    echo "Message would have been sent:\n";
-    echo "From: $email\n";
-    echo "To: leona.sako@gmail.com\n";
-    echo "Subject: Message from contact form by: $name\n";
-    echo "Message: $message";
+ 
+    $userId = $_SESSION["User"];
+    $agencyId = 1;
+
+    $subject = "Naslov poruke"; 
+    $fk_user_id = $userId; 
+    $fk_agency_id = $agencyId;
+ 
+
+    $values=[$subject, $message, $fk_user_id, $fk_agency_id];
+    $crud->createMessage($values);
+
 }
+ 
 
 ?>
 
@@ -55,3 +68,4 @@ if (isset($_POST["submit"])) {
 </body>
 
 </html>
+
