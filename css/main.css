@@ -3,6 +3,7 @@
 Primary style
 
 -------------------------------- */
+
 body {
     background-color: #fce4ec;
 }
@@ -21,11 +22,13 @@ a:hover {
     color: #ff4181;
 }
 
+
 /* -------------------------------- 
 
 Main Components 
 
 -------------------------------- */
+
 .container {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -43,7 +46,6 @@ Main Components
 .header {
     padding-top: 20px;
     position: relative;
-
 }
 
 .header h2 {
@@ -60,15 +62,11 @@ Main Components
     text-transform: uppercase;
     font-weight: 700;
     font-size: x-large;
-
     color: #ffffff;
     line-height: 150px;
     text-align: center;
     font-size: 2.4rem;
     font-weight: 300;
-
-
-
 }
 
 .buttons {
@@ -78,7 +76,6 @@ Main Components
 
 .lo-img {
     width: 500px;
-
     border-radius: 9px;
     opacity: 6px;
     opacity: 0.9;
@@ -110,7 +107,6 @@ Main Components
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .optional-fields {
@@ -140,11 +136,13 @@ Main Components
     object-fit: cover;
 }
 
+
 /* -------------------------------- 
 
 Accordion
 
 -------------------------------- */
+
 .accordion {
     padding-top: 40px;
     padding-bottom: 40px;
@@ -156,11 +154,13 @@ Accordion
     color: white;
 }
 
+
 /* -------------------------------- 
 
 Card
 
 -------------------------------- */
+
 .pet-card {
     margin-bottom: 20px;
     background-color: #fff;
@@ -237,6 +237,7 @@ blockquote {
     }
 }
 
+
 /* -------------------------------- 
 
 Buttons
@@ -282,6 +283,7 @@ Buttons
     background-color: #ffab40;
 }
 
+
 /* -------------------------------- 
 
 Form
@@ -294,7 +296,6 @@ Form
 
 .form-group {
     padding: 5px;
-
 }
 
 .form-group label {
@@ -309,11 +310,13 @@ Form
     margin-top: 50px;
 }
 
+
 /* -------------------------------- 
 
 Gallery
 
 -------------------------------- */
+
 .gallery {
     width: 80%;
     float: right;
@@ -333,24 +336,22 @@ Gallery
     #filter {
         width: 20%;
     }
-
     .cd-filter form {
         padding: 70px 10%;
     }
 }
+
 
 /* -------------------------------- 
 
 Filter
 
 -------------------------------- */
+
 #filter {
     position: relative;
-
-
     height: 100%;
     padding-bottom: 18px;
-
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -362,8 +363,6 @@ Filter
 .filter-block {
     margin-bottom: 1.6em;
     padding-left: 4%;
-
-
 }
 
 .filter-header h4 {
@@ -405,9 +404,6 @@ Filter
     padding-left: unset;
 }
 
-
-
-
 .filter-block input[type='search'] {
     border-color: transparent;
     background-color: #e6e6e6;
@@ -420,6 +416,7 @@ Filter
     border-bottom-right-radius: 20px;
 }
 
+
 /* -------------------------------- 
 
 Navbar
@@ -430,7 +427,6 @@ Navbar
     justify-content: center;
     padding: 0;
     margin: 0;
-
     display: flex;
     left: 10%;
 }
