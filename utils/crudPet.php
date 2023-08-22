@@ -86,8 +86,10 @@ class CRUD_PET
         if ($getPOD != NULL) {
             $POD = $getPOD[0]["id"];
             $this->removePetOfDay($POD);
+            
         }
 
+        
         $sql = "UPDATE `pet` SET `pet_day`= 1 WHERE id = $id";
 
         $result = mysqli_query($this->connection, $sql);
@@ -95,6 +97,8 @@ class CRUD_PET
         $this->alert($result, "The pet has been made pet of the day");
 
         return $result;
+
+        
     }
 
     public function removePetOfDay($id)

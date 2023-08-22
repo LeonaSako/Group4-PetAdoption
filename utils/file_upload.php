@@ -17,8 +17,12 @@ function fileUpload($pic, $type)
 
         if ($type == 'user') {
             $destination = "../images/users/{$pictureName}";
-        } else
-            $destination = "../images/pets/{$pictureName}";
+        } else if($type == 'agency')  {
+            $destination = "../images/agency/{$pictureName}";
+        }else{
+              $destination = "../images/pets/{$pictureName}";
+        }
+          
 
         move_uploaded_file($pic["tmp_name"], $destination);
     } elseif ($message == "The file chosen was not an image") {
