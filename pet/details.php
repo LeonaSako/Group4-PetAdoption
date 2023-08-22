@@ -39,6 +39,7 @@ if (!empty($result)) {
     if (isset($_SESSION["User"])) {
         $layout .= <<<HTML
                     <a href='../adoptions/new.php?id=$id' class='btn btn-primary' $hiddenAttr>Adopt</a> 
+                    <a href='../agency/contact.php' class="btn btn-primary">Contact Agency</a>
                 </div>
             HTML;
     }

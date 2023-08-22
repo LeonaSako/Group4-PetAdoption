@@ -43,8 +43,18 @@ if (isset($_SESSION["Adm"])) {
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="../user/dashboard.php">Home</a>
             </li>
-            <li class='nav-item'>
-                <a class='nav-link' href='../pet/listings.php'>Pet listings</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                    Pets
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li class='nav-item'>
+                        <a class="dropdown-item" href='../pet/listings.php'>Pets</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href='../static/static.php'>Pet care</a>
+                    </li>
+                </ul>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='../agency/contact.php'>Contact us</a>
@@ -52,7 +62,6 @@ if (isset($_SESSION["Adm"])) {
             <li class='nav-item'>
                 <a class='nav-link' href='../adoptions/myadoptions.php'>My Adoptions</a>
             </li>
-            
             <li class='nav-item'>
                 <a class='nav-link' href='../user/compatibility_quiz.php'>Go to the Quiz</a>
             </li>

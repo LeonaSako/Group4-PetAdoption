@@ -30,7 +30,7 @@ addBreadcrumb('');
 
 <body>
     <?php include '../components/navbar.php'; ?>
-    <div class="container">
+    <div class="container" id='POD-container'>
         <h2 class="h2-header">Pet of the day</h2>
         <p class="d-inline-flex gap-1">
         <div class="gap-2 d-md-flex justify-content-center">

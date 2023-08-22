@@ -66,16 +66,15 @@ function viewPetDetails($result)
             $size = $row['size'];
             $description = $row['description'];
             $vaccinated = ($row['vaccinated'] == 1) ? 'Yes' : 'No';
-            $isAdopted = ($row['available'] == 0) ? true : false;
+            $status = ($row['available'] == 1) ? 'Available for adoption' : 'Adopted';
 
             $POD = $row['pet_day'];
-            $buttonClass = $isAdopted ? 'btn btn-primary disabled' : 'btn btn-primary';
             $layout .= <<<HTML
                         <div class="col-4">
                             <div class="card mb-4">
                                 <div class="card-body text-center">
                                     <img src="{$image}" id="details-img" class='img-fluid shadow' alt="Pet image">
-                                    <h5 class="my-3">{$name}</h5>
+                                    <h5 class="my-3">$name</h5>
                                 </div>
                             </div>
                         </div>
@@ -90,7 +89,7 @@ function viewPetDetails($result)
                                             <p class="mb-0">Pet Name</p>
                                         </div>
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0">{$name}</p>
+                                            <p class="text-muted mb-0">$name</p>
                                         </div>
                                     </div>
                                     <hr>
@@ -128,11 +127,23 @@ function viewPetDetails($result)
                                         <div class="col-sm-9">
                                             <p class="text-muted mb-0">$size</p>
                                         </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
                                         <div class="col-sm-3">
                                             <p class="mb-0">Vaccinated</p>
                                         </div>
                                         <div class="col-sm-9">
                                             <p class="text-muted mb-0">$vaccinated</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Adoption status</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">$status</p>
                                         </div>
                                     </div>
                                 </div>
