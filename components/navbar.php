@@ -82,13 +82,25 @@ if (isset($_SESSION["Adm"])) {
                         <a class='nav-link' href='../agency/repository.php'>Pet repository</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href='../pet/create.php'>Create new</a>
+                        <a clas||||s="dropdown-item" href='../pet/create.php'>Create new</a>
                     </li>
                 </ul>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='../agency/adoptions.php'>Adoptions</a>
+                
             </li>
+
+            <li class='nav-item'>
+            <a class='nav-link' href='../agency/seeMessages.php'>SeeMessages</a>
+                
+            </li>
+
+
+
+
+
+      
     HTML;
     $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["Agency"]}'>My profile</a>";
 } else {

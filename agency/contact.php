@@ -13,9 +13,9 @@ if (isset($_POST["submit"])) {
     $email = $_POST["email"];
     $message = $_POST["message"];
 
- 
+   
     $userId = $_SESSION["User"];
-    $agencyId = 1;
+    $agencyId = $_GET["id"];
 
     $subject = "Naslov poruke"; 
     $fk_user_id = $userId; 
@@ -68,4 +68,5 @@ if (isset($_POST["submit"])) {
 </body>
 
 </html>
+
 
