@@ -25,9 +25,9 @@ X    - Homepage (List)                 (Leona)
 X    - View pets (list)
 x    - Make adoption (Form)       (Maryam)
 X    - Show / Details profile    (Leona)          
-    - My Adoptions (list with status of user adoption) (Lisa)
+X    - My Adoptions (list with status of user adoption) (Lisa)
 X    - Contact us                (Leona)
-    - Search function various criteria (input&dropdowns??) (Christina)
+X    - Search function various criteria (input&dropdowns??) (Christina)
 
 Agency: 
 X    - (Registration)           (Eleni)
@@ -39,21 +39,23 @@ x        - Create                (Christina)
 X        - Show / Details        (Leona)
 x        - Update                (Christina)
 x        - Delete                (Christina)
-    - Adoption status each pet & as list    (Lisa)
+X    - Adoption status each pet & as list    (Lisa)
     - Approve / decline adoption            (Lisa)
 
 
 Resource library:   (Users & Admin?!)    (Maryam)
 X    - Detailed Information -> Care, training, behavior 
+     - Show in Navbar (Christina)
 
 
 Additional:
-X    - Messaging System --> Contact us (Leona)
-X    - Pet Matchmaker                   (Leona)
+    - Messaging System --> Contact us (Leona)
+X   - Pet Matchmaker                   (Leona)
     - Adoption Stories                  (Maryam)
-    - Foster-to-adopt program                 
     - Pet of the day/week               (Eleni)
+
     - Volunteer opportunities with calendars
+    - Foster-to-adopt program                 
 
 Stories: USER
     CRUD
@@ -67,7 +69,7 @@ Messages:
     CRUD (UID, AgencyID, Message, Date )
         - Create                (Christina)
         - Show / Details        (Leona)
-        - Update                (Christina)
-        - Delete                (Christina) 
 
-        
+Login:
+    - Remove breadcrump bar (Christina)
+    - Remove logout link    (Christina)     
