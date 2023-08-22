@@ -34,8 +34,8 @@ addBreadcrumb('');
         <h2 class="h2-header">Pet of the day</h2>
         <p class="d-inline-flex gap-1">
         <div class="gap-2 d-md-flex justify-content-center">
-            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                Pet of the day
+            <a id="collapseButton" class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                See of the day
             </a>
         </div>
         </p>
@@ -135,6 +135,7 @@ addBreadcrumb('');
     </main>
 
     <script src="../js/jquery-3.7.0.min.js"></script>
+    <script type="text/javascript" src="../js/petofday.js"></script>
     <script type="text/javascript" src="../js/filter.js"></script>
     <script type="text/javascript" src="../js/searchPet.js"></script>
 
