@@ -11,6 +11,9 @@ $crud = new CRUD_PET();
 $result = $crud->selectPets("");
 $layout = viewPets($result);
 
+$POD = $crud->selectPets("pet_day = 1");
+$petofday = viewPetDetails($POD);
+
 addBreadcrumb('Home', '../user/dashboard.php');
 addBreadcrumb('Pets', '../pet/listings.php');
 addBreadcrumb('');
@@ -27,13 +30,26 @@ addBreadcrumb('');
 
 <body>
     <?php include '../components/navbar.php'; ?>
+    <div class="container">
+        <h2 class="h2-header">Pet of the day</h2>
+        <p class="d-inline-flex gap-1">
+        <div class="gap-2 d-md-flex justify-content-center">
+            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Pet of the day
+            </a>
+        </div>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="row">
+                <?= $petofday ?>
+            </div>
+        </div>
+    </div>
     <main class="cd-main-content">
         <div class='container'>
             <section class="gallery">
                 <div id="layout" class="row m-2">
-
                     <?= $layout ?>
-
                 </div>
             </section>
             <div id="filter">

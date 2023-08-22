@@ -92,9 +92,13 @@ if (!empty($result)) {
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container">
-        <h1 class="text-center">Update animal record</h1>
         <form method="post" autocomplete="off" enctype="multipart/form-data">
-            <?= $form ?>
+            <div class="card">
+                <div class="card-header">
+                    <h2>Update pet</h2>
+                </div>
+                <?= $form ?>
+            </div>
         </form>
     </div>
     <script type="text/javascript" src="../js/formhelper.js"></script>
