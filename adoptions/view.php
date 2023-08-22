@@ -4,8 +4,12 @@ session_start();
 
 require_once "../utils/crudAdoption.php";
 require_once "../utils/crudPet.php";
+require_once "../utils/formUtils.php";
 require_once "../components/breadcrumb.php";
-$pageTitle = "Adoptions";
+$pageTitle = "Adoption Details";
+
+preventAdmin();
+preventAgency();
 
 $id = $_GET["id"];
 

@@ -5,35 +5,24 @@ require_once "../utils/formUtils.php";
 
 $pageTitle = "Edit adoption";
 
-session_start();
-preventUser();
+// session_start();
+// preventUser();
 
 $id = $_GET["id"];
+$status = $_GET["status"];
 
-$crud = new CRUD_ADOPTION();
+$crudAdoption = new CRUD_ADOPTION();
 
-# This is a script that handles the update of an adoption form. 
-#
-# Use the following crud commands:
-#
-# $crud = new CRUD();
-#
-# $result = $crud->selectUsers("id = $id"); 
-#
-# for image upload use: $image = fileUpload($_FILES["image"], 'user');
-#   
-# Check if a new image has been uploaded to set the value of the column `image`:
-#
-# if ($_FILES["image"]["error"] == 0) {
-#   $pic = $image[0]; 
-# } else {
-#    $pic = null;
-# }
-#
-# Then use the crud:
-# 
-# $update = $crud->updateUser($id, $fname, $lname, $address, $birthdate, $phone, $email, $space, $exp, $pic)
 
+
+
+    $id = $_GET["id"];
+    $status = $_GET["status"];
+
+    $update = $crudAdoption->updateAdoptionStatus($id, $status, "WHERE id = $id");
+
+
+    header("refresh: 3; url = ../agency/adoptions.php");
 
 ?>
 

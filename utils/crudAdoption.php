@@ -26,17 +26,18 @@ class CRUD_ADOPTION
         return $this->select("adoption", "*", $condition);
     }
 
-    public function selectAgencyAdoptions(string $condition)
-    {
-        $columns = "adoption.id as adoptId,
-        fk_adoptee_id,
-        pet.id as petId,
-        adopStatus,
-        submitionDate,
-        donation,
-        reason";
-        return $this->select("adoption INNER JOIN pet ON adoption.fk_pet_id = pet.id", $columns, $condition);
-    }
+    // public function selectAgencyAdoptions(string $condition)
+    // {
+    //     $columns = "adoption.id as adoptId,
+    //     fk_adoptee_id,
+    //     pet.id as petId,
+    //     adopStatus,
+    //     submitionDate,
+    //     donation,
+    //     reason";
+    //     return $this->select("adoption INNER JOIN pet ON adoption.fk_pet_id = pet.id", $columns, $condition);
+    // }
+
 
     public function selectAdoptionsAndAgencyPets(string $condition)
     {
@@ -45,12 +46,13 @@ class CRUD_ADOPTION
         LEFT JOIN `users` u ON a.fk_adoptee_id = u.id ";
 
         $columns = "p.id as petId, 
+        a.fk_adoptee_id as fk_adoptee_id,
         p.name as pname, 
         p.species as species, 
         u.id as userId, 
         u.firstName as firstname, 
         u.lastName as lastname, 
-        a.id as adopId, 
+        a.id as adoptId, 
         a.adopStatus as adopStatus, 
         a.adoptionDate as adoptionDate , 
         a.submitionDate as submitionDate, 
@@ -85,9 +87,13 @@ class CRUD_ADOPTION
         $this->alertUser($result, "A new adoption has been submitted");
     }
 
-    public function updateAdoptionStatus($id, $status, $date)
+    public function updateAdoptionStatus($id, $status, $condition = "")
     {
-        $sql = "UPDATE `adoption` SET `adopStatus`='$status',`adoptionDate`='$date' WHERE id = $id";
+
+        // $date = new DateTime(); 
+        // $sql = "UPDATE `adoption` SET `adopStatus`='$status',`adoptionDate`='$date' WHERE id = $id";
+
+        $sql = "UPDATE `adoption` SET `adopStatus`= '$status' $condition" ;
 
         $result = mysqli_query($this->connection, $sql);
 
