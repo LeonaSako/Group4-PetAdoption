@@ -14,3 +14,6 @@ $result = $crud->makePetOfDay($id);
 if ($result) {
     header("Location: ../admin/dashboard.php");
 }
+
+?>
+

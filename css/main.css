@@ -452,3 +452,13 @@ Navbar
 .logo {
     height: 37px;
 }
+/* @media screen and (max-width: 1000px),
+(min-width: 701)
+{
+    #login-form {
+        grid-template-columns: repeat(1, 1fr);
+        margin-right: 0;
+        padding: 0;
+        /* translate: -50% 0; */
+    /* } */
+/* }  */
