@@ -2,6 +2,7 @@
 require_once "../components/breadcrumb.php";
 $navlayout = "";
 $profile = "";
+$messages = "";
 if (isset($_SESSION["Adm"])) {
     $navlayout .= <<<HTML
             <li class="nav-item">
@@ -79,10 +80,10 @@ if (isset($_SESSION["Adm"])) {
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li>
-                        <a class='nav-link' href='../agency/repository.php'>Pet repository</a>
+                        <a class='dropdown-item' href='../agency/repository.php'>Pet repository</a>
                     </li>
                     <li>
-                        <a clas||||s="dropdown-item" href='../pet/create.php'>Create new</a>
+                        <a class="dropdown-item" href='../pet/create.php'>Create new</a>
                     </li>
                 </ul>
             </li>
@@ -90,19 +91,12 @@ if (isset($_SESSION["Adm"])) {
                 <a class='nav-link' href='../agency/adoptions.php'>Adoptions</a>
                 
             </li>
-
             <li class='nav-item'>
-            <a class='nav-link' href='../agency/seeMessages.php'>SeeMessages</a>
-                
+                <a class='nav-link' href='../agency/seeMessages.php'>SeeMessages</a>
             </li>
-
-
-
-
-
-      
     HTML;
     $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["Agency"]}'>My profile</a>";
+    $messages .= "<a class='dropdown-item' href='../agency/seeMessages.php'>Messages</a>";
 } else {
     $navlayout .= <<<HTML
         <li class='nav-item'>
@@ -140,17 +134,11 @@ $breadcrumbs = displayBreadcrumbs();
                 <div class="dropdown">
                     <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-bell"></i>
-                        <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                        <span class="badge rounded-pill badge-notification bg-danger">2</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                         <li>
-                            <a class="dropdown-item" href="#">Some news</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Another news</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <?= $messages ?>
                         </li>
                     </ul>
                 </div>

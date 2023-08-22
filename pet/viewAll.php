@@ -5,7 +5,6 @@ function viewPets($result)
     if (!empty($result)) {
         foreach ($result as $row) {
             $id = $row['id'];
-            $userId = $row["fk_users_id"];
             $name = $row['name'];
             $image = "../images/pets/{$row['image']}";
             $breed = $row['breed'];
@@ -36,8 +35,6 @@ function viewPets($result)
             if (isset($_SESSION["User"])) {
                 $layout .= <<<HTML
                                         <a href="../adoptions/new.php?id=$id" class="btn btn-primary" $hiddenAttr>Take me home</a>
-                                        <a href='../agency/contact.php?id=$userId'  class="btn btn-primary">Contact Agency</a>
-                                        
                         HTML;
             } elseif (isset($_SESSION["Adm"]) || isset($_SESSION["Agency"])) {
                 $layout .= <<<HTML

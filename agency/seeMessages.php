@@ -3,69 +3,64 @@ session_start();
 
 require_once "../utils/crudStories.php";
 require_once "../utils/crudUser.php";
+require_once "../messages/viewMessages.php";
 
 $crud = new CRUD_STORY();
-$crudUser = new CRUD_USER();
 
 $pageTitle = "Messages";
 
 $agency = $_SESSION['Agency'];
 
-$messages = $crud->selectMessages("fk_agency_id = $agency");
+$unreadMessages = $crud->selectMessages("fk_agency_id = $agency AND readmsg = 0");
+$readMessages = $crud->selectMessages("fk_agency_id = $agency AND readmsg = 1");
 
+$unread = viewMessages($unreadMessages);
+$read = viewMessages($readMessages);
 
-function userName(string $userId,CRUD_USER $crudUser){
-    $users = $crudUser->selectUsers("id = $userId LIMIT 1");
-    $firstName = "";
-    $lastName = "";
-    foreach ($users as $user):
-    $firstName = $user["firstName"];
-    $lastName = $user["lastName"];
-    endforeach;
-
-    return $firstName . " " . $lastName;
-}
 
 ?>
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <?php include '../components/head.php'; ?>
     <link rel="stylesheet" href="../css/main.css">
     <title><?= $pageTitle ?></title>
 </head>
+
 <body>
     <?php include '../components/navbar.php'; ?>
 
     <div class="container mt-4">
-        <h1><?= $pageTitle ?></h1>
-        <?php foreach ($messages as $message): ?>
-            <div class="card mb-3">
-                <div class="card-header">
-                    Sent By: <?= userName($message['fk_user_id'],$crudUser) ?>
-                </div>
-                <div class="card-body">
-                    <h5 class="card-title">Message</h5>
-                    <p class="card-text"><?= $message['message']; ?></p>
-                </div>
-                <div class="card-footer text-muted">
-                    Date: <?= $message['date']; ?>
-                </div>
-
-                <div class="card-body">
-                    <form method="post">
-                        <div class="form-group">
-                            <label for="reply">Reply:</label>
-                            <textarea class="form-control" id="reply" name="reply" rows="4" required></textarea>
-                        </div>
-                        <div class="buttons">
-                            <button type="submit" class="btn btn-primary" name="submit-reply">Reply</button>
-                        </div>
-                    </form>
+        <h2 class="h2-header">Messages</h2>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Unread messages
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <?= $unread ?>
+                    </div>
                 </div>
             </div>
-        <?php endforeach; ?>
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Read messages
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <?= $read ?>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
+
 </html>

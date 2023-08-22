@@ -36,7 +36,7 @@ class CRUD_STORY
 
         $columns .= ", `date`";
 
- 
+
         $valuesOut .= ", NOW()";
 
         $sql = "INSERT INTO `$table`($columns) VALUES ($valuesOut)";
@@ -52,6 +52,19 @@ class CRUD_STORY
     public function selectMessages(string $condition)
     {
         return $this->select("message", "*", $condition);
+    }
+
+    public function changeMsgStatus($id, $status)
+    {
+        $sql = "UPDATE `message` SET `readmsg`=$status WHERE id = $id";
+
+        $result = mysqli_query($this->connection, $sql);
+
+        $alert = ($status == 1) ? "Message marked as read" : "Message marked as unread";
+
+        $this->alert($result, $alert);
+
+        return $result;
     }
 
     public function createStory(array $values)

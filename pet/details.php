@@ -19,6 +19,7 @@ $petDetails = viewPetDetails($result);
 if (!empty($result)) {
 
     $pet = $result[0];
+    $userId = $pet["fk_users_id"];
     $status = ($pet['available'] == 1) ? 'Available' : 'Adopted';
     $petOfD = $pet['pet_day'];
     $POD = $pet['pet_day'];
@@ -39,7 +40,7 @@ if (!empty($result)) {
     if (isset($_SESSION["User"])) {
         $layout .= <<<HTML
                     <a href='../adoptions/new.php?id=$id' class='btn btn-primary' $hiddenAttr>Adopt</a> 
-                    <a href='../agency/contact.php' class="btn btn-primary">Contact Agency</a>
+                    <a href='../agency/contact.php?id=$userId' class="btn btn-primary">Contact Agency</a>
                 </div>
             HTML;
     }
