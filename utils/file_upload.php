@@ -17,13 +17,14 @@ function fileUpload($pic, $type)
 
         if ($type == 'user') {
             $destination = "../images/users/{$pictureName}";
-        } else
-            $destination = "../images/pets/{$pictureName}";
-
+        }   $destination = "../images/pets/{$pictureName}"; 
         move_uploaded_file($pic["tmp_name"], $destination);
-    } elseif ($message == "The file chosen was not an image") {
+    }
+     elseif ($message == "The file chosen was not an image") {
         $pictureName = "placeholder.jpg";
     }
 
     return [$pictureName, $message];
 }
+ 
+            
