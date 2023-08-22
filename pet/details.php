@@ -24,6 +24,8 @@ if (!empty($result)) {
     $location = $pet['location'];
     $description = $pet['description'];
     $status = ($pet['available'] == 1) ? 'Available' : 'Adopted';
+    // $petOfD=($pet['pet_day'] == 1) ? 'Pet of The Day' : '';
+    $petOfD=$pet['pet_day'];
     $POD = $pet['pet_day'];
 
     if ($POD == 1) {
@@ -119,6 +121,9 @@ addBreadcrumb('Details');
                             </blockquote>
                             <figcaption class="blockquote-footer"> <?= $description ?></figcaption>
                         </figure>
+                        <?php if ($petOfD == 1) { ?>
+                            <dt class="col-sm-12 text-center flex"><strong>TODAY I AM THE PET OF THE DAY </strong></dt>
+                       <?php } ?>
                         <dl class="row">
                             <dt class="col-sm-4">Breed: </dt>
                             <dd class="col-sm-8"><?= $breed ?></dd>
@@ -130,7 +135,9 @@ addBreadcrumb('Details');
                             <dd class="col-sm-8"><?= $vaccinated ?></dd>
                             <dt class="col-sm-4">Status: </dt>
                             <dd class="col-sm-8"><?= $status ?></dd>
+                
                         </dl>
+                     
                     </div>
                 </div>
             </div>

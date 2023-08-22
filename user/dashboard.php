@@ -8,8 +8,9 @@ $pageTitle = "User dashboard";
 
 $crud = new CRUD_PET();
 
-$result = $crud->selectPets("`pet_day`=1");
+$resultPetOfDay = $crud->selectPets("`pet_day`=1");
 
+$result = $crud->selectPets("");
 $layout = viewPets($result);
 
 addBreadcrumb('Home', '../user/dashboard.php');
@@ -26,8 +27,11 @@ addBreadcrumb('Home', '../user/dashboard.php');
 
 <body>
     <?php include '../components/navbar.php'; ?>
+    
+    
     <div class="container">
-        <div id="layout" class="row">
+        <div id="layout" class="row ">
+        
             <?= $layout ?>
         </div>
     </div>

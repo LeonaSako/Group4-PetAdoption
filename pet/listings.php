@@ -9,7 +9,6 @@ $pageTitle = "Pet listings";
 $crud = new CRUD_PET();
 
 $result = $crud->selectPets("");
-
 $layout = viewPets($result);
 
 addBreadcrumb('Home', '../user/dashboard.php');
@@ -31,7 +30,7 @@ addBreadcrumb('');
     <main class="cd-main-content">
         <div class='container'>
             <section class="gallery">
-                <div id="layout" class="row row-cols-1 row-cols-md-3 g-4">
+                <div id="layout" class="row m-2">
 
                     <?= $layout ?>
 
@@ -43,7 +42,7 @@ addBreadcrumb('');
                         <h4>Filters</h4>
                     </div>
                     <br>
-                    <div class="filter-block">
+                    <div class="filter-block ">
                         <h4>Adoption status</h4>
                         <ul class="filter-content filters list">
                             <li>
