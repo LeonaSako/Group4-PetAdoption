@@ -67,7 +67,7 @@ if (isset($_SESSION["Adm"])) {
                 <a class='nav-link' href='../admin/adoptions.php'>Adoptions</a>
             </li>
     HTML;
-    $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["Adm"]}'>My profile</a>";
+    $profile .= "<a class='dropdown-item' href='../user/profile.php'>My profile</a>";
 } elseif (isset($_SESSION["User"])) {
     $id = $_SESSION["User"];
     $unreadMessages = $crud->selectMessages("fk_receiver_id = $id AND readmsg_user = 0");

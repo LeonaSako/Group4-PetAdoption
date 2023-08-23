@@ -302,9 +302,11 @@ Buttons
 .btn-warning:hover {
     background-color: #ffab40;
 }
-.btnStatic{
+
+.btnStatic {
     width: 100%;
 }
+
 
 /* -------------------------------- 
 
@@ -340,7 +342,7 @@ Gallery
 -------------------------------- */
 
 .gallery {
-    width: 80%;
+    width: 75%;
     float: right;
     box-sizing: border-box;
 }
@@ -354,14 +356,15 @@ Gallery
     padding: 10px;
 }
 
-@media only screen and (min-width: 1170px) {
+
+/* @media only screen and (min-width: 1170px) {
     #filter {
         width: 20%;
     }
     .cd-filter form {
         padding: 70px 10%;
     }
-}
+} */
 
 
 /* -------------------------------- 
@@ -380,6 +383,7 @@ Filter
     border-bottom-right-radius: 20px;
     background: #ffffff;
     box-shadow: 4px 4px 20px;
+    /* width: 20%; */
 }
 
 .filter-block {
@@ -392,7 +396,7 @@ Filter
     border-bottom: none;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    position: relative;
+    /* position: relative; */
     margin-bottom: .2em;
     padding: 10px 0 10px 20px;
     color: white;
@@ -403,7 +407,7 @@ Filter
 
 .filter-block h4 {
     /* filter block title */
-    position: relative;
+    /* position: relative; */
     margin-bottom: .2em;
     padding: 10px 0 10px 20px;
     color: #9a9a9a;
@@ -431,7 +435,6 @@ Filter
     background-color: #e6e6e6;
     padding-left: 4%;
     padding: .8em;
-    margin-left: 1em;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-left-radius: 20px;
