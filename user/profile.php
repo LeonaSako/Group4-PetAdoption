@@ -72,14 +72,9 @@ if (isset($_SESSION['User'])) {
         }
     } else {
         $adoptionStoriesSection = "hidden";
-    }   
-    
+    }    
 }
-
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en"> 
 
