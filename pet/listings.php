@@ -9,8 +9,10 @@ $pageTitle = "Pet listings";
 $crud = new CRUD_PET();
 
 $result = $crud->selectPets("");
-
 $layout = viewPets($result);
+
+$POD = $crud->selectPets("pet_day = 1");
+$petofday = viewPetDetails($POD);
 
 addBreadcrumb('Home', '../user/dashboard.php');
 addBreadcrumb('Pets', '../pet/listings.php');
@@ -28,13 +30,26 @@ addBreadcrumb('');
 
 <body>
     <?php include '../components/navbar.php'; ?>
+    <div class="container" id='POD-container'>
+        <h2 class="h2-header">Pet of the day</h2>
+        <p class="d-inline-flex gap-1">
+        <div class="gap-2 d-md-flex justify-content-center">
+            <a id="collapseButton" class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                See pet of the day
+            </a>
+        </div>
+        </p>
+        <div class="collapse" id="collapseExample">
+            <div class="row row-cols-lg-2 row-cols-md-1 row-cols-sm-1 row-cols-xs-1">
+                <?= $petofday ?>
+            </div>
+        </div>
+    </div>
     <main class="cd-main-content">
         <div class='container'>
             <section class="gallery">
-                <div id="layout" class="row row-cols-1 row-cols-md-3 g-4">
-
+                <div id="layout" class="row m-2"  >
                     <?= $layout ?>
-
                 </div>
             </section>
             <div id="filter">
@@ -43,7 +58,7 @@ addBreadcrumb('');
                         <h4>Filters</h4>
                     </div>
                     <br>
-                    <div class="filter-block">
+                    <div class="filter-block ">
                         <h4>Adoption status</h4>
                         <ul class="filter-content filters list">
                             <li>
@@ -120,6 +135,7 @@ addBreadcrumb('');
     </main>
 
     <script src="../js/jquery-3.7.0.min.js"></script>
+    <script type="text/javascript" src="../js/petofday.js"></script>
     <script type="text/javascript" src="../js/filter.js"></script>
     <script type="text/javascript" src="../js/searchPet.js"></script>
 

@@ -36,8 +36,13 @@ class CRUD_STORY
 
         // $columns .= ", `date`";
 
+<<<<<<< HEAD
  
         // $valuesOut .= ", NOW()";
+=======
+
+        $valuesOut .= ", NOW()";
+>>>>>>> 620c3dfdaa696f9dba00df09f21a6e5aec64f36c
 
         $sql = "INSERT INTO `$table`($columns) VALUES ($valuesOut)";
         $result = mysqli_query($this->connection, $sql);
@@ -52,6 +57,21 @@ class CRUD_STORY
     public function selectMessages(string $condition)
     {
         return $this->select("message", "*", $condition);   
+    }
+
+    public function changeMsgStatus($id, $status, $user)
+    {
+        $col = ($user === 'User') ? "readmsg_user" : "readmsg_agency";
+
+        $sql = "UPDATE `message` SET `$col`=$status WHERE id = $id";
+
+        $result = mysqli_query($this->connection, $sql);
+
+        $alert = ($status == 1) ? "Message marked as read" : "Message marked as unread";
+
+        $this->alert($result, $alert);
+
+        return $result;
     }
 
     public function createStory(array $values)
@@ -79,9 +99,11 @@ class CRUD_STORY
     }
     public function createMessage(array $values)
     {
-        $result = $this->insert("message", "`subject`, `message`, `fk_user_id`, `fk_agency_id`", $values);
+        $result = $this->insert("message", "`subject`, `message`, `fk_sender_id`, `fk_receiver_id`, `readmsg_agency`, `readmsg_user`", $values);
 
         $this->alertUser($result, "A new message has been submitted");
+
+        header("refresh: 2; url = ../messages/seeMessages.php");
     }
 
     public function alertUser($result, string $message)

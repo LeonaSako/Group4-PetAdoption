@@ -52,7 +52,7 @@ Additional:
     - Messaging System --> Contact us (Leona)
 X   - Pet Matchmaker                   (Leona)
     - Adoption Stories                  (Maryam)
-    - Pet of the day/week               (Eleni)
+X    - Pet of the day/week               (Eleni)
 
     - Volunteer opportunities with calendars
     - Foster-to-adopt program                 
