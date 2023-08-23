@@ -32,8 +32,11 @@ addBreadcrumb('Bird');
             <div class="col-8">
                 <p>
                 <ul>
+                    <li>Build Trust: Spend time near your bird's cage without forcing interaction. Let them observe you and become accustomed to your presence.</li>
+                    <li>Positive Reinforcement: Just like with dogs, use positive reinforcement. Reward your bird with treats, verbal praise, or head scratches when they exhibit desired behaviors.</li>
+                    <li> Short Sessions: Keep training sessions short and engaging. Birds have shorter attention spans, so sessions should be around 5-15 minutes to prevent them from becoming bored.</li>
                     <li>
-                        Build Trust: Spend time near your bird's cage without forcing interaction. Let them observe you and become accustomed to your presence.
+                    Choose a Quiet Environment: Train in a quiet, calm environment where your bird can focus without distractions.
                     </li>
                     <br>
                     <li>
@@ -49,13 +52,14 @@ addBreadcrumb('Bird');
                     </li>
                     </p>
             </div>
-            <div class="col-4">
+            <div class="col">
                 <img src="../images/pets/bird.jpg">
             </div>
             <div class="gap-2 d-md-flex justify-content-left" id="pet-of-day-btn">
                 <a href="care.php" class="btn btn-warning">Back</a>
             </div>
         </div>
+        <a class="btn" href="static.php">Back</a>
     </div>
 </body>
 

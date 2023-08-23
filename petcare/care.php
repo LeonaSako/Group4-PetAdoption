@@ -24,8 +24,11 @@ addBreadcrumb('Pet care');
 
 <body>
     <?php include '../components/navbar.php'; ?>
+    
+
     <div class="container">
         <h2 class="h2-header">How to take care of animals</h2>
+<<<<<<< HEAD
         <div id="layout" class="row m-2">
             <div class="col-4">
                 <div class="card" style="width: 18rem;">
@@ -71,8 +74,13 @@ addBreadcrumb('Pet care');
                     </div>
                 </div>
             </div>
+=======
+       <div id="content" class="row row-cols-lg-4 row-cols-md-3 row-cols-sm- row-cols-xs-1 gap-3">
+       
+>>>>>>> 18ac472f6094f6370c7a291ee4a8d05b2b66482e
         </div>
-    </div>
+      </div>
+    <script src="static.js"></script>
 </body>
 
 </html>
