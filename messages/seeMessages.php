@@ -4,15 +4,27 @@ session_start();
 require_once "../utils/crudStories.php";
 require_once "../utils/crudUser.php";
 require_once "../messages/viewMessages.php";
+require_once "../utils/formUtils.php";
 
 $crud = new CRUD_STORY();
+$crudUser = new CRUD_USER();
+
+preventAdmin();
 
 $pageTitle = "Messages";
 
-$agency = $_SESSION['Agency'];
+if (isset($_SESSION['Agency'])) {
+    $agency = $_SESSION['Agency'];
+    $condUnread = "fk_receiver_id = $agency AND readmsg_agency = 0";
+    $condRead = "fk_receiver_id = $agency AND readmsg_agency = 1";
+} else if (isset($_SESSION['User'])) {
+    $user = $_SESSION['User'];
+    $condUnread = "fk_receiver_id = $user AND readmsg_user = 0";
+    $condRead = "fk_receiver_id = $user AND readmsg_user = 1";
+}
 
-$unreadMessages = $crud->selectMessages("fk_agency_id = $agency AND readmsg = 0");
-$readMessages = $crud->selectMessages("fk_agency_id = $agency AND readmsg = 1");
+$unreadMessages = $crud->selectMessages($condUnread);
+$readMessages = $crud->selectMessages($condRead);
 
 $unread = viewMessages($unreadMessages);
 $read = viewMessages($readMessages);

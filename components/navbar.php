@@ -3,6 +3,7 @@ require_once "../components/breadcrumb.php";
 $navlayout = "";
 $profile = "";
 $messages = "";
+$hideMessages = "hidden";
 if (isset($_SESSION["Adm"])) {
     $navlayout .= <<<HTML
             <li class="nav-item">
@@ -40,6 +41,10 @@ if (isset($_SESSION["Adm"])) {
     HTML;
     $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["Adm"]}'>My profile</a>";
 } elseif (isset($_SESSION["User"])) {
+    $id = $_SESSION["User"];
+    $unreadMessages = $crud->selectMessages("fk_receiver_id = $id AND readmsg_user = 0");
+    $count = count($unreadMessages);
+    $hideMessages = "";
     $navlayout .= <<<HTML
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="../user/dashboard.php">Home</a>
@@ -69,6 +74,10 @@ if (isset($_SESSION["Adm"])) {
     HTML;
     $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["User"]}'>My profile</a>";
 } elseif (isset($_SESSION["Agency"])) {
+    $id = $_SESSION["Agency"];
+    $unreadMessages = $crud->selectMessages("fk_receiver_id = $id AND readmsg_agency = 0");
+    $count = count($unreadMessages);
+    $hideMessages = "";
     $navlayout .= <<<HTML
 
             <li class="nav-item">
@@ -96,7 +105,6 @@ if (isset($_SESSION["Adm"])) {
             </li>
     HTML;
     $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["Agency"]}'>My profile</a>";
-    $messages .= "<a class='dropdown-item' href='../agency/seeMessages.php'>Messages</a>";
 } else {
     $navlayout .= <<<HTML
         <li class='nav-item'>
@@ -131,14 +139,14 @@ $breadcrumbs = displayBreadcrumbs();
                 </ul>
             </div>
             <div class="d-flex align-items-center">
-                <div class="dropdown">
+                <div class="dropdown" <?= $hideMessages ?>>
                     <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-bell"></i>
-                        <span class="badge rounded-pill badge-notification bg-danger">2</span>
+                        <span class="badge rounded-pill badge-notification bg-danger"><?= $count ?></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                         <li>
-                            <?= $messages ?>
+                            <a class='dropdown-item' href='../messages/seeMessages.php'>Messages</a>
                         </li>
                     </ul>
                 </div>

@@ -54,9 +54,11 @@ class CRUD_STORY
         return $this->select("message", "*", $condition);
     }
 
-    public function changeMsgStatus($id, $status)
+    public function changeMsgStatus($id, $status, $user)
     {
-        $sql = "UPDATE `message` SET `readmsg`=$status WHERE id = $id";
+        $col = ($user === 'User') ? "readmsg_user" : "readmsg_agency";
+
+        $sql = "UPDATE `message` SET `$col`=$status WHERE id = $id";
 
         $result = mysqli_query($this->connection, $sql);
 
@@ -75,7 +77,7 @@ class CRUD_STORY
     }
     public function createMessage(array $values)
     {
-        $result = $this->insert("message", "`subject`, `message`, `fk_user_id`, `fk_agency_id`", $values);
+        $result = $this->insert("message", "`subject`, `message`, `fk_sender_id`, `fk_receiver_id`", $values);
 
         $this->alertUser($result, "A new message has been submitted");
     }
