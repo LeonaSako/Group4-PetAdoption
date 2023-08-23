@@ -77,9 +77,11 @@ class CRUD_STORY
     }
     public function createMessage(array $values)
     {
-        $result = $this->insert("message", "`subject`, `message`, `fk_sender_id`, `fk_receiver_id`", $values);
+        $result = $this->insert("message", "`subject`, `message`, `fk_sender_id`, `fk_receiver_id`, `readmsg_agency`, `readmsg_user`", $values);
 
         $this->alertUser($result, "A new message has been submitted");
+
+        header("refresh: 2; url = ../messages/seeMessages.php");
     }
 
     public function alertUser($result, string $message)

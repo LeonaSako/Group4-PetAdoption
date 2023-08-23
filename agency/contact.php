@@ -10,9 +10,13 @@ $crud = new CRUD_STORY();
 if (isset($_SESSION["User"])) {
     $sender = $_SESSION["User"];
     $receiver = $_GET["id"];
+    $read_agency = 0;
+    $read_user = 1;
 } else if (isset($_SESSION["Agency"])) {
     $sender = $_SESSION["Agency"];
     $receiver = $_GET["id"];
+    $read_agency = 1;
+    $read_user = 0;
 }
 
 if (isset($_POST["submit"])) {
@@ -20,7 +24,7 @@ if (isset($_POST["submit"])) {
     $subject = $_POST["subject"];
     $message = $_POST["message"];
 
-    $values = [$subject, $message, $sender, $receiver];
+    $values = [$subject, $message, $sender, $receiver, $read_agency, $read_user];
 
     $crud->createMessage($values);
 }

@@ -63,9 +63,6 @@ if (isset($_SESSION["Adm"])) {
                 </ul>
             </li>
             <li class='nav-item'>
-                <a class='nav-link' href='../agency/contact.php'>Contact us</a>
-            </li>
-            <li class='nav-item'>
                 <a class='nav-link' href='../adoptions/myadoptions.php'>My Adoptions</a>
             </li>
             <li class='nav-item'>
