@@ -12,15 +12,16 @@ require_once "../components/breadcrumb.php";
 $pageTitle = "Profile";
 
 $id = 0;
+$adoptionStoriesSection = "hidden";
+
 if(isset($_SESSION["User"])){
     $id = $_SESSION["User"];
-}elseif(isset($_SESSION["Admin"])){
-    $id = $_SESSION["Admin"];
+    $adoptionStoriesSection = "";
+}elseif(isset($_SESSION["Adm"])){
+    $id = $_SESSION["Adm"];
 }elseif(isset($_SESSION["Agency"])){
     $id = $_SESSION["Agency"];
 }
-
-
 
 $crud = new CRUD_USER();
 
@@ -58,14 +59,23 @@ if (isset($_SESSION['User']) || isset($_SESSION['Adm'])) {
 }
 addBreadcrumb('Profile');
 $crud = new CRUD_STORY();
-$stories = $crud->selectStories("");    
-    foreach ($stories as $story) {  
+
+if (isset($_SESSION['User'])) {
+    $stories = $crud->selectStories("fk_user_id = $id");
+    if (!empty($stories)){
+        foreach ($stories as $story) {  
             $image = "../images/stories/{$story['image']}";
             $desc = $story["desc"];
             $title=$story["title"];
             $date=$story["date"];
             $userId =$story["id"];
-    }
+        }
+    } else {
+        $adoptionStoriesSection = "hidden";
+    }   
+    
+}
+
 
 ?>
 
@@ -196,7 +206,7 @@ $stories = $crud->selectStories("");
            <?php } ?>
         </div>
     </section>
-    <section <? ?>
+    <section>
         <div class="container py-5">
             <div class="row">
                 <div class="col">

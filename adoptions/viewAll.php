@@ -61,8 +61,10 @@ function viewAdoptions($result)
                 $btnattr = "";
             } elseif ($status == 'Approved') {
                 $application = 'Approved';
-            } else {
+            } elseif ($status == 'Declined') {
                 $application = 'Rejected';
+            }else {
+                $application = 'Cancelled';
             }
 
 
@@ -80,7 +82,7 @@ function viewAdoptions($result)
 
                     if (isset($_SESSION['Agency'])) { 
                         $list .= <<<HTML
-                            <th scope="col"> $NoRequirements </th>
+                            <th class="thReq" scope="col"> $NoRequirements </th>
                         HTML;
                     } 
 
@@ -99,7 +101,7 @@ function viewAdoptions($result)
                         <a href='../adoptions/viewAdoptions.php?id={$adopId}' class='btn btn-warning'>Details</a>";
                 } 
 
-                if (isset($_SESSION['Agency'])) {
+                if (isset($_SESSION['Agency']) && $status == "Apply") {
                     $list .= "
                     <a href='../adoptions/edit.php?id={$adopId}&status=Approved&pid={$petId}' class='btn btn-success ' aria-disabled='true'>Approve</a>
                     <a href='../adoptions/edit.php?id={$adopId}&status=Declined&pid={$petId}' class='btn btn-primary ' aria-disabled='true'>Reject</a>";
