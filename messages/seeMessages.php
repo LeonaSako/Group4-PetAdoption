@@ -18,12 +18,10 @@ if (isset($_SESSION['Agency'])) {
     $agency = $_SESSION['Agency'];
     $condUnread = "fk_receiver_id = $agency AND readmsg_agency = 0";
     $condRead = "fk_receiver_id = $agency AND readmsg_agency = 1";
-    addBreadcrumb('Home', '../agency/dashboard.php');
 } else if (isset($_SESSION['User'])) {
     $user = $_SESSION['User'];
     $condUnread = "fk_receiver_id = $user AND readmsg_user = 0";
     $condRead = "fk_receiver_id = $user AND readmsg_user = 1";
-    addBreadcrumb('Home', '../user/dashboard.php');
 }
 
 $unreadMessages = $crud->selectMessages($condUnread);
@@ -32,6 +30,7 @@ $readMessages = $crud->selectMessages($condRead);
 $unread = viewMessages($unreadMessages);
 $read = viewMessages($readMessages);
 
+addBreadcrumb('Home', '../home.php');
 addBreadcrumb('Messages');
 
 ?>
@@ -48,7 +47,7 @@ addBreadcrumb('Messages');
 <body>
     <?php include '../components/navbar.php'; ?>
 
-    <div class="container mt-4">
+    <div class="container">
         <h2 class="h2-header">Messages</h2>
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">

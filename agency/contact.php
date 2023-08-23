@@ -7,14 +7,14 @@ $pageTitle = "Contact";
 
 $crud = new CRUD_STORY();
 
+$receiver = $_GET["id"];
+
 if (isset($_SESSION["User"])) {
     $sender = $_SESSION["User"];
-    $receiver = $_GET["id"];
     $read_agency = 0;
     $read_user = 1;
 } else if (isset($_SESSION["Agency"])) {
     $sender = $_SESSION["Agency"];
-    $receiver = $_GET["id"];
     $read_agency = 1;
     $read_user = 0;
 }
@@ -29,7 +29,9 @@ if (isset($_POST["submit"])) {
     $crud->createMessage($values);
 }
 
-
+addBreadcrumb('Home', '../home.php');
+addBreadcrumb('Messages', '../messages/seeMessages.php');
+addBreadcrumb('Contact agency');
 ?>
 
 <!DOCTYPE html>
