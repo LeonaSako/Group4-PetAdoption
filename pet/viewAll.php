@@ -17,34 +17,35 @@ function viewPets($result)
             $hiddenAttr = $isAdopted ? 'hidden' : '';
 
             $layout .= <<<HTML
-                        <div class="pet-card">
-                            <a href="../pet/details.php?id=$id">
-                                <img src="{$image}" id="details-img" class='img-fluid shadow' alt="Pet image">
-                            </a>
-                            <div class="card-body">
-                                <figure class="text-center">
-                                    <blockquote class="blockquote"><h5>{$name}</h5></blockquote>
-                                    <figcaption class="blockquote-footer">{$description}</figcaption>
-                                </figure>
-                                <p class='card-text'>Breed: $breed</p>
-                                <p class="card-text">Age: $age years</p>
-                                <p class="card-text">Size: $size</p>
-                                <p class="card-text">Vaccinated: $vaccinated</p>
-                                <div class="gap-2 d-md-flex justify-content-center">
-                                    <a href="../pet/details.php?id=$id" class="btn btn-warning">Details</a><br>
-                HTML;
-        if (isset($_SESSION["User"])) {
-            $layout .= <<<HTML
-                                    <a href="../adoptions/new.php?id=$id" class="btn btn-primary" $hiddenAttr>Take me home</a>
+                        <div class="col-4">
+                            <div class="pet-card">
+                                <a href="../pet/details.php?id=$id">
+                                    <img src="{$image}" id="details-img" class='img-fluid shadow' alt="Pet image">
+                                </a>
+                                <div class="card-body">
+                                    <figure class="text-center">
+                                        <blockquote class="blockquote"><h5>{$name}</h5></blockquote>
+                                        <figcaption class="blockquote-footer">{$description}</figcaption>
+                                    </figure>
+                                    <p class='card-text'>Breed: $breed</p>
+                                    <p class="card-text">Age: $age years</p>
+                                    <p class="card-text">Size: $size</p>
+                                    <p class="card-text">Vaccinated: $vaccinated</p>
+                                    <div class="gap-2 d-md-flex justify-content-center">
+                                        <a href="../pet/details.php?id=$id" class="btn btn-warning">Details</a><br>
                     HTML;
-        } elseif (isset($_SESSION["Adm"]) || isset($_SESSION["Agency"])) {
-            $layout .= <<<HTML
-                                    <a href="../pet/update.php?id={$id}" class="btn btn-primary">Update</a>
-                    HTML;
-        }
-        $layout .= "            </div>
+            if (isset($_SESSION["User"])) {
+                $layout .= <<<HTML
+                                        <a href="../adoptions/new.php?id=$id" class="btn btn-primary" $hiddenAttr>Take me home</a>
+                        HTML;
+            } elseif (isset($_SESSION["Adm"]) || isset($_SESSION["Agency"])) {
+                $layout .= <<<HTML
+                                        <a href="../pet/update.php?id={$id}" class="btn btn-primary">Update</a>
+                        HTML;
+            }
+            $layout .= "            </div>
+                                </div>
                             </div>
-                        
                         </div>";
         }
     } else {
@@ -70,7 +71,7 @@ function viewPetDetails($result)
 
             $POD_Id = $row['id'];
             $layout .= <<<HTML
-                        
+                        <div class="col-4">
                             <div class="card mb-4">
                                 <div class="card-body text-center">
                                     <a href="../pet/details.php?id={$POD_Id}">
@@ -150,8 +151,7 @@ function viewPetDetails($result)
                                     </div>
                                 </div>
                             </div>
-                        
-                        
+                        </div>
                 HTML;
         }
     } else {

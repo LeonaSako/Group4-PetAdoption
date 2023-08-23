@@ -27,7 +27,7 @@ function renderForm($firstname, $lastname, $address, $phone, $exp, $birthdate, $
                         </div>
                         <div class="col-md-4">
                             <label for="phone" class="form-label">Phone Number </label>
-                            <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone Number" value="{$phone}">
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone Number" value="{$phone}">
                         </div>
                         <div class="col-md-2">
                             <label for="date" class="form-label">Date of birth <span class='required'>*</span></label>
@@ -39,7 +39,7 @@ function renderForm($firstname, $lastname, $address, $phone, $exp, $birthdate, $
                             <label for="space" class="form-label">Apartment space <span class='required'>*</span></label>
                             <div class="input-group mb-3">
                                 <input type="number" class="form-control" placeholder="Space" value="{$space}">
-                                <span class="input-group-text">m&sup3</span>
+                                <span class="input-group-text">m&sup2</span>
                             </div>
                         </div>
                         <div class="col-md-6">

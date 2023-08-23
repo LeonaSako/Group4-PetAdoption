@@ -53,10 +53,10 @@ if (isset($_SESSION["Adm"])) {
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href='../admin/dashboard.php'>View all users</a>
+                        <a class="dropdown-item" href='../admin/users.php'>View all users</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href='../pet/create.php'>View all agencies</a>
+                        <a class="dropdown-item" href='../admin/agencies.php'>View all agencies</a>
                     </li>
                 </ul>
             </li>

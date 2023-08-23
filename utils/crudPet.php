@@ -120,7 +120,7 @@ class CRUD_PET
     public function createStory(array $values)
     {
         $result = $this->insert("stories", "`fk_pet_id`, `image`, `desc`,`date`, `fk_user_id`", $values);
-    
+
         $this->alertUser($result, "A new adoption story has been submitted");
     }
     public function createMessage(array $values)
