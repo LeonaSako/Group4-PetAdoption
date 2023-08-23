@@ -14,13 +14,15 @@ preventAgency();
 
 $crud = new CRUD_ADOPTION();
 
-$apply = $crud->selectAdoptions("adopStatus = 'Apply'");
-$approved = $crud->selectAdoptions("adopStatus = 'Approved'");
-$declined = $crud->selectAdoptions("adopStatus = 'Declined'");
+$apply = $crud->selectAdoptionsAndAgencyPets("adopStatus = 'Apply'");
+$approved = $crud->selectAdoptionsAndAgencyPets("adopStatus = 'Approved'");
+$declined = $crud->selectAdoptionsAndAgencyPets("adopStatus = 'Declined'");
+$cancelled = $crud->selectAdoptionsAndAgencyPets("adopStatus = 'Cancelled'");
 
 $pending = viewAdoptions($apply);
 $accepted = viewAdoptions($approved);
 $rejected = viewAdoptions($declined);
+$cancelled = viewAdoptions($cancelled);
 
 ?>
 
