@@ -1,9 +1,35 @@
 <?php
 session_start();
 
-require_once "../utils/crudStories.php";
-require_once "../utils/formUtils.php";
+
+
 require_once "../utils/file_upload.php";
+require_once "../utils/formUtils.php";
+require_once "../utils/crudUser.php";
+require_once "../utils/crudStories.php";
+require_once "../components/usertable.php";
+require_once "../utils/crudPet.php";
+require_once "../components/breadcrumb.php";
+$id = 0;
+if(isset($_SESSION["User"])){
+    $id = $_SESSION["User"];
+}elseif(isset($_SESSION["Admin"])){
+    $id = $_SESSION["Admin"];
+}elseif(isset($_SESSION["Agency"])){
+    $id = $_SESSION["Agency"];
+}
+if (isset($_SESSION['User']) || isset($_SESSION['Adm'])) {
+    addBreadcrumb('Home', '../user/dashboard.php');
+} elseif (isset($_SESSION['Agency'])) {
+    addBreadcrumb('Home', '../agency/dashboard.php');
+}
+
+if (isset($_SESSION['User']) || isset($_SESSION['Adm'])) {
+    addBreadcrumb('User', '../user/profile.php?id=' . $id);
+} elseif (isset($_SESSION['Agency'])) {
+    addBreadcrumb('Agency', '../user/profile.php?id=' . $id);
+}
+addBreadcrumb('Profile');
 
 $pageTitle = "Pet story";
 $petId = $_GET["id"];
@@ -12,10 +38,9 @@ $userId = $_SESSION["User"];
 $crud = new CRUD_STORY();
 
 if (isset($_POST["create"])) {
-    // $date = date('Y-m-d');
     $date = date("Y-m-d H:i:s");
-    $description = $_POST['desc'];
-    $title = $_POST['title'];
+    $description = cleanInputs($_POST['desc']);
+    $title = cleanInputs($_POST['title']);
     $image = fileUpload($_FILES["image"],'story');
     
     $values = [$petId,$image[0],$title,$date,$description,$userId];
