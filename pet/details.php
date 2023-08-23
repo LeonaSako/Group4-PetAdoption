@@ -98,7 +98,7 @@ addBreadcrumb('Details');
 
     <?php include '../components/navbar.php'; ?>
     <div class="container">
-        <div class="row">
+        <div class="row ">
             <?= $petDetails ?>
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-center">
