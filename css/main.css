@@ -22,6 +22,14 @@ a:hover {
     color: #ff4181;
 }
 
+h1 {
+    font-family: 'Black Ops One', cursive;
+}
+
+h2 {
+    font-family: 'Black Ops One', cursive;
+}
+
 
 /* -------------------------------- 
 
@@ -283,7 +291,9 @@ Buttons
 .btn-warning:hover {
     background-color: #ffab40;
 }
-
+.btnStatic{
+    width: 100%;
+}
 
 /* -------------------------------- 
 

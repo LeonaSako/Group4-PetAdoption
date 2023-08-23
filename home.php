@@ -3,7 +3,6 @@ session_start();
 
 require_once "components/breadcrumb.php";
 require_once "utils/crudPet.php";
-require_once "utils/crudStories.php";
 
 $pageTitle = "Homepage";
 
@@ -22,21 +21,13 @@ if (!empty($getPOD)) {
 
 $successStories = "stories/viewStories.php";
 
-$crudStory = new CRUD_STORY();
+$lastStory = "images/layout/64e5d72164d55.jpg";
 
-$stories = $crudStory->selectStories("");
+$petCareURL = "petcare/care.php";
+$petCareImg = "images/layout/petcare.jpg";
 
-if (!empty($stories))
-{
-    $count = count($stories);
-
-    $lastStoryId = $count-1;
-    
-    $lastStory = $stories[$lastStoryId];
-
-    $StoryUrl = "images/stories/" . $lastStory['image'];
-}
-
+$petTrainingURL = "petcare/care.php";
+$petTrainingImg = "images/layout/pettraining.jpg";
 
 ?>
 <!DOCTYPE html>
@@ -67,7 +58,7 @@ if (!empty($stories))
                     <div class="card mb-4">
                         <div class="card-body text-center">
                             <a href="<?= $successStories ?>">
-                                <img src="<?= $StoryUrl ?>" id="details-img" class='img-fluid shadow' alt="Pet image">
+                                <img src="<?= $lastStory ?>" id="details-img" class='img-fluid shadow' alt="Pet image">
                             </a>
                             <h5 class="my-3">Adoption success stories</h5>
                         </div>
@@ -78,7 +69,9 @@ if (!empty($stories))
                 <div class="col-6">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="{$image}" id="details-img" class='img-fluid shadow' alt="Pet image">
+                            <a href="<?= $petCareURL ?>">
+                                <img src="<?= $petCareImg ?>" id="details-img" class='img-fluid shadow' alt="Pet image">
+                            </a>
                             <h5 class="my-3">Pet care tips</h5>
                         </div>
                     </div>
@@ -86,7 +79,9 @@ if (!empty($stories))
                 <div class="col-6">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="{$image}" id="details-img" class='img-fluid shadow' alt="Pet image">
+                            <a href="<?= $petTrainingURL ?>">
+                                <img src="<?= $petTrainingImg ?>" id="details-img" class='img-fluid shadow' alt="Pet image">
+                            </a>
                             <h5 class="my-3">Pet training tips</h5>
                         </div>
                     </div>

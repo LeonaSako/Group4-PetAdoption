@@ -7,9 +7,9 @@ require_once "../components/breadcrumb.php";
 
 $pageTitle = "Dog training";
 
-addBreadcrumb('Home', '../user/dashboard.php');
+addBreadcrumb('Home', '../home.php');
 addBreadcrumb('Pets', '../pet/listings.php');
-addBreadcrumb('Pet training', '../static/static.php');
+addBreadcrumb('Pet training', '../petcare/care.php');
 addBreadcrumb('Dog');
 
 ?>
@@ -26,35 +26,30 @@ addBreadcrumb('Dog');
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container">
-        <h1 class="text-center"></h1>
+        <h1 class="text-center">Training & Tipps</h1>
         <div class="row">
-            <h1>Training & Tipps</h1>
-            <div class="col-1"></div>
-            <div class="col-5">
-                <p>
-                <ul>
+            <div class="col">
+                <ul> 
                     <li>
-                        Be Consistent: Use the same commands and gestures consistently. Dogs learn through repetition and consistency, so avoid confusing them with different cues. <br>
+                    Be Consistent: Use the same commands and gestures consistently. Dogs learn through repetition and consistency, so avoid confusing them with different cues.
                     </li>
-                    <br>
                     <li>
-                        Short Training Sessions: Keep training sessions short and focused, around 5-10 minutes, to prevent your dog from getting bored or overwhelmed.
+                    Short Training Sessions: Keep training sessions short and focused, around 5-10 minutes, to prevent your dog from getting bored or overwhelmed.
                     </li>
-                    <br>
                     <li>
-                        Patience is Key: Dogs vary in how quickly they learn, so be patient and avoid getting frustrated. Stay calm and positive during training sessions.
+                    Patience is Key: Dogs vary in how quickly they learn, so be patient and avoid getting frustrated. Stay calm and positive during training sessions.
                     </li>
-                    <br>
                     <li>
-                        Use High-Value Treats: Use treats that your dog finds extremely enticing for training sessions. These treats can motivate your dog to work harder and focus better.
+                    Use High-Value Treats: Use treats that your dog finds extremely enticing for training sessions. These treats can motivate your dog to work harder and focus better.
                     </li>
-                    </p>
-                    <a href="static.php">Back</a>
+                </ul>
             </div>
-            <div class="col-4">
-                <img src="../images/pets/dog.jpg">
-            </div>
-            <div class="col-2"></div>
+                <div class="col">
+                   <img src="../images/pets/dog.jpg">
+                </div>
+        </div>
+        <div class="gap-2 d-md-flex justify-content-left" id="pet-of-day-btn">
+            <a href="care.php" class="btn btn-warning">Back</a>
         </div>
     </div>
 </body>

@@ -3,6 +3,7 @@ session_start();
 
 require_once "../utils/formUtils.php";
 require_once "../utils/crudUser.php";
+require_once "../components/breadcrumb.php";
 
 $pageTitle = "Dashboard";
 
@@ -55,7 +56,7 @@ if (!empty($results)) {
 } else {
     $layout .= "No results found!";
 }
-
+addBreadcrumb('Dashboard');
 ?>
 
 <!DOCTYPE html>
