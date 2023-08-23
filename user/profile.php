@@ -60,16 +60,16 @@ if (isset($_SESSION['User'])) {
         }
     } else {
         $adoptionStoriesSection = "hidden";
-    }   
-    
+    }    
 }
+<<<<<<< HEAD
+=======
 
 addBreadcrumb('Home', '../home.php');
 addBreadcrumb('Profile');
 
+>>>>>>> fdcf0c0f6ad39576b3fb86180fbf0e180cde05a4
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en"> 
 
@@ -174,6 +174,7 @@ addBreadcrumb('Profile');
                             My adoption applications
                         </div>
                         <div class="card-body">
+                        <div class="table-responsive">
                             <table class="table table-striped table-hover table-sm">
                                 <thead>
                                     <tr>
@@ -190,6 +191,7 @@ addBreadcrumb('Profile');
                                 </tbody>
                             </table>
                         </div>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -205,6 +207,7 @@ addBreadcrumb('Profile');
                             My adoption stories
                         </div>
                         <div class="card-body">
+                        <div class="table-responsive">
                             <table class="table table-striped table-hover table-sm">
                                 <thead>
                                     <tr>
@@ -228,6 +231,7 @@ addBreadcrumb('Profile');
                                 </tbody>
                             </table>
                         </div>
+                     </div>
                     </div>
                 </div>
             </div>

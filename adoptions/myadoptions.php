@@ -44,8 +44,9 @@ addBreadcrumb('Adoptions');
                     <div class="card-header">
                         My adoption applications
                     </div>
-                    
-                        <table class="table ">
+                    <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-sm">
                             <thead>
                                 <tr>
                                     <th scope="col">Pet Name</th>
@@ -60,6 +61,7 @@ addBreadcrumb('Adoptions');
                                 <?= $applic ?>
                             </tbody>
                         </table>
+                        </div>
 
                     
                 </div>

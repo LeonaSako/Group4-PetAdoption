@@ -39,7 +39,7 @@ $layout = viewPets($result);
     <?php include '../components/navbar.php'; ?>
 
     <div class="container">
-        <div id="layout" class="row">
+        <div id="layout" class="grid">
             <?= $layout ?>
         </div>
     </div>
