@@ -14,7 +14,7 @@ $layout = viewPets($result);
 $POD = $crud->selectPets("pet_day = 1");
 $petofday = viewPetDetails($POD);
 
-addBreadcrumb('Home', '../user/dashboard.php');
+addBreadcrumb('Home', '../home.php');
 addBreadcrumb('Pets', '../pet/listings.php');
 addBreadcrumb('');
 
