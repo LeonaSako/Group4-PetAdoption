@@ -9,7 +9,7 @@ $pageTitle = "Login";
 if (isset($_SESSION["Adm"])) {
     header("Location: ../admin/dashboard.php");
 } else if (isset($_SESSION["User"])) {
-    header("Location: ../user/dashboard.php");
+    header("Location: ../home.php");
 } else if (isset($_SESSION["Agency"])) {
     header("Location: ../agency/dashboard.php");
 }
@@ -54,7 +54,7 @@ if (isset($_POST["login"])) {
                 header("Location: ../admin/dashboard.php");
             } else if ($user["role"] == "User") {
                 $_SESSION["User"] = $user["id"];
-                header("Location: ../user/dashboard.php");
+                header("Location: ../home.php");
             } else if ($user["role"] == "Agency") {
                 $_SESSION["Agency"] = $user["id"];
                 header("Location: ../agency/dashboard.php");

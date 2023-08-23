@@ -3,33 +3,34 @@ require_once "../utils/crudStories.php";
 require_once "../utils/file_upload.php";
 require_once "../utils/formUtils.php";
 require_once "../components/breadcrumb.php";
-addBreadcrumb('Dashboard', '../agency/dashboard.php');
-addBreadcrumb('Pets', '../agency/repository.php');
-addBreadcrumb('Update');
+
 $pageTitle = "Update Story";  
 session_start();
 $id = $_GET["id"];
 $crud = new CRUD_STORY();
 $storiesUpdate = $crud->selectStories("id=$id");    
-    foreach ($storiesUpdate as $story) {  
-            $desccriptionUp = $story["desc"];
-            $titleUp=$story["title"];
+foreach ($storiesUpdate as $story) {  
+        $desccriptionUp = $story["desc"];
+        $titleUp=$story["title"];
+}
+if (isset($_POST["update"])) {
+    $title = cleanInputs($_POST['title']);
+    $date = date("Y-m-d H:i:s");
+    $desc = cleanInputs($_POST['desc']);
+    $image = fileUpload($_FILES["image"], 'story');
+    
+    if ($_FILES["image"]["error"] == 0) {
+        $update = $crud->updateStory($id, $title, $desc, $date, $image[0]);
+    } else {
+        $update = $crud->updateStory($id, $title, $desc, $date, Null);
     }
-    if (isset($_POST["update"])) {
-        $title = cleanInputs($_POST['title']);
-        $date = date("Y-m-d H:i:s");
-        $desc = cleanInputs($_POST['desc']);
-        $image = fileUpload($_FILES["image"], 'story');
-        
-        if ($_FILES["image"]["error"] == 0) {
-            $update = $crud->updateStory($id, $title, $desc, $date, $image[0]);
-        } else {
-            $update = $crud->updateStory($id, $title, $desc, $date, Null);
-        }
-        if ($update) {
-            header("refresh:2; url = ../user/profile.php?id=" . $_SESSION["User"]);
-        }
+    if ($update) {
+        header("refresh:2; url = ../user/profile.php?id=" . $_SESSION["User"]);
     }
+}
+addBreadcrumb('Home', '../home.php');
+addBreadcrumb('Stories', '../stories/viewStories.php');
+addBreadcrumb('Update');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +62,7 @@ $storiesUpdate = $crud->selectStories("id=$id");
             <div class="container">
                 <div class="d-grid gap-2 d-md-flex justify-content-start">
                     <button name='update' type="submit" class="btn btn-primary">Update</button>
-                    <a href="../user/profile.php?id="class="btn btn-warning">Back to dashboard</a>
+                    <a href="../stories/viewStories.php"class="btn btn-warning">Back</a>
                 </div>
             </div>
         </form>
