@@ -39,8 +39,8 @@ $crud = new CRUD_STORY();
 
 if (isset($_POST["create"])) {
     $date = date("Y-m-d H:i:s");
-    $description = $_POST['desc'];
-    $title = $_POST['title'];
+    $description = cleanInputs($_POST['desc']);
+    $title = cleanInputs($_POST['title']);
     $image = fileUpload($_FILES["image"],'story');
     
     $values = [$petId,$image[0],$title,$date,$description,$userId];

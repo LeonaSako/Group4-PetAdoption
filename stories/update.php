@@ -3,15 +3,10 @@ require_once "../utils/crudStories.php";
 require_once "../utils/file_upload.php";
 require_once "../utils/formUtils.php";
 require_once "../components/breadcrumb.php";
-
-
-
 addBreadcrumb('Dashboard', '../agency/dashboard.php');
 addBreadcrumb('Pets', '../agency/repository.php');
 addBreadcrumb('Update');
-
 $pageTitle = "Update Story";  
-
 session_start();
 $id = $_GET["id"];
 $crud = new CRUD_STORY();
@@ -21,9 +16,9 @@ $storiesUpdate = $crud->selectStories("id=$id");
             $titleUp=$story["title"];
     }
     if (isset($_POST["update"])) {
-        $title = $_POST['title'];
+        $title = cleanInputs($_POST['title']);
         $date = date("Y-m-d H:i:s");
-        $desc = $_POST['desc'];
+        $desc = cleanInputs($_POST['desc']);
         $image = fileUpload($_FILES["image"], 'story');
         
         if ($_FILES["image"]["error"] == 0) {
