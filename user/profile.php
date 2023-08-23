@@ -196,7 +196,7 @@ $stories = $crud->selectStories("");
            <?php } ?>
         </div>
     </section>
-    <section>
+    <section <? ?>
         <div class="container py-5">
             <div class="row">
                 <div class="col">

@@ -18,7 +18,7 @@ $stories = $crud->selectStories("");
 <html lang="en">
 <head>
     <?php include '../components/head.php'; ?>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/main.css">  
     <title><?= $pageTitle ?></title>
 </head>
 <body>
