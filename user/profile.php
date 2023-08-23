@@ -202,7 +202,7 @@ $stories = $crud->selectStories("");
                 <div class="col">
                     <div class="card mb-4">
                         <div class="card-header">
-                            Info
+                            My adoption stories
                         </div>
                         <div class="card-body">
                             <table class="table table-striped table-hover table-sm">
