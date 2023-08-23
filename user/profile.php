@@ -49,13 +49,16 @@ if (!empty($result)) {
     $crudAdoption = new CRUD_ADOPTION();
 
     $applications = $crudAdoption->selectAdoptions("fk_adoptee_id = $id");
+
     $applic = viewAdoptions($applications);
 }
 
 $crud = new CRUD_STORY();
 
 if (isset($_SESSION['User'])) {
+
     $stories = $crud->selectStories("fk_user_id = $id");
+
     if (!empty($stories)) {
         foreach ($stories as $story) {
 
