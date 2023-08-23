@@ -80,7 +80,7 @@ if (isset($_SESSION["Adm"])) {
                 <a class='nav-link' href='../user/compatibility_quiz.php'>Go to the Quiz</a>
             </li>
             <li class='nav-item'>
-            <a class='nav-link' href='../stories/allstories.php'>View Stories</a>
+            <a class='nav-link' href='../stories/viewstories.php'>View Stories</a>
         </li>
     HTML;
     $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["User"]}'>My profile</a>";
