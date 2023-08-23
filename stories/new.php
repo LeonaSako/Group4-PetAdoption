@@ -17,6 +17,7 @@ if (isset($_POST["create"])) {
     $description = $_POST['desc'];
     $title = $_POST['title'];
     $image = fileUpload($_FILES["image"],'story');
+    
     $values = [$petId,$image[0],$title,$date,$description,$userId];
     $crud->createStory($values);    
 }
