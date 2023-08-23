@@ -36,13 +36,8 @@ class CRUD_STORY
 
         // $columns .= ", `date`";
 
-<<<<<<< HEAD
- 
-        // $valuesOut .= ", NOW()";
-=======
 
         $valuesOut .= ", NOW()";
->>>>>>> 620c3dfdaa696f9dba00df09f21a6e5aec64f36c
 
         $sql = "INSERT INTO `$table`($columns) VALUES ($valuesOut)";
         $result = mysqli_query($this->connection, $sql);
