@@ -33,13 +33,14 @@ addBreadcrumb('Repository');
     <main class="cd-main-content">
         <div class='container'>
             <section class="gallery">
-                <div id="layout" class="row row-cols-1 row-cols-md-3 g-4">
+                <div id="layout" class="grid">
 
                     <?= $layout ?>
 
                 </div>
             </section>
-            <div id="filter">
+
+            <section id="filter">
                 <form class="filter-form">
                     <div class="filter-header">
                         <h4>Filters</h4>
@@ -117,7 +118,7 @@ addBreadcrumb('Repository');
                     </div>
                 </form>
 
-            </div>
+            </section>
         </div>
     </main>
 
