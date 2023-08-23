@@ -8,29 +8,11 @@ require_once "../utils/crudStories.php";
 require_once "../components/usertable.php";
 require_once "../utils/crudPet.php";
 require_once "../components/breadcrumb.php";
-$id = 0;
-if(isset($_SESSION["User"])){
-    $id = $_SESSION["User"];
-}elseif(isset($_SESSION["Admin"])){
-    $id = $_SESSION["Admin"];
-}elseif(isset($_SESSION["Agency"])){
-    $id = $_SESSION["Agency"];
-}
-if (isset($_SESSION['User']) || isset($_SESSION['Adm'])) {
-    addBreadcrumb('Home', '../user/dashboard.php');
-} elseif (isset($_SESSION['Agency'])) {
-    addBreadcrumb('Home', '../agency/dashboard.php');
-}
-
-if (isset($_SESSION['User']) || isset($_SESSION['Adm'])) {
-    addBreadcrumb('User', '../user/profile.php?id=' . $id);
-} elseif (isset($_SESSION['Agency'])) {
-    addBreadcrumb('Agency', '../user/profile.php?id=' . $id);
-}
-addBreadcrumb('Profile');
 
 $pageTitle = "View Stories";
+
 $crud = new CRUD_STORY();
+
 $stories = $crud->selectStories("");    
 $layout = "";
     foreach ($stories as $story) {  
@@ -56,6 +38,10 @@ $layout = "";
                 <hr>
    HTML;
 } 
+
+addBreadcrumb('Home', '../home.php');
+addBreadcrumb('Stories');
+
 ?>
 
 <!DOCTYPE html>
