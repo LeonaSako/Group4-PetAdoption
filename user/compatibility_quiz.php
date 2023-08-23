@@ -42,14 +42,16 @@ if (isset($_POST["finish"])) {
                     <div class="mb-3">
                         <label for="animalPreference" class="form-label">Which animal do you prefer?</label>
                         <select class="form-select" name="animalPreference" required>
+                            <option value=""></option>
                             <option value="Cat">Cat</option>
                             <option value="Dog">Dog</option>
-                            <option value="Bird">Bird</option>
+                            <option value="Bird">Bird</option>  
                         </select>
                     </div>
                     <div class="mb-3">
                         <label for="sizePreference" class="form-label">What size are you looking for?</label>
                         <select class="form-select" name="sizePreference" required>
+                            <option value="...."></option>
                             <option value="Small">Small</option>
                             <option value="Medium">Medium</option>
                             <option value="Large">Large</option>
