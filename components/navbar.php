@@ -1,5 +1,9 @@
 <?php
 require_once "../components/breadcrumb.php";
+require_once "../utils/crudStories.php";
+
+$crud = new CRUD_STORY();
+
 $navlayout = "";
 $profile = "";
 $messages = "";
