@@ -20,22 +20,36 @@ $layout = "";
             $desc = $story["desc"];
             $title=$story["title"];
             $layout .= <<<HTML
-                <div class='col-lg-2'>
-                    <div class='card '>
-                        <img src="$image" alt="Pet-Photo" class="img-fluid" id="profile-picture">
-                    </div>
-                </div>
-                <div class='col-lg-10'>
-                    <div class='card '>
-                        <div class="card-header">
-                            <p class="text-muted mb-0"><h5> $title</h5></p>
-                        </div>
-                            <div class="col-sm-12">
-                                <div class="storyDescr"> $desc</div>
+            <section>
+                <div class="container py-5">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="card mb-4">
+                                <div class="card-body text-center">
+                                    <img src="$image" alt="Pet-Photo" class="img-fluid" id="profile-picture">
+                                    <h5 class="my-3"></h5>
+                                </div>
                             </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <p class="text-muted mb-0"><h3> $title</h3></p>
+                                    
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <p class="text-muted mb-0">$desc</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <hr>
+            </section>
    HTML;
 } 
 
