@@ -25,34 +25,24 @@ addBreadcrumb('Cat');
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container">
-        <h1 class="text-center"></h1>
+        <h1 class="text-center">Cat Care</h1>
         <div class="row">
-            <h1>Cat Care:</h1>
-            <div class="col-1"></div>
-            <div class="col-5">
-                <p>
+            <div class="col">
                 <ul>
-                    <li>
-                        Cat Care Essentials: Explore the unique aspects of caring for a feline friend and creating a comfortable home environment. </li>
-                    <br>
-                    <li>
-                        Diet and Nutrition: Learn about the nutritional requirements of cats, including feeding guidelines and recommended food types. </li>
-                    <br>
-                    <li>
-                        Enrichment and Play: Discover ways to stimulate your cat's mind and body through play, toys, and interactive activities.
-                    </li>
-                    <br>
-                    <li>
-                        Grooming and Hygiene: Find tips on grooming your cat, including brushing, nail trimming, and dental care.
-                    </li>
-                    </p>
-                    <a href="static.php">Back</a>
+                    <li>  Cat Care Essentials: Explore the unique aspects of caring for a feline friend and creating a comfortable home environment.</li>
+                    <li> Diet and Nutrition: Learn about the nutritional requirements of cats, including feeding guidelines and recommended food types.</li>
+                    <li> Diet and Nutrition: Learn about the nutritional requirements of cats, including feeding guidelines and recommended food types.</li>
+                    <li> Enrichment and Play: Discover ways to stimulate your cat's mind and body through play, toys, and interactive activities.</li>
+                    <li> Grooming and Hygiene: Find tips on grooming your cat, including brushing, nail trimming, and dental care.</li>
+                </ul>
+                            
             </div>
-            <div class="col-4">
+            <div class="col">
                 <img src="../images/pets/cat.jpg">
             </div>
-            <div class="col-2"></div>
+            
         </div>
+        <a class="btn" href="static.php">Back</a>
     </div>
 </body>
 

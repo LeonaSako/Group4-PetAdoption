@@ -285,7 +285,9 @@ Buttons
 .btn-warning:hover {
     background-color: #ffab40;
 }
-
+.btnStatic{
+    width: 100%;
+}
 
 /* -------------------------------- 
 

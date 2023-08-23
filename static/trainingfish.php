@@ -29,7 +29,7 @@ addBreadcrumb('Fish');
         <h1 class="text-center"></h1>
         <div class="row">
             <h1>Training & Tipps</h1>
-            <div class="col-1"></div>
+        
             <div class="col-5">
                 <p>
                 <ul>
