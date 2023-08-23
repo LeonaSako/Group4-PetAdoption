@@ -43,25 +43,7 @@ if (!empty($adoption)) {
 
 }
 
-    // if ($status == 'Apply') {
-    //     $application = 'pending';
-    //     $url = "cancel.php?id=" . $adoption["id"];
-    //     $btnattr = "";
-    // } elseif ($status == 'Approved') {
-    //     $application = 'approved';
-    // } else {
-    //     $application = 'rejected';
-    // }
-
-    // $submitted = $adoption["submitionDate"];
-    // $today = date("Y-m-d");
-    // $diff = strtotime($today) - strtotime($submitted);
-    // $daysAgo = floor($diff / (60 * 60 * 24));
-    // $daytext = ($daysAgo == 1) ? 'day' : 'days';
-
-
 addBreadcrumb('Home', '../user/dashboard.php');
-//  addBreadcrumb('User', '../user/profile.php?id=' . $_SESSION["User"]);
 addBreadcrumb('Adoptions', '../adoptions/myadoptions.php');
 addBreadcrumb('Details');
 ?>  
@@ -86,9 +68,9 @@ addBreadcrumb('Details');
                             <img src="<?php echo $imagePet; ?>" alt="avatar" class="rounded-circle img-fluid" id="profile-picture">
                             <h5 class="my-3"><?php echo $petName; ?></h5>
                             <div class="d-flex justify-content-center mb-2">
-                                <?php if (isset($_SESSION['Agency'])) { ?>
-                                    <a href="" class="btn btn-success">Approve</a>;
-                                    <a href="" class="btn btn-outline-primary ms-1">Decline</a>;
+                                <?php if (isset($_SESSION['Agency']) && $status == "Apply") { ?>
+                                    <a href="../adoptions/edit.php?id={$adopId}&status=Approved&pid={$petId}" class="btn btn-success">Approve</a>
+                                    <a href="../adoptions/edit.php?id={$adopId}&status=Declined&pid={$petId}" class="btn btn-outline-primary ms-1">Decline</a>
                                 <?php } ?>
                             </div>
                         </div>
