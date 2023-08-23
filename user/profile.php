@@ -64,7 +64,6 @@ if (isset($_SESSION['User'])) {
 
             $image = "../images/stories/{$story['image']}";
             $desc = $story["desc"];
-            $title = ($story["title"] != null) ? $story["title"] : '-';
 
             $dateString = $story["date"];
             $dateTime = new DateTime($dateString);
@@ -211,14 +210,12 @@ addBreadcrumb('Profile');
                                 <table class="table table-striped table-hover table-sm">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Title</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Story</th>
                                             <th scope="col">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <td scope="col"><?= $title ?></td>
                                         <td scope="col"><?= $formattedDate ?></td>
                                         <td scope="col">
                                             <p class='fw-light word-wrap'><?= $desc ?></p>
