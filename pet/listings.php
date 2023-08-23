@@ -48,7 +48,7 @@ addBreadcrumb('');
     <main class="cd-main-content">
         <div class='container'>
             <section class="gallery">
-                <div id="layout" class="row m-2"  >
+                <div id="layout" class="row m-2">
                     <?= $layout ?>
                 </div>
             </section>

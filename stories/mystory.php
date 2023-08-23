@@ -6,23 +6,25 @@ require_once "../utils/crudStories.php";
 
 $pageTitle = "View My Story";
 $crud = new CRUD_STORY();
-$stories = $crud->selectStories("");    
-    foreach ($stories as $story) {  
-            $image = "../images/stories/{$story['image']}";
-            $desc = $story["desc"];
-            $title=$story["title"];
-    }
+$stories = $crud->selectStories("");
+foreach ($stories as $story) {
+    $image = "../images/stories/{$story['image']}";
+    $desc = $story["desc"];
+    $title = $story["title"];
+}
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <?php include '../components/head.php'; ?>
-    <link rel="stylesheet" href="../css/main.css">  
+    <link rel="stylesheet" href="../css/main.css">
     <title><?= $pageTitle ?></title>
 </head>
+
 <body>
-    <?php include '../components/navbar.php'; ?>    
+    <?php include '../components/navbar.php'; ?>
     <section>
         <div class="container py-5">
             <div class="row">
@@ -37,7 +39,9 @@ $stories = $crud->selectStories("");
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-header">
-                            <p class="text-muted mb-0"><h3><?php echo $title; ?></h3></p>
+                            <p class="text-muted mb-0">
+                            <h3><?php echo $title; ?></h3>
+                            </p>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -54,4 +58,5 @@ $stories = $crud->selectStories("");
         </div>
     </section>
 </body>
+
 </html>

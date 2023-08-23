@@ -31,9 +31,9 @@ if (isset($_POST["create"])) {
     $date = date("Y-m-d H:i:s");
     $description = cleanInputs($_POST['desc']);
     $title = cleanInputs($_POST['title']);
-    $image = fileUpload($_FILES["image"],'story');
-    $values = [$petId,$image[0],$title,$date,$description,$userId];
-    $crud->createStory($values);    
+    $image = fileUpload($_FILES["image"], 'story');
+    $values = [$petId, $image[0], $title, $date, $description, $userId];
+    $crud->createStory($values);
 }
 ?>
 <!DOCTYPE html>
@@ -44,6 +44,7 @@ if (isset($_POST["create"])) {
     <link rel="stylesheet" href="../css/main.css">
     <title><?= $pageTitle ?></title>
 </head>
+
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container">
@@ -74,4 +75,5 @@ if (isset($_POST["create"])) {
         </form>
     </div>
 </body>
+
 </html>

@@ -19,6 +19,8 @@ function viewAdoptions($result)
             $petSpecies = $getPet[0]["species"];
 
             $submission = $adoption['submitionDate'];
+            $dateTime = new DateTime($submission);
+            $submission = $dateTime->format("d/m/Y");
 
             $status = $adoption['adopStatus'];
 
