@@ -24,7 +24,13 @@ $storiesUpdate = $crud->selectStories("id=$id");
         $title = $_POST['title'];
         $date = date("Y-m-d H:i:s");
         $desc = $_POST['desc'];
-            $update = $crud->updateStory( $title,$desc,$date,$id);
+        $image = fileUpload($_FILES["image"], 'story');
+        
+        if ($_FILES["image"]["error"] == 0) {
+            $update = $crud->updateStory($id, $title, $desc, $date, $image[0]);
+        } else {
+            $update = $crud->updateStory($id, $title, $desc, $date, Null);
+        }
         if ($update) {
             header("refresh:2; url = ../user/profile.php?id=" . $_SESSION["User"]);
         }
@@ -53,6 +59,10 @@ $storiesUpdate = $crud->selectStories("id=$id");
                     <label for="desc" class="form-label">Description </label>
                     <textarea class="form-control" id="desc" name="desc" rows="4" cols="50" placeholder="Give a pet description" ><?= $desccriptionUp ?></textarea>
                 </div>
+                <div class="mb-3">
+                        <label for="image" class="form-label">Image </label>
+                        <input type="file" class="form-control" id="image" name="image">
+                    </div>
             <div class="container">
                 <div class="d-grid gap-2 d-md-flex justify-content-start">
                     <button name='update' type="submit" class="btn btn-primary">Update</button>
