@@ -3,6 +3,7 @@ session_start();
 
 require_once "components/breadcrumb.php";
 require_once "utils/crudPet.php";
+require_once "utils/crudStories.php";
 
 $pageTitle = "Homepage";
 
@@ -20,6 +21,22 @@ if (!empty($getPOD)) {
 }
 
 $successStories = "stories/viewStories.php";
+
+$crudStory = new CRUD_STORY();
+
+$stories = $crudStory->selectStories("");
+
+if (!empty($stories))
+{
+    $count = count($stories);
+
+    $lastStoryId = $count-1;
+    
+    $lastStory = $stories[$lastStoryId];
+
+    $StoryUrl = "images/stories/" . $lastStory['image'];
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -49,8 +66,8 @@ $successStories = "stories/viewStories.php";
                 <div class="col-6">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <a href="<?= $$successStories ?>">
-                                <img src="{$image}" id="details-img" class='img-fluid shadow' alt="Pet image">
+                            <a href="<?= $successStories ?>">
+                                <img src="<?= $StoryUrl ?>" id="details-img" class='img-fluid shadow' alt="Pet image">
                             </a>
                             <h5 class="my-3">Adoption success stories</h5>
                         </div>
