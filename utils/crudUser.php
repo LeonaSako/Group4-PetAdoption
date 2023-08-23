@@ -17,7 +17,7 @@ class CRUD_USER
         }
         $result = mysqli_query($this->connection, $sql);
 
-        $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);    
+        $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
         return $rows;
     }
 

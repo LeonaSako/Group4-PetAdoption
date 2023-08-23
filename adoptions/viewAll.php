@@ -21,7 +21,7 @@ function viewAdoptions($result)
             $getPet = $crudPet->selectPets("id = $petId");
 
             $pet = $getPet[0];
-            
+
             $petName = $pet["name"];
             $petSpecies = $pet["species"];
             $status = $row['adopStatus'];
@@ -39,7 +39,7 @@ function viewAdoptions($result)
                 $application = 'Rejected';
             }
 
-            
+
 
             $list .= <<<HTML
                             <tr>

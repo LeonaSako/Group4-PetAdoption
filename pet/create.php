@@ -66,7 +66,12 @@ if (isset($_POST["create"])) {
     <?php include '../components/navbar.php'; ?>
     <div class="container">
         <form method="post" autocomplete="off" enctype="multipart/form-data">
-            <?= $form ?>
+            <div class="card">
+                <div class="card-header">
+                    <h2>New pet</h2>
+                </div>
+                <?= $form ?>
+            </div>
         </form>
     </div>
     <script type="text/javascript" src="../js/formhelper.js"></script>
