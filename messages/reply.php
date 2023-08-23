@@ -17,6 +17,7 @@ $getMsg = $crud->selectMessages("id = $msgId");
 $getReceiver = $crudUser->selectUsers("id = $receiver");
 
 $msg = $getMsg[0];
+$msgContent = $msg['message'];
 $user = $getReceiver[0];
 
 if (isset($_SESSION["User"])) {
@@ -58,12 +59,17 @@ addBreadcrumb('Reply');
 
 <body>
     <?php include '../components/navbar.php'; ?>
+    <div class="container" id='contact-form'>
+        <div class="card-body">
+            <p class="card-text"><?= $msgContent ?></p>
+            <p class="text-sm-end fw-medium">- <?= $receiverName ?></p>
+        </div>
+    </div>
     <div class="container mt-5" id='contact-form'>
         <div style="display: flex; align-items: center;">
             <h2 style="margin-right: 40px;">Reply to:</h2>
             <p class="fw-light" style="margin: 0; font-size: 18px"><?= $receiverName ?></p>
         </div>
-
         <form method="post">
             <div class="form-group">
                 <label for="name">Subject:</label>
@@ -79,6 +85,7 @@ addBreadcrumb('Reply');
 
         </form>
     </div>
+
 
 </body>
 

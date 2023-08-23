@@ -21,12 +21,12 @@ if (!empty($adoption)) {
     $submitionDate = $adoption["submitionDate"];
     $adoptionDate = $adoption["adoptionDate"];
     $donation = $adoption["donation"];
-    
+
     $petId = $adoption["fk_pet_id"];
     $crudPet = new CRUD_PET();
     $getPet = $crudPet->selectPets("id = $petId");
     $pet = $getPet[0];
-    
+
     $petName = $pet["name"];
     $species = $pet["species"];
     $imagePet = "../images/pets/{$pet['image']}";
@@ -35,19 +35,18 @@ if (!empty($adoption)) {
     $crudUser = new CRUD_USER();
     $getUser = $crudUser->selectUsers("id = $userId");
     $user = $getUser[0];
-    $userName = $user["firstName"]." ".$user["lastName"];
+    $userName = $user["firstName"] . " " . $user["lastName"];
 
     $urlApprove = "../adoptions/edit.php?id={$adopId}&status=Approved&pid={$petId}";
     $urlDecline = "../adoptions/edit.php?id={$adopId}&status=Declined&pid={$petId}";
 
     $btnattr = "hidden";
-
 }
 
 addBreadcrumb('Home', '../user/dashboard.php');
 addBreadcrumb('Adoptions', '../adoptions/myadoptions.php');
 addBreadcrumb('Details');
-?>  
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -71,7 +70,7 @@ addBreadcrumb('Details');
                             <div class="d-flex justify-content-center mb-2">
                                 <?php if (isset($_SESSION['Agency']) && $status == "Apply") { ?>
                                     <a href="<?php echo $urlApprove; ?>" class="btn btn-success">Approve</a>
-                                    <a href="<?php echo $urlDecline; ?>"  class="btn btn-outline-primary ms-1">Decline</a>
+                                    <a href="<?php echo $urlDecline; ?>" class="btn btn-outline-primary ms-1">Decline</a>
                                 <?php } ?>
                             </div>
                         </div>
@@ -92,7 +91,7 @@ addBreadcrumb('Details');
                                     <p class="text-muted mb-0"><?php echo $petId; ?></p>
                                 </div>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Pet Name</p>
@@ -101,7 +100,7 @@ addBreadcrumb('Details');
                                     <p class="text-muted mb-0"><?php echo $petName; ?></p>
                                 </div>
                             </div>
-                
+
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Species</p>
@@ -119,7 +118,7 @@ addBreadcrumb('Details');
                                     <p class="text-muted mb-0"><?php echo $userId; ?></p>
                                 </div>
                             </div>
-                    
+
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">User Name</p>
@@ -183,8 +182,8 @@ addBreadcrumb('Details');
                     </div>
                 </div>
             </div>
-         
-            
+
+
         </div>
     </section>
 </body>
