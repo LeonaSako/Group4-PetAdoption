@@ -22,7 +22,7 @@ $petCount = count($allPets);
 $adopted = $crudPet->selectPets("available = 0");
 $adoptedCount = count($adopted);
 
-$availableCount = $petCount-$adoptedCount;
+$availableCount = $petCount - $adoptedCount;
 
 $crud = new CRUD_USER();
 $crudAdoptions = new CRUD_ADOPTION();
@@ -72,7 +72,7 @@ addBreadcrumb('Dashboard');
                                 </div>
                             </div>
                             <div class="col">
-                            <div class="card-statistics">
+                                <div class="card-statistics">
                                     <h5>Agencies </h5>
                                     <h2 class="h2-header"><?= $agencyCount ?></h2>
                                     <div class="gap-2 d-md-flex justify-content-center">
@@ -81,7 +81,7 @@ addBreadcrumb('Dashboard');
                                 </div>
                             </div>
                             <div class="col">
-                            <div class="card-statistics">
+                                <div class="card-statistics">
                                     <h5>Adoption applications </h5>
                                     <h2 class="h2-header"><?= $applCount ?></h2>
                                     <div class="gap-2 d-md-flex justify-content-center">

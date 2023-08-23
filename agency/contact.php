@@ -2,22 +2,23 @@
 session_start();
 
 require_once "../utils/crudStories.php";
+require_once "../utils/crudUser.php";
+require_once "../components/breadcrumb.php";
 
 $pageTitle = "Contact";
 
 $crud = new CRUD_STORY();
+$crudUser = new CRUD_USER();
 
-if (isset($_SESSION["User"])) {
-    $sender = $_SESSION["User"];
-    $receiver = $_GET["id"];
-    $read_agency = 0;
-    $read_user = 1;
-} else if (isset($_SESSION["Agency"])) {
-    $sender = $_SESSION["Agency"];
-    $receiver = $_GET["id"];
-    $read_agency = 1;
-    $read_user = 0;
-}
+$receiver = $_GET["id"];
+$sender = $_SESSION["User"];
+
+$getReceiver = $crudUser->selectUsers("id = $receiver");
+$user = $getReceiver[0];
+$receiverName = $user['agency'];
+
+$read_agency = 0;
+$read_user = 1;
 
 if (isset($_POST["submit"])) {
 
@@ -29,7 +30,9 @@ if (isset($_POST["submit"])) {
     $crud->createMessage($values);
 }
 
-
+addBreadcrumb('Home', '../home.php');
+addBreadcrumb('Messages', '../messages/seeMessages.php');
+addBreadcrumb('Contact agency');
 ?>
 
 <!DOCTYPE html>
@@ -43,9 +46,11 @@ if (isset($_POST["submit"])) {
 
 <body>
     <?php include '../components/navbar.php'; ?>
-    <a class="m-3 btn btn-primary" href="javascript:history.back()">GO BACK</a>
-    <div class="container mt-5" id='contact-form'>
-        <h2>Contact Us</h2>
+    <div class="container" id='contact-form'>
+        <div style="display: flex; align-items: center;">
+            <h2 style="margin-right: 40px;">Contact:</h2>
+            <p class="fw-light" style="margin: 0; font-size: 18px"><?= $receiverName ?></p>
+        </div>
         <form method="post">
             <div class="form-group">
                 <label for="name">Subject:</label>

@@ -37,13 +37,13 @@ function viewAdoptions($result)
             $status = $row['adopStatus'];
             $adopId = $row["adoptId"];
             $birthDate = $row["birthDate"];
-            $userAge= calculateAge($birthDate);
+            $userAge = calculateAge($birthDate);
 
             $btnattr = "hidden";
 
             $NoRequirements  = 0;
 
-        
+
             if ($userAge > 18) {
                 $NoRequirements++;
             }
@@ -63,7 +63,7 @@ function viewAdoptions($result)
                 $application = 'Approved';
             } elseif ($status == 'Declined') {
                 $application = 'Rejected';
-            }else {
+            } else {
                 $application = 'Cancelled';
             }
 
@@ -80,40 +80,40 @@ function viewAdoptions($result)
                     <td> {$row['donation']} </td>
                 HTML;
 
-                    if (isset($_SESSION['Agency'])) { 
-                        $list .= <<<HTML
+            if (isset($_SESSION['Agency'])) {
+                $list .= <<<HTML
                             <th class="thReq" scope="col"> $NoRequirements </th>
                         HTML;
-                    } 
+            }
 
-                $list .= <<<HTML
+            $list .= <<<HTML
                     <td>
                     <p class="d-inline-flex gap-1">
                 HTML;
 
-                if (isset($_SESSION['User'])) {
-                    $list .= "
+            if (isset($_SESSION['User'])) {
+                $list .= "
                     <a href='../adoptions/view.php?id={$adopId}' class='btn btn-warning'>Details</a>";
-                };
-            
-                if (isset($_SESSION['Agency']) || isset($_SESSION['Adm'])) {
-                    $list .= "    
-                        <a href='../adoptions/viewAdoptions.php?id={$adopId}' class='btn btn-warning'>Details</a>";
-                } 
+            };
 
-                if (isset($_SESSION['Agency']) && $status == "Apply") {
-                    $list .= "
+            if (isset($_SESSION['Agency']) || isset($_SESSION['Adm'])) {
+                $list .= "    
+                        <a href='../adoptions/viewAdoptions.php?id={$adopId}' class='btn btn-warning'>Details</a>";
+            }
+
+            if (isset($_SESSION['Agency']) && $status == "Apply") {
+                $list .= "
                     <a href='../adoptions/edit.php?id={$adopId}&status=Approved&pid={$petId}' class='btn btn-success ' aria-disabled='true'>Approve</a>
                     <a href='../adoptions/edit.php?id={$adopId}&status=Declined&pid={$petId}' class='btn btn-primary ' aria-disabled='true'>Reject</a>";
-                } elseif (isset($_SESSION['User'])) {
-                    $list .= "<a href='../adoptions/edit.php?id={$adopId}&status=Cancelled&pid={$petId}' class='btn btn-primary' $btnattr>Cancel</a>";
-                }
+            } elseif (isset($_SESSION['User'])) {
+                $list .= "<a href='../adoptions/edit.php?id={$adopId}&status=Cancelled&pid={$petId}' class='btn btn-primary' $btnattr>Cancel</a>";
+            }
             $list .= "</p>
             </td>
         </tr>";
         }
     } else {
-        $list .= "<tr><td colspan='9'>No records found</td></tr>";
+        $list .= "<tr><td colspan='10'>No records found</td></tr>";
     }
     return $list;
 }
