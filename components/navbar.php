@@ -4,6 +4,7 @@ $navlayout = "";
 $profile = "";
 $messages = "";
 $hideMessages = "hidden";
+$hideUnlogged = "";
 if (isset($_SESSION["Adm"])) {
     $navlayout .= <<<HTML
             <li class="nav-item">
@@ -97,12 +98,10 @@ if (isset($_SESSION["Adm"])) {
                 <a class='nav-link' href='../agency/adoptions.php'>Adoptions</a>
                 
             </li>
-            <li class='nav-item'>
-                <a class='nav-link' href='../agency/seeMessages.php'>SeeMessages</a>
-            </li>
     HTML;
     $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["Agency"]}'>My profile</a>";
 } else {
+    $hideUnlogged = "hidden";
     $navlayout .= <<<HTML
         <li class='nav-item'>
             <a class='nav-link' href='../user/registration.php'>Register as User</a>
@@ -147,7 +146,7 @@ $breadcrumbs = displayBreadcrumbs();
                         </li>
                     </ul>
                 </div>
-                <div class="dropdown">
+                <div class="dropdown" <?= $hideUnlogged ?>>
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user"></i>
                     </a>
@@ -166,7 +165,7 @@ $breadcrumbs = displayBreadcrumbs();
             </div>
         </div>
     </nav>
-    <section>
+    <section <?= $hideUnlogged ?>>
         <div class="container breadcrump-container">
             <div class="row">
                 <div class="col">
