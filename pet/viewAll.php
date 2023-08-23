@@ -16,8 +16,7 @@ function viewPets($result)
             
             $POD =  ($row['pet_day']);
              $buttonClass = $isAdopted ? 'btn btn-primary disabled' : 'btn btn-primary';
-            
-                      
+               
             if ($POD == 1) {
                 $layout .= <<<HTML
                         <div class="col-4">
