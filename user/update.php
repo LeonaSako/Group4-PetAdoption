@@ -58,7 +58,7 @@ if (isset($_POST["update"])) {
         $emailError = "Please enter a valid email address";
     } else {
         $result = $crud->selectUsers("email='$email'");
-        if (!empty($result)) {
+        if (!empty($result) && $email != $user["email"]) {
             $error = true;
             $emailError = "Provided Email is already in use";
         }
