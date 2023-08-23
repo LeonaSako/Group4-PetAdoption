@@ -174,6 +174,7 @@ addBreadcrumb('Profile');
                             My adoption applications
                         </div>
                         <div class="card-body">
+                        <div class="table-responsive">
                             <table class="table table-striped table-hover table-sm">
                                 <thead>
                                     <tr>
@@ -190,6 +191,7 @@ addBreadcrumb('Profile');
                                 </tbody>
                             </table>
                         </div>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -205,6 +207,7 @@ addBreadcrumb('Profile');
                             My adoption stories
                         </div>
                         <div class="card-body">
+                        <div class="table-responsive">
                             <table class="table table-striped table-hover table-sm">
                                 <thead>
                                     <tr>
@@ -228,6 +231,7 @@ addBreadcrumb('Profile');
                                 </tbody>
                             </table>
                         </div>
+                     </div>
                     </div>
                 </div>
             </div>
