@@ -37,7 +37,8 @@ if (!empty($adoption)) {
     $user = $getUser[0];
     $userName = $user["firstName"]." ".$user["lastName"];
 
-    $url = "#";
+    $urlApprove = "../adoptions/edit.php?id={$adopId}&status=Approved&pid={$petId}";
+    $urlDecline = "../adoptions/edit.php?id={$adopId}&status=Declined&pid={$petId}";
 
     $btnattr = "hidden";
 
@@ -69,8 +70,8 @@ addBreadcrumb('Details');
                             <h5 class="my-3"><?php echo $petName; ?></h5>
                             <div class="d-flex justify-content-center mb-2">
                                 <?php if (isset($_SESSION['Agency']) && $status == "Apply") { ?>
-                                    <a href="../adoptions/edit.php?id={$adopId}&status=Approved&pid={$petId}" class="btn btn-success">Approve</a>
-                                    <a href="../adoptions/edit.php?id={$adopId}&status=Declined&pid={$petId}" class="btn btn-outline-primary ms-1">Decline</a>
+                                    <a href="<?php echo $urlApprove; ?>" class="btn btn-success">Approve</a>
+                                    <a href="<?php echo $urlDecline; ?>"  class="btn btn-outline-primary ms-1">Decline</a>
                                 <?php } ?>
                             </div>
                         </div>
