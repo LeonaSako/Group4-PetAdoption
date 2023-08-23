@@ -5,6 +5,7 @@ let status_all = document.getElementById("radio1");
 let status_available = document.getElementById("radio2");
 let status_adopted = document.getElementById("radio3");
 
+
 speciesCheckboxes.forEach(checkbox => {
     checkbox.addEventListener("change", function () {
         updateDisplay();
@@ -100,3 +101,30 @@ jQuery(document).ready(function ($) {
         (scrollTop >= offsetTop) ? $('.cd-main-content').addClass('is-fixed') : $('.cd-main-content').removeClass('is-fixed');
     }
 });
+
+/* -------------------------------- 
+
+Reset button
+
+-------------------------------- */
+
+let reset_btn = document.getElementById("reset-btn");
+
+reset_btn.addEventListener("click", function () {
+    resetFilters();
+    updateDisplay();
+});
+
+function resetFilters() {
+    filters = {}; // Clear all filters
+    resetCheckboxes(speciesCheckboxes);
+    resetCheckboxes(sizeCheckboxes);
+    vaccineCheckbox.checked = false;
+    status_all.checked = true;
+}
+
+function resetCheckboxes(checkboxes) {
+    checkboxes.forEach(checkbox => {
+        checkbox.checked = false;
+    });
+}

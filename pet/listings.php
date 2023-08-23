@@ -128,6 +128,11 @@ addBreadcrumb('');
                             </li>
                         </ul>
                     </div>
+                    <div class="filter-block">
+                        <div class="gap-2 d-md-flex justify-content-center">
+                            <button id="reset-btn" type="button" class="btn btn-primary">Reset</button>
+                        </div>
+                    </div>
                 </form>
 
             </div>
