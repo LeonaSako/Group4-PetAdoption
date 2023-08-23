@@ -4,6 +4,7 @@ session_start();
 
 require_once "../utils/crudUser.php";
 require_once "../utils/crudAdoption.php";
+require_once "../utils/crudStories.php";
 require_once "../components/usertable.php";
 require_once "../utils/crudPet.php";
 require_once "../components/breadcrumb.php";
@@ -36,9 +37,17 @@ if (!empty($result)) {
 addBreadcrumb('Home', '../user/dashboard.php');
 addBreadcrumb('User', '../user/profile.php?id=' . $id);
 addBreadcrumb('Profile');
+$crud = new CRUD_STORY();
+$stories = $crud->selectStories("");    
+    foreach ($stories as $story) {  
+            $image = "../images/stories/{$story['image']}";
+            $desc = $story["desc"];
+            $title=$story["title"];
+            $date=$story["date"];
+            $userId =$story["id"];
+    }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -141,7 +150,40 @@ addBreadcrumb('Profile');
                                     <?= $applic ?>
                                 </tbody>
                             </table>
-
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Info
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped table-hover table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <td scope="col"><?=$title?></td>
+                                    <td scope="col"><?=$date?></td>
+                                    <td scope="col">
+                                        <p class="d-inline-flex gap-1">
+                                        <a href="../stories/mystory.php?id=<?=$userId ?>" class="btn btn-warning">Show</a>
+                                        <a href="../stories/update.php?id=<?= $userId ?>" class="btn btn-warning">Update</a>
+                                        <a href="../stories/delete.php?id=<?= $userId ?>" class="btn btn-warning">Delete</a>
+                                    </td>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

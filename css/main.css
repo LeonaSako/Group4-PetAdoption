@@ -452,3 +452,9 @@ Navbar
 .logo {
     height: 37px;
 }
+
+
+
+.storyDescr {
+    padding: 16px !important;
+}
