@@ -10,7 +10,16 @@ require_once "../components/breadcrumb.php";
 
 $pageTitle = "Profile";
 
-$id = $_GET["id"];
+$id = 0;
+if(isset($_SESSION["User"])){
+    $id = $_SESSION["User"];
+}elseif(isset($_SESSION["Admin"])){
+    $id = $_SESSION["Admin"];
+}elseif(isset($_SESSION["Agency"])){
+    $id = $_SESSION["Agency"];
+}
+
+
 
 $crud = new CRUD_USER();
 
@@ -25,6 +34,7 @@ if (!empty($result)) {
     $birthdate = $user['birthdate'];
     $phone = $user['phone'];
     $email = $user['email'];
+    $agency = $user['agency'];
 
     $crudAdoption = new CRUD_ADOPTION();
 
@@ -32,15 +42,24 @@ if (!empty($result)) {
     $applic = viewAdoptions($applications);
 }
 
+if (isset($_SESSION['User']) || isset($_SESSION['Adm'])) {
+    addBreadcrumb('Home', '../user/dashboard.php');
+} elseif (isset($_SESSION['Agency'])) {
+    addBreadcrumb('Home', '../agency/dashboard.php');
+}
 
-addBreadcrumb('Home', '../user/dashboard.php');
-addBreadcrumb('User', '../user/profile.php?id=' . $id);
+if (isset($_SESSION['User']) || isset($_SESSION['Adm'])) {
+    addBreadcrumb('User', '../user/profile.php?id=' . $id);
+} elseif (isset($_SESSION['Agency'])) {
+    addBreadcrumb('Agency', '../user/profile.php?id=' . $id);
+}
 addBreadcrumb('Profile');
 
 ?>
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 
 <head>
     <?php include '../components/head.php'; ?>
@@ -58,10 +77,12 @@ addBreadcrumb('Profile');
                         <div class="card-body text-center">
                             <img src="<?php echo $imageSrc; ?>" alt="avatar" class="rounded-circle img-fluid" id="profile-picture">
                             <h5 class="my-3"><?php echo $name; ?></h5>
-                            <div class="d-flex justify-content-center mb-2">
-                                <button type="button" class="btn btn-primary">Follow</button>
-                                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
-                            </div>
+                            <?php if (isset($_SESSION['User']) || isset($_SESSION['Adm'])) { ?>
+                                <div class="d-flex justify-content-center mb-2">
+                                    <button type="button" class="btn btn-primary">Follow</button>
+                                    <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -71,12 +92,22 @@ addBreadcrumb('Profile');
                             Profile details
                         </div>
                         <div class="card-body">
+                       
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Full Name</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0"><?php echo $name; ?></p>
+                                    
+                                    <?php if (isset($_SESSION['User']) || isset($_SESSION['Adm'])) { ?>
+                                        <p class="mb-0">Full Name</p>
+                                            </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0"><?php echo $name; ?></p>
+                                    <?php } ?>
+                                    <?php if (isset($_SESSION['Agency'])) { ?>
+                                        <p class="mb-0">Agency Name</p>
+                                            </div>
+                                        <div class="col-sm-9">    
+                                            <p class="text-muted mb-0"><?php echo $agency; ?></p>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <hr>
@@ -98,6 +129,7 @@ addBreadcrumb('Profile');
                                 </div>
                             </div>
                             <hr>
+                            <?php if (isset($_SESSION['User']) || isset($_SESSION['Adm'])) { ?>
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Birthdate</p>
@@ -107,6 +139,8 @@ addBreadcrumb('Profile');
                                 </div>
                             </div>
                             <hr>
+                            <?php } ?>
+
                             <div class="row">
                                 <div class="col-sm-3">
                                     <p class="mb-0">Address</p>

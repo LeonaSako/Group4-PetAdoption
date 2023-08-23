@@ -26,19 +26,6 @@ class CRUD_ADOPTION
         return $this->select("adoption", "*", $condition);
     }
 
-    // public function selectAgencyAdoptions(string $condition)
-    // {
-    //     $columns = "adoption.id as adoptId,
-    //     fk_adoptee_id,
-    //     pet.id as petId,
-    //     adopStatus,
-    //     submitionDate,
-    //     donation,
-    //     reason";
-    //     return $this->select("adoption INNER JOIN pet ON adoption.fk_pet_id = pet.id", $columns, $condition);
-    // }
-
-
     public function selectAdoptionsAndAgencyPets(string $condition)
     {
         $table = "`adoption` a 
@@ -49,9 +36,14 @@ class CRUD_ADOPTION
         a.fk_adoptee_id as fk_adoptee_id,
         p.name as pname, 
         p.species as species, 
+        p.experienceNeeded as petExperience,
+        p.minSpace as petSpace,
         u.id as userId, 
         u.firstName as firstname, 
         u.lastName as lastname, 
+        u.birthdate as birthDate,
+        u.experienced as userExperience,
+        u.space as userSpace,
         a.id as adoptId, 
         a.adopStatus as adopStatus, 
         a.adoptionDate as adoptionDate , 
@@ -82,20 +74,24 @@ class CRUD_ADOPTION
 
     public function createAdoption(array $values)
     {
-        $result = $this->insert("adoption", "`fk_pet_id`, `fk_adoptee_id`, `submitionDate`, `donation`, `reason`,`adoptionDate`", $values);
+        
+        $result = $this->insert("adoption", "`fk_pet_id`, `fk_adoptee_id`, `submitionDate`, `donation`, `reason`,`adoptionDate`, `adopStatus`", $values);
 
         $this->alertUser($result, "A new adoption has been submitted");
     }
 
-    public function updateAdoptionStatus($id, $status, $condition = "")
+    public function updateAdoptionStatus($table, $column, $status, $condition = "", )
+    // public function updateAdoptionStatus($id="", $status, $condition = "")
     {
 
         // $date = new DateTime(); 
         // $sql = "UPDATE `adoption` SET `adopStatus`='$status',`adoptionDate`='$date' WHERE id = $id";
 
-        $sql = "UPDATE `adoption` SET `adopStatus`= '$status' $condition" ;
+        // $sql = "UPDATE `adoption` SET `adopStatus`= '$status' $condition";
+        $sql = "UPDATE `$table` SET `$column` = '$status' $condition";
 
         $result = mysqli_query($this->connection, $sql);
+
 
         $this->alert($result, "The adoption status has been updated");
 

@@ -5,26 +5,48 @@ require_once "../utils/formUtils.php";
 
 $pageTitle = "Edit adoption";
 
-// session_start();
-// preventUser();
 
-$id = $_GET["id"];
-$status = $_GET["status"];
+// $id = $_GET["id"];
+// $status = $_GET["status"];
 
 $crudAdoption = new CRUD_ADOPTION();
 
+    $adoptId = $_GET["id"];
+    $petId = $_GET["pid"];
+
+    $tablePet = "pet";
+    $columnsPet = "available";
+    $statusPet = "0";
+    
+    $tableAdoption = "adoption";
+    $columnsAdoption = "adopStatus";
+    $statusAdoption = $_GET["status"];
+    $statusDeclined = "Declined";
+  
+    if ($statusAdoption == "Approved") {
+
+        $updateRejectOthers = $crudAdoption->updateAdoptionStatus($tableAdoption, $columnsAdoption, $statusDeclined, "WHERE fk_pet_id = $petId");
+
+        $updateApproved = $crudAdoption->updateAdoptionStatus($tableAdoption, $columnsAdoption, $statusAdoption, "WHERE id = $adoptId");
+    
+        $updateAvailable = $crudAdoption->updateAdoptionStatus($tablePet, $columnsPet, $statusPet, "WHERE id = $petId");
 
 
+    }
+    if ($statusAdoption == "Declined") {
+        $updateApproved = $crudAdoption->updateAdoptionStatus($tableAdoption, $columnsAdoption, $statusAdoption, "WHERE id = $adoptId");
+    }
+    
 
-    $id = $_GET["id"];
-    $status = $_GET["status"];
-
-    $update = $crudAdoption->updateAdoptionStatus($id, $status, "WHERE id = $id");
+    if ($statusAdoption == "Cancelled") {
+        $updateApproved = $crudAdoption->updateAdoptionStatus($tableAdoption, $columnsAdoption, $statusAdoption, "WHERE id = $adoptId");
+    }
 
 
     header("refresh: 3; url = ../agency/adoptions.php");
-
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,8 +59,10 @@ $crudAdoption = new CRUD_ADOPTION();
 
 <body>
     <?php include '../components/navbar.php'; ?>
-    <!-- Add layout -->
-    <h1> Test {{$id }} </h1> 
+    <div class="container">
+        <h1>Adoption status is changed!</h1> 
+        <h2>You will be send back to previous page</h2> 
+    </div>
 </body>
 
 </html>

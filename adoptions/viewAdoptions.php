@@ -86,8 +86,10 @@ addBreadcrumb('Details');
                             <img src="<?php echo $imagePet; ?>" alt="avatar" class="rounded-circle img-fluid" id="profile-picture">
                             <h5 class="my-3"><?php echo $petName; ?></h5>
                             <div class="d-flex justify-content-center mb-2">
-                                <button type="button" class="btn btn-success">Approve</button>
-                                <button type="button" class="btn btn-outline-primary ms-1">Decline</button>
+                                <?php if (isset($_SESSION['Agency'])) { ?>
+                                    <a href="" class="btn btn-success">Approve</a>;
+                                    <a href="" class="btn btn-outline-primary ms-1">Decline</a>;
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
@@ -97,7 +99,7 @@ addBreadcrumb('Details');
                         <div class="card-header">
                             Adoption details
                         </div>
-                        
+
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-3">

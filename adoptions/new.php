@@ -40,9 +40,13 @@ if (isset($_POST['adoption-submit'])) {
     $adoptionDate = $_POST['adoptionDate'];
     $donation = $_POST['donation'];
     $reason = $_POST['reason'];
-    $values = [$petID, $userID, $submitionDate, $donation, $reason, $adoptionDate];
+    $status = 'Apply';
+    $values = [$petID, $userID, $submitionDate, $donation, $reason, $adoptionDate, $status];
     $crudAdoption->createAdoption($values);
 }
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,7 +112,8 @@ if (isset($_POST['adoption-submit'])) {
             </div>
         </div>
     </form>
-    <br><br>
+    <br>
+    <br>
     <?php
 
     if (isset($_POST['submit'])) {
@@ -134,7 +139,7 @@ if (isset($_POST['adoption-submit'])) {
                                 <div class='col-8'>
                                     <form method='post' autocomplete='off' enctype='multipart/form-data'>
                                         <div class='mb-3'>
-                                            <label for='adoptionDate' class='form-label'>AdoptionDate</label>
+                                            <label for='adoptionDate' class='form-label'>What is the earliest adoption date</label>
                                             <input type='date' name='adoptionDate' class='form-control' id='adoptionDate' required>
                                         </div>
                                         <div class='mb-3'>
@@ -142,8 +147,8 @@ if (isset($_POST['adoption-submit'])) {
                                             <input type='text' name='donation' class='form-control' id='donation' required>
                                         </div>
                                         <div class='mb-3'>
-                                            <label for='reason' class='form-label'>reason</label>
-                                            <input type='texterea' name='reason' class='form-control' id='reason' required>
+                                            <label for='reason' class='form-label'>What is the reason you want this pet?</label>
+                                            <input type='textarea' name='reason' class='form-control' id='reason' required>
                                         </div>
                                         <button type='submit' name='adoption-submit' class='btn btn-primary'>Submit</button>
                                     </form>

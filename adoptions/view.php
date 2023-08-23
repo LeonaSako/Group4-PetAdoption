@@ -22,7 +22,7 @@ $layout = "";
 if (!empty($result)) {
 
     $adoption = $result[0];
-
+    
     $petId = $adoption["fk_pet_id"];
 
     $crudpet = new CRUD_PET();
@@ -35,18 +35,18 @@ if (!empty($result)) {
 
     $status = $adoption["adopStatus"];
 
-    $url = "#";
-
     $btnattr = "hidden";
 
     if ($status == 'Apply') {
         $application = 'pending';
-        $url = "cancel.php?id=" . $adoption["id"];
+        $url = "../adoptions/edit.php?id={adoptId}";
         $btnattr = "";
     } elseif ($status == 'Approved') {
         $application = 'approved';
-    } else {
-        $application = 'rejected';
+    } elseif ($status == 'Declined') {
+        $application = 'rejected'; 
+    } elseif ($status == 'Cancelled') {
+        $application = 'cancelled';
     }
 
     $submitted = $adoption["submitionDate"];
@@ -80,27 +80,47 @@ if (!empty($result)) {
                     $layout .= <<<HTML
                             <p class="card-text"> Sorry, your application is declined.</p>
                 HTML;
+                } elseif ($status == 'Cancelled') {
+                    $layout .= <<<HTML
+                            <p class="card-text"> You cancelled the application yourself.</p>
+                HTML;
                 }
                     
                 $layout .= <<<HTML
                
-               <a href="{$url}" class="btn btn-primary" $btnattr >Cancel</a>
-                </div>
+                <a href="..adoptions/edit.php?id={adoptId}" class="btn btn-primary" $btnattr >Cancel Adoption</a>
+                HTML;
 
+                if (isset($_SESSION['Agency']) || isset($_SESSION['Adm'])) {
+                    $layout .= <<<HTML
+                    <a href="../adoptions/myadoptions.php" class="btn btn-primary" $btnattr >Back to Adoptions</a>
+                    </div>
+                HTML;
+                }
+
+                if (isset($_SESSION['Agency'])) {
+                $layout .= <<<HTML
+                <a href="../agency/adoptions.php" class="btn btn-primary" $btnattr >Back to Adoptions</a>
+                HTML;
+                }
+                
+                $layout .= <<<HTML
+                    </div>
+            
                 <div class="card-footer text-body-secondary">
-                Submitted $daysAgo $daytext ago
+                    Submitted $daysAgo $daytext ago
+                </div>
             </div>
-        </div>
-    HTML;
+        HTML;
    
-} else {
-    $layout .= "No results";
-}
+    } else {
+        $layout .= "No results";
+    }
 
-addBreadcrumb('Home', '../user/dashboard.php');
-addBreadcrumb('User', '../user/profile.php?id=' . $_SESSION["User"]);
-addBreadcrumb('Adoptions', '../adoptions/myadoptions.php');
-addBreadcrumb('Details');
+    addBreadcrumb('Home', '../user/dashboard.php');
+    addBreadcrumb('User', '../user/profile.php?id=' . $_SESSION["User"]);
+    addBreadcrumb('Adoptions', '../adoptions/myadoptions.php');
+    addBreadcrumb('Details');
 ?>  
 
 <!DOCTYPE html>

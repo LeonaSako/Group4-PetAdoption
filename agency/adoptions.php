@@ -8,6 +8,8 @@ require_once "../adoptions/viewAll.php";
 require_once "../utils/formUtils.php";
 require_once "../components/breadcrumb.php";
 
+
+
 addBreadcrumb('Dashboard', '../agency/dashboard.php');
 addBreadcrumb('Adoptions', '../agency/adoptions.php');
 addBreadcrumb('All');
@@ -21,13 +23,15 @@ $crud = new CRUD_ADOPTION();
 
 $id = $_SESSION["Agency"];
 
-$apply = $crud->selectAgencyAdoptions("pet.fk_users_id = $id AND adopStatus = 'Apply'");
-$approved = $crud->selectAgencyAdoptions("pet.fk_users_id = $id AND adopStatus = 'Approved'");
-$declined = $crud->selectAgencyAdoptions("pet.fk_users_id = $id AND adopStatus = 'Declined'");
+$apply = $crud->selectAdoptionsAndAgencyPets("fk_users_id = $id AND adopStatus = 'Apply'");
+$approved = $crud->selectAdoptionsAndAgencyPets("fk_users_id = $id AND adopStatus = 'Approved'");
+$declined = $crud->selectAdoptionsAndAgencyPets("fk_users_id = $id AND adopStatus = 'Declined'");
+$cancelled = $crud->selectAdoptionsAndAgencyPets("fk_users_id = $id AND adopStatus = 'Cancelled'");
 
 $pending = viewAdoptions($apply);
 $accepted = viewAdoptions($approved);
 $rejected = viewAdoptions($declined);
+$cancelled = viewAdoptions($cancelled);
 
 ?>
 
