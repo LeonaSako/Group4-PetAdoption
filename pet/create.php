@@ -7,17 +7,22 @@ require_once "../utils/formUtils.php";
 require_once "../components/breadcrumb.php";
 require_once "../utils/petform.php";
 
-$pageTitle = "Add pet";
+$pageTitle = "Add new pet";
 
-addBreadcrumb('Dashboard', '../agency/dashboard.php');
-addBreadcrumb('Pets', '../agency/repository.php');
-addBreadcrumb('New');
 preventUser();
 
-if (isset($_SESSION["Adm"])) {
-    $userID = $_SESSION["Adm"];
-} else {
+if (isset($_SESSION['Agency'])) 
+{
     $userID = $_SESSION["Agency"];
+    addBreadcrumb('Home', '../home.php');
+    addBreadcrumb('Pets', '../agency/repository.php');
+    addBreadcrumb('New');
+
+} else if (isset($_SESSION['Adm'])) {
+    $userID = $_SESSION["Adm"];
+    addBreadcrumb('Home', '../home.php');
+    addBreadcrumb('Pets', '../pet/listings.php');
+    addBreadcrumb('New');
 }
 
 $crud = new CRUD_PET();

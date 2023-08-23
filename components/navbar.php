@@ -61,6 +61,9 @@ if (isset($_SESSION["Adm"])) {
                 </ul>
             </li>
             <li class='nav-item'>
+                    <a class='nav-link' href='../stories/viewstories.php'>Success Stories</a>
+            </li>
+            <li class='nav-item'>
                 <a class='nav-link' href='../admin/adoptions.php'>Adoptions</a>
             </li>
     HTML;
@@ -98,7 +101,10 @@ if (isset($_SESSION["Adm"])) {
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li>
-                        <a class='dropdown-item' href='../agency/repository.php'>Pet repository</a>
+                        <a class="dropdown-item" href='../pet/listings.php'>View all pets</a>
+                    </li>
+                    <li>
+                        <a class='dropdown-item' href='../agency/repository.php'>View own pet listings</a>
                     </li>
                     <li>
                         <a class="dropdown-item" href='../pet/create.php'>Create new</a>
