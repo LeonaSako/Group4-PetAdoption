@@ -81,13 +81,7 @@ class CRUD_ADOPTION
     }
 
     public function updateAdoptionStatus($table, $column, $status, $condition = "", )
-    // public function updateAdoptionStatus($id="", $status, $condition = "")
     {
-
-        // $date = new DateTime(); 
-        // $sql = "UPDATE `adoption` SET `adopStatus`='$status',`adoptionDate`='$date' WHERE id = $id";
-
-        // $sql = "UPDATE `adoption` SET `adopStatus`= '$status' $condition";
         $sql = "UPDATE `$table` SET `$column` = '$status' $condition";
 
         $result = mysqli_query($this->connection, $sql);

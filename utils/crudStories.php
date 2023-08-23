@@ -65,13 +65,20 @@ class CRUD_STORY
 
     public function createStory(array $values)
     {
-            $result = $this->insert("stories", "`fk_pet_id`, `image`, `title`, `date`,`desc`, `fk_user_id`", $values);
+        $result = $this->insert("stories", "`fk_pet_id`, `image`, `title`, `date`,`desc`, `fk_user_id`", $values);
 
         $this->alertUser($result, "A new adoption story has been submitted");
     }
-    public function updateStory($title, $desc, $date)
+    public function updateStory($id, $title, $desc, $date, $image)
     {
         $sql = "UPDATE `stories` SET `title`='$title',`desc`='$desc',`date`='$date'";
+        
+        if (!empty($image)) {
+            $sql .= ", `image`= '$image' WHERE id = $id";
+        } else {
+            $sql .= "WHERE id = $id";
+        }
+
         $result = mysqli_query($this->connection, $sql);
 
         $this->alert($result, "The Story has been updated successfully");
