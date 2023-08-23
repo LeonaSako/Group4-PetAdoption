@@ -7,9 +7,9 @@ require_once "../components/breadcrumb.php";
 
 $pageTitle = "Cat training";
 
-addBreadcrumb('Home', '../user/dashboard.php');
+addBreadcrumb('Home', '../home.php');
 addBreadcrumb('Pets', '../pet/listings.php');
-addBreadcrumb('Pet training', '../static/static.php');
+addBreadcrumb('Pet training', '../petcare/care.php');
 addBreadcrumb('Cat');
 
 ?>
@@ -29,8 +29,7 @@ addBreadcrumb('Cat');
         <h1 class="text-center"></h1>
         <div class="row">
             <h1>Training & Tipps</h1>
-            <div class="col-1"></div>
-            <div class="col-5">
+            <div class="col-8">
                 <p>
                 <ul>
                     <li>
@@ -49,12 +48,13 @@ addBreadcrumb('Cat');
                         Use Toys: Interactive toys like feather wands or laser pointers can be used to encourage your cat's natural hunting and chasing instincts.
                     </li>
                     </p>
-                    <a href="static.php">Back</a>
             </div>
             <div class="col-4">
                 <img src="../images/pets/cat.jpg">
             </div>
-            <div class="col-2"></div>
+            <div class="gap-2 d-md-flex justify-content-left" id="pet-of-day-btn">
+                <a href="care.php" class="btn btn-warning">Back</a>
+            </div>
         </div>
     </div>
 </body>

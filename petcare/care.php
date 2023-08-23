@@ -7,7 +7,7 @@ require_once "../components/breadcrumb.php";
 
 $pageTitle = "Pet care";
 
-addBreadcrumb('Home', '../user/dashboard.php');
+addBreadcrumb('Home', '../home.php');
 addBreadcrumb('Pets', '../pet/listings.php');
 addBreadcrumb('Pet care');
 
@@ -43,7 +43,7 @@ addBreadcrumb('Pet care');
                     <img src="../images/pets/bird.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <p class="card-text">If you want take care of me, You can click read more.</p>
-                        <a href="../static/bird.php" class="btn btn-primary">Care</a>
+                        <a href="bird.php" class="btn btn-primary">Care</a>
                         <br><br>
                         <a href="trainingbird.php" class="btn btn-primary">Training & Tips</a>
                     </div>
@@ -54,7 +54,7 @@ addBreadcrumb('Pet care');
                     <img src="../images/pets/cat.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <p class="card-text">If you want take care of me, You can click read more.</p>
-                        <a href="../static/cat.php" class="btn btn-primary">Care</a>
+                        <a href="cat.php" class="btn btn-primary">Care</a>
                         <br><br>
                         <a href="trainingcat.php" class="btn btn-primary">Training & Tips</a>
                     </div>
@@ -65,7 +65,7 @@ addBreadcrumb('Pet care');
                     <img src="../images/pets/fish.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <p class="card-text">If you want take care of me, You can click read more.</p>
-                        <a href="../static/fish.php" class="btn btn-primary">Care</a>
+                        <a href="fish.php" class="btn btn-primary">Care</a>
                         <br><br>
                         <a href="trainingfish.php" class="btn btn-primary">Training & Tips</a>
                     </div>
