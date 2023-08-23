@@ -46,15 +46,12 @@ function viewAdoptions($result)
         
             if ($userAge > 18) {
                 $NoRequirements++;
-                var_dump($NoRequirements);
             }
             if ($userExperience == $petExperience || $userExperience == 1) {
                 $NoRequirements++;
-                var_dump($NoRequirements);
             }
             if ($userSpace >= $petSpace) {
                 $NoRequirements++;
-                var_dump($NoRequirements);
             }
 
 
