@@ -28,7 +28,7 @@ addBreadcrumb('Pet care');
 
     <div class="container">
         <h2 class="h2-header">How to take care of animals</h2>
-       <div id="content" class="row row-cols-lg-4 row-cols-md-3 row-cols-sm- row-cols-xs-1 gap-3">
+       <div id="content" class="grid3">
        
         </div>
       </div>
