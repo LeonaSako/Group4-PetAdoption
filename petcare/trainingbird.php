@@ -7,9 +7,9 @@ require_once "../components/breadcrumb.php";
 
 $pageTitle = "Bird training";
 
-addBreadcrumb('Home', '../user/dashboard.php');
+addBreadcrumb('Home', '../home.php');
 addBreadcrumb('Pets', '../pet/listings.php');
-addBreadcrumb('Pet training', '../static/static.php');
+addBreadcrumb('Pet training', '../petcare/care.php');
 addBreadcrumb('Bird');
 
 ?>
@@ -26,7 +26,7 @@ addBreadcrumb('Bird');
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container">
-        <h1 class="text-center">Training & Tipps</h1>
+    <h1 class="text-center">Training & Tipps</h1>
         <div class="row ">
             <div class="col">
                 <ul>
@@ -41,9 +41,10 @@ addBreadcrumb('Bird');
             <div class="col">
                 <img src="../images/pets/bird.jpg">
             </div>
-            
         </div>
-        <a class="btn" href="static.php">Back</a>
+        <div class="gap-2 d-md-flex justify-content-left" id="pet-of-day-btn">
+            <a href="care.php" class="btn btn-warning">Back</a>
+        </div>
     </div>
 </body>
 

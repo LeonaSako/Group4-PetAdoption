@@ -7,9 +7,9 @@ require_once "../components/breadcrumb.php";
 
 $pageTitle = "Dog training";
 
-addBreadcrumb('Home', '../user/dashboard.php');
+addBreadcrumb('Home', '../home.php');
 addBreadcrumb('Pets', '../pet/listings.php');
-addBreadcrumb('Pet training', '../static/static.php');
+addBreadcrumb('Pet training', '../petcare/care.php');
 addBreadcrumb('Dog');
 
 ?>
@@ -42,17 +42,15 @@ addBreadcrumb('Dog');
                     <li>
                     Use High-Value Treats: Use treats that your dog finds extremely enticing for training sessions. These treats can motivate your dog to work harder and focus better.
                     </li>
-                    
-                    
-                    
                 </ul>
             </div>
                 <div class="col">
                    <img src="../images/pets/dog.jpg">
                 </div>
-               
         </div>
-        <a class="btn" href="static.php">Back</a>
+        <div class="gap-2 d-md-flex justify-content-left" id="pet-of-day-btn">
+            <a href="care.php" class="btn btn-warning">Back</a>
+        </div>
     </div>
 </body>
 

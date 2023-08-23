@@ -7,9 +7,9 @@ require_once "../components/breadcrumb.php";
 
 $pageTitle = "Bird pet care";
 
-addBreadcrumb('Home', '../user/dashboard.php');
+addBreadcrumb('Home', '../home.php');
 addBreadcrumb('Pets', '../pet/listings.php');
-addBreadcrumb('Pet care', '../static/static.php');
+addBreadcrumb('Pet care', '../petcare/care.php');
 addBreadcrumb('Bird');
 
 ?>
@@ -26,24 +26,33 @@ addBreadcrumb('Bird');
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container">
-        <h1 class="text-center">Bird Care</h1>
-        
-            <div class="row">
-                <div class="col">
-                    <ul>
-                        <li> Bird Care Fundamentals: Explore the essentials of providing a nurturing environment for pet birds, both large and small.</li>
-                        <li>  Diet and Feeding: Learn about suitable bird diets, including seeds, pellets, fruits, and vegetables, to ensure optimal health.</li>
-                        <li>Cage Setup and Enrichment: Find out how to create a comfortable cage with perches, toys, and mental stimulation.</li>
-                        <li>  Grooming and Hygiene: Get tips on maintaining your bird's feathers, beak, and nails, and providing bathing opportunities.</li>
-                    </ul>
-
-                </div>
-                <div class="col">
-                   <img src="../images/pets/bird.jpg">
-                </div>
+        <h1 class="text-center"></h1>
+        <div class="row">
+            <h1>Bird Care:</h1>
+            <div class="col-8">
+                <p>
+                <ul>
+                    <li>
+                        Bird Care Fundamentals: Explore the essentials of providing a nurturing environment for pet birds, both large and small. <br>
+                    <li>
+                        Diet and Feeding: Learn about suitable bird diets, including seeds, pellets, fruits, and vegetables, to ensure optimal health.
+                        <br>
+                    <li>
+                        Cage Setup and Enrichment: Find out how to create a comfortable cage with perches, toys, and mental stimulation.
+                    </li>
+                    <br>
+                    <li>
+                        Grooming and Hygiene: Get tips on maintaining your bird's feathers, beak, and nails, and providing bathing opportunities.
+                    </li>
+                    </p>
             </div>
-         <a class="btn" href="static.php">Back</a>  
-            
+            <div class="col-4">
+                <img src="../images/pets/bird.jpg">
+            </div>
+            <div class="gap-2 d-md-flex justify-content-left" id="pet-of-day-btn">
+                <a href="care.php" class="btn btn-warning">Back</a>
+            </div>
+        </div>
     </div>
 
 </body>

@@ -7,7 +7,7 @@ require_once "../components/breadcrumb.php";
 
 $pageTitle = "Pet care";
 
-addBreadcrumb('Home', '../user/dashboard.php');
+addBreadcrumb('Home', '../home.php');
 addBreadcrumb('Pets', '../pet/listings.php');
 addBreadcrumb('Pet care');
 

@@ -7,9 +7,9 @@ require_once "../components/breadcrumb.php";
 
 $pageTitle = "Dog pet care";
 
-addBreadcrumb('Home', '../user/dashboard.php');
+addBreadcrumb('Home', '../home.php');
 addBreadcrumb('Pets', '../pet/listings.php');
-addBreadcrumb('Pet care', '../static/static.php');
+addBreadcrumb('Pet care', '../petcare/care.php');
 addBreadcrumb('Dog');
 
 ?>
@@ -40,7 +40,9 @@ addBreadcrumb('Dog');
                    <img src="../images/pets/dog.jpg">
                 </div>
          </div>
-         <a class="btn" href="static.php">Back</a>
+         <div class="gap-2 d-md-flex justify-content-left" id="pet-of-day-btn">
+            <a href="care.php" class="btn btn-warning">Back</a>
+        </div>
     </div>
     
 </body>
