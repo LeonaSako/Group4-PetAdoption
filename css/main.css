@@ -457,6 +457,13 @@ Navbar
     height: 37px;
 }
 
+<<<<<<< HEAD
+
+
+.storyDescr {
+    padding: 16px !important;
+}
+=======
 /* @media screen and (max-width: 1000px),
 (min-width: 701)
 {
@@ -467,3 +474,4 @@ Navbar
         /* translate: -50% 0; */
 /* } */
 /* }  */
+>>>>>>> 620c3dfdaa696f9dba00df09f21a6e5aec64f36c

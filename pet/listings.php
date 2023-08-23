@@ -40,7 +40,7 @@ addBreadcrumb('');
         </div>
         </p>
         <div class="collapse" id="collapseExample">
-            <div class="row">
+            <div class="row row-cols-lg-2 row-cols-md-1 row-cols-sm-1 row-cols-xs-1">
                 <?= $petofday ?>
             </div>
         </div>
@@ -48,7 +48,7 @@ addBreadcrumb('');
     <main class="cd-main-content">
         <div class='container'>
             <section class="gallery">
-                <div id="layout" class="row m-2">
+                <div id="layout" class="row m-2"  >
                     <?= $layout ?>
                 </div>
             </section>
