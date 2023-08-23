@@ -11,6 +11,7 @@ function viewAdoptions($result)
 
 
             $petId = $adoption["fk_pet_id"];
+            $adoptId = $adoption["id"];
 
             $getPet = $crudPet->selectPets("id = $petId");
 
@@ -24,6 +25,7 @@ function viewAdoptions($result)
             $url = "#";
 
             $btnattr = "hidden";
+            $btnattr2 = "hidden";
 
             $submitted = $adoption["submitionDate"];
             $today = date("Y-m-d");
@@ -33,13 +35,17 @@ function viewAdoptions($result)
 
             if ($status == 'Apply') {
                 $application = 'Pending';
-                $url = "cancel.php?id=" . $adoption["id"];
+                $url = "../adoptions/edit.php?id={adoptId}";
                 $btnattr = "";
             } elseif ($status == 'Approved') {
                 $application = 'Approved';
-            } else {
+                $btnattr2 = "";
+            } elseif ($status == 'Declined') {
                 $application = 'Rejected';
+            } else {
+                $application = 'Cancelled';
             }
+
 
             $donation = ($adoption['donation']) ? "&euro; " . $adoption['donation'] : "-";
 
@@ -53,7 +59,8 @@ function viewAdoptions($result)
                                 <td>
                                 <p class="d-inline-flex gap-1">
                                     <a href='../adoptions/view.php?id={$adoption["id"]}' class='btn btn-warning'>Details</a>
-                                    <a href='cancel.php?id={$petId}' class='btn btn-primary' $btnattr>Cancel</a>
+                                    <a href='../adoptions/edit.php?id={$adoptId}&status=Cancelled&pid={$petId}' class='btn btn-primary' $btnattr>Cancel</a>
+                                    <a href='../stories/new.php?id={$petId}' class='btn btn-primary' $btnattr2>Add Story</a>
                             HTML;
             if (isset($_SESSION['Adm'])) {
                 $list .= "<a href='edit.php?id={$petId}' class='btn btn-success disabled' aria-disabled='true'>Approve</a>

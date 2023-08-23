@@ -37,6 +37,9 @@ if (isset($_POST['adoption-submit'])) {
 
     $crudAdoption->createAdoption($values);
 }
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

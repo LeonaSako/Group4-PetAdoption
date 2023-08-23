@@ -22,6 +22,14 @@ a:hover {
     color: #ff4181;
 }
 
+h1 {
+    font-family: 'Black Ops One', cursive;
+}
+
+h2 {
+    font-family: 'Black Ops One', cursive;
+}
+
 
 /* -------------------------------- 
 
@@ -60,12 +68,9 @@ Main Components
     padding-bottom: 20px;
 }
 
-
-
 .buttons {
     padding-top: 10px;
     padding-bottom: 10px;
-
 }
 
 .lo-img {
@@ -236,6 +241,7 @@ blockquote {
 Buttons
 
 -------------------------------- */
+
 .btn {
     text-transform: uppercase;
     padding-top: 10px;
@@ -341,7 +347,6 @@ Gallery
     #filter {
         width: 20%;
     }
-
     .cd-filter form {
         padding: 70px 10%;
     }
@@ -459,13 +464,13 @@ Navbar
     height: 37px;
 }
 
-/* @media screen and (max-width: 1000px),
-(min-width: 701)
-{
-    #login-form {
-        grid-template-columns: repeat(1, 1fr);
-        margin-right: 0;
-        padding: 0;
-        /* translate: -50% 0; */
-/* } */
-/* }  */
+.storyDescr {
+    padding: 16px !important;
+}
+
+
+/* -------------------------------- 
+
+Table Adoption
+
+-------------------------------- */

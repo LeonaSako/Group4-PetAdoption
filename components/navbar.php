@@ -1,6 +1,6 @@
 <?php
-require_once "../components/breadcrumb.php";
-require_once "../utils/crudStories.php";
+require_once __DIR__ . "/../components/breadcrumb.php";
+require_once __DIR__ . "/../utils/crudStories.php";
 
 $crud = new CRUD_STORY();
 
@@ -9,10 +9,30 @@ $profile = "";
 $messages = "";
 $hideMessages = "hidden";
 $hideUnlogged = "";
+$home = "<li class='nav-item'>
+            <a class='nav-link active' aria-current='page' href='../home.php'>Home</a>
+        </li>";
+$pets = "<li class='nav-item dropdown'>
+            <a class='nav-link dropdown-toggle' href='#' id='navbarDropdownMenuLink' role='button' data-bs-toggle='dropdown' aria-expanded='false' >
+                Pets
+            </a>
+            <ul class='dropdown-menu' aria-labelledby='navbarDropdownMenuLink'>
+                <li class='nav-item'>
+                    <a class='dropdown-item' href='../pet/listings.php'>Pets</a>
+                </li>
+                <li class='nav-item'>
+                    <a class='dropdown-item' href='../petcare/care.php'>Pet care</a>
+                </li>
+                <li class='nav-item'>
+                    <a class='dropdown-item' href='../stories/viewstories.php'>Success Stories</a>
+                </li>
+            </ul>
+        </li>";
 if (isset($_SESSION["Adm"])) {
     $navlayout .= <<<HTML
+            $home
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../admin/dashboard.php">Home</a>
+                <a class="nav-link active" aria-current="page" href="../admin/dashboard.php">Dashboard</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
@@ -51,28 +71,15 @@ if (isset($_SESSION["Adm"])) {
     $count = count($unreadMessages);
     $hideMessages = "";
     $navlayout .= <<<HTML
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../user/dashboard.php">Home</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                    Pets
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li class='nav-item'>
-                        <a class="dropdown-item" href='../pet/listings.php'>Pets</a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href='../static/static.php'>Pet care</a>
-                    </li>
-                </ul>
-            </li>
+            $home
+            $pets
             <li class='nav-item'>
                 <a class='nav-link' href='../adoptions/myadoptions.php'>My Adoptions</a>
             </li>
             <li class='nav-item'>
-                <a class='nav-link' href='../user/compatibility_quiz.php'>Go to the Quiz</a>
+                <a class='nav-link' href='../user/compatibility_quiz.php'>Quiz</a>
             </li>
+            
     HTML;
     $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["User"]}'>My profile</a>";
 } elseif (isset($_SESSION["Agency"])) {
@@ -81,9 +88,9 @@ if (isset($_SESSION["Adm"])) {
     $count = count($unreadMessages);
     $hideMessages = "";
     $navlayout .= <<<HTML
-
+            $home
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="../agency/dashboard.php">Home</a>
+                <a class="nav-link active" aria-current="page" href="../agency/dashboard.php">Dashboard</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
@@ -107,11 +114,20 @@ if (isset($_SESSION["Adm"])) {
 } else {
     $hideUnlogged = "hidden";
     $navlayout .= <<<HTML
-        <li class='nav-item'>
-            <a class='nav-link' href='../user/registration.php'>Register as User</a>
-        </li>
-        <li class='nav-item'>
-            <a class='nav-link' href='../agency/registration.php'>Register as Agency</a>
+        $home
+        $pets
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                Registration
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li class='nav-item'>
+                    <a class='nav-link' href='../user/registration.php'>Register as User</a>
+                </li>
+                <li class='nav-item'>
+                    <a class='nav-link' href='../agency/registration.php'>Register as Agency</a>
+                </li>
+            </ul>
         </li>
         <li class='nav-item'>
             <a class='nav-link' href='../user/login.php'>Login</a>

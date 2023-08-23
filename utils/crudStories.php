@@ -33,25 +33,20 @@ class CRUD_STORY
         }
         $valuesOut = implode(",", $valuesOut);
 
-
-        $columns .= ", `date`";
-
-
-        $valuesOut .= ", NOW()";
-
         $sql = "INSERT INTO `$table`($columns) VALUES ($valuesOut)";
+
         $result = mysqli_query($this->connection, $sql);
         return $result;
     }
 
     public function selectStories(string $condition)
     {
-        return $this->select("story", "*", $condition);
+        return $this->select("stories", "*", $condition);
     }
 
     public function selectMessages(string $condition)
     {
-        return $this->select("message", "*", $condition);
+        return $this->select("message", "*", $condition);   
     }
 
     public function changeMsgStatus($id, $status, $user)
@@ -71,9 +66,33 @@ class CRUD_STORY
 
     public function createStory(array $values)
     {
-        $result = $this->insert("stories", "`fk_pet_id`, `image`, `date`,`desc`, `fk_user_id`", $values);
+        $result = $this->insert("stories", "`fk_pet_id`, `image`, `title`, `date`,`desc`, `fk_user_id`", $values);
 
         $this->alertUser($result, "A new adoption story has been submitted");
+    }
+    public function updateStory($id, $title, $desc, $date, $image)
+    {
+        $sql = "UPDATE `stories` SET `title`='$title',`desc`='$desc',`date`='$date'";
+        
+        if (!empty($image)) {
+            $sql .= ", `image`= '$image' WHERE id = $id";
+        } else {
+            $sql .= "WHERE id = $id";
+        }
+
+        $result = mysqli_query($this->connection, $sql);
+
+        $this->alert($result, "The Story has been updated successfully");
+
+        return $result;
+    }
+    public function deleteStory($id)
+    {
+        $sql = "DELETE FROM `stories` WHERE id = $id";
+
+        $result = mysqli_query($this->connection, $sql);
+
+        $this->alert($result, "The user has been deleted");
     }
     public function createMessage(array $values)
     {

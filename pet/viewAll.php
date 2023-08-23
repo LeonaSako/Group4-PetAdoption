@@ -19,7 +19,9 @@ function viewPets($result)
             $layout .= <<<HTML
                         <div class="col-4">
                             <div class="pet-card">
-                                <img src="{$image}" id="details-img" class='img-fluid shadow' alt="Pet image">
+                                <a href="../pet/details.php?id=$id">
+                                    <img src="{$image}" id="details-img" class='img-fluid shadow' alt="Pet image">
+                                </a>
                                 <div class="card-body">
                                     <figure class="text-center">
                                         <blockquote class="blockquote"><h5>{$name}</h5></blockquote>
@@ -67,12 +69,14 @@ function viewPetDetails($result)
             $vaccinated = ($row['vaccinated'] == 1) ? 'Yes' : 'No';
             $status = ($row['available'] == 1) ? 'Available for adoption' : 'Adopted';
 
-            $POD = $row['pet_day'];
+            $POD_Id = $row['id'];
             $layout .= <<<HTML
                         <div class="col-4">
                             <div class="card mb-4">
                                 <div class="card-body text-center">
-                                    <img src="{$image}" id="details-img" class='img-fluid shadow' alt="Pet image">
+                                    <a href="../pet/details.php?id={$POD_Id}">
+                                        <img src="{$image}" id="details-img" class='img-fluid shadow' alt="Pet image">
+                                    </a>
                                     <h5 class="my-3">$name</h5>
                                 </div>
                             </div>

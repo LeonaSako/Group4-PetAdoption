@@ -24,9 +24,12 @@ function fileUpload($pic, $type)
         }
 
         move_uploaded_file($pic["tmp_name"], $destination);
-    } elseif ($message == "The file chosen was not an image") {
+    }
+     elseif ($message == "The file chosen was not an image") {
         $pictureName = "placeholder.jpg";
     }
 
     return [$pictureName, $message];
 }
+ 
+            

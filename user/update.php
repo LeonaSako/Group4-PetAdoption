@@ -4,6 +4,7 @@ require_once "../utils/crudUser.php";
 require_once "../utils/file_upload.php";
 require_once "../utils/formUtils.php";
 require_once "../utils/userForm.php";
+require_once "../components/breadcrumb.php";
 
 $pageTitle = "Update details";
 
@@ -53,7 +54,9 @@ if (!empty($result)) {
         }
     }
 }
-
+addBreadcrumb('Home', '../home.php');
+addBreadcrumb('Profile', '../user/profile.php?id=' . $id);
+addBreadcrumb('Edit');
 
 ?>
 
