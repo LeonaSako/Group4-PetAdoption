@@ -26,11 +26,9 @@ addBreadcrumb('Bird');
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container">
-        <h1 class="text-center"></h1>
-        <div class="row">
-            <h1>Training & Tipps</h1>
-            <div class="col-8">
-                <p>
+    <h1 class="text-center">Training & Tipps</h1>
+        <div class="row ">
+            <div class="col">
                 <ul>
                     <li>Build Trust: Spend time near your bird's cage without forcing interaction. Let them observe you and become accustomed to your presence.</li>
                     <li>Positive Reinforcement: Just like with dogs, use positive reinforcement. Reward your bird with treats, verbal praise, or head scratches when they exhibit desired behaviors.</li>
@@ -38,28 +36,15 @@ addBreadcrumb('Bird');
                     <li>
                     Choose a Quiet Environment: Train in a quiet, calm environment where your bird can focus without distractions.
                     </li>
-                    <br>
-                    <li>
-                        Positive Reinforcement: Just like with dogs, use positive reinforcement. Reward your bird with treats, verbal praise, or head scratches when they exhibit desired behaviors.
-                    </li>
-                    <br>
-                    <li>
-                        Short Sessions: Keep training sessions short and engaging. Birds have shorter attention spans, so sessions should be around 5-15 minutes to prevent them from becoming bored.
-                    </li>
-                    <br>
-                    <li>
-                        Choose a Quiet Environment: Train in a quiet, calm environment where your bird can focus without distractions.
-                    </li>
-                    </p>
+                </ul>
             </div>
             <div class="col">
                 <img src="../images/pets/bird.jpg">
             </div>
-            <div class="gap-2 d-md-flex justify-content-left" id="pet-of-day-btn">
-                <a href="care.php" class="btn btn-warning">Back</a>
-            </div>
         </div>
-        <a class="btn" href="static.php">Back</a>
+        <div class="gap-2 d-md-flex justify-content-left" id="pet-of-day-btn">
+            <a href="care.php" class="btn btn-warning">Back</a>
+        </div>
     </div>
 </body>
 

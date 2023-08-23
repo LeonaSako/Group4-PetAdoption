@@ -27,27 +27,6 @@ addBreadcrumb('Cat');
     <div class="container">
         <h1 class="text-center">Cat Care</h1>
         <div class="row">
-<<<<<<< HEAD
-            <h1>Cat Care:</h1>
-            <div class="col-8">
-                <p>
-                <ul>
-                    <li>
-                        Cat Care Essentials: Explore the unique aspects of caring for a feline friend and creating a comfortable home environment. </li>
-                    <br>
-                    <li>
-                        Diet and Nutrition: Learn about the nutritional requirements of cats, including feeding guidelines and recommended food types. </li>
-                    <br>
-                    <li>
-                        Enrichment and Play: Discover ways to stimulate your cat's mind and body through play, toys, and interactive activities.
-                    </li>
-                    <br>
-                    <li>
-                        Grooming and Hygiene: Find tips on grooming your cat, including brushing, nail trimming, and dental care.
-                    </li>
-                    </p>
-                    
-=======
             <div class="col">
                 <ul>
                     <li>  Cat Care Essentials: Explore the unique aspects of caring for a feline friend and creating a comfortable home environment.</li>
@@ -57,20 +36,15 @@ addBreadcrumb('Cat');
                     <li> Grooming and Hygiene: Find tips on grooming your cat, including brushing, nail trimming, and dental care.</li>
                 </ul>
                             
->>>>>>> 18ac472f6094f6370c7a291ee4a8d05b2b66482e
             </div>
             <div class="col">
                 <img src="../images/pets/cat.jpg">
             </div>
-<<<<<<< HEAD
-            <div class="gap-2 d-md-flex justify-content-left" id="pet-of-day-btn">
-                <a href="care.php" class="btn btn-warning">Back</a>
-            </div>
-=======
             
->>>>>>> 18ac472f6094f6370c7a291ee4a8d05b2b66482e
         </div>
-        <a class="btn" href="static.php">Back</a>
+        <div class="gap-2 d-md-flex justify-content-left" id="pet-of-day-btn">
+            <a href="care.php" class="btn btn-warning">Back</a>
+        </div>
     </div>
 </body>
 

@@ -42,11 +42,10 @@ addBreadcrumb('Fish');
             <div class="col-4">
                 <img src="../images/pets/fish.jpg">
             </div>
-            <div class="gap-2 d-md-flex justify-content-left" id="pet-of-day-btn">
-                <a href="care.php" class="btn btn-warning">Back</a>
-            </div>
         </div>
-        <a class="btn" href="static.php">Back</a>
+        <div class="gap-2 d-md-flex justify-content-left" id="pet-of-day-btn">
+                <a href="care.php" class="btn btn-warning">Back</a>
+        </div>
     </div>
 </body>
 

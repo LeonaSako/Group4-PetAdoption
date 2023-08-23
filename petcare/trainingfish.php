@@ -29,12 +29,7 @@ addBreadcrumb('Fish');
         <h1 class="text-center"></h1>
         <div class="row">
             <h1>Training & Tipps</h1>
-<<<<<<< HEAD
-            <div class="col-8">
-=======
-        
             <div class="col-5">
->>>>>>> 18ac472f6094f6370c7a291ee4a8d05b2b66482e
                 <p>
                 <ul>
                     <li>
