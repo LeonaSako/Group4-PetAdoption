@@ -185,6 +185,10 @@ Card
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.card-statistics {
+    text-align: center;
+}
+
 .card img {
     border-radius: 8px 8px 0 0;
     width: 100%;
@@ -291,9 +295,11 @@ Buttons
 .btn-warning:hover {
     background-color: #ffab40;
 }
-.btnStatic{
+
+.btnStatic {
     width: 100%;
 }
+
 
 /* -------------------------------- 
 

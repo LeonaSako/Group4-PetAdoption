@@ -16,6 +16,7 @@ redirectAgencyToLogin();
 preventAdmin();
 
 $crud = new CRUD_PET();
+
 $agencyId = $_SESSION["Agency"];
 
 $result = $crud->selectPets("`fk_users_id` = $agencyId");
