@@ -6,6 +6,8 @@ Primary style
 
 body {
     background-color: #fce4ec;
+    width: 100 vw;
+    box-sizing: border-box;
 }
 
 main {
@@ -22,6 +24,14 @@ a:hover {
     color: #ff4181;
 }
 
+h1 {
+    font-family: 'Black Ops One', cursive;
+}
+
+h2 {
+    font-family: 'Black Ops One', cursive;
+}
+
 
 /* -------------------------------- 
 
@@ -32,6 +42,15 @@ Main Components
 .container {
     padding-top: 40px;
     padding-bottom: 40px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
+    /* margin-top: 20px; */
+    /* padding: 30px; */
 }
 
 #POD-container {
@@ -157,8 +176,8 @@ Card
     border-radius: 8px;
     box-shadow: 4px 8px 10px;
     max-width: 400px;
-    width: 330px;
-    margin-left: 20px;
+    width: 100%;
+    /* margin-left: 20px; */
 }
 
 .card {
@@ -283,7 +302,9 @@ Buttons
 .btn-warning:hover {
     background-color: #ffab40;
 }
-
+.btnStatic{
+    width: 100%;
+}
 
 /* -------------------------------- 
 
@@ -464,3 +485,25 @@ Navbar
 Table Adoption
 
 -------------------------------- */
+
+
+/* -------------------------------- 
+
+Media Screen
+
+-------------------------------- */
+
+@media screen and (width < 1024px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 15px 0;
+        width: 100%;
+    }
+}
+
+@media screen and (width < 600px) {
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+        width: 100%;
+    }
+}

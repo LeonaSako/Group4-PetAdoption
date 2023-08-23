@@ -46,18 +46,6 @@ if (!empty($result)) {
     $applic = viewAdoptions($applications);
 }
 
-if (isset($_SESSION['User']) || isset($_SESSION['Adm'])) {
-    addBreadcrumb('Home', '../user/dashboard.php');
-} elseif (isset($_SESSION['Agency'])) {
-    addBreadcrumb('Home', '../agency/dashboard.php');
-}
-
-if (isset($_SESSION['User']) || isset($_SESSION['Adm'])) {
-    addBreadcrumb('User', '../user/profile.php?id=' . $id);
-} elseif (isset($_SESSION['Agency'])) {
-    addBreadcrumb('Agency', '../user/profile.php?id=' . $id);
-}
-addBreadcrumb('Profile');
 $crud = new CRUD_STORY();
 
 if (isset($_SESSION['User'])) {
@@ -74,6 +62,13 @@ if (isset($_SESSION['User'])) {
         $adoptionStoriesSection = "hidden";
     }    
 }
+<<<<<<< HEAD
+=======
+
+addBreadcrumb('Home', '../home.php');
+addBreadcrumb('Profile');
+
+>>>>>>> fdcf0c0f6ad39576b3fb86180fbf0e180cde05a4
 ?>
 <!DOCTYPE html>
 <html lang="en"> 
@@ -179,6 +174,7 @@ if (isset($_SESSION['User'])) {
                             My adoption applications
                         </div>
                         <div class="card-body">
+                        <div class="table-responsive">
                             <table class="table table-striped table-hover table-sm">
                                 <thead>
                                     <tr>
@@ -195,6 +191,7 @@ if (isset($_SESSION['User'])) {
                                 </tbody>
                             </table>
                         </div>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -210,11 +207,13 @@ if (isset($_SESSION['User'])) {
                             My adoption stories
                         </div>
                         <div class="card-body">
+                        <div class="table-responsive">
                             <table class="table table-striped table-hover table-sm">
                                 <thead>
                                     <tr>
                                         <th scope="col">Title</th>
                                         <th scope="col">Date</th>
+                                        <th scope="col">Story</th>
                                         <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
@@ -222,14 +221,17 @@ if (isset($_SESSION['User'])) {
                                     <td scope="col"><?=$title?></td>
                                     <td scope="col"><?=$date?></td>
                                     <td scope="col">
+                                        <p class = 'fw-light word-wrap'><?=$desc?></p>
+                                    </td>
+                                    <td scope="col">
                                         <p class="d-inline-flex gap-1">
-                                        <a href="../stories/mystory.php?id=<?=$userId ?>" class="btn btn-warning">Show</a>
+                                        <a href="../stories/mystory.php?id=<?=$userId ?>" class="btn btn-primary">Show</a>
                                         <a href="../stories/update.php?id=<?= $userId ?>" class="btn btn-warning">Update</a>
-                                        <a href="../stories/delete.php?id=<?= $userId ?>" class="btn btn-warning">Delete</a>
                                     </td>
                                 </tbody>
                             </table>
                         </div>
+                     </div>
                     </div>
                 </div>
             </div>

@@ -38,13 +38,14 @@ addBreadcrumb('Adoptions');
     <?php include '../components/navbar.php'; ?>
     <div class="container">
 
-        <div class="row">
-            <div class="col">
+        <div class="col">
+            <div class="row">
                 <div class="card mb-4">
                     <div class="card-header">
                         My adoption applications
                     </div>
                     <div class="card-body">
+                    <div class="table-responsive">
                         <table class="table table-striped table-hover table-sm">
                             <thead>
                                 <tr>
@@ -60,8 +61,9 @@ addBreadcrumb('Adoptions');
                                 <?= $applic ?>
                             </tbody>
                         </table>
+                        </div>
 
-                    </div>
+                    
                 </div>
             </div>
         </div>

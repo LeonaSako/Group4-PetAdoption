@@ -9,7 +9,7 @@ $pageTitle = "Login";
 if (isset($_SESSION["Adm"])) {
     header("Location: ../admin/dashboard.php");
 } else if (isset($_SESSION["User"])) {
-    header("Location: ../user/dashboard.php");
+    header("Location: ../home.php");
 } else if (isset($_SESSION["Agency"])) {
     header("Location: ../agency/dashboard.php");
 }
@@ -54,7 +54,7 @@ if (isset($_POST["login"])) {
                 header("Location: ../admin/dashboard.php");
             } else if ($user["role"] == "User") {
                 $_SESSION["User"] = $user["id"];
-                header("Location: ../user/dashboard.php");
+                header("Location: ../home.php");
             } else if ($user["role"] == "Agency") {
                 $_SESSION["Agency"] = $user["id"];
                 header("Location: ../agency/dashboard.php");
@@ -82,12 +82,12 @@ if (isset($_POST["login"])) {
         <h1 class="text-center">Login page</h1>
         <br>
         <div class="row">
-            <div class="col-lg-4">
+            <div class="col">
                 <img src="../images/layout/pet_logo_2.png" class="lo-img">
             </div>
-            <div class="col-lg-6" id="login-form">
+            <div class="col ms-0" id="login-form">
                 <form method="post">
-                    <div class="mb-3">
+                    <div class="mb-3 ml-0">
                         <br>
                         <label for="email" class="form-label">Email address </label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Email address" value="<?= $email ?>">

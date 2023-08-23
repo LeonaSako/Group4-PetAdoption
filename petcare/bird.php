@@ -7,9 +7,9 @@ require_once "../components/breadcrumb.php";
 
 $pageTitle = "Bird pet care";
 
-addBreadcrumb('Home', '../user/dashboard.php');
+addBreadcrumb('Home', '../home.php');
 addBreadcrumb('Pets', '../pet/listings.php');
-addBreadcrumb('Pet care', '../static/static.php');
+addBreadcrumb('Pet care', '../petcare/care.php');
 addBreadcrumb('Bird');
 
 ?>
@@ -29,8 +29,7 @@ addBreadcrumb('Bird');
         <h1 class="text-center"></h1>
         <div class="row">
             <h1>Bird Care:</h1>
-            <div class="col-1"></div>
-            <div class="col-5">
+            <div class="col-8">
                 <p>
                 <ul>
                     <li>
@@ -46,14 +45,16 @@ addBreadcrumb('Bird');
                         Grooming and Hygiene: Get tips on maintaining your bird's feathers, beak, and nails, and providing bathing opportunities.
                     </li>
                     </p>
-                    <a href="static.php">Back</a>
             </div>
             <div class="col-4">
                 <img src="../images/pets/bird.jpg">
             </div>
-            <div class="col-2"></div>
+            <div class="gap-2 d-md-flex justify-content-left" id="pet-of-day-btn">
+                <a href="care.php" class="btn btn-warning">Back</a>
+            </div>
         </div>
     </div>
+
 </body>
 
 </html>

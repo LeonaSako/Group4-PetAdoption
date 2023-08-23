@@ -3,6 +3,7 @@ session_start();
 
 require_once "../utils/formUtils.php";
 require_once "../utils/crudUser.php";
+require_once "../components/breadcrumb.php";
 
 $pageTitle = "Dashboard";
 
@@ -34,19 +35,19 @@ if (!empty($results)) {
             $userid = $user["id"];
 
             $layout .= <<<HTML
-                <div class='col-lg-3 col-md-4 col-sm-6'>
-                    <div class='card'>
-                        <img src='{$imageSrc}' class='img-fluid'>
-                        <div class='card-body'>
-                            <h5 class='card-title'>{$firstName} {$lastName}</h5>
-                            <p class='card-text'>{$email}</p>
-                            <a href='../user/update.php?id={$userid}' class='btn btn-warning'>Update</a>
-                            <a href='../user/delete.php?id={$userid}' class='btn btn-danger'>Delete</a>
-                           
+                
+                <div class='card'>
+                    <img src='{$imageSrc}' class='img-fluid'>
+                    <div class='card-body'>
+                        <h5 class='card-title'>{$firstName} {$lastName}</h5>
+                        <p class='card-text'>{$email}</p>
+                        <a href='../user/update.php?id={$userid}' class='btn btn-warning'>Update</a>
+                        <a href='../user/delete.php?id={$userid}' class='btn btn-danger'>Delete</a>
+                        
 
-                        </div>
                     </div>
                 </div>
+                
             HTML;
         } else {
             echo "Invalid user data: " . print_r($user, true);
@@ -55,7 +56,7 @@ if (!empty($results)) {
 } else {
     $layout .= "No results found!";
 }
-
+addBreadcrumb('Dashboard');
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +73,7 @@ if (!empty($results)) {
     <?php include '../components/navbar.php'; ?>
     <div class="container">
         <input class="form-control w-50 m-auto" id="search" placeholder="Search user"> <br>
-        <div id="layout" class="row">
+        <div id="layout" class="grid">
             <?= $layout ?>
         </div>
     </div>
