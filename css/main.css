@@ -34,6 +34,11 @@ Main Components
     padding-bottom: 40px;
 }
 
+#POD-container {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
 .breadcrump-container {
     padding-top: 40px;
     padding-bottom: 0px;
@@ -48,30 +53,19 @@ Main Components
     position: relative;
 }
 
-.header h2 {
-    position: relative;
-    height: 150px;
-    width: 96%;
-    left: 2%;
-    right: 2%;
-    background-color: #ff80ab;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+.h2-header {
     text-transform: uppercase;
-    font-weight: 700;
-    font-size: x-large;
-    color: #ffffff;
-    line-height: 150px;
+    color: #ff80ab;
     text-align: center;
-    font-size: 2.4rem;
-    font-weight: 300;
+    padding-bottom: 20px;
 }
+
+
 
 .buttons {
     padding-top: 10px;
     padding-bottom: 10px;
+
 }
 
 .lo-img {
@@ -242,6 +236,16 @@ blockquote {
 Buttons
 
 -------------------------------- */
+.btn {
+    text-transform: uppercase;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    padding-left: 24px;
+    padding-right: 24px;
+    box-shadow: 0 4px 9px -4px #3b71ca;
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+}
 
 .btn-primary {
     background-color: #ff80ab;
@@ -452,6 +456,14 @@ Navbar
 .logo {
     height: 37px;
 }
+
+<<<<<<< HEAD
+
+
+.storyDescr {
+    padding: 16px !important;
+}
+=======
 /* @media screen and (max-width: 1000px),
 (min-width: 701)
 {
@@ -460,5 +472,6 @@ Navbar
         margin-right: 0;
         padding: 0;
         /* translate: -50% 0; */
-    /* } */
+/* } */
 /* }  */
+>>>>>>> 620c3dfdaa696f9dba00df09f21a6e5aec64f36c

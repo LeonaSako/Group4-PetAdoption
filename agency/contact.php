@@ -3,30 +3,32 @@ session_start();
 
 require_once "../utils/crudStories.php";
 
+$pageTitle = "Contact";
 
 $crud = new CRUD_STORY();
 
-$pageTitle = "Contact";
+if (isset($_SESSION["User"])) {
+    $sender = $_SESSION["User"];
+    $receiver = $_GET["id"];
+    $read_agency = 0;
+    $read_user = 1;
+} else if (isset($_SESSION["Agency"])) {
+    $sender = $_SESSION["Agency"];
+    $receiver = $_GET["id"];
+    $read_agency = 1;
+    $read_user = 0;
+}
 
 if (isset($_POST["submit"])) {
-    $name = $_POST["name"];
-    $email = $_POST["email"];
+
+    $subject = $_POST["subject"];
     $message = $_POST["message"];
 
- 
-    $userId = $_SESSION["User"];
-    $agencyId = 1;
+    $values = [$subject, $message, $sender, $receiver, $read_agency, $read_user];
 
-    $subject = "Naslov poruke"; 
-    $fk_user_id = $userId; 
-    $fk_agency_id = $agencyId;
- 
-
-    $values=[$subject, $message, $fk_user_id, $fk_agency_id];
     $crud->createMessage($values);
-
 }
- 
+
 
 ?>
 
@@ -46,18 +48,13 @@ if (isset($_POST["submit"])) {
         <h2>Contact Us</h2>
         <form method="post">
             <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <label for="name">Subject:</label>
+                <input type="text" class="form-control" id="subject" name="subject" required>
             </div>
             <div class="form-group">
                 <label for="message">Message:</label>
                 <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
             </div>
-
             <div class="buttons">
                 <button type="submit" class="btn btn-primary" name="submit">Send</button>
             </div>
@@ -68,4 +65,3 @@ if (isset($_POST["submit"])) {
 </body>
 
 </html>
-

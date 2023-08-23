@@ -86,10 +86,9 @@ class CRUD_PET
         if ($getPOD != NULL) {
             $POD = $getPOD[0]["id"];
             $this->removePetOfDay($POD);
-            
         }
 
-        
+
         $sql = "UPDATE `pet` SET `pet_day`= 1 WHERE id = $id";
 
         $result = mysqli_query($this->connection, $sql);
@@ -97,8 +96,6 @@ class CRUD_PET
         $this->alert($result, "The pet has been made pet of the day");
 
         return $result;
-
-        
     }
 
     public function removePetOfDay($id)
@@ -122,8 +119,8 @@ class CRUD_PET
 
     public function createStory(array $values)
     {
-        $result = $this->insert("stories", "`fk_pet_id`, `image`, `date`,`desc`, `fk_user_id`", $values);
-
+        $result = $this->insert("stories", "`fk_pet_id`, `image`, `desc`,`date`, `fk_user_id`", $values);
+    
         $this->alertUser($result, "A new adoption story has been submitted");
     }
     public function createMessage(array $values)

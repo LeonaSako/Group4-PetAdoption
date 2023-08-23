@@ -25,6 +25,7 @@ function viewAdoptions($result)
             $url = "#";
 
             $btnattr = "hidden";
+            $btnattr2 = "hidden";
 
             $submitted = $adoption["submitionDate"];
             $today = date("Y-m-d");
@@ -38,6 +39,7 @@ function viewAdoptions($result)
                 $btnattr = "";
             } elseif ($status == 'Approved') {
                 $application = 'Approved';
+                $btnattr2 = "";
             } elseif ($status == 'Declined') {
                 $application = 'Rejected';
             } else {
@@ -58,6 +60,7 @@ function viewAdoptions($result)
                                 <p class="d-inline-flex gap-1">
                                     <a href='../adoptions/view.php?id={$adoption["id"]}' class='btn btn-warning'>Details</a>
                                     <a href='../adoptions/edit.php?id={$adoptId}&status=Cancelled&pid={$petId}' class='btn btn-primary' $btnattr>Cancel</a>
+                                    <a href='../stories/new.php?id={$petId}' class='btn btn-primary' $btnattr2>Add Story</a>
                             HTML;
             if (isset($_SESSION['Adm'])) {
                 $list .= "<a href='edit.php?id={$petId}' class='btn btn-success disabled' aria-disabled='true'>Approve</a>

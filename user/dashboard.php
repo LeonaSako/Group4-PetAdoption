@@ -30,7 +30,7 @@ addBreadcrumb('Home', '../user/dashboard.php');
     
     
     <div class="container">
-        <div id="layout" class="row ">
+        <div id="layout" class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-xs-1">
         
             <?= $layout ?>
         </div>

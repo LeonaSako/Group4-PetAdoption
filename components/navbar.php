@@ -1,7 +1,14 @@
 <?php
 require_once "../components/breadcrumb.php";
+require_once "../utils/crudStories.php";
+
+$crud = new CRUD_STORY();
+
 $navlayout = "";
 $profile = "";
+$messages = "";
+$hideMessages = "hidden";
+$hideUnlogged = "";
 if (isset($_SESSION["Adm"])) {
     $navlayout .= <<<HTML
             <li class="nav-item">
@@ -36,29 +43,49 @@ if (isset($_SESSION["Adm"])) {
             <li class='nav-item'>
                 <a class='nav-link' href='../admin/adoptions.php'>Adoptions</a>
             </li>
+            <li class='nav-item'>
+                <a class='nav-link' href='../stories/viewstories.php'>View Stories</a>
+            </li>
     HTML;
     $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["Adm"]}'>My profile</a>";
 } elseif (isset($_SESSION["User"])) {
+    $id = $_SESSION["User"];
+    $unreadMessages = $crud->selectMessages("fk_receiver_id = $id AND readmsg_user = 0");
+    $count = count($unreadMessages);
+    $hideMessages = "";
     $navlayout .= <<<HTML
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="../user/dashboard.php">Home</a>
             </li>
-            <li class='nav-item'>
-                <a class='nav-link' href='../pet/listings.php'>Pet listings</a>
-            </li>
-            <li class='nav-item'>
-                <a class='nav-link' href='../agency/contact.php'>Contact us</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+                    Pets
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <li class='nav-item'>
+                        <a class="dropdown-item" href='../pet/listings.php'>Pets</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href='../static/static.php'>Pet care</a>
+                    </li>
+                </ul>
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='../adoptions/myadoptions.php'>My Adoptions</a>
             </li>
-            
             <li class='nav-item'>
                 <a class='nav-link' href='../user/compatibility_quiz.php'>Go to the Quiz</a>
             </li>
+            <li class='nav-item'>
+            <a class='nav-link' href='../stories/allstories.php'>View Stories</a>
+        </li>
     HTML;
     $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["User"]}'>My profile</a>";
 } elseif (isset($_SESSION["Agency"])) {
+    $id = $_SESSION["Agency"];
+    $unreadMessages = $crud->selectMessages("fk_receiver_id = $id AND readmsg_agency = 0");
+    $count = count($unreadMessages);
+    $hideMessages = "";
     $navlayout .= <<<HTML
 
             <li class="nav-item">
@@ -70,7 +97,7 @@ if (isset($_SESSION["Adm"])) {
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li>
-                        <a class='nav-link' href='../agency/repository.php'>Pet repository</a>
+                        <a class='dropdown-item' href='../agency/repository.php'>Pet repository</a>
                     </li>
                     <li>
                         <a class="dropdown-item" href='../pet/create.php'>Create new</a>
@@ -79,10 +106,12 @@ if (isset($_SESSION["Adm"])) {
             </li>
             <li class='nav-item'>
                 <a class='nav-link' href='../agency/adoptions.php'>Adoptions</a>
+                
             </li>
     HTML;
     $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["Agency"]}'>My profile</a>";
 } else {
+    $hideUnlogged = "hidden";
     $navlayout .= <<<HTML
         <li class='nav-item'>
             <a class='nav-link' href='../user/registration.php'>Register as User</a>
@@ -92,6 +121,9 @@ if (isset($_SESSION["Adm"])) {
         </li>
         <li class='nav-item'>
             <a class='nav-link' href='../user/login.php'>Login</a>
+        </li>
+        <li class='nav-item'>
+            <a class='nav-link' href='../stories/viewstories.php'>View Stories</a>
         </li>
     HTML;
 }
@@ -116,24 +148,18 @@ $breadcrumbs = displayBreadcrumbs();
                 </ul>
             </div>
             <div class="d-flex align-items-center">
-                <div class="dropdown">
+                <div class="dropdown" <?= $hideMessages ?>>
                     <a class="text-reset me-3 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-bell"></i>
-                        <span class="badge rounded-pill badge-notification bg-danger">1</span>
+                        <span class="badge rounded-pill badge-notification bg-danger"><?= $count ?></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                         <li>
-                            <a class="dropdown-item" href="#">Some news</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Another news</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">Something else here</a>
+                            <a class='dropdown-item' href='../messages/seeMessages.php'>Messages</a>
                         </li>
                     </ul>
                 </div>
-                <div class="dropdown">
+                <div class="dropdown" <?= $hideUnlogged ?>>
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fas fa-user"></i>
                     </a>
@@ -152,7 +178,7 @@ $breadcrumbs = displayBreadcrumbs();
             </div>
         </div>
     </nav>
-    <section>
+    <section <?= $hideUnlogged ?>>
         <div class="container breadcrump-container">
             <div class="row">
                 <div class="col">

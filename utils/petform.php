@@ -13,10 +13,6 @@ function renderForm($name, $species, $minSpace, $experience, $status, $vaccine, 
     $s3 = ($size === 'Large') ? 'selected' : '';
 
     $form = <<<HTML
-        <div class="card">
-            <div class="card-header">
-                <h2>New pet</h2>
-            </div>
             <div class="card-body">
                 <div class="required-fields">
                     <div class="row">
@@ -108,7 +104,6 @@ function renderForm($name, $species, $minSpace, $experience, $status, $vaccine, 
                     <button id="createbtn" name="create" type="submit" class="btn btn-primary" hidden>$postBtn</button>
                 </div>
             </div>
-        </div>
     HTML;
     return $form;
 }

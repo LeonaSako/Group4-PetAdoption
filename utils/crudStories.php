@@ -34,9 +34,9 @@ class CRUD_STORY
         $valuesOut = implode(",", $valuesOut);
 
 
-        $columns .= ", `date`";
+        // $columns .= ", `date`";
 
- 
+
         $valuesOut .= ", NOW()";
 
         $sql = "INSERT INTO `$table`($columns) VALUES ($valuesOut)";
@@ -46,25 +46,59 @@ class CRUD_STORY
 
     public function selectStories(string $condition)
     {
-        return $this->select("story", "*", $condition);
+        return $this->select("stories", "*", $condition);
     }
 
     public function selectMessages(string $condition)
     {
-        return $this->select("message", "*", $condition);
+        return $this->select("message", "*", $condition);   
+    }
+
+    public function changeMsgStatus($id, $status, $user)
+    {
+        $col = ($user === 'User') ? "readmsg_user" : "readmsg_agency";
+
+        $sql = "UPDATE `message` SET `$col`=$status WHERE id = $id";
+
+        $result = mysqli_query($this->connection, $sql);
+
+        $alert = ($status == 1) ? "Message marked as read" : "Message marked as unread";
+
+        $this->alert($result, $alert);
+
+        return $result;
     }
 
     public function createStory(array $values)
     {
-        $result = $this->insert("stories", "`fk_pet_id`, `image`, `date`,`desc`, `fk_user_id`", $values);
+            $result = $this->insert("stories", "`fk_pet_id`, `image`, `title`, `date`,`desc`, `fk_user_id`", $values);
 
         $this->alertUser($result, "A new adoption story has been submitted");
     }
+    public function updateStory($title, $desc, $date)
+    {
+        $sql = "UPDATE `stories` SET `title`='$title',`desc`='$desc',`date`='$date'";
+        $result = mysqli_query($this->connection, $sql);
+
+        $this->alert($result, "The Story has been updated successfully");
+
+        return $result;
+    }
+    public function deleteStory($id)
+    {
+        $sql = "DELETE FROM `stories` WHERE id = $id";
+
+        $result = mysqli_query($this->connection, $sql);
+
+        $this->alert($result, "The user has been deleted");
+    }
     public function createMessage(array $values)
     {
-        $result = $this->insert("message", "`subject`, `message`, `fk_user_id`, `fk_agency_id`", $values);
+        $result = $this->insert("message", "`subject`, `message`, `fk_sender_id`, `fk_receiver_id`, `readmsg_agency`, `readmsg_user`", $values);
 
         $this->alertUser($result, "A new message has been submitted");
+
+        header("refresh: 2; url = ../messages/seeMessages.php");
     }
 
     public function alertUser($result, string $message)

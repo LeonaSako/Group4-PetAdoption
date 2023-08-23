@@ -4,6 +4,7 @@ session_start();
 
 require_once "../utils/crudUser.php";
 require_once "../utils/crudAdoption.php";
+require_once "../utils/crudStories.php";
 require_once "../components/usertable.php";
 require_once "../utils/crudPet.php";
 require_once "../components/breadcrumb.php";
@@ -24,6 +25,8 @@ if(isset($_SESSION["User"])){
 $crud = new CRUD_USER();
 
 $result = $crud->selectUsers("id = $id");
+
+$url = "../user/update.php?id=$id";
 
 if (!empty($result)) {
 
@@ -54,6 +57,15 @@ if (isset($_SESSION['User']) || isset($_SESSION['Adm'])) {
     addBreadcrumb('Agency', '../user/profile.php?id=' . $id);
 }
 addBreadcrumb('Profile');
+$crud = new CRUD_STORY();
+$stories = $crud->selectStories("");    
+    foreach ($stories as $story) {  
+            $image = "../images/stories/{$story['image']}";
+            $desc = $story["desc"];
+            $title=$story["title"];
+            $date=$story["date"];
+            $userId =$story["id"];
+    }
 
 ?>
 
@@ -77,12 +89,10 @@ addBreadcrumb('Profile');
                         <div class="card-body text-center">
                             <img src="<?php echo $imageSrc; ?>" alt="avatar" class="rounded-circle img-fluid" id="profile-picture">
                             <h5 class="my-3"><?php echo $name; ?></h5>
-                            <?php if (isset($_SESSION['User']) || isset($_SESSION['Adm'])) { ?>
-                                <div class="d-flex justify-content-center mb-2">
-                                    <button type="button" class="btn btn-primary">Follow</button>
-                                    <button type="button" class="btn btn-outline-primary ms-1">Message</button>
-                                </div>
-                            <?php } ?>
+                     
+                            <div class="d-flex justify-content-center mb-2">
+                                <a href="<?php echo $url; ?>" class="btn btn-primary">Update</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -179,12 +189,45 @@ addBreadcrumb('Profile');
                                     <?= $applic ?>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
             </div>
            <?php } ?>
+        </div>
+    </section>
+    <section>
+        <div class="container py-5">
+            <div class="row">
+                <div class="col">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            Info
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped table-hover table-sm">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <td scope="col"><?=$title?></td>
+                                    <td scope="col"><?=$date?></td>
+                                    <td scope="col">
+                                        <p class="d-inline-flex gap-1">
+                                        <a href="../stories/mystory.php?id=<?=$userId ?>" class="btn btn-warning">Show</a>
+                                        <a href="../stories/update.php?id=<?= $userId ?>" class="btn btn-warning">Update</a>
+                                        <a href="../stories/delete.php?id=<?= $userId ?>" class="btn btn-warning">Delete</a>
+                                    </td>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </body>
