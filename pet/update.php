@@ -5,9 +5,8 @@ require_once "../utils/formUtils.php";
 require_once "../components/breadcrumb.php";
 require_once "../utils/petform.php";
 
-addBreadcrumb('Dashboard', '../agency/dashboard.php');
-addBreadcrumb('Pets', '../agency/repository.php');
-addBreadcrumb('Update');
+
+
 
 $pageTitle = "Update details";
 
@@ -19,6 +18,16 @@ if (isset($_SESSION["Adm"])) {
 } else {
     $userID = $_SESSION["Agency"];
 }
+
+if(isset($_SESSION["Adm"])){
+    addBreadcrumb('Dashboard', '../admin/dashboard.php');
+    addBreadcrumb('Pets', '../pet/listings.php');
+    addBreadcrumb('Update');
+}elseif(isset($_SESSION["Agency"])){
+    addBreadcrumb('Dashboard', '../agency/dashboard.php');
+    addBreadcrumb('Pets', '../agency/repository.php'); 
+    addBreadcrumb('Update');
+} 
 
 $id = $_GET["id"];
 

@@ -40,7 +40,12 @@ if (!empty($result)) {
             $update = $crud->updateAgency($id, $agency, $address, $phone, $email, $picture);
         }
         if ($update) {
-            header("refresh: 2; url = ../user/profile.php?id=" . $id);
+            if(isset($_SESSION["Agency"])){
+                header("refresh: 2; url = ../user/profile.php?id=" . $id);
+            } elseif (isset($_SESSION["Adm"])) {
+            header("refresh: 2; url = ../admin/agencies.php");
+            }
+            
         }
     }
 }
