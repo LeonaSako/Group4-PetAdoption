@@ -87,7 +87,7 @@ class CRUD_STORY
 
         $result = mysqli_query($this->connection, $sql);
 
-        $this->alert($result, "The user has been deleted");
+        $this->alert($result, "The Story has been deleted");
     }
     public function createMessage(array $values)
     {
