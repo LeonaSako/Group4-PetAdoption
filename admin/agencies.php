@@ -40,8 +40,8 @@ if (!empty($results)) {
                         <div class='card-body'>
                             <h5 class='card-title'>{$agency}</h5>
                             <p class='card-text'>{$email}</p>
-                            <a href='../user/update.php?id={$userid}' class='btn btn-warning'>Update</a>
-                            <a href='../user/delete.php?id={$userid}' class='btn btn-danger'>Delete</a>
+                            <a href='../agency/update.php?id={$userid}' class='btn btn-warning'>Update</a>
+                            <a href='../agency/delete.php?id={$userid}' class='btn btn-danger'>Delete</a>
                            
 
                         </div>

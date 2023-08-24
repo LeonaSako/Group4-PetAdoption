@@ -85,7 +85,8 @@ function viewPetDetails($result)
 
             $POD_Id = $row['id'];
             $layout .= <<<HTML
-                 
+
+                                                
                         <div class="col-4">
                             <div class="card mb-4 pod">
                                 <div class="card-body text-center">

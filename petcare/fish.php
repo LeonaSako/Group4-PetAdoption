@@ -28,8 +28,8 @@ addBreadcrumb('Fish');
         <h1 class="text-center">Fish Care</h1>
         <div class="row">
             <h1>Fish Care:</h1>
-            <div class="col-8">
-                <p>
+            <div class="col">
+        
                 <ul>
                     <li> Fishkeeping Basics: Dive into the world of fish care, including tank setup, water quality, and habitat considerations.</li>
                     <li> Feeding and Diet: Learn about appropriate fish diets, feeding techniques, and maintaining a balanced nutritional intake.</li>
@@ -37,9 +37,9 @@ addBreadcrumb('Fish');
                     <li> Fish Health: Explore common fish health issues, quarantine practices, and recognizing signs of illness.</li>
                 </ul>
                 </li>
-                </p>
+                
             </div>
-            <div class="col-4">
+            <div class="col">
                 <img src="../images/pets/fish.jpg">
             </div>
         </div>
