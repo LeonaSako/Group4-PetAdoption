@@ -28,7 +28,8 @@ $crud = new CRUD_USER();
 
 $result = $crud->selectUsers("id = $id");
 
-$url = "../user/update.php?id=$id";
+$urlUser = "../user/update.php?id=$id";
+$urlAgency = "../agency/update.php?id=$id";
 
 if (!empty($result)) {
 
@@ -100,8 +101,14 @@ addBreadcrumb('Profile');
                             <img src="<?= $imageSrc ?>" alt="avatar" class="rounded-circle img-fluid" id="profile-picture">
                             <h5 class="my-3"><?= $name ?></h5>
                             <div class="d-flex justify-content-center mb-2">
-                                <a href="<?= $url ?>" class="btn btn-primary">Update</a>
+                            <?php if (isset($_SESSION['User']) || isset($_SESSION['Adm'])) { ?>
+                                    <a href="<?= $urlUser ?>" class="btn btn-primary">Update</a>
                             </div>
+                            <?php } ?>
+                                <?php if (isset($_SESSION['Agency'])) { ?>
+                                    <a href="<?= $urlAgency ?>" class="btn btn-primary">Update</a>
+                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

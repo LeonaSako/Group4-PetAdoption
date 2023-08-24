@@ -31,15 +31,8 @@ addBreadcrumb('Repository');
 <body>
     <?php include '../components/navbar.php'; ?>
     <main class="cd-main-content">
-        <div class='container'>
-                <section class="gallery">
-                    <div id="layout" class="grid">
-
-                        <?= $layout ?>
-
-                    </div>
-                </section>
-
+        <div class='container grid2'>
+           
                 <section id="filter">
                     <form class="filter-form">
                         <div class="filter-header">
@@ -117,9 +110,16 @@ addBreadcrumb('Repository');
                             </ul>
                         </div>
                     </form>
-
                 </section>
-          
+
+                <section class="gallery">
+                    <div id="layout" class="grid">
+
+                        <?= $layout ?>
+
+                    </div>
+                </section>
+         
         </div>
     </main>
 

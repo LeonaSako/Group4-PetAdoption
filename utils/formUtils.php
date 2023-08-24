@@ -54,3 +54,8 @@ function validateName($name)
 {
     return preg_match('/^[a-zA-ZäöüÄÖÜß\s]+$/', $name);
 }
+
+function validateAdress($address)
+{
+    return preg_match('/^[a-zA-Z,äöüÄÖÜß\s0-9]+$/', $address);
+}

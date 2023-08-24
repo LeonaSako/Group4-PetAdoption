@@ -47,7 +47,7 @@ if (isset($_POST["sign-up"])) {
     } elseif (strlen($address) < 3) {
         $error = true;
         $addressError = "Name must have at least 3 characters.";
-    } elseif (!validateName($address)) {
+    } elseif (!validateAdress($address)) {
         $error = true;
         $addressError = "Name must contain only letters and spaces.";
     }

@@ -17,11 +17,13 @@ function fileUpload($pic, $type)
 
         if ($type == 'user') {
             $destination = "../images/users/{$pictureName}";
-        } else if ($type == 'pet') {
+        } else if ($type == 'agency') {
+            $destination = "../images/agency/{$pictureName}";
+        }else if ($type == 'pet') {
             $destination = "../images/pets/{$pictureName}";
         } else if ($type == 'story') {
             $destination = "../images/stories/{$pictureName}";
-        }
+        } 
 
         move_uploaded_file($pic["tmp_name"], $destination);
     }
