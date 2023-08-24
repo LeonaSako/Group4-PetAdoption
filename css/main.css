@@ -252,6 +252,12 @@ Card
         margin-left: 14px;
     }
     
+    .applied-text {
+        color: #333;
+        margin-left: 14px;
+        font-size: 20px;
+    }
+    
     .blockquote-footer {
         color: #666;
     }

@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../utils/crudUser.php";
 function viewPets($result)
 {
     $layout = "";
@@ -67,6 +68,20 @@ function viewPetDetails($result)
             $description = $row['description'];
             $vaccinated = ($row['vaccinated'] == 1) ? 'Yes' : 'No';
             $status = ($row['available'] == 1) ? 'Available for adoption' : 'Adopted';
+
+            $agencyId = $row['fk_users_id'];
+
+            $crud = new CRUD_USER();
+
+            $getAgency = $crud->selectUsers("id = $agencyId");
+
+            if (!empty($getAgency)) {
+
+                $agency = $getAgency[0];
+                $agencyName = $agency['agency'];
+            } else {
+                $agencyName = ' ';
+            }
 
             $POD_Id = $row['id'];
             $layout .= <<<HTML
@@ -147,6 +162,15 @@ function viewPetDetails($result)
                                         </div>
                                         <div class="col-sm-9">
                                             <p class="text-muted mb-0">$status</p>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Agency</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">$agencyName</p>
                                         </div>
                                     </div>
                                 </div>
