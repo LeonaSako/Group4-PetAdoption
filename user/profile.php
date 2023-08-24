@@ -11,7 +11,6 @@ require_once "../components/breadcrumb.php";
 
 $pageTitle = "Profile";
 
-$id = 0;
 $adoptionStoriesSection = "hidden";
 
 
@@ -22,13 +21,16 @@ if(isset($_SESSION["User"])){
     $id = $_SESSION["Adm"];
 }elseif(isset($_SESSION["Agency"])){
     $id = $_SESSION["Agency"];
+    addBreadcrumb('Dashboard', '../agency/dashboard.php');
+} else {
+    header("Location: ../user/login.php");
 }
 
 $crud = new CRUD_USER();
 
 $result = $crud->selectUsers("id = $id");
 
-$url = "../user/update.php?id=$id";
+$url = "../user/update.php";
 
 if (!empty($result)) {
 

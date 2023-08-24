@@ -10,7 +10,18 @@ $pageTitle = "Update details";
 
 session_start();
 
-$id = $_GET["id"];
+if (isset($_SESSION["User"])) {
+    $id = $_SESSION["User"];
+} elseif (isset($_SESSION["Adm"])) {
+    if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+    } else {
+        $id = $_SESSION["Adm"];
+    }
+} elseif (isset($_SESSION["Agency"])) {
+    $id = $_SESSION["Agency"];
+}
+
 $crud = new CRUD_USER();
 
 $result = $crud->selectUsers("id = $id");
@@ -50,12 +61,12 @@ if (!empty($result)) {
             $update = $crud->updateUser($id, $firstname, $lastname, $address, $birthdate, $phone, $email, $space, $exp, $picture);
         }
         if ($update) {
-            header("refresh: 2; url = ../user/profile.php?id=" . $id);
+            header("refresh: 2; url = ../user/profile.php");
         }
     }
 }
 addBreadcrumb('Home', '../home.php');
-addBreadcrumb('Profile', '../user/profile.php?id=' . $id);
+addBreadcrumb('Profile', '../user/profile.php');
 addBreadcrumb('Edit');
 
 ?>
