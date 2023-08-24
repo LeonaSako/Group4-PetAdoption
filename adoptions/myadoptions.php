@@ -40,7 +40,7 @@ addBreadcrumb('Adoptions');
     <div class="container">
 
         <div class="col">
-            <div class="row">
+            
                 <div class="card mb-4">
                     <div class="card-header">
                         My adoption applications
@@ -67,7 +67,7 @@ addBreadcrumb('Adoptions');
 
                     </div>
                 </div>
-            </div>
+            
         </div>
 
 </body>

@@ -60,7 +60,7 @@ function viewAdoptions($result)
                                 <td> $submission <span class="cssFont_1"> ($daysAgo $daytext ago)</span> </td>
                                 <td> $donation </td>
                                 <td>
-                                <p class="d-inline-flex gap-1">
+                                <p class="d-inline-flex align-items-center gap-1">
                                     <a href='../adoptions/view.php?id={$adoption["id"]}' class='btn btn-warning'>Details</a>
                                     <a href='../adoptions/edit.php?id={$adoptId}&status=Cancelled&pid={$petId}' class='btn btn-primary' $btnattr>Cancel</a>
                                     <a href='../stories/new.php?id={$petId}' class='btn btn-primary' $btnattr2>Add Story</a>
