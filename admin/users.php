@@ -35,7 +35,7 @@ if (!empty($results)) {
             $userid = $user["id"];
 
             $layout .= <<<HTML
-                <div class='col-lg-3 col-md-4 col-sm-6'>
+                
                     <div class='card'>
                         <img src='{$imageSrc}' class='img-fluid'>
                         <div class='card-body'>
@@ -47,7 +47,7 @@ if (!empty($results)) {
 
                         </div>
                     </div>
-                </div>
+          
             HTML;
         } else {
             echo "Invalid user data: " . print_r($user, true);
@@ -73,7 +73,7 @@ addBreadcrumb('Users');
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container">
-        <div id="layout" class="row">
+        <div id="layout" class="grid">
             <?= $layout ?>
         </div> 
     </div>
