@@ -5,45 +5,39 @@ require_once "../utils/formUtils.php";
 
 $pageTitle = "Edit adoption";
 
-
-// $id = $_GET["id"];
-// $status = $_GET["status"];
-
 $crudAdoption = new CRUD_ADOPTION();
 
-    $adoptId = $_GET["id"];
-    $petId = $_GET["pid"];
+$adoptId = $_GET["id"];
+$petId = $_GET["pid"];
 
-    $tablePet = "pet";
-    $columnsPet = "available";
-    $statusPet = "0";
-    
-    $tableAdoption = "adoption";
-    $columnsAdoption = "adopStatus";
-    $statusAdoption = $_GET["status"];
-    $statusDeclined = "Declined";
-  
-    if ($statusAdoption == "Approved") {
+$tablePet = "pet";
+$columnsPet = "available";
+$statusPet = "0";
 
-        $updateRejectOthers = $crudAdoption->updateAdoptionStatus($tableAdoption, $columnsAdoption, $statusDeclined, "WHERE fk_pet_id = $petId");
+$tableAdoption = "adoption";
+$columnsAdoption = "adopStatus";
+$statusAdoption = $_GET["status"];
+$statusDeclined = "Declined";
 
-        $updateApproved = $crudAdoption->updateAdoptionStatus($tableAdoption, $columnsAdoption, $statusAdoption, "WHERE id = $adoptId");
-    
-        $updateAvailable = $crudAdoption->updateAdoptionStatus($tablePet, $columnsPet, $statusPet, "WHERE id = $petId");
+if ($statusAdoption == "Approved") {
 
+    $updateRejectOthers = $crudAdoption->updateAdoptionStatus($tableAdoption, $columnsAdoption, $statusDeclined, "WHERE fk_pet_id = $petId");
 
-    }
-    if ($statusAdoption == "Declined") {
-        $updateApproved = $crudAdoption->updateAdoptionStatus($tableAdoption, $columnsAdoption, $statusAdoption, "WHERE id = $adoptId");
-    }
-    
+    $updateApproved = $crudAdoption->updateAdoptionStatus($tableAdoption, $columnsAdoption, $statusAdoption, "WHERE id = $adoptId");
 
-    if ($statusAdoption == "Cancelled") {
-        $updateApproved = $crudAdoption->updateAdoptionStatus($tableAdoption, $columnsAdoption, $statusAdoption, "WHERE id = $adoptId");
-    }
+    $updateAvailable = $crudAdoption->updateAdoptionStatus($tablePet, $columnsPet, $statusPet, "WHERE id = $petId");
+}
+if ($statusAdoption == "Declined") {
+    $updateApproved = $crudAdoption->updateAdoptionStatus($tableAdoption, $columnsAdoption, $statusAdoption, "WHERE id = $adoptId");
+}
 
 
-    header("refresh: 3; url = ../agency/adoptions.php");
+if ($statusAdoption == "Cancelled") {
+    $updateApproved = $crudAdoption->updateAdoptionStatus($tableAdoption, $columnsAdoption, $statusAdoption, "WHERE id = $adoptId");
+}
+
+
+header("refresh: 3; url = ../agency/adoptions.php");
 ?>
 
 
@@ -60,8 +54,8 @@ $crudAdoption = new CRUD_ADOPTION();
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container">
-        <h1>Adoption status is changed!</h1> 
-        <h2>You will be send back to previous page</h2> 
+        <h1>Adoption status is changed!</h1>
+        <h2>You will be send back to previous page</h2>
     </div>
 </body>
 
