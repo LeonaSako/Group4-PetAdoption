@@ -8,13 +8,17 @@ require_once "../pet/viewAll.php";
 require_once "../components/breadcrumb.php";
 
 addBreadcrumb('Home', '../user/dashboard.php');
-addBreadcrumb('User', '../user/profile.php?id=' . $_SESSION["User"]);
+addBreadcrumb('User', '../user/profile.php');
 addBreadcrumb('Adoptions', '../adoptions/myadoptions.php');
 addBreadcrumb('Apply');
 
 $pageTitle = "New adoption";
 
 $petID = $_GET["id"];
+
+if (!isset($_SESSION["User"])) {
+    header("Location: ../user/login.php");
+}
 
 $userID = $_SESSION["User"];
 

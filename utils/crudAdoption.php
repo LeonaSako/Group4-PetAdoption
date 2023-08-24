@@ -90,7 +90,7 @@ class CRUD_ADOPTION
         $result = mysqli_query($this->connection, $sql);
 
 
-        $this->alert($result, "The adoption status has been updated");
+        
 
         return $result;
     }

@@ -50,14 +50,10 @@ if (!empty($result)) {
 
     $layout = <<<HTML
                     <a href="../pet/listings.php" class="btn btn-warning">Go back</a>
-                HTML;
-    if (isset($_SESSION["User"])) {
-        $layout .= <<<HTML
                     <a href='../adoptions/new.php?id=$id' class='btn btn-primary' $hiddenAttr>Adopt</a> 
                     <a href='../agency/contact.php?id=$userId' class="btn btn-primary">Contact Agency</a>
                 </div>
-            HTML;
-    }
+                HTML;
     if (isset($_SESSION["Adm"]) || isset($_SESSION["Agency"])) {
         $layout .= <<<HTML
                     <a href="update.php?id={$id}" class="btn btn-primary">Update</a>

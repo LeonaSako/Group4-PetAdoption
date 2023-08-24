@@ -7,6 +7,10 @@ require_once "../components/breadcrumb.php";
 
 $pageTitle = "Contact";
 
+if (!isset($_SESSION["User"])) {
+    header("Location: ../user/login.php");
+}
+
 $crud = new CRUD_STORY();
 $crudUser = new CRUD_USER();
 
