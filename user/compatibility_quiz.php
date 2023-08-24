@@ -24,11 +24,6 @@ $exp0 = ($exp === '') ? 'selected' : '';
 $exp1 = ($exp === 'yes') ? 'selected' : '';
 $exp2 = ($exp === 'no') ? 'selected' : '';
 
-$ch0 = ($smallCh === '') ? 'selected' : '';
-$ch1 = ($smallCh === 'yes') ? 'selected' : '';
-$ch2 = ($smallCh === 'no') ? 'selected' : '';
-
-
 if (isset($_POST["finish"])) {
 
     if ($personality === 'extrovert') {
@@ -49,13 +44,9 @@ if (isset($_POST["finish"])) {
 
     $condition4 = "minSpace <= $space";
 
-    if ($smallCh === 'yes') {
-        $condition5 = "behavior NOT LIKE '%biting%'";
-    } else {
-        $condition5 = "1";
-    }
+   
 
-    $result = $crud->selectPets("$condition1 AND $condition2 AND $condition3 AND $condition4 AND $condition5");
+    $result = $crud->selectPets("$condition1 AND $condition2 AND $condition3 AND $condition4");
 
     $layout = viewPets($result);
 }
@@ -104,14 +95,6 @@ addBreadcrumb('Quiz');
                             <input type="number" class="form-control" id="space" name="space" placeholder="Space" min="0" value="<?= $space ?>">
                             <span class="input-group-text">m&sup2</span>
                         </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="children" class="form-label">Do you have small children (e.g. < 16 years old) at home?</label>
-                                <select class="form-select" name="children" required>
-                                    <option value="" <?= $ch0 ?>>Select one</option>
-                                    <option value="yes" <?= $ch1 ?>>Yes</option>
-                                    <option value="no" <?= $ch2 ?>>No</option>
-                                </select>
                     </div>
                     <button type="submit" name='finish' class="btn btn-primary">Finish Quiz</button>
                 </form>

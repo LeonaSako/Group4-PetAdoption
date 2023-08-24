@@ -87,9 +87,16 @@ class CRUD_USER
         header("refresh: 2; url = ../agency/dashboard.php");
     }
 
-    public function updateAgency($id, $agency, $address, $phone, $email)
+    public function updateAgency($id, $agency, $address, $phone, $email, $image)
     {
-        $sql = "UPDATE `users` SET `agency`='$agency',`address`='$address', `email`='$email'`phone`='$phone', WHERE id = $id";
+
+        $sql = "UPDATE `users` SET `agency`='$agency',`address`='$address', `email`='$email',`phone`='$phone'";
+
+        if (!empty($image)) {
+            $sql .= ", `image`= '$image' WHERE id = $id";
+        } else {
+            $sql .= " WHERE id = $id"; 
+        }    
 
         $result = mysqli_query($this->connection, $sql);
 
