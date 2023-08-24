@@ -517,11 +517,6 @@ Media Screen
             margin: 15px 0;
             width: 100%;
         }
-        .grid2 {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
         .grid3 {
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
@@ -537,6 +532,15 @@ Media Screen
             border-top-right-radius: 20px;
             border-bottom-left-radius: 20px;
             border-bottom-right-radius: 20px;
+        }
+    }
+    
+    @media screen and (width < 900px) {
+        .grid2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            width: 100%;
         }
     }
     
