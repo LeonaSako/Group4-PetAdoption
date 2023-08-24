@@ -15,7 +15,6 @@ class CRUD_STORY
         if (!empty($condition)) {
             $sql .= " WHERE $condition";
         }
-
         $result = mysqli_query($this->connection, $sql);
         $rows = mysqli_fetch_all($result, MYSQLI_ASSOC);
         return $rows;
@@ -46,7 +45,7 @@ class CRUD_STORY
 
     public function selectMessages(string $condition)
     {
-        return $this->select("message", "*", $condition);   
+        return $this->select("message", "*", $condition);
     }
 
     public function changeMsgStatus($id, $status, $user)
@@ -56,10 +55,6 @@ class CRUD_STORY
         $sql = "UPDATE `message` SET `$col`=$status WHERE id = $id";
 
         $result = mysqli_query($this->connection, $sql);
-
-        $alert = ($status == 1) ? "Message marked as read" : "Message marked as unread";
-
-        $this->alert($result, $alert);
 
         return $result;
     }
@@ -73,7 +68,7 @@ class CRUD_STORY
     public function updateStory($id, $title, $desc, $date, $image)
     {
         $sql = "UPDATE `stories` SET `title`='$title',`desc`='$desc',`date`='$date'";
-        
+
         if (!empty($image)) {
             $sql .= ", `image`= '$image' WHERE id = $id";
         } else {

@@ -48,7 +48,7 @@ $petTrainingImg = "images/layout/pettraining.jpg";
                         <div class="card-body text-center">
                             <a href="<?= $detailsP ?>">
                                 <img src="<?= $image ?>" id="details-img" class="img-fluid shadow" alt="Pet image">
-                            </a>    
+                            </a>
                             <h5 class="my-3">Pet of the day</h5>
                         </div>
                </div>

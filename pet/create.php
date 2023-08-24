@@ -11,16 +11,14 @@ $pageTitle = "Add new pet";
 
 preventUser();
 
-if (isset($_SESSION['Agency'])) 
-{
+if (isset($_SESSION['Agency'])) {
     $userID = $_SESSION["Agency"];
-    addBreadcrumb('Home', '../home.php');
+    addBreadcrumb('Dashboard', '../agency/dashboard.php');
     addBreadcrumb('Pets', '../agency/repository.php');
     addBreadcrumb('New');
-
 } else if (isset($_SESSION['Adm'])) {
     $userID = $_SESSION["Adm"];
-    addBreadcrumb('Home', '../home.php');
+    addBreadcrumb('Dashboard', '../admin/dashboard.php');
     addBreadcrumb('Pets', '../pet/listings.php');
     addBreadcrumb('New');
 }

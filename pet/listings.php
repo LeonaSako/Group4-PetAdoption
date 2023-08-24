@@ -14,9 +14,15 @@ $layout = viewPets($result);
 $POD = $crud->selectPets("pet_day = 1");
 $petofday = viewPetDetails($POD);
 
-addBreadcrumb('Home', '../home.php');
-addBreadcrumb('Pets', '../pet/listings.php');
-addBreadcrumb('');
+if (isset($_SESSION["Adm"])) {
+    addBreadcrumb('Dashboard', '../admin/dashboard.php');
+} else if (isset($_SESSION["Agency"])) {
+    addBreadcrumb('Dashboard', '../agency/dashboard.php');
+} else if (isset($_SESSION["User"])) {
+    addBreadcrumb('Home', '../home.php');
+}
+
+addBreadcrumb('Pets');
 
 ?>
 <!DOCTYPE html>
@@ -46,12 +52,7 @@ addBreadcrumb('');
         </div>
     </div>
     <main class="cd-main-content">
-        <div class='container'>
-            <section class="gallery">
-                <div id="layout" class="row m-2"  >
-                    <?= $layout ?>
-                </div>
-            </section>
+        <div class='container grid2'>
             <div id="filter">
                 <form class="filter-form">
                     <div class="filter-header">
@@ -128,9 +129,19 @@ addBreadcrumb('');
                             </li>
                         </ul>
                     </div>
+                    <div class="filter-block">
+                        <div class="gap-2 d-md-flex justify-content-center">
+                            <button id="reset-btn" type="button" class="btn btn-primary">Reset</button>
+                        </div>
+                    </div>
                 </form>
-
             </div>
+
+            <section class="gallery">
+                <div id="layout" class="grid">
+                    <?= $layout ?>
+                </div>
+            </section>
         </div>
     </main>
 

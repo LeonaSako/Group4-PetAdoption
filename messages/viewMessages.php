@@ -34,7 +34,7 @@ function viewMessages($result)
                                     <h5 class="card-title">Message</h5>
                                     <p class="card-text">$msg</p>
                                     <div class="gap-2 d-md-flex justify-content-center">
-                                        <a class="btn btn-primary" href="../agency/contact.php?id={$senderId}">Reply</a>
+                                        <a class="btn btn-primary" href="../messages/reply.php?id={$senderId}&msgid={$msgid}">Reply</a>
                                         <a class="btn btn-primary" href="{$url}" >Mark as $readstatus</a>
                                     </div>
                                 </div>

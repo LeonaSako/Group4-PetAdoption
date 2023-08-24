@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../utils/crudUser.php";
 function viewPets($result)
 {
     $layout = "";
@@ -17,34 +18,33 @@ function viewPets($result)
             $hiddenAttr = $isAdopted ? 'hidden' : '';
 
             $layout .= <<<HTML
-                        <div class="col-4">
-                            <div class="pet-card">
-                                <a href="../pet/details.php?id=$id">
-                                    <img src="{$image}" id="details-img" class='img-fluid shadow' alt="Pet image">
-                                </a>
-                                <div class="card-body">
-                                    <figure class="text-center">
-                                        <blockquote class="blockquote"><h5>{$name}</h5></blockquote>
-                                        <figcaption class="blockquote-footer">{$description}</figcaption>
-                                    </figure>
-                                    <p class='card-text'>Breed: $breed</p>
-                                    <p class="card-text">Age: $age years</p>
-                                    <p class="card-text">Size: $size</p>
-                                    <p class="card-text">Vaccinated: $vaccinated</p>
-                                    <div class="gap-2 d-md-flex justify-content-center">
-                                        <a href="../pet/details.php?id=$id" class="btn btn-warning">Details</a><br>
+                        
+                        <div class="pet-card">
+                            <a href="../pet/details.php?id=$id">
+                                <img src="{$image}" id="details-img" class='img-fluid shadow' alt="Pet image">
+                            </a>
+                            <div class="card-body">
+                                <figure class="text-center">
+                                    <blockquote class="blockquote"><h5>{$name}</h5></blockquote>
+                                    <figcaption class="blockquote-footer">{$description}</figcaption>
+                                </figure>
+                                <p class='card-text'>Breed: $breed</p>
+                                <p class="card-text">Age: $age years</p>
+                                <p class="card-text">Size: $size</p>
+                                <p class="card-text">Vaccinated: $vaccinated</p>
+                                <div class="gap-2 d-md-flex justify-content-center">
+                                    <a href="../pet/details.php?id=$id" class="btn btn-warning">Details</a><br>
+                HTML;
+        if (isset($_SESSION["User"])) {
+            $layout .= <<<HTML
+                                    <a href="../adoptions/new.php?id=$id" class="btn btn-primary" $hiddenAttr>Take me home</a>
                     HTML;
-            if (isset($_SESSION["User"])) {
-                $layout .= <<<HTML
-                                        <a href="../adoptions/new.php?id=$id" class="btn btn-primary" $hiddenAttr>Take me home</a>
-                        HTML;
-            } elseif (isset($_SESSION["Adm"]) || isset($_SESSION["Agency"])) {
-                $layout .= <<<HTML
-                                        <a href="../pet/update.php?id={$id}" class="btn btn-primary">Update</a>
-                        HTML;
-            }
-            $layout .= "            </div>
-                                </div>
+        } elseif (isset($_SESSION["Adm"]) || isset($_SESSION["Agency"])) {
+            $layout .= <<<HTML
+                                    <a href="../pet/update.php?id={$id}" class="btn btn-primary">Update</a>
+                    HTML;
+        }
+        $layout .= "            </div>
                             </div>
                         </div>";
         }
@@ -69,10 +69,25 @@ function viewPetDetails($result)
             $vaccinated = ($row['vaccinated'] == 1) ? 'Yes' : 'No';
             $status = ($row['available'] == 1) ? 'Available for adoption' : 'Adopted';
 
+            $agencyId = $row['fk_users_id'];
+
+            $crud = new CRUD_USER();
+
+            $getAgency = $crud->selectUsers("id = $agencyId");
+
+            if (!empty($getAgency)) {
+
+                $agency = $getAgency[0];
+                $agencyName = $agency['agency'];
+            } else {
+                $agencyName = ' ';
+            }
+
             $POD_Id = $row['id'];
             $layout .= <<<HTML
+                 
                         <div class="col-4">
-                            <div class="card mb-4">
+                            <div class="card mb-4 pod">
                                 <div class="card-body text-center">
                                     <a href="../pet/details.php?id={$POD_Id}">
                                         <img src="{$image}" id="details-img" class='img-fluid shadow' alt="Pet image">
@@ -82,7 +97,7 @@ function viewPetDetails($result)
                             </div>
                         </div>
                         <div class="col-8">
-                            <div class="card mb-4">
+                            <div class="card mb-4 pod">
                                 <div class="card-header">
                                     Pet details
                                 </div>
@@ -149,9 +164,19 @@ function viewPetDetails($result)
                                             <p class="text-muted mb-0">$status</p>
                                         </div>
                                     </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Agency</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">$agencyName</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                      
                 HTML;
         }
     } else {

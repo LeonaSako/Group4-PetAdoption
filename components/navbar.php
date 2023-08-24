@@ -53,10 +53,10 @@ if (isset($_SESSION["Adm"])) {
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <li>
-                        <a class="dropdown-item" href='../admin/dashboard.php'>View all users</a>
+                        <a class="dropdown-item" href='../admin/users.php'>View all users</a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href='../pet/create.php'>View all agencies</a>
+                        <a class="dropdown-item" href='../admin/agencies.php'>View all agencies</a>
                     </li>
                 </ul>
             </li>
@@ -67,7 +67,7 @@ if (isset($_SESSION["Adm"])) {
                 <a class='nav-link' href='../admin/adoptions.php'>Adoptions</a>
             </li>
     HTML;
-    $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["Adm"]}'>My profile</a>";
+    $profile .= "<a class='dropdown-item' href='../user/profile.php'>My profile</a>";
 } elseif (isset($_SESSION["User"])) {
     $id = $_SESSION["User"];
     $unreadMessages = $crud->selectMessages("fk_receiver_id = $id AND readmsg_user = 0");

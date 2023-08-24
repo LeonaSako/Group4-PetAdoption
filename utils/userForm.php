@@ -27,7 +27,7 @@ function renderForm($firstname, $lastname, $address, $phone, $exp, $birthdate, $
                         </div>
                         <div class="col-md-4">
                             <label for="phone" class="form-label">Phone Number </label>
-                            <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone Number" value="{$phone}">
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone Number" value="{$phone}">
                         </div>
                         <div class="col-md-2">
                             <label for="date" class="form-label">Date of birth <span class='required'>*</span></label>
@@ -36,14 +36,11 @@ function renderForm($firstname, $lastname, $address, $phone, $exp, $birthdate, $
                     </div>
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="space" class="form-label">Apartment space <span class='required'>*</span></label>
-                            <div class="input-group mb-3">
-                                <input type="number" class="form-control" placeholder="Space" value="{$space}">
-                                <span class="input-group-text">m&sup3</span>
-                            </div>
+                            <label for="space" class="form-label">Apartment size in m&sup2</label>
+                            <input type="number" class="form-control" placeholder="Space" value="{$space}">
                         </div>
                         <div class="col-md-6">
-                            <label for="experienced">Do you have experience with the Pets? <span class='required'>*</span></label>
+                            <label for="experienced" class="form-label">Do you have experience with the Pets? <span class='required'>*</span></label>
                             <select class="form-select" name="experienced" id="experienced">
                                 <option name="experienced" value="Yes" $e1>Yes</option>
                                 <option name="experienced" value="No" $e2>No</option>
