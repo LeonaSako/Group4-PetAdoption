@@ -6,6 +6,20 @@ require_once "../utils/crudPet.php";
 require_once "../pet/viewAll.php";
 require_once "../components/breadcrumb.php";
 
+if (isset($_SESSION["Adm"])) {
+    addBreadcrumb('Dashboard', '../admin/dashboard.php');
+    addBreadcrumb('Pets', '../pet/listings.php');
+    addBreadcrumb('Details');
+} else if (isset($_SESSION["Agency"])) {
+    addBreadcrumb('Dashboard', '../agency/dashboard.php');
+    addBreadcrumb('Pets', '../agency/repository.php');
+    addBreadcrumb('Details');
+} else if (isset($_SESSION["User"])) {
+    addBreadcrumb('Home', '../home.php');
+    addBreadcrumb('Pets', '../pet/listings.php');
+    addBreadcrumb('Details');
+}
+
 $pageTitle = "Pet details";
 
 $id = $_GET["id"];
@@ -80,9 +94,7 @@ if (isset($_POST["make-POD"])) {
         exit;
     }
 }
-addBreadcrumb('Home', '../user/dashboard.php');
-addBreadcrumb('Pets', '../pet/listings.php');
-addBreadcrumb('Details');
+
 ?>
 
 <!DOCTYPE html>

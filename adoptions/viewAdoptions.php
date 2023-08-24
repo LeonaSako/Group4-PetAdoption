@@ -6,8 +6,8 @@ require_once "../utils/crudAdoption.php";
 require_once "../utils/crudPet.php";
 require_once "../utils/crudUser.php";
 require_once "../components/breadcrumb.php";
-$pageTitle = "Adoption Details";
 
+$pageTitle = "Adoption Details";
 
 $adopId = $_GET["id"];
 $crudAdoption = new CRUD_ADOPTION();
@@ -42,10 +42,20 @@ if (!empty($adoption)) {
 
     $btnattr = "hidden";
 }
+if (isset($_SESSION["Adm"])) {
+    addBreadcrumb('Dashboard', '../admin/dashboard.php');
+    addBreadcrumb('Adoptions', '../admin/adoptions.php');
+    addBreadcrumb('Details');
+} else if (isset($_SESSION["Agency"])) {
+    addBreadcrumb('Dashboard', '../agency/dashboard.php');
+    addBreadcrumb('Adoptions', '../agency/adoptions.php');
+    addBreadcrumb('Details');
+} else if (isset($_SESSION["User"])) {
+    addBreadcrumb('Home', '../home.php');
+    addBreadcrumb('Adoptions', '../adoptions/myadoptions.php');
+    addBreadcrumb('Details');
+}
 
-addBreadcrumb('Home', '../user/dashboard.php');
-addBreadcrumb('Adoptions', '../adoptions/myadoptions.php');
-addBreadcrumb('Details');
 ?>
 
 <!DOCTYPE html>

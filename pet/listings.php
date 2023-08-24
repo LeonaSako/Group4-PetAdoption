@@ -14,9 +14,15 @@ $layout = viewPets($result);
 $POD = $crud->selectPets("pet_day = 1");
 $petofday = viewPetDetails($POD);
 
-addBreadcrumb('Home', '../home.php');
-addBreadcrumb('Pets', '../pet/listings.php');
-addBreadcrumb('');
+if (isset($_SESSION["Adm"])) {
+    addBreadcrumb('Dashboard', '../admin/dashboard.php');
+} else if (isset($_SESSION["Agency"])) {
+    addBreadcrumb('Dashboard', '../agency/dashboard.php');
+} else if (isset($_SESSION["User"])) {
+    addBreadcrumb('Home', '../home.php');
+}
+
+addBreadcrumb('Pets');
 
 ?>
 <!DOCTYPE html>
@@ -130,11 +136,11 @@ addBreadcrumb('');
                     </div>
                 </form>
             </div>
-            
+
             <section class="gallery">
-                <div id="layout" class="grid"  >
+                <div id="layout" class="grid">
                     <?= $layout ?>
-             </div>
+                </div>
             </section>
         </div>
     </main>
