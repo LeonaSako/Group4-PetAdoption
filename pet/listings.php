@@ -38,7 +38,7 @@ addBreadcrumb('Pets');
     <?php include '../components/navbar.php'; ?>
     <div class="container" id='POD-container'>
         <h2 class="h2-header">Pet of the day</h2>
-        <p class="d-inline-flex gap-1">
+    
         <div class="gap-2 d-md-flex justify-content-center">
             <a id="collapseButton" class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                 See pet of the day
