@@ -36,6 +36,10 @@ if ($statusAdoption == "Cancelled") {
     $updateApproved = $crudAdoption->updateAdoptionStatus($tableAdoption, $columnsAdoption, $statusAdoption, "WHERE id = $adoptId");
 }
 
+echo "<div class='alert alert-success'>
+               <p>The adoption status has been updated</p>
+            </div>";
+
 
 header("refresh: 3; url = ../agency/adoptions.php");
 ?>

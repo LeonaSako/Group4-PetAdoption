@@ -84,7 +84,7 @@ if (isset($_SESSION["Adm"])) {
             </li>
             
     HTML;
-    $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["User"]}'>My profile</a>";
+    $profile .= "<a class='dropdown-item' href='../user/profile.php'>My profile</a>";
 } elseif (isset($_SESSION["Agency"])) {
     $id = $_SESSION["Agency"];
     $unreadMessages = $crud->selectMessages("fk_receiver_id = $id AND readmsg_agency = 0");
@@ -116,7 +116,7 @@ if (isset($_SESSION["Adm"])) {
                 
             </li>
     HTML;
-    $profile .= "<a class='dropdown-item' href='../user/profile.php?id={$_SESSION["Agency"]}'>My profile</a>";
+    $profile .= "<a class='dropdown-item' href='../user/profile.php'>My profile</a>";
 } else {
     $hideUnlogged = "hidden";
     $navlayout .= <<<HTML
