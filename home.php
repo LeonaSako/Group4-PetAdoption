@@ -41,20 +41,19 @@ $petTrainingImg = "images/layout/pettraining.jpg";
 
 <body>
     <?php include 'components/navbar.php'; ?>
-    <div class="container">
-        <div id="layout" class="row ">
-            <div class="row">
-                <div class="col-6">
-                    <div class="card mb-4">
+   <div class="container">
+        <div class="row  row-cols-lg-2 row-col-md-1 row-col-sm-1 row-col-xs-1">
+            <div > 
+              <div class="card mb-4">
                         <div class="card-body text-center">
                             <a href="<?= $detailsP ?>">
                                 <img src="<?= $image ?>" id="details-img" class="img-fluid shadow" alt="Pet image">
                             </a>
                             <h5 class="my-3">Pet of the day</h5>
                         </div>
-                    </div>
-                </div>
-                <div class="col-6">
+               </div>
+            </div>
+            <div > 
                     <div class="card mb-4">
                         <div class="card-body text-center">
                             <a href="<?= $successStories ?>">
@@ -63,11 +62,10 @@ $petTrainingImg = "images/layout/pettraining.jpg";
                             <h5 class="my-3">Adoption success stories</h5>
                         </div>
                     </div>
-                </div>
+
             </div>
-            <div class="row">
-                <div class="col-6">
-                    <div class="card mb-4">
+            <div>
+            <div class="card mb-4">
                         <div class="card-body text-center">
                             <a href="<?= $petCareURL ?>">
                                 <img src="<?= $petCareImg ?>" id="details-img" class='img-fluid shadow' alt="Pet image">
@@ -75,9 +73,9 @@ $petTrainingImg = "images/layout/pettraining.jpg";
                             <h5 class="my-3">Pet care tips</h5>
                         </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="card mb-4">
+            </div>
+            <div>
+             <div class="card mb-4">
                         <div class="card-body text-center">
                             <a href="<?= $petTrainingURL ?>">
                                 <img src="<?= $petTrainingImg ?>" id="details-img" class='img-fluid shadow' alt="Pet image">
@@ -85,11 +83,11 @@ $petTrainingImg = "images/layout/pettraining.jpg";
                             <h5 class="my-3">Pet training tips</h5>
                         </div>
                     </div>
-                </div>
-            </div>
+             </div>
+             </div>
+             
         </div>
-    </div>
-
+        
 </body>
 
 </html>
