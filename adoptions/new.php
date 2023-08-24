@@ -26,6 +26,15 @@ $result = $crud->selectPets("id = $petID");
 
 $petDetails = viewPetDetails($result);
 
+$adoptions = $crudAdoption->selectAdoptions("fk_adoptee_id = $userID AND fk_pet_id = $petID AND adopStatus = 'Apply'");
+
+$showError = "hidden";
+$hideForm = "";
+if (!empty($adoptions)) {
+    $showError = "";
+    $hideForm = "hidden";
+}
+
 if (isset($_POST['adoption-submit'])) {
 
     $submitionDate = date('Y-m-d H:i:s');
@@ -33,7 +42,7 @@ if (isset($_POST['adoption-submit'])) {
     $donation = $_POST['donation'];
     $reason = $_POST['reason'];
 
-    $values = [$petID, $userID, $submitionDate, $donation, $reason, $adoptionDate];
+    $values = [$petID, $userID, $submitionDate, $donation, $reason, $adoptionDate, 'Apply'];
 
     $crudAdoption->createAdoption($values);
 }
@@ -53,8 +62,17 @@ if (isset($_POST['adoption-submit'])) {
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container">
+        <div class="card" <?= $showError ?>>
+            <div class="card-body">
+                <p class="applied-text">You have already applied for this pet! </p>
+                <div class="gap-2 d-md-flex justify-content-center">
+                    <a href="../pet/listings.php" class="btn btn-warning">Go back</a>
+                </div>
+            </div>
+        </div>
+
         <form method="post" autocomplete="off" enctype="multipart/form-data">
-            <div class="card">
+            <div class="card" <?= $hideForm ?>>
                 <div class="card-header">
                     <h2>New adoption</h2>
                 </div>
@@ -66,7 +84,7 @@ if (isset($_POST['adoption-submit'])) {
                     <label for="donation" class="form-label">Adoption donation (optional)</label>
                     <div class="input-group mb-3">
                         <span class="input-group-text">€</span>
-                        <input type="number" class="form-control" placeholder="Give amount in euro" aria-label="Amount (to the nearest euro)">
+                        <input type="number" class="form-control" name="donation" placeholder="Give amount in euro" aria-label="Amount (to the nearest euro)">
                     </div>
                     <div class='mb-3'>
                         <label for='reason' class='form-label'>Adoption reason</label>

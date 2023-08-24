@@ -68,19 +68,22 @@ class CRUD_ADOPTION
         $valuesOut = implode(",", $valuesOut);
 
         $sql = "INSERT INTO `$table`($columns) VALUES ($valuesOut)";
+
         $result = mysqli_query($this->connection, $sql);
         return $result;
     }
 
     public function createAdoption(array $values)
     {
-        
+
         $result = $this->insert("adoption", "`fk_pet_id`, `fk_adoptee_id`, `submitionDate`, `donation`, `reason`,`adoptionDate`, `adopStatus`", $values);
 
         $this->alertUser($result, "A new adoption has been submitted");
+
+        header("refresh: 2; url = ../adoptions/myadoptions.php");
     }
 
-    public function updateAdoptionStatus($table, $column, $status, $condition = "", )
+    public function updateAdoptionStatus($table, $column, $status, $condition = "",)
     {
         $sql = "UPDATE `$table` SET `$column` = '$status' $condition";
 

@@ -145,6 +145,26 @@ Main Components
     object-fit: cover;
 }
 
+.mb-3 {
+    margin-top: 1rem;
+}
+
+.col-md-8 {
+    margin-top: 1rem;
+}
+
+.col-md-6 {
+    margin-top: 1rem;
+}
+
+.col-md-4 {
+    margin-top: 1rem;
+}
+
+.col-md-2 {
+    margin-top: 1rem;
+}
+
 
 /* -------------------------------- 
 
@@ -241,6 +261,13 @@ Card
     color: #333;
     margin-left: 14px;
 }
+
+.applied-text {
+    color: #333;
+    margin-left: 14px;
+    font-size: 20px;
+}
+
 
 .blockquote-footer {
     color: #666;

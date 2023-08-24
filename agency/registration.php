@@ -103,42 +103,51 @@ if (isset($_POST["sign-up"])) {
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container">
-        <h1 class="text-center">Sign Up </h1>
+        <h1 class="text-center">Agency registration</h1>
         <form method="post" autocomplete="off" enctype="multipart/form-data">
-            <div class="mb-3 mt-3">
-                <label for="agency" class="form-label">Agency </label>
-                <input type="text" class="form-control" id="fname" name="agency" placeholder="Agency name" value="<?= $agency ?>">
-                <span class="text-danger"><?= $agencyError ?></span>
+            <div class="card">
+                <div class="card-body">
+                    <div class="mb-3 mt-3">
+                        <label for="agency" class="form-label">Agency <span class='required'>*</span></label>
+                        <input type="text" class="form-control" id="fname" name="agency" placeholder="Agency name" value="<?= $agency ?>">
+                        <span class="text-danger"><?= $agencyError ?></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="address" class="form-label">Address <span class='required'>*</span></label>
+                            <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="<?= $address ?>">
+                            <span class="text-danger"><?= $addressError ?></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="phone" class="form-label">Phone Number </label>
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Phone Number" value="<?= $phone ?>">
+                            <span class="text-danger"><?= $phoneError ?></span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="picture" class="form-label">Profile picture </label>
+                        <input type="file" class="form-control" id="picture" name="picture">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="email" class="form-label">Email address <span class='required'>*</span></label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Email address" value="<?= $email ?>">
+                            <span class="text-danger"><?= $emailError ?></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="password" class="form-label">Password <span class='required'>*</span></label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                            <span class="text-danger"><?= $passError ?></span>
+                        </div>
+                    </div>
+                    <br>
+                    <p>(<span class='required'>*</span>) Required fields</p>
+                    <span id="error" class="text-danger" display='block;'></span>
+                    <div class="gap-2 d-md-flex justify-content-center">
+                        <button name="sign-up" type="submit" class="btn btn-primary">Create account </button>
+                    </div>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="address" class="form-label">Address </label>
-                <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="<?= $address ?>">
-                <span class="text-danger"><?= $addressError ?></span>
-            </div>
-
-            <div class="mb-3">
-                <label for="picture" class="form-label">Profile picture </label>
-                <input type="file" class="form-control" id="picture" name="picture">
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email address </label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email address" value="<?= $email ?>">
-                <span class="text-danger"><?= $emailError ?></span>
-            </div>
-            <div class="mb-3">
-                <label for="phone" class="form-label">Phone Number</label>
-                <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone Number" value="<?= $phone ?>">
-                <span class="text-danger"><?= $phoneError ?></span>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password">
-                <span class="text-danger"><?= $passError ?></span>
-
-            </div>
-            <button name="sign-up" type="submit" class="btn btn-primary">Create account </button>
-
-            <span>You have an account already? <a href="../user/login.php">Sign in here </a></span>
         </form>
     </div>
 </body>
