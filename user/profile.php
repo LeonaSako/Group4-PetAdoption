@@ -11,17 +11,20 @@ require_once "../components/breadcrumb.php";
 
 $pageTitle = "Profile";
 
-$id = 0;
-
 $adoptionStoriesSection = "hidden";
 
 if (isset($_SESSION["User"])) {
     $id = $_SESSION["User"];
     $adoptionStoriesSection = "";
+    addBreadcrumb('Home', '../home.php');
 } elseif (isset($_SESSION["Adm"])) {
     $id = $_SESSION["Adm"];
+    addBreadcrumb('Dashboard', '../admin/dashboard.php');
 } elseif (isset($_SESSION["Agency"])) {
     $id = $_SESSION["Agency"];
+    addBreadcrumb('Dashboard', '../agency/dashboard.php');
+} else {
+    header("Location: ../user/login.php");
 }
 
 $crud = new CRUD_USER();
@@ -77,7 +80,7 @@ if (isset($_SESSION['User'])) {
     }
 }
 
-addBreadcrumb('Home', '../home.php');
+
 addBreadcrumb('Profile');
 
 ?>

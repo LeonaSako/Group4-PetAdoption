@@ -14,9 +14,15 @@ $layout = viewPets($result);
 $POD = $crud->selectPets("pet_day = 1");
 $petofday = viewPetDetails($POD);
 
-addBreadcrumb('Home', '../home.php');
-addBreadcrumb('Pets', '../pet/listings.php');
-addBreadcrumb('');
+if (isset($_SESSION["Adm"])) {
+    addBreadcrumb('Dashboard', '../admin/dashboard.php');
+} else if (isset($_SESSION["Agency"])) {
+    addBreadcrumb('Dashboard', '../agency/dashboard.php');
+} else if (isset($_SESSION["User"])) {
+    addBreadcrumb('Home', '../home.php');
+}
+
+addBreadcrumb('Pets');
 
 ?>
 <!DOCTYPE html>
@@ -32,7 +38,7 @@ addBreadcrumb('');
     <?php include '../components/navbar.php'; ?>
     <div class="container" id='POD-container'>
         <h2 class="h2-header">Pet of the day</h2>
-        <p class="d-inline-flex gap-1">
+    
         <div class="gap-2 d-md-flex justify-content-center">
             <a id="collapseButton" class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                 See pet of the day
@@ -130,11 +136,11 @@ addBreadcrumb('');
                     </div>
                 </form>
             </div>
-            
+
             <section class="gallery">
-                <div id="layout" class="grid"  >
+                <div id="layout" class="grid">
                     <?= $layout ?>
-             </div>
+                </div>
             </section>
         </div>
     </main>

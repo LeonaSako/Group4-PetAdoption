@@ -13,13 +13,13 @@ $pageTitle = "View Stories";
 
 $crud = new CRUD_STORY();
 
-$stories = $crud->selectStories("");    
+$stories = $crud->selectStories("");
 $layout = "";
-    foreach ($stories as $story) {  
-            $image = "../images/stories/{$story['image']}";
-            $desc = $story["desc"];
-            $title=$story["title"];
-            $layout .= <<<HTML
+foreach ($stories as $story) {
+    $image = "../images/stories/{$story['image']}";
+    $desc = $story["desc"];
+    $title = $story["title"];
+    $layout .= <<<HTML
             <section>
                 <div class="container py-5">
                     <div class="row">
@@ -51,27 +51,36 @@ $layout = "";
                 </div>
             </section>
    HTML;
-} 
+}
+if (isset($_SESSION["Adm"])) {
+    addBreadcrumb('Dashboard', '../admin/dashboard.php');
+} else if (isset($_SESSION["Agency"])) {
+    addBreadcrumb('Dashboard', '../agency/dashboard.php');
+} else if (isset($_SESSION["User"])) {
+    addBreadcrumb('Home', '../home.php');
+}
 
-addBreadcrumb('Home', '../home.php');
 addBreadcrumb('Stories');
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <?php include '../components/head.php'; ?>
     <link rel="stylesheet" href="../css/main.css">
     <title><?= $pageTitle ?></title>
 </head>
+
 <body>
     <?php include '../components/navbar.php'; ?>
     <div class="container">
-        
+
         <div id="layout" class="row">
             <?= $layout ?>
         </div>
     </div>
 </body>
+
 </html>

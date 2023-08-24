@@ -11,8 +11,7 @@ require_once "../components/breadcrumb.php";
 
 
 addBreadcrumb('Dashboard', '../agency/dashboard.php');
-addBreadcrumb('Adoptions', '../agency/adoptions.php');
-addBreadcrumb('All');
+addBreadcrumb('Adoptions');
 
 $pageTitle = "Adoption list";
 
