@@ -158,6 +158,10 @@ Main Components
         height: 400px;
         object-fit: cover;
     }
+    
+    .thReq {
+        text-align: center;
+    }
     /* -------------------------------- 
 
 Accordion

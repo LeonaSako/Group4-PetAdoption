@@ -77,12 +77,12 @@ function viewAdoptions($result)
                     <td> $application </td>
                     <td> {$adoptee} </td>
                     <td> {$row['submitionDate']} </td>
-                    <td> {$row['donation']} </td>
+                    <td> € {$row['donation']} </td>
                 HTML;
 
             if (isset($_SESSION['Agency'])) {
                 $list .= <<<HTML
-                            <th class="thReq" scope="col"> $NoRequirements </th>
+                            <td class="thReq" scope="col"> $NoRequirements </th>
                         HTML;
             }
 
