@@ -7,6 +7,7 @@
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
             <div class="accordion-body">
+                <div class="table-responsive">
                 <table class="table table-striped table-hover table-sm">
                     <thead>
                         <tr>
@@ -28,6 +29,7 @@
                         <?= $pending ?>
                     </tbody>
                 </table>
+                </div>
             </div>
         </div>
     </div>
@@ -40,6 +42,8 @@
         </h2>
         <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div class="accordion-body">
+            <div class="table-responsive">
+
                 <table class="table table-striped table-hover table-sm">
                     <thead>
                         <tr>
@@ -62,6 +66,7 @@
                     </tbody>
                 </table>
             </div>
+            </div>
         </div>
     </div>
 
@@ -73,6 +78,8 @@
         </h2>
         <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div class="accordion-body">
+            <div class="table-responsive">
+
                 <table class="table table-striped table-hover table-sm">
                     <thead>
                         <tr>
@@ -106,6 +113,8 @@
         </h2>    
         <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
             <div class="accordion-body">
+            <div class="table-responsive">
+
                 <table class="table table-striped table-hover table-sm">
                     <thead>
                         <tr>
@@ -127,6 +136,8 @@
                         <?= $cancelled ?>
                     </tbody>
                 </table>
+                </div>
+
             </div>
         </div>
     </div>
