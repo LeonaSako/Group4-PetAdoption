@@ -1,13 +1,11 @@
 <?php
-require_once "../utils/crudUser.php";
 require_once "../utils/crudStories.php";
 require_once "../utils/formUtils.php";
 session_start();
-preventUser();
+preventAdmin();
 preventAgency();
 $id = $_GET["id"];
-$crud = new CRUD_STORY();
-$delStory = $crud->deleteStory("id = $id"); 
+$crud = new CRUD_STORY(); 
 $crud->deleteStory($id);
-header("refresh:2; url = ../user/profile.php?id=" . $_SESSION["User"]);
+header("refresh:1; url = ../user/profile.php"); 
 
