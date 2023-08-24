@@ -26,7 +26,7 @@ if (isset($_POST["create"])) {
 
     $story = $crud->createStory($values);
 
-    if ($story) {
+    if (!empty($story)) {
         header("refresh: 2; url = ../stories/viewstories.php");
     }
 }
